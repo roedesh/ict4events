@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>cb6b0217-cbc9-46b2-9bff-cd64ead3f9dc</ProjectGuid>
+    <ProjectGuid>{AB85CC0D-842B-42B1-B916-0CB8558AD079}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SocialMediaSharingSystem</RootNamespace>
