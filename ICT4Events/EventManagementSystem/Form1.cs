@@ -15,6 +15,7 @@ namespace EventManagementSystem
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }
