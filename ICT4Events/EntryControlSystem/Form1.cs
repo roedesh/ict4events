@@ -16,5 +16,6 @@ namespace EntryControlSystem
         {
             InitializeComponent();
         }
+        //test
     }
 }
