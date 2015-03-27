@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace EventManagementSystem
 {
-    // LOLOLOLOOL HERE BE COMMENTS - Jeroen
+
+
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            
         }
     }
 }
