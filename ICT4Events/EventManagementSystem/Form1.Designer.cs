@@ -82,8 +82,8 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnVoegEventToe = new System.Windows.Forms.Button();
-            this.btnShowEvents = new System.Windows.Forms.Button();
+            this.btnEventsAdd = new System.Windows.Forms.Button();
+            this.btnEventsShow = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbEventCity = new System.Windows.Forms.TextBox();
@@ -96,6 +96,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tbPersoonReservationID = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.tbPersoonPhone = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -110,8 +112,6 @@
             this.tbPersoonAmount = new System.Windows.Forms.TextBox();
             this.tbPersoonName = new System.Windows.Forms.TextBox();
             this.btnPersoonAdd = new System.Windows.Forms.Button();
-            this.tbPersoonReservationID = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -683,8 +683,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnVoegEventToe);
-            this.tabPage2.Controls.Add(this.btnShowEvents);
+            this.tabPage2.Controls.Add(this.btnEventsAdd);
+            this.tabPage2.Controls.Add(this.btnEventsShow);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.tbEventCity);
@@ -704,27 +704,26 @@
             this.tabPage2.Text = "Events";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnVoegEventToe
+            // btnEventsAdd
             // 
-            this.btnVoegEventToe.Location = new System.Drawing.Point(4, 152);
-            this.btnVoegEventToe.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVoegEventToe.Name = "btnVoegEventToe";
-            this.btnVoegEventToe.Size = new System.Drawing.Size(267, 33);
-            this.btnVoegEventToe.TabIndex = 32;
-            this.btnVoegEventToe.Text = "Voeg toe";
-            this.btnVoegEventToe.UseVisualStyleBackColor = true;
-            this.btnVoegEventToe.Click += new System.EventHandler(this.btnVoegEventToe_Click);
+            this.btnEventsAdd.Location = new System.Drawing.Point(4, 152);
+            this.btnEventsAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEventsAdd.Name = "btnEventsAdd";
+            this.btnEventsAdd.Size = new System.Drawing.Size(267, 33);
+            this.btnEventsAdd.TabIndex = 32;
+            this.btnEventsAdd.Text = "Voeg toe";
+            this.btnEventsAdd.UseVisualStyleBackColor = true;
+            this.btnEventsAdd.Click += new System.EventHandler(this.btnEventsAdd_Click);
             // 
-            // btnShowEvents
+            // btnEventsShow
             // 
-            this.btnShowEvents.Location = new System.Drawing.Point(4, 190);
-            this.btnShowEvents.Margin = new System.Windows.Forms.Padding(2);
-            this.btnShowEvents.Name = "btnShowEvents";
-            this.btnShowEvents.Size = new System.Drawing.Size(268, 34);
-            this.btnShowEvents.TabIndex = 29;
-            this.btnShowEvents.Text = "Toon alle events";
-            this.btnShowEvents.UseVisualStyleBackColor = true;
-            this.btnShowEvents.Click += new System.EventHandler(this.btnShowEvents_Click);
+            this.btnEventsShow.Location = new System.Drawing.Point(4, 190);
+            this.btnEventsShow.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEventsShow.Name = "btnEventsShow";
+            this.btnEventsShow.Size = new System.Drawing.Size(268, 34);
+            this.btnEventsShow.TabIndex = 29;
+            this.btnEventsShow.Text = "Toon alle events";
+            this.btnEventsShow.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -855,6 +854,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Personen toevoegen";
             // 
+            // tbPersoonReservationID
+            // 
+            this.tbPersoonReservationID.Location = new System.Drawing.Point(3, 266);
+            this.tbPersoonReservationID.Name = "tbPersoonReservationID";
+            this.tbPersoonReservationID.Size = new System.Drawing.Size(165, 20);
+            this.tbPersoonReservationID.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(4, 251);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(81, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Reservation ID:";
+            // 
             // label49
             // 
             this.label49.AutoSize = true;
@@ -983,23 +999,6 @@
             this.btnPersoonAdd.Text = "Plaatsen";
             this.btnPersoonAdd.UseVisualStyleBackColor = true;
             // 
-            // tbPersoonReservationID
-            // 
-            this.tbPersoonReservationID.Location = new System.Drawing.Point(3, 266);
-            this.tbPersoonReservationID.Name = "tbPersoonReservationID";
-            this.tbPersoonReservationID.Size = new System.Drawing.Size(165, 20);
-            this.tbPersoonReservationID.TabIndex = 14;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(4, 251);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(81, 13);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Reservation ID:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1088,8 +1087,8 @@
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnVoegEventToe;
-        private System.Windows.Forms.Button btnShowEvents;
+        private System.Windows.Forms.Button btnEventsAdd;
+        private System.Windows.Forms.Button btnEventsShow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbEventAdress;

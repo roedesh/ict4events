@@ -19,7 +19,7 @@ namespace EventManagementSystem
 
         }
 
-        private void btnVoegEventToe_Click(object sender, EventArgs e)
+        private void btnEventsAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -31,10 +31,9 @@ namespace EventManagementSystem
             }
         }
 
-        private void btnShowEvents_Click(object sender, EventArgs e)
-        {
-            superManager.ShowEvents();
-        }
+
+
+
 
     }
 }
