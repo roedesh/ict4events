@@ -8,12 +8,14 @@ namespace EventManagementSystem
 {
     class SuperManager
     {
-        EventManager eventManager;
+        private EventManager eventManager;
+        private AccountManager accountManager;
         
 
         public SuperManager()
         {
             eventManager = new EventManager();
+            accountManager = new AccountManager();
         }
 
         public void AddEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
@@ -36,6 +38,19 @@ namespace EventManagementSystem
             return eventManager.ShowEvents();
         }
 
+        public void AddAccount(string name, string adress, string city, string postalCode)
+        {
+            //kijk nog even naar deze method. klopt wss niet.
+        }
 
+        public void EditAccount()
+        {
+            //kijk nog even naar deze method. klopt wss niet.
+        }
+
+        public void ShowAccounts()
+        {
+            //kijk nog even naar deze method. klopt wss niet.
+        }
     }
 }
