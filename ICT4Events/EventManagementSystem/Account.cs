@@ -23,7 +23,7 @@ namespace ReservationSystem
             SocialMediaManager,
             Admin,
             Guest
-        }; 
+        };
 
         private int id;
         private string rfid;
@@ -115,6 +115,6 @@ namespace ReservationSystem
         {
             return String.Format("{0} : {1} - {2} - {3}", ID, Name, DateOfBirth.ToShortDateString(), Role);
         }
-        
+
     }
 }

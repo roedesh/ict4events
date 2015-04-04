@@ -9,6 +9,7 @@ namespace EventManagementSystem
     class SuperManager
     {
         EventManager eventManager;
+        
 
         public SuperManager()
         {
