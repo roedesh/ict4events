@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManagementSystem", "Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntryControlSystem", "EntryControlSystem\EntryControlSystem.csproj", "{91FDD2B3-0AA6-46D9-B997-9E375CBD7B29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationSystem", "ReservationSystem\ReservationSystem.csproj", "{77D472F3-0934-4DBB-A150-7CDC5F76332F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{91FDD2B3-0AA6-46D9-B997-9E375CBD7B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91FDD2B3-0AA6-46D9-B997-9E375CBD7B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91FDD2B3-0AA6-46D9-B997-9E375CBD7B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D472F3-0934-4DBB-A150-7CDC5F76332F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D472F3-0934-4DBB-A150-7CDC5F76332F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D472F3-0934-4DBB-A150-7CDC5F76332F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D472F3-0934-4DBB-A150-7CDC5F76332F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
