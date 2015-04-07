@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccountLibrary">
-      <HintPath>..\Libraries\AccountLibrary\bin\Debug\AccountLibrary.dll</HintPath>
+      <HintPath>..\Libraries\AccountLibrary\AccountLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
