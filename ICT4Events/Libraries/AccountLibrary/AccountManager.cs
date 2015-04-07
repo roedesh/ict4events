@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReservationSystem
+namespace AccountLibrary
 {
-    class AccountManager
+    public class AccountManager
     {
         List<Account> accounts;
         public AccountManager()

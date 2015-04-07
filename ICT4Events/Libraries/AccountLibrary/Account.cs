@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReservationSystem
+namespace AccountLibrary
 {
-    class Account
+    public class Account
     {
         /* 
          *  The enum is called AccountRole instead of Role, 
