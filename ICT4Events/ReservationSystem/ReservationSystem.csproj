@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>57b792eb-f797-4ee8-bc41-f9751025a5b9</ProjectGuid>
+    <ProjectGuid>{137A29EB-0D8F-4F1E-9341-6C1426C6612E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReservationSystem</RootNamespace>
