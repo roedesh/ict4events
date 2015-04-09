@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventManagementSystem
+namespace AccountLibrary
 {
-    class Account
+    public class Account
     {
         /* 
          *  The enum is called AccountRole instead of Role, 
@@ -23,7 +23,7 @@ namespace EventManagementSystem
             SocialMediaManager,
             Admin,
             Guest
-        };
+        }; 
 
         private int id;
         private string rfid;
@@ -115,6 +115,6 @@ namespace EventManagementSystem
         {
             return String.Format("{0} : {1} - {2} - {3}", ID, Name, DateOfBirth.ToShortDateString(), Role);
         }
-
+        
     }
 }
