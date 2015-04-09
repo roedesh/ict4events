@@ -21,6 +21,5 @@ namespace SocialMediaSharingSystem
         {
             this.message = message;
         }
-
     }
 }
