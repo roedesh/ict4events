@@ -10,6 +10,7 @@ namespace SocialMediaSharingSystem
     {
         private int postID;
         private int uploaderID;
+        private string title;
         private int amountOfLikes;
         private int amountOfFlags;
         private bool isHidden;
@@ -28,6 +29,12 @@ namespace SocialMediaSharingSystem
             set { uploaderID = value; }
         }
 
+        private string Title
+        {
+            get { return title;}
+            set { title = value;}
+        }
+
         public int AmountOfLikes
         {
             get { return amountOfLikes; }
@@ -42,11 +49,36 @@ namespace SocialMediaSharingSystem
 
         public bool IsHidden
         {
-            get { return isHidden}
+            get { return isHidden; }
+            set { isHidden = value; }
+        }
+
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
         }
 
 
         #endregion
 
+        public Post(int postID, int uploaderID, string title, int amountOfLikes, int amountOfFlags)
+        {
+            this.postID = postID;
+            this.uploaderID = uploaderID;
+            this.title = title;
+            this.amountOfLikes = amountOfLikes;
+            this.amountOfFlags = amountOfFlags;
+
+            if (this.amountOfFlags > 8)
+            {
+                this.isHidden = true;
+            }
+        }
+
+        public override string ToString()
+        {
+            return Title + " - " + UploaderID + ": " + Convert.ToString(AmountOfLikes) + "likes, " + Convert.ToString(AmountOfFlags) + " flags";
+        }
     }
 }
