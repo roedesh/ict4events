@@ -82,30 +82,36 @@
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnEventsAdd = new System.Windows.Forms.Button();
+            this.btnEventsShow = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.tbEventCity = new System.Windows.Forms.TextBox();
+            this.tbEventPostalCode = new System.Windows.Forms.TextBox();
+            this.tbEventAdress = new System.Windows.Forms.TextBox();
+            this.tbEventPrice = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbEventName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tbPersoonReservationID = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox41 = new System.Windows.Forms.TextBox();
+            this.tbPersoonPhone = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.tbPersoonEmail = new System.Windows.Forms.TextBox();
+            this.tbPersoonAdress = new System.Windows.Forms.TextBox();
+            this.tbPersoonBirthDate = new System.Windows.Forms.TextBox();
+            this.tbPersoonAmount = new System.Windows.Forms.TextBox();
+            this.tbPersoonName = new System.Windows.Forms.TextBox();
+            this.btnPersoonAdd = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -677,13 +683,17 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.btnEventsAdd);
+            this.tabPage2.Controls.Add(this.btnEventsShow);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.textBox10);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.textBox9);
+            this.tabPage2.Controls.Add(this.tbEventCity);
+            this.tabPage2.Controls.Add(this.tbEventPostalCode);
+            this.tabPage2.Controls.Add(this.tbEventAdress);
+            this.tabPage2.Controls.Add(this.tbEventPrice);
+            this.tabPage2.Controls.Add(this.label23);
+            this.tabPage2.Controls.Add(this.label22);
+            this.tabPage2.Controls.Add(this.tbEventName);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
@@ -694,25 +704,26 @@
             this.tabPage2.Text = "Events";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEventsAdd
             // 
-            this.button3.Location = new System.Drawing.Point(4, 152);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(267, 33);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "Voeg toe";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEventsAdd.Location = new System.Drawing.Point(4, 152);
+            this.btnEventsAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEventsAdd.Name = "btnEventsAdd";
+            this.btnEventsAdd.Size = new System.Drawing.Size(267, 33);
+            this.btnEventsAdd.TabIndex = 32;
+            this.btnEventsAdd.Text = "Voeg toe";
+            this.btnEventsAdd.UseVisualStyleBackColor = true;
+            this.btnEventsAdd.Click += new System.EventHandler(this.btnEventsAdd_Click);
             // 
-            // button5
+            // btnEventsShow
             // 
-            this.button5.Location = new System.Drawing.Point(4, 190);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(268, 34);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "Toon alle events";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnEventsShow.Location = new System.Drawing.Point(4, 190);
+            this.btnEventsShow.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEventsShow.Name = "btnEventsShow";
+            this.btnEventsShow.Size = new System.Drawing.Size(268, 34);
+            this.btnEventsShow.TabIndex = 29;
+            this.btnEventsShow.Text = "Toon alle events";
+            this.btnEventsShow.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -727,46 +738,82 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 76);
+            this.label1.Location = new System.Drawing.Point(4, 98);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 18;
             this.label1.Text = "Vul hier de prijs in:";
             // 
-            // textBox10
+            // tbEventCity
             // 
-            this.textBox10.Location = new System.Drawing.Point(4, 55);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(254, 20);
-            this.textBox10.TabIndex = 11;
+            this.tbEventCity.Location = new System.Drawing.Point(159, 67);
+            this.tbEventCity.Margin = new System.Windows.Forms.Padding(2);
+            this.tbEventCity.Name = "tbEventCity";
+            this.tbEventCity.Size = new System.Drawing.Size(99, 20);
+            this.tbEventCity.TabIndex = 11;
             // 
-            // textBox1
+            // tbEventPostalCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 92);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 20);
-            this.textBox1.TabIndex = 17;
+            this.tbEventPostalCode.Location = new System.Drawing.Point(64, 67);
+            this.tbEventPostalCode.Margin = new System.Windows.Forms.Padding(2);
+            this.tbEventPostalCode.Name = "tbEventPostalCode";
+            this.tbEventPostalCode.Size = new System.Drawing.Size(55, 20);
+            this.tbEventPostalCode.TabIndex = 11;
             // 
-            // textBox9
+            // tbEventAdress
             // 
-            this.textBox9.Location = new System.Drawing.Point(4, 19);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(254, 20);
-            this.textBox9.TabIndex = 10;
+            this.tbEventAdress.Location = new System.Drawing.Point(48, 43);
+            this.tbEventAdress.Margin = new System.Windows.Forms.Padding(2);
+            this.tbEventAdress.Name = "tbEventAdress";
+            this.tbEventAdress.Size = new System.Drawing.Size(210, 20);
+            this.tbEventAdress.TabIndex = 11;
+            // 
+            // tbEventPrice
+            // 
+            this.tbEventPrice.Location = new System.Drawing.Point(100, 98);
+            this.tbEventPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbEventPrice.Name = "tbEventPrice";
+            this.tbEventPrice.Size = new System.Drawing.Size(158, 20);
+            this.tbEventPrice.TabIndex = 17;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(123, 70);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(32, 13);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "Stad:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(4, 70);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(55, 13);
+            this.label22.TabIndex = 14;
+            this.label22.Text = "Postcode:";
+            // 
+            // tbEventName
+            // 
+            this.tbEventName.Location = new System.Drawing.Point(4, 19);
+            this.tbEventName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbEventName.Name = "tbEventName";
+            this.tbEventName.Size = new System.Drawing.Size(254, 20);
+            this.tbEventName.TabIndex = 10;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(2, 39);
+            this.label9.Location = new System.Drawing.Point(4, 46);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 13);
+            this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 14;
-            this.label9.Text = "Vul hier het adres in:";
+            this.label9.Text = "Adress:";
             // 
             // tabPage3
             // 
@@ -782,20 +829,22 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.tbPersoonReservationID);
+            this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.label49);
-            this.groupBox5.Controls.Add(this.textBox41);
+            this.groupBox5.Controls.Add(this.tbPersoonPhone);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.label27);
             this.groupBox5.Controls.Add(this.label28);
             this.groupBox5.Controls.Add(this.label29);
             this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.textBox21);
-            this.groupBox5.Controls.Add(this.textBox22);
-            this.groupBox5.Controls.Add(this.textBox23);
-            this.groupBox5.Controls.Add(this.textBox24);
-            this.groupBox5.Controls.Add(this.textBox25);
-            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.tbPersoonEmail);
+            this.groupBox5.Controls.Add(this.tbPersoonAdress);
+            this.groupBox5.Controls.Add(this.tbPersoonBirthDate);
+            this.groupBox5.Controls.Add(this.tbPersoonAmount);
+            this.groupBox5.Controls.Add(this.tbPersoonName);
+            this.groupBox5.Controls.Add(this.btnPersoonAdd);
             this.groupBox5.Location = new System.Drawing.Point(4, 6);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
@@ -804,6 +853,23 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Personen toevoegen";
+            // 
+            // tbPersoonReservationID
+            // 
+            this.tbPersoonReservationID.Location = new System.Drawing.Point(3, 266);
+            this.tbPersoonReservationID.Name = "tbPersoonReservationID";
+            this.tbPersoonReservationID.Size = new System.Drawing.Size(165, 20);
+            this.tbPersoonReservationID.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(4, 251);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(81, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Reservation ID:";
             // 
             // label49
             // 
@@ -815,13 +881,13 @@
             this.label49.TabIndex = 13;
             this.label49.Text = "Telefoon:";
             // 
-            // textBox41
+            // tbPersoonPhone
             // 
-            this.textBox41.Location = new System.Drawing.Point(3, 228);
-            this.textBox41.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(260, 20);
-            this.textBox41.TabIndex = 12;
+            this.tbPersoonPhone.Location = new System.Drawing.Point(3, 228);
+            this.tbPersoonPhone.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonPhone.Name = "tbPersoonPhone";
+            this.tbPersoonPhone.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonPhone.TabIndex = 12;
             // 
             // label25
             // 
@@ -836,12 +902,12 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 15);
+            this.label26.Location = new System.Drawing.Point(3, 13);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(219, 13);
+            this.label26.Size = new System.Drawing.Size(224, 13);
             this.label26.TabIndex = 6;
-            this.label26.Text = "Vul alle gegevens in en plaat een reservering";
+            this.label26.Text = "Vul alle gegevens in en plaats een reservering";
             // 
             // label27
             // 
@@ -876,62 +942,62 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(3, 28);
+            this.label30.Location = new System.Drawing.Point(4, 26);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(38, 13);
             this.label30.TabIndex = 7;
             this.label30.Text = "Naam:";
             // 
-            // textBox21
+            // tbPersoonEmail
             // 
-            this.textBox21.Location = new System.Drawing.Point(3, 192);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(260, 20);
-            this.textBox21.TabIndex = 5;
+            this.tbPersoonEmail.Location = new System.Drawing.Point(3, 192);
+            this.tbPersoonEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonEmail.Name = "tbPersoonEmail";
+            this.tbPersoonEmail.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonEmail.TabIndex = 5;
             // 
-            // textBox22
+            // tbPersoonAdress
             // 
-            this.textBox22.Location = new System.Drawing.Point(3, 80);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(260, 20);
-            this.textBox22.TabIndex = 4;
+            this.tbPersoonAdress.Location = new System.Drawing.Point(3, 80);
+            this.tbPersoonAdress.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonAdress.Name = "tbPersoonAdress";
+            this.tbPersoonAdress.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonAdress.TabIndex = 4;
             // 
-            // textBox23
+            // tbPersoonBirthDate
             // 
-            this.textBox23.Location = new System.Drawing.Point(4, 120);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(260, 20);
-            this.textBox23.TabIndex = 3;
+            this.tbPersoonBirthDate.Location = new System.Drawing.Point(4, 120);
+            this.tbPersoonBirthDate.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonBirthDate.Name = "tbPersoonBirthDate";
+            this.tbPersoonBirthDate.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonBirthDate.TabIndex = 3;
             // 
-            // textBox24
+            // tbPersoonAmount
             // 
-            this.textBox24.Location = new System.Drawing.Point(4, 155);
-            this.textBox24.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(260, 20);
-            this.textBox24.TabIndex = 2;
+            this.tbPersoonAmount.Location = new System.Drawing.Point(4, 155);
+            this.tbPersoonAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonAmount.Name = "tbPersoonAmount";
+            this.tbPersoonAmount.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonAmount.TabIndex = 2;
             // 
-            // textBox25
+            // tbPersoonName
             // 
-            this.textBox25.Location = new System.Drawing.Point(4, 45);
-            this.textBox25.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(260, 20);
-            this.textBox25.TabIndex = 1;
+            this.tbPersoonName.Location = new System.Drawing.Point(4, 41);
+            this.tbPersoonName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPersoonName.Name = "tbPersoonName";
+            this.tbPersoonName.Size = new System.Drawing.Size(260, 20);
+            this.tbPersoonName.TabIndex = 1;
             // 
-            // button2
+            // btnPersoonAdd
             // 
-            this.button2.Location = new System.Drawing.Point(177, 251);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 33);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Plaatsen";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPersoonAdd.Location = new System.Drawing.Point(178, 256);
+            this.btnPersoonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPersoonAdd.Name = "btnPersoonAdd";
+            this.btnPersoonAdd.Size = new System.Drawing.Size(86, 33);
+            this.btnPersoonAdd.TabIndex = 0;
+            this.btnPersoonAdd.Text = "Plaatsen";
+            this.btnPersoonAdd.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1021,30 +1087,36 @@
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEventsAdd;
+        private System.Windows.Forms.Button btnEventsShow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox tbEventAdress;
+        private System.Windows.Forms.TextBox tbEventPrice;
+        private System.Windows.Forms.TextBox tbEventName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox41;
+        private System.Windows.Forms.TextBox tbPersoonPhone;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox tbPersoonEmail;
+        private System.Windows.Forms.TextBox tbPersoonAdress;
+        private System.Windows.Forms.TextBox tbPersoonBirthDate;
+        private System.Windows.Forms.TextBox tbPersoonAmount;
+        private System.Windows.Forms.TextBox tbPersoonName;
+        private System.Windows.Forms.Button btnPersoonAdd;
+        private System.Windows.Forms.TextBox tbEventCity;
+        private System.Windows.Forms.TextBox tbEventPostalCode;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tbPersoonReservationID;
+        private System.Windows.Forms.Label label24;
     }
 }
 

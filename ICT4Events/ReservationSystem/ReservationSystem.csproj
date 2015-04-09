@@ -4,7 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+<<<<<<< HEAD
     <ProjectGuid>{137A29EB-0D8F-4F1E-9341-6C1426C6612E}</ProjectGuid>
+=======
+    <ProjectGuid>{77D472F3-0934-4DBB-A150-7CDC5F76332F}</ProjectGuid>
+>>>>>>> 241b2549db4233dbdda25e131ed6749ff3c9b9ee
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReservationSystem</RootNamespace>
@@ -44,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
