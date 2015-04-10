@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SocialMediaSharingSystem
+namespace PTDataManager
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace SocialMediaSharingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_SocialMedia());
+            Application.Run(new Form1());
         }
     }
 }

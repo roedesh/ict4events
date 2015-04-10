@@ -1,6 +1,6 @@
-﻿namespace SocialMediaSharingSystem
+﻿namespace PTDatabaseConnection
 {
-    partial class frm_SocialMedia
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbFolders = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // lbFolders
+            // Form1
             // 
-            this.lbFolders.FormattingEnabled = true;
-            this.lbFolders.Location = new System.Drawing.Point(26, 46);
-            this.lbFolders.Name = "lbFolders";
-            this.lbFolders.Size = new System.Drawing.Size(231, 277);
-            this.lbFolders.TabIndex = 0;
-            this.lbFolders.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbFolders_MouseDoubleClick);
-            // 
-            // frm_SocialMedia
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(836, 444);
-            this.Controls.Add(this.lbFolders);
-            this.Name = "frm_SocialMedia";
-            this.Text = "Social Media Sharing";
+            this.ClientSize = new System.Drawing.Size(912, 535);
+            this.Name = "Form1";
+            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lbFolders;
-
     }
 }
 

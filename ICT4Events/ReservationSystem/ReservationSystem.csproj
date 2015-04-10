@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77D472F3-0934-4DBB-A150-7CDC5F76332F}</ProjectGuid>
+    <ProjectGuid>{137A29EB-0D8F-4F1E-9341-6C1426C6612E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReservationSystem</RootNamespace>
@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtraPersons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExtraPersons.Designer.cs">
+      <DependentUpon>ExtraPersons.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,12 @@
     <Compile Include="ReservationManager.cs" />
     <Compile Include="SuperManager.cs" />
     <Compile Include="Type.cs" />
+    <EmbeddedResource Include="ExtraPersons.resx">
+      <DependentUpon>ExtraPersons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -9,11 +9,14 @@ namespace ReservationSystem
 {
     class SuperManager
     {
+        ReservationManager rManager = new ReservationManager();
+        AccountManager aManager = new AccountManager();
+
         public SuperManager()
         {
         }
 
-        public bool AddReservation(Account account)
+        public bool AddReservation(string naam, string city, DateTime dateOfBirth, int extraPersons, string email)
         {
 
         }
