@@ -96,8 +96,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tbPersoonReservationID = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.tbPersoonPhone = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -829,8 +827,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.tbPersoonReservationID);
-            this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.label49);
             this.groupBox5.Controls.Add(this.tbPersoonPhone);
             this.groupBox5.Controls.Add(this.label25);
@@ -853,23 +849,6 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Personen toevoegen";
-            // 
-            // tbPersoonReservationID
-            // 
-            this.tbPersoonReservationID.Location = new System.Drawing.Point(3, 266);
-            this.tbPersoonReservationID.Name = "tbPersoonReservationID";
-            this.tbPersoonReservationID.Size = new System.Drawing.Size(165, 20);
-            this.tbPersoonReservationID.TabIndex = 14;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(4, 251);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(81, 13);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Reservation ID:";
             // 
             // label49
             // 
@@ -1115,8 +1094,6 @@
         private System.Windows.Forms.TextBox tbEventPostalCode;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox tbPersoonReservationID;
-        private System.Windows.Forms.Label label24;
     }
 }
 
