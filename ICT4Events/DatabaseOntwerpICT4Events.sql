@@ -49,6 +49,7 @@ CONSTRAINT FK_EventID1 FOREIGN KEY (EventID) REFERENCES Event (EventID)
 
 CREATE TABLE Categorie
 (CategorieID	int				PRIMARY KEY,
+CategorieParent int				NULL,
 Name			varchar(20)		NOT NULL
 );
 
