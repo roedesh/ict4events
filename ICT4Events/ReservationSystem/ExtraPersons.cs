@@ -13,7 +13,7 @@ namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
-        public int currentExistingAccountID = 0;
+        public int currentExistingAccountID = 0; //Holds the ID of a existing account that has been found
         public Account mainBooker;
         public AccountManager tempAccountManager = new AccountManager();
 
@@ -24,7 +24,9 @@ namespace ReservationSystem
 
         private void btAddPerson_Click(object sender, EventArgs e)
         {
-            Account newAccount = new Account(
+            if (IsFilledIn())
+            {
+                Account newAccount = new Account(
                     txtName.Text,
                     txtAddress.Text,
                     txtCity.Text,
@@ -32,9 +34,31 @@ namespace ReservationSystem
                     dtpDateOfBirth.Value.Date,
                     txtEmail.Text,
                     txtPhone.Text
-            );
-            tempAccountManager.AddAccount(newAccount);
-            RefreshList();
+                );
+                tempAccountManager.AddAccount(newAccount);
+                RefreshList();
+                EmptyTextboxes();
+            }
+        }
+
+        private void btAddMainBooker_Click(object sender, EventArgs e)
+        {
+            if (IsFilledIn())
+            {
+                Account newAccount = new Account(
+                    txtName.Text,
+                    txtAddress.Text,
+                    txtCity.Text,
+                    txtPostalCode.Text,
+                    dtpDateOfBirth.Value.Date,
+                    txtEmail.Text,
+                    txtPhone.Text
+                );
+                mainBooker = newAccount;
+                btAddMainBooker.Enabled = false;
+                RefreshList();
+                EmptyTextboxes();
+            } 
         }
 
         public void RefreshList()
@@ -57,37 +81,55 @@ namespace ReservationSystem
                 if (c < '0' || c > '9')
                     return false;
             }
-
             return true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        bool IsFilledIn()
         {
-            Account newAccount = new Account(
-                    txtName.Text,
-                    txtAddress.Text,
-                    txtCity.Text,
-                    txtPostalCode.Text,
-                    dtpDateOfBirth.Value.Date,
-                    txtEmail.Text,
-                    txtPhone.Text
-            );
-            tempAccountManager.AddAccount(newAccount);
-            RefreshList();
+            foreach (Control tb in gboxAdd.Controls)
+            {
+                if (tb is TextBox)
+                {
+                    if (tb.Text == "" || tb.Text == null)
+                    {
+                        MessageBox.Show("Niet alle gegevens zijn ingevuld!");
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public void EmptyTextboxes()
+        {
+            foreach (Control tb in gboxAdd.Controls)
+            {
+                if (tb is TextBox)
+                {
+                    tb.Text = "";
+                }
+            }
         }
 
         private void btSearchAccount_Click(object sender, EventArgs e)
         {
             string val = tbAccountEntry.Text;
             string accountInfo = "<geen account gevonden>";
-            if (IsDigitsOnly(val))
+            if (val == null || val == "")
             {
-                //TODO: zoek op ID
+                MessageBox.Show("Vul eerst een waarde in!");
             }
             else
             {
-                //TODO: zoek op gebruikersnaam
-            }
+                if (IsDigitsOnly(val))
+                {
+                    //TODO: zoek op ID
+                }
+                else
+                {
+                    //TODO: zoek op gebruikersnaam
+                }
+            }         
             lblFoundAccountInfo.Text = accountInfo;
         }
 
@@ -105,7 +147,7 @@ namespace ReservationSystem
             if (mainBooker != null & mainBooker.ToString() == lstPersons.SelectedItem.ToString())
             {
                 mainBooker = null;
-                btAddMainBooker.Enabled = false;
+                btAddMainBooker.Enabled = true;
             }
             else
             {
@@ -126,7 +168,20 @@ namespace ReservationSystem
             }
             else
             {
-                this.DialogResult = DialogResult.OK;
+                DialogResult result = MessageBox.Show("De reservaring zal worden aangemaakt, weet u zeker dat alle gegevens kloppen?", "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private void btCancelForm_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Weet u het zeker?", "Reservering annuleren", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                this.DialogResult = DialogResult.Cancel;
             }
         }
     }

@@ -58,6 +58,7 @@
             this.btSearchAccount = new System.Windows.Forms.Button();
             this.lblAccountEntry = new System.Windows.Forms.Label();
             this.tbAccountEntry = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -105,6 +106,7 @@
             this.btCancelForm.TabIndex = 10;
             this.btCancelForm.Text = "Annuleren";
             this.btCancelForm.UseVisualStyleBackColor = true;
+            this.btCancelForm.Click += new System.EventHandler(this.btCancelForm_Click);
             // 
             // btSubmitForm
             // 
@@ -153,7 +155,7 @@
             this.btAddMainBooker.TabIndex = 15;
             this.btAddMainBooker.Text = "Voeg hoofdboeker toe";
             this.btAddMainBooker.UseVisualStyleBackColor = true;
-            this.btAddMainBooker.Click += new System.EventHandler(this.button1_Click);
+            this.btAddMainBooker.Click += new System.EventHandler(this.btAddMainBooker_Click);
             // 
             // lblPostalCode
             // 
@@ -353,11 +355,21 @@
             this.tbAccountEntry.Size = new System.Drawing.Size(178, 20);
             this.tbAccountEntry.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(246, 438);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(339, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
+            // 
             // ExtraPersons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 469);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btCancelForm);
             this.Controls.Add(this.gboxAdd);
@@ -366,12 +378,14 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ExtraPersons";
             this.Text = "Vul de persoonsgegevens in";
+            this.Load += new System.EventHandler(this.ExtraPersons_Load);
             this.gboxPersons.ResumeLayout(false);
             this.gboxAdd.ResumeLayout(false);
             this.gboxAdd.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -407,6 +421,7 @@
         private System.Windows.Forms.Button btSearchAccount;
         private System.Windows.Forms.Label lblFoundAccountInfo;
         private System.Windows.Forms.Button btAddExistingAccount;
+        private System.Windows.Forms.Label label1;
 
 
     }
