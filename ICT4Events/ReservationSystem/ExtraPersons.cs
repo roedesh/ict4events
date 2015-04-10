@@ -21,8 +21,20 @@ namespace ReservationSystem
             btCancelForm.DialogResult = DialogResult.Cancel;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btAddPerson_Click(object sender, EventArgs e)
         {
+            Account newAccount = new Account(
+                    txtName.Text,
+                    txtAddress.Text,
+                    txtCity.Text,
+                    txtPostalCode.Text,
+                    dtpDateOfBirth.Value.Date,
+                    txtEmail.Text,
+                    txtPhone.Text
+                );
         }
+
+       
+       
     }
 }

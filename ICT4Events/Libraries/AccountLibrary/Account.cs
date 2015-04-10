@@ -111,6 +111,19 @@ namespace AccountLibrary
             Role = role;
         }
 
+        // Smaller constructor for temporary accounts in the ExtraPersonsForm
+        public Account(string name, string address, string city, string postalCode,
+                       DateTime dateOfBirth, string email, string phone)
+        {
+            Name = name;
+            Address = address;
+            City = city;
+            PostalCode = postalCode;
+            DateOfBirth = dateOfBirth;
+            Email = email;
+            Phone = phone;
+        }
+
         public override string ToString()
         {
             return String.Format("{0} : {1} - {2} - {3}", ID, Name, DateOfBirth.ToShortDateString(), Role);

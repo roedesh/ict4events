@@ -33,6 +33,10 @@
             this.btCancelForm = new System.Windows.Forms.Button();
             this.btSubmitForm = new System.Windows.Forms.Button();
             this.gboxAdd = new System.Windows.Forms.GroupBox();
+            this.lblPostalCode = new System.Windows.Forms.Label();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.btAddPerson = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -55,7 +59,7 @@
             this.lstPersons.Location = new System.Drawing.Point(4, 17);
             this.lstPersons.Margin = new System.Windows.Forms.Padding(2);
             this.lstPersons.Name = "lstPersons";
-            this.lstPersons.Size = new System.Drawing.Size(416, 238);
+            this.lstPersons.Size = new System.Drawing.Size(416, 290);
             this.lstPersons.TabIndex = 5;
             // 
             // gboxPersons
@@ -67,14 +71,14 @@
             this.gboxPersons.Margin = new System.Windows.Forms.Padding(2);
             this.gboxPersons.Name = "gboxPersons";
             this.gboxPersons.Padding = new System.Windows.Forms.Padding(2);
-            this.gboxPersons.Size = new System.Drawing.Size(424, 302);
+            this.gboxPersons.Size = new System.Drawing.Size(424, 412);
             this.gboxPersons.TabIndex = 6;
             this.gboxPersons.TabStop = false;
             this.gboxPersons.Text = "Bijbehorende personen";
             // 
             // btCancelForm
             // 
-            this.btCancelForm.Location = new System.Drawing.Point(244, 262);
+            this.btCancelForm.Location = new System.Drawing.Point(244, 367);
             this.btCancelForm.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelForm.Name = "btCancelForm";
             this.btCancelForm.Size = new System.Drawing.Size(86, 33);
@@ -84,7 +88,7 @@
             // 
             // btSubmitForm
             // 
-            this.btSubmitForm.Location = new System.Drawing.Point(334, 262);
+            this.btSubmitForm.Location = new System.Drawing.Point(334, 367);
             this.btSubmitForm.Margin = new System.Windows.Forms.Padding(2);
             this.btSubmitForm.Name = "btSubmitForm";
             this.btSubmitForm.Size = new System.Drawing.Size(86, 33);
@@ -94,6 +98,10 @@
             // 
             // gboxAdd
             // 
+            this.gboxAdd.Controls.Add(this.lblPostalCode);
+            this.gboxAdd.Controls.Add(this.txtPostalCode);
+            this.gboxAdd.Controls.Add(this.txtAddress);
+            this.gboxAdd.Controls.Add(this.lblAddress);
             this.gboxAdd.Controls.Add(this.btAddPerson);
             this.gboxAdd.Controls.Add(this.txtPhone);
             this.gboxAdd.Controls.Add(this.lblPhone);
@@ -108,24 +116,57 @@
             this.gboxAdd.Controls.Add(this.lblTutorial);
             this.gboxAdd.Location = new System.Drawing.Point(13, 10);
             this.gboxAdd.Name = "gboxAdd";
-            this.gboxAdd.Size = new System.Drawing.Size(234, 302);
+            this.gboxAdd.Size = new System.Drawing.Size(234, 412);
             this.gboxAdd.TabIndex = 7;
             this.gboxAdd.TabStop = false;
             this.gboxAdd.Text = "Personen toevoegen";
             // 
+            // lblPostalCode
+            // 
+            this.lblPostalCode.AutoSize = true;
+            this.lblPostalCode.Location = new System.Drawing.Point(136, 165);
+            this.lblPostalCode.Name = "lblPostalCode";
+            this.lblPostalCode.Size = new System.Drawing.Size(55, 13);
+            this.lblPostalCode.TabIndex = 14;
+            this.lblPostalCode.Text = "Postcode:";
+            // 
+            // txtPostalCode
+            // 
+            this.txtPostalCode.Location = new System.Drawing.Point(139, 181);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(87, 20);
+            this.txtPostalCode.TabIndex = 13;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(10, 128);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(216, 20);
+            this.txtAddress.TabIndex = 12;
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(7, 112);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(34, 13);
+            this.lblAddress.TabIndex = 11;
+            this.lblAddress.Text = "Adres";
+            // 
             // btAddPerson
             // 
-            this.btAddPerson.Location = new System.Drawing.Point(125, 262);
+            this.btAddPerson.Location = new System.Drawing.Point(123, 367);
             this.btAddPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btAddPerson.Name = "btAddPerson";
             this.btAddPerson.Size = new System.Drawing.Size(104, 33);
             this.btAddPerson.TabIndex = 8;
             this.btAddPerson.Text = "Voeg persoon toe";
             this.btAddPerson.UseVisualStyleBackColor = true;
+            this.btAddPerson.Click += new System.EventHandler(this.btAddPerson_Click);
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(9, 176);
+            this.txtPhone.Location = new System.Drawing.Point(9, 282);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(219, 20);
             this.txtPhone.TabIndex = 10;
@@ -133,7 +174,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(7, 160);
+            this.lblPhone.Location = new System.Drawing.Point(7, 266);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(52, 13);
             this.lblPhone.TabIndex = 9;
@@ -141,24 +182,23 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(103, 128);
+            this.txtEmail.Location = new System.Drawing.Point(9, 232);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(125, 20);
+            this.txtEmail.Size = new System.Drawing.Size(219, 20);
             this.txtEmail.TabIndex = 8;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(100, 112);
+            this.lblEmail.Location = new System.Drawing.Point(6, 216);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 7;
             this.lblEmail.Text = "Email:";
-            this.lblEmail.Click += new System.EventHandler(this.label1_Click);
             // 
             // dtpDateOfBirth
             // 
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 227);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 333);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(218, 20);
             this.dtpDateOfBirth.TabIndex = 6;
@@ -166,7 +206,7 @@
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Location = new System.Drawing.Point(6, 210);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(6, 316);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
             this.lblDateOfBirth.Size = new System.Drawing.Size(83, 13);
             this.lblDateOfBirth.TabIndex = 5;
@@ -174,15 +214,15 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(10, 128);
+            this.txtCity.Location = new System.Drawing.Point(10, 181);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(84, 20);
+            this.txtCity.Size = new System.Drawing.Size(123, 20);
             this.txtCity.TabIndex = 4;
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(7, 112);
+            this.lblCity.Location = new System.Drawing.Point(6, 165);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(67, 13);
             this.lblCity.TabIndex = 3;
@@ -192,7 +232,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(9, 80);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(219, 20);
+            this.txtName.Size = new System.Drawing.Size(217, 20);
             this.txtName.TabIndex = 2;
             // 
             // lblName
@@ -216,7 +256,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 318);
+            this.ClientSize = new System.Drawing.Size(682, 433);
             this.Controls.Add(this.gboxAdd);
             this.Controls.Add(this.gboxPersons);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -248,6 +288,10 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btAddPerson;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblPostalCode;
+        private System.Windows.Forms.TextBox txtPostalCode;
 
     }
 }
