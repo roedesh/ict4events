@@ -131,7 +131,7 @@ Price			int				CHECK(Price>0)
 CREATE TABLE Location
 (LocationID		int				PRIMARY KEY,
 LocationTypeID	int				NOT NULL,
-CONSTRAINT FK_LocationKindID FOREIGN KEY (LocationKindID) REFERENCES LocationKind (LocationKindID)
+CONSTRAINT FK_LocationTypeID FOREIGN KEY (LocationTypeID) REFERENCES LocationType (LocationTypeID)
 );
 
 CREATE TABLE Reservation
