@@ -13,7 +13,7 @@ namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
-        public List<Account> accounts { get; set; }
+        public AccountManager tempAccountManager = new AccountManager();
         public ExtraPersons()
         {
             InitializeComponent();
@@ -31,7 +31,8 @@ namespace ReservationSystem
                     dtpDateOfBirth.Value.Date,
                     txtEmail.Text,
                     txtPhone.Text
-                );
+            );
+            tempAccountManager.AddAccount(newAccount);
         }
 
        

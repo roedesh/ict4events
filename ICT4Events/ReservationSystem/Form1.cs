@@ -43,7 +43,13 @@ namespace ReservationSystem
         {
             ExtraPersons epForm = new ExtraPersons();
             var result = epForm.ShowDialog();
-            
+            if (result == DialogResult.OK)
+            {
+                AccountManager tempAccountManager = epForm.tempAccountManager;
+                for (Account a in tempAccountManager.Accounts){
+
+                }
+            }
         }
     }
 }
