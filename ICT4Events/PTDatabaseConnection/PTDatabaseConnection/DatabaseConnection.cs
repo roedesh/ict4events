@@ -10,23 +10,31 @@ namespace PTDatabaseConnection
 {
     class DatabaseConnection
     {
-        OracleConnection connect;
+        private OracleConnection con;
+
+        public OracleConnection Con
+        {
+            get { return con; }
+            set { con = value; }
+        }
+        
+
         public DatabaseConnection()
         {
             //
         }
         public void Connect()
         {
-            connect = new OracleConnection();
-            connect.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew; ";
-            connect.Open();
-            Console.WriteLine("Connected to Oracle" + connect.ServerVersion);            
+            con = new OracleConnection();
+            con.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew; ";
+            con.Open();
+            Console.WriteLine("Connected to Oracle" + con.ServerVersion);            
         }
 
         public void Close()
         {
-            connect.Close();
-            connect.Dispose();
+            con.Close();
+            con.Dispose();
         }
 
     }
