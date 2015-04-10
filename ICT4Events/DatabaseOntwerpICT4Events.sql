@@ -139,8 +139,9 @@ CONSTRAINT FK_LocationID FOREIGN KEY (Location) REFERENCES LocationType (Locatio
 );
 
 CREATE TABLE GuestReservation
-(GuestID		int				NULL,
-ReservationID	int				NOT NULL,
+(GuestReservationID	int				PRIMARY KEY,
+GuestID				int				NULL,
+ReservationID		int				NOT NULL,
 CONSTRAINT FK_GuestID1 FOREIGN KEY (GuestID) REFERENCES Guest (GuestID),
 CONSTRAINT FK_ReservationID1 FOREIGN KEY (ReservationID) REFERENCES Reservation (ReservationID)
 );
