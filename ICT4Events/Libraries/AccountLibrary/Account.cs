@@ -96,6 +96,7 @@ namespace AccountLibrary
             set { id = value; }
         }
 
+        // Main constructor for full accounts with ID, RFID and Role
         public Account(int id, string rfid, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone, AccountRole role)
         {
@@ -111,8 +112,28 @@ namespace AccountLibrary
             Role = role;
         }
 
+        // Smaller constructor for temporary accounts in the ExtraPersonsForm
+        public Account(string name, string address, string city, string postalCode,
+                       DateTime dateOfBirth, string email, string phone)
+        {
+            ID = 0;
+            RFID = null;
+            Name = name;
+            Address = address;
+            City = city;
+            PostalCode = postalCode;
+            DateOfBirth = dateOfBirth;
+            Email = email;
+            Phone = phone;
+            Role = AccountRole.Guest;
+        }
+
         public override string ToString()
         {
+            if (ID == 0) // This is a temporary account
+            {
+                return String.Format("{0}: {1}, {2}, {3}, {4}. {5}", Name, Address, City, PostalCode, Email, Phone);
+            }
             return String.Format("{0} : {1} - {2} - {3}", ID, Name, DateOfBirth.ToShortDateString(), Role);
         }
         

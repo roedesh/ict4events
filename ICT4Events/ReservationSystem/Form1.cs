@@ -38,5 +38,18 @@ namespace ReservationSystem
         {
 
         }
+
+        private void btAddPersons_Click(object sender, EventArgs e)
+        {
+            ExtraPersons epForm = new ExtraPersons();
+            var result = epForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                AccountManager tempAccountManager = epForm.tempAccountManager;
+                foreach (Account a in tempAccountManager.Accounts){
+                    Console.WriteLine(a.ToString());
+                }
+            }
+        }
     }
 }

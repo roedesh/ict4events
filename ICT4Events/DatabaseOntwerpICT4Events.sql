@@ -9,7 +9,7 @@ DROP TABLE Role	CASCADE CONSTRAINTS;
 DROP TABLE Employee	CASCADE CONSTRAINTS;
 DROP TABLE RFID CASCADE CONSTRAINTS;
 DROP TABLE Guest CASCADE CONSTRAINTS;
-DROP TABLE LocationKind CASCADE CONSTRAINTS;
+DROP TABLE LocationType CASCADE CONSTRAINTS;
 DROP TABLE Location CASCADE CONSTRAINTS;
 DROP TABLE Reservation CASCADE CONSTRAINTS;
 DROP TABLE GuestReservation CASCADE CONSTRAINTS;
@@ -35,7 +35,7 @@ AdmissionFee	int				CHECK(AdmissionFee>0)
 CREATE TABLE Account
 (AccountID		int				PRIMARY KEY,
 EventID			int				NOT NULL,
-Username		varchar(20)		NOT NULL,
+Username		varchar(20)		UNIQUE,
 Password		varchar(20)		NOT NULL,
 FullName		varchar(30)		NOT NULL,
 Adress			varchar(255)	NOT NULL,
@@ -121,18 +121,17 @@ CONSTRAINT FK_AccountID5 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
 CONSTRAINT FK_RFID FOREIGN KEY (RFID) REFERENCES RFID (RFID)
 );
 
-CREATE TABLE LocationKind
-(LocationKindID	int				PRIMARY KEY,
+CREATE TABLE LocationType
+(LocationTypeID	int				PRIMARY KEY,
 Name			varchar(10)		NOT NULL,
-TypeLK			varchar(10)		NOT NULL,
 Description		varchar(50)		NULL,
 Price			int				CHECK(Price>0)
 );
 
 CREATE TABLE Location
 (LocationID		int				PRIMARY KEY,
-LocationKindID	int				NOT NULL,
-CONSTRAINT FK_LocationKindID FOREIGN KEY (LocationKindID) REFERENCES LocationKind (LocationKindID)
+LocationTypeID	int				NOT NULL,
+CONSTRAINT FK_LocationTypeID FOREIGN KEY (LocationTypeID) REFERENCES LocationType (LocationTypeID)
 );
 
 CREATE TABLE Reservation

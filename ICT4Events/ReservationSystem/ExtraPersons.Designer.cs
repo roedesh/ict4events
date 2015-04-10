@@ -28,140 +28,197 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbCity = new System.Windows.Forms.TextBox();
-            this.lblCity = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.infoAddPersons = new System.Windows.Forms.Label();
-            this.lblDateOfBirth = new System.Windows.Forms.Label();
-            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.lstPersons = new System.Windows.Forms.ListBox();
+            this.gboxPersons = new System.Windows.Forms.GroupBox();
+            this.btCancelForm = new System.Windows.Forms.Button();
+            this.btSubmitForm = new System.Windows.Forms.Button();
+            this.gboxAdd = new System.Windows.Forms.GroupBox();
+            this.lblPostalCode = new System.Windows.Forms.Label();
+            this.txtPostalCode = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.btAddPerson = new System.Windows.Forms.Button();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.tb = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbPhone = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox9.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.lblDateOfBirth = new System.Windows.Forms.Label();
+            this.txtCity = new System.Windows.Forms.TextBox();
+            this.lblCity = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblTutorial = new System.Windows.Forms.Label();
+            this.gboxPersons.SuspendLayout();
+            this.gboxAdd.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listBox1
+            // lstPersons
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(4, 17);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(416, 238);
-            this.listBox1.TabIndex = 5;
+            this.lstPersons.FormattingEnabled = true;
+            this.lstPersons.Location = new System.Drawing.Point(4, 17);
+            this.lstPersons.Margin = new System.Windows.Forms.Padding(2);
+            this.lstPersons.Name = "lstPersons";
+            this.lstPersons.Size = new System.Drawing.Size(416, 290);
+            this.lstPersons.TabIndex = 9;
+            this.lstPersons.SelectedIndexChanged += new System.EventHandler(this.lstPersons_SelectedIndexChanged);
             // 
-            // groupBox9
+            // gboxPersons
             // 
-            this.groupBox9.Controls.Add(this.button10);
-            this.groupBox9.Controls.Add(this.button9);
-            this.groupBox9.Controls.Add(this.listBox1);
-            this.groupBox9.Location = new System.Drawing.Point(252, 10);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox9.Size = new System.Drawing.Size(424, 302);
-            this.groupBox9.TabIndex = 6;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Bijbehorende personen";
+            this.gboxPersons.Controls.Add(this.btCancelForm);
+            this.gboxPersons.Controls.Add(this.btSubmitForm);
+            this.gboxPersons.Controls.Add(this.lstPersons);
+            this.gboxPersons.Location = new System.Drawing.Point(252, 10);
+            this.gboxPersons.Margin = new System.Windows.Forms.Padding(2);
+            this.gboxPersons.Name = "gboxPersons";
+            this.gboxPersons.Padding = new System.Windows.Forms.Padding(2);
+            this.gboxPersons.Size = new System.Drawing.Size(424, 412);
+            this.gboxPersons.TabIndex = 6;
+            this.gboxPersons.TabStop = false;
+            this.gboxPersons.Text = "Bijbehorende personen";
             // 
-            // button10
+            // btCancelForm
             // 
-            this.button10.Location = new System.Drawing.Point(244, 262);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(86, 33);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "Annuleren";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btCancelForm.Location = new System.Drawing.Point(244, 367);
+            this.btCancelForm.Margin = new System.Windows.Forms.Padding(2);
+            this.btCancelForm.Name = "btCancelForm";
+            this.btCancelForm.Size = new System.Drawing.Size(86, 33);
+            this.btCancelForm.TabIndex = 10;
+            this.btCancelForm.Text = "Annuleren";
+            this.btCancelForm.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btSubmitForm
             // 
-            this.button9.Location = new System.Drawing.Point(334, 262);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(86, 33);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Voltooien";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btSubmitForm.Location = new System.Drawing.Point(334, 367);
+            this.btSubmitForm.Margin = new System.Windows.Forms.Padding(2);
+            this.btSubmitForm.Name = "btSubmitForm";
+            this.btSubmitForm.Size = new System.Drawing.Size(86, 33);
+            this.btSubmitForm.TabIndex = 11;
+            this.btSubmitForm.Text = "Voltooien";
+            this.btSubmitForm.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // gboxAdd
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.tbPhone);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.tb);
-            this.groupBox1.Controls.Add(this.lblEmail);
-            this.groupBox1.Controls.Add(this.dtpDateOfBirth);
-            this.groupBox1.Controls.Add(this.lblDateOfBirth);
-            this.groupBox1.Controls.Add(this.tbCity);
-            this.groupBox1.Controls.Add(this.lblCity);
-            this.groupBox1.Controls.Add(this.tbName);
-            this.groupBox1.Controls.Add(this.lblName);
-            this.groupBox1.Controls.Add(this.infoAddPersons);
-            this.groupBox1.Location = new System.Drawing.Point(13, 10);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(234, 302);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Personen toevoegen";
+            this.gboxAdd.Controls.Add(this.lblPostalCode);
+            this.gboxAdd.Controls.Add(this.txtPostalCode);
+            this.gboxAdd.Controls.Add(this.txtAddress);
+            this.gboxAdd.Controls.Add(this.lblAddress);
+            this.gboxAdd.Controls.Add(this.btAddPerson);
+            this.gboxAdd.Controls.Add(this.txtPhone);
+            this.gboxAdd.Controls.Add(this.lblPhone);
+            this.gboxAdd.Controls.Add(this.txtEmail);
+            this.gboxAdd.Controls.Add(this.lblEmail);
+            this.gboxAdd.Controls.Add(this.dtpDateOfBirth);
+            this.gboxAdd.Controls.Add(this.lblDateOfBirth);
+            this.gboxAdd.Controls.Add(this.txtCity);
+            this.gboxAdd.Controls.Add(this.lblCity);
+            this.gboxAdd.Controls.Add(this.txtName);
+            this.gboxAdd.Controls.Add(this.lblName);
+            this.gboxAdd.Controls.Add(this.lblTutorial);
+            this.gboxAdd.Location = new System.Drawing.Point(13, 10);
+            this.gboxAdd.Name = "gboxAdd";
+            this.gboxAdd.Size = new System.Drawing.Size(234, 412);
+            this.gboxAdd.TabIndex = 7;
+            this.gboxAdd.TabStop = false;
+            this.gboxAdd.Text = "Personen toevoegen";
             // 
-            // tbCity
+            // lblPostalCode
             // 
-            this.tbCity.Location = new System.Drawing.Point(10, 128);
-            this.tbCity.Name = "tbCity";
-            this.tbCity.Size = new System.Drawing.Size(84, 20);
-            this.tbCity.TabIndex = 4;
+            this.lblPostalCode.AutoSize = true;
+            this.lblPostalCode.Location = new System.Drawing.Point(136, 165);
+            this.lblPostalCode.Name = "lblPostalCode";
+            this.lblPostalCode.Size = new System.Drawing.Size(55, 13);
+            this.lblPostalCode.TabIndex = 14;
+            this.lblPostalCode.Text = "Postcode:";
             // 
-            // lblCity
+            // txtPostalCode
             // 
-            this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(7, 112);
-            this.lblCity.Name = "lblCity";
-            this.lblCity.Size = new System.Drawing.Size(67, 13);
-            this.lblCity.TabIndex = 3;
-            this.lblCity.Text = "Woonplaats:";
+            this.txtPostalCode.Location = new System.Drawing.Point(139, 181);
+            this.txtPostalCode.Name = "txtPostalCode";
+            this.txtPostalCode.Size = new System.Drawing.Size(87, 20);
+            this.txtPostalCode.TabIndex = 4;
             // 
-            // tbName
+            // txtAddress
             // 
-            this.tbName.Location = new System.Drawing.Point(9, 80);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(219, 20);
-            this.tbName.TabIndex = 2;
+            this.txtAddress.Location = new System.Drawing.Point(10, 128);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(216, 20);
+            this.txtAddress.TabIndex = 2;
             // 
-            // lblName
+            // lblAddress
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(7, 64);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(38, 13);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Naam:";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(7, 112);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(34, 13);
+            this.lblAddress.TabIndex = 11;
+            this.lblAddress.Text = "Adres";
             // 
-            // infoAddPersons
+            // btAddPerson
             // 
-            this.infoAddPersons.Location = new System.Drawing.Point(7, 20);
-            this.infoAddPersons.Name = "infoAddPersons";
-            this.infoAddPersons.Size = new System.Drawing.Size(221, 27);
-            this.infoAddPersons.TabIndex = 0;
-            this.infoAddPersons.Text = "Vul onderstaande gevens in om personen toe te voegen";
+            this.btAddPerson.Location = new System.Drawing.Point(123, 367);
+            this.btAddPerson.Margin = new System.Windows.Forms.Padding(2);
+            this.btAddPerson.Name = "btAddPerson";
+            this.btAddPerson.Size = new System.Drawing.Size(104, 33);
+            this.btAddPerson.TabIndex = 8;
+            this.btAddPerson.Text = "Voeg persoon toe";
+            this.btAddPerson.UseVisualStyleBackColor = true;
+            this.btAddPerson.Click += new System.EventHandler(this.btAddPerson_Click);
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(9, 282);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(219, 20);
+            this.txtPhone.TabIndex = 6;
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Location = new System.Drawing.Point(7, 266);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(52, 13);
+            this.lblPhone.TabIndex = 9;
+            this.lblPhone.Text = "Telefoon:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(9, 232);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(219, 20);
+            this.txtEmail.TabIndex = 5;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(6, 216);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.TabIndex = 7;
+            this.lblEmail.Text = "Email:";
+            // 
+            // dtpDateOfBirth
+            // 
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 333);
+            this.dtpDateOfBirth.Name = "dtpDateOfBirth";
+            this.dtpDateOfBirth.Size = new System.Drawing.Size(218, 20);
+            this.dtpDateOfBirth.TabIndex = 7;
+>>>>>>> 3611be9e566e259eaee0aa376c948ca6477e9b26
             // 
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.AutoSize = true;
+<<<<<<< HEAD
             this.lblDateOfBirth.Location = new System.Drawing.Point(6, 210);
+=======
+            this.lblDateOfBirth.Location = new System.Drawing.Point(6, 316);
+>>>>>>> 3611be9e566e259eaee0aa376c948ca6477e9b26
             this.lblDateOfBirth.Name = "lblDateOfBirth";
             this.lblDateOfBirth.Size = new System.Drawing.Size(83, 13);
             this.lblDateOfBirth.TabIndex = 5;
             this.lblDateOfBirth.Text = "Geboortedatum:";
             // 
+<<<<<<< HEAD
             // dtpDateOfBirth
             // 
             this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 227);
@@ -211,11 +268,53 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Voeg persoon toe";
             this.button1.UseVisualStyleBackColor = true;
+=======
+            // txtCity
+            // 
+            this.txtCity.Location = new System.Drawing.Point(10, 181);
+            this.txtCity.Name = "txtCity";
+            this.txtCity.Size = new System.Drawing.Size(123, 20);
+            this.txtCity.TabIndex = 3;
+            // 
+            // lblCity
+            // 
+            this.lblCity.AutoSize = true;
+            this.lblCity.Location = new System.Drawing.Point(6, 165);
+            this.lblCity.Name = "lblCity";
+            this.lblCity.Size = new System.Drawing.Size(67, 13);
+            this.lblCity.TabIndex = 3;
+            this.lblCity.Text = "Woonplaats:";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(9, 80);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(217, 20);
+            this.txtName.TabIndex = 1;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(7, 64);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(38, 13);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Naam:";
+            // 
+            // lblTutorial
+            // 
+            this.lblTutorial.Location = new System.Drawing.Point(7, 20);
+            this.lblTutorial.Name = "lblTutorial";
+            this.lblTutorial.Size = new System.Drawing.Size(221, 27);
+            this.lblTutorial.TabIndex = 0;
+            this.lblTutorial.Text = "Vul onderstaande gevens in om personen toe te voegen";
+>>>>>>> 3611be9e566e259eaee0aa376c948ca6477e9b26
             // 
             // ExtraPersons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(682, 318);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox9);
@@ -225,12 +324,24 @@
             this.groupBox9.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+=======
+            this.ClientSize = new System.Drawing.Size(682, 433);
+            this.Controls.Add(this.gboxAdd);
+            this.Controls.Add(this.gboxPersons);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "ExtraPersons";
+            this.Text = "Vul de persoonsgegevens in";
+            this.gboxPersons.ResumeLayout(false);
+            this.gboxAdd.ResumeLayout(false);
+            this.gboxAdd.PerformLayout();
+>>>>>>> 3611be9e566e259eaee0aa376c948ca6477e9b26
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+<<<<<<< HEAD
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button10;
@@ -248,6 +359,29 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb;
         private System.Windows.Forms.Button button1;
+=======
+        private System.Windows.Forms.ListBox lstPersons;
+        private System.Windows.Forms.GroupBox gboxPersons;
+        private System.Windows.Forms.Button btCancelForm;
+        private System.Windows.Forms.Button btSubmitForm;
+        private System.Windows.Forms.GroupBox gboxAdd;
+        private System.Windows.Forms.Label lblTutorial;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblCity;
+        private System.Windows.Forms.TextBox txtCity;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.DateTimePicker dtpDateOfBirth;
+        private System.Windows.Forms.Label lblDateOfBirth;
+        private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btAddPerson;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblPostalCode;
+        private System.Windows.Forms.TextBox txtPostalCode;
+>>>>>>> 3611be9e566e259eaee0aa376c948ca6477e9b26
 
     }
 }
