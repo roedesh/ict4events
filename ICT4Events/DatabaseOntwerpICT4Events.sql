@@ -7,6 +7,7 @@ DROP TABLE CommentTable CASCADE CONSTRAINTS;
 DROP TABLE LikeOrFlag CASCADE CONSTRAINTS;
 DROP TABLE Role	CASCADE CONSTRAINTS;
 DROP TABLE Employee	CASCADE CONSTRAINTS;
+
 DROP TABLE RFID CASCADE CONSTRAINTS;
 DROP TABLE Guest CASCADE CONSTRAINTS;
 DROP TABLE LocationKind CASCADE CONSTRAINTS;
@@ -35,7 +36,7 @@ AdmissionFee	int				CHECK(AdmissionFee>0)
 CREATE TABLE Account
 (AccountID		int				PRIMARY KEY,
 EventID			int				NOT NULL,
-Username		varchar(20)		NOT NULL,
+Username		varchar(20)		UNIQUE,
 Password		varchar(20)		NOT NULL,
 FullName		varchar(30)		NOT NULL,
 Adress			varchar(255)	NOT NULL,
