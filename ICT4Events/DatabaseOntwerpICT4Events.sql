@@ -99,7 +99,7 @@ Description		varchar(40)		NULL
 );
 
 CREATE TABLE Employee
-(Employee		int				PRIMARY KEY,
+(EmployeeID		int				PRIMARY KEY,
 AccountID		int				NOT NULL,
 RoleID			int				NULL,
 CONSTRAINT FK_AccountID4 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
