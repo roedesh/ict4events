@@ -21,5 +21,10 @@ namespace PTDatabaseConnection
             lb1.Text = "connected";
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

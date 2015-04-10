@@ -18,7 +18,6 @@ namespace PTDatabaseConnection
         public void Connect()
         {
             connect = new OracleConnection();
-            //connect.ConnectionString = "Data source=localhost:1521/xe;User ID=system;Password=12345;";   <- local connectionstring
             connect.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew; ";
             connect.Open();
             Console.WriteLine("Connected to Oracle" + connect.ServerVersion);            
