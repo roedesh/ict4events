@@ -47,23 +47,23 @@ Phonenumber		int				NOT NULL,
 CONSTRAINT FK_EventID1 FOREIGN KEY (EventID) REFERENCES Event (EventID)
 );
 
-CREATE TABLE Categorie
-(CategorieID	int				PRIMARY KEY,
-CategorieParent int				NULL,
+CREATE TABLE Category
+(CategoryID	int				PRIMARY KEY,
+CategoryParent int				NULL,
 Name			varchar(20)		NOT NULL
 );
 
 CREATE TABLE FileTable
 (FileID			int				PRIMARY KEY,
 AccountID		int				NOT NULL,
-CategorieID		int				NOT NULL,
+CategoryID		int				NOT NULL,
 DateTimeFile	timestamp		NOT NULL,
 Titel			varchar(20)		NOT NULL,
 FilePath		varchar(40)		NOT NULL,
 NumberOfLikes	int				DEFAULT 0,
 NumberOfFlags	int				DEFAULT 0,
 CONSTRAINT FK_AccountID1 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
-CONSTRAINT FK_Categorie1 FOREIGN KEY (CategorieID) REFERENCES Categorie (CategorieID)
+CONSTRAINT FK_Category1 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
 );
 
 
