@@ -8,16 +8,16 @@ namespace AccountLibrary
 {
     public class AccountManager
     {
-        List<Account> accounts;
+        public List<Account> Accounts { get; private set; }
         public AccountManager()
         {
-            accounts = new List<Account>();
+            Accounts = new List<Account>();
         }
 
         public int CheckRole(int id)
         {
             // Look for account with the given ID
-            Account account = accounts.Find(a => a.ID == id);
+            Account account = Accounts.Find(a => a.ID == id);
             if (account != null)
             {
                 // Account found, return role as int
@@ -30,25 +30,25 @@ namespace AccountLibrary
         public bool AddAccount(Account account)
         {
             // Look for account with the same ID
-            Account exists = accounts.Find(a => a.ID == account.ID);
-            if (exists != null)
+            Account exists = Accounts.Find(a => a.ID == account.ID);
+            if (exists != null & account.ID != 0) // If account has ID 0, it's a temporary account
             {
                 // ID already in use, return false
                 return false;
             }
             // ID not in use, add account to list and return true
-            accounts.Add(account);
+            Accounts.Add(account);
             return true;
         }
 
         public bool RemoveAccount(int id)
         {
             // Look for account with the given ID
-            Account account = accounts.Find(a => a.ID == id);
+            Account account = Accounts.Find(a => a.ID == id);
             if (account != null)
             {
                 // Account found, remove it, return true
-                accounts.Remove(account);
+                Accounts.Remove(account);
                 return true;
             }
             // No account found, return false

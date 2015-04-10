@@ -1,7 +1,7 @@
 DROP TABLE SwearWord CASCADE CONSTRAINTS;
 DROP TABLE Event CASCADE CONSTRAINTS;
 DROP TABLE Account CASCADE CONSTRAINTS;
-DROP TABLE Categorie CASCADE CONSTRAINTS;
+DROP TABLE Category CASCADE CONSTRAINTS;
 DROP TABLE FileTable CASCADE CONSTRAINTS;
 DROP TABLE CommentTable CASCADE CONSTRAINTS;
 DROP TABLE LikeOrFlag CASCADE CONSTRAINTS;
@@ -9,8 +9,7 @@ DROP TABLE Role	CASCADE CONSTRAINTS;
 DROP TABLE Employee	CASCADE CONSTRAINTS;
 DROP TABLE RFID CASCADE CONSTRAINTS;
 DROP TABLE Guest CASCADE CONSTRAINTS;
-DROP TABLE LocationKind CASCADE CONSTRAINTS;
-DROP TABLE Location CASCADE CONSTRAINTS;
+DROP TABLE LocationType CASCADE CONSTRAINTS;
 DROP TABLE Reservation CASCADE CONSTRAINTS;
 DROP TABLE GuestReservation CASCADE CONSTRAINTS;
 DROP TABLE Item CASCADE CONSTRAINTS;
@@ -35,7 +34,7 @@ AdmissionFee	int				CHECK(AdmissionFee>0)
 CREATE TABLE Account
 (AccountID		int				PRIMARY KEY,
 EventID			int				NOT NULL,
-Username		varchar(20)		NOT NULL,
+Username		varchar(20)		UNIQUE,
 Password		varchar(20)		NOT NULL,
 FullName		varchar(30)		NOT NULL,
 Adress			varchar(255)	NOT NULL,
@@ -47,22 +46,23 @@ Phonenumber		int				NOT NULL,
 CONSTRAINT FK_EventID1 FOREIGN KEY (EventID) REFERENCES Event (EventID)
 );
 
-CREATE TABLE Categorie
-(CategorieID	int				PRIMARY KEY,
+CREATE TABLE Category
+(CategoryID	int				PRIMARY KEY,
+CategoryParent int				NULL,
 Name			varchar(20)		NOT NULL
 );
 
 CREATE TABLE FileTable
 (FileID			int				PRIMARY KEY,
 AccountID		int				NOT NULL,
-CategorieID		int				NOT NULL,
+CategoryID		int				NOT NULL,
 DateTimeFile	timestamp		NOT NULL,
 Titel			varchar(20)		NOT NULL,
 FilePath		varchar(40)		NOT NULL,
 NumberOfLikes	int				DEFAULT 0,
 NumberOfFlags	int				DEFAULT 0,
 CONSTRAINT FK_AccountID1 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
-CONSTRAINT FK_Categorie1 FOREIGN KEY (CategorieID) REFERENCES Categorie (CategorieID)
+CONSTRAINT FK_Category1 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
 );
 
 
@@ -99,7 +99,7 @@ Description		varchar(40)		NULL
 );
 
 CREATE TABLE Employee
-(Employee		int				PRIMARY KEY,
+(EmployeeID		int				PRIMARY KEY,
 AccountID		int				NOT NULL,
 RoleID			int				NULL,
 CONSTRAINT FK_AccountID4 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
@@ -121,33 +121,27 @@ CONSTRAINT FK_AccountID5 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
 CONSTRAINT FK_RFID FOREIGN KEY (RFID) REFERENCES RFID (RFID)
 );
 
-CREATE TABLE LocationKind
-(LocationKindID	int				PRIMARY KEY,
+CREATE TABLE LocationType
+(LocationTypeID	int				PRIMARY KEY,
 Name			varchar(10)		NOT NULL,
-TypeLK			varchar(10)		NOT NULL,
 Description		varchar(50)		NULL,
 Price			int				CHECK(Price>0)
 );
 
-CREATE TABLE Location
-(LocationID		int				PRIMARY KEY,
-LocationKindID	int				NOT NULL,
-CONSTRAINT FK_LocationKindID FOREIGN KEY (LocationKindID) REFERENCES LocationKind (LocationKindID)
-);
-
 CREATE TABLE Reservation
 (ReservationID	int				PRIMARY KEY,
-Location		int				NOT NULL,
+LocationTypeID	int				NOT NULL,
 StartDate		date			NOT NULL,
 EndDate			date			NOT NULL,
 TotalAmount		int				CHECK(TotalAmount>0),
 PaymentStatus	varchar(8)		CHECK(PaymentStatus = 'PAID' OR PaymentStatus = 'NOT PAID'),
-CONSTRAINT FK_LocationID FOREIGN KEY (Location) REFERENCES Location (LocationID)
+CONSTRAINT FK_LocationTypeID FOREIGN KEY (LocationType) REFERENCES LocationType (LocationTypeID)
 );
 
 CREATE TABLE GuestReservation
-(GuestID		int				NULL,
-ReservationID	int				NOT NULL,
+(GuestReservationID	int				PRIMARY KEY,
+GuestID				int				NULL,
+ReservationID		int				NOT NULL,
 CONSTRAINT FK_GuestID1 FOREIGN KEY (GuestID) REFERENCES Guest (GuestID),
 CONSTRAINT FK_ReservationID1 FOREIGN KEY (ReservationID) REFERENCES Reservation (ReservationID)
 );

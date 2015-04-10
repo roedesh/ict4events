@@ -18,7 +18,7 @@ namespace ReservationSystem
 
         public bool AddReservation(string naam, string city, DateTime dateOfBirth, int extraPersons, string email)
         {
-
+            return true;
         }
     }
 }

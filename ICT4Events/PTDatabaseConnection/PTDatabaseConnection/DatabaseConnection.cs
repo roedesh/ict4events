@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //download allemaal http://www.oracle.com/technetwork/topics/dotnet/index-085163.html
-using Oracle.DataAccess.Client; 
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
 namespace PTDatabaseConnection
 {
     class DatabaseConnection
@@ -17,9 +18,9 @@ namespace PTDatabaseConnection
         public void Connect()
         {
             connect = new OracleConnection();
-            connect.ConnectionString = "Data Source=<datasource>";
+            connect.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew; ";
             connect.Open();
-            Console.WriteLine("Connected to Oracle" + connect.ServerVersion);
+            Console.WriteLine("Connected to Oracle" + connect.ServerVersion);            
         }
 
         public void Close()
