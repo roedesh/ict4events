@@ -46,8 +46,8 @@ namespace ReservationSystem
             if (result == DialogResult.OK)
             {
                 AccountManager tempAccountManager = epForm.tempAccountManager;
-                for (Account a in tempAccountManager.Accounts){
-
+                foreach (Account a in tempAccountManager.Accounts){
+                    Console.WriteLine(a.ToString());
                 }
             }
         }

@@ -60,7 +60,8 @@
             this.lstPersons.Margin = new System.Windows.Forms.Padding(2);
             this.lstPersons.Name = "lstPersons";
             this.lstPersons.Size = new System.Drawing.Size(416, 290);
-            this.lstPersons.TabIndex = 5;
+            this.lstPersons.TabIndex = 9;
+            this.lstPersons.SelectedIndexChanged += new System.EventHandler(this.lstPersons_SelectedIndexChanged);
             // 
             // gboxPersons
             // 
@@ -82,7 +83,7 @@
             this.btCancelForm.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelForm.Name = "btCancelForm";
             this.btCancelForm.Size = new System.Drawing.Size(86, 33);
-            this.btCancelForm.TabIndex = 7;
+            this.btCancelForm.TabIndex = 10;
             this.btCancelForm.Text = "Annuleren";
             this.btCancelForm.UseVisualStyleBackColor = true;
             // 
@@ -92,7 +93,7 @@
             this.btSubmitForm.Margin = new System.Windows.Forms.Padding(2);
             this.btSubmitForm.Name = "btSubmitForm";
             this.btSubmitForm.Size = new System.Drawing.Size(86, 33);
-            this.btSubmitForm.TabIndex = 6;
+            this.btSubmitForm.TabIndex = 11;
             this.btSubmitForm.Text = "Voltooien";
             this.btSubmitForm.UseVisualStyleBackColor = true;
             // 
@@ -135,14 +136,14 @@
             this.txtPostalCode.Location = new System.Drawing.Point(139, 181);
             this.txtPostalCode.Name = "txtPostalCode";
             this.txtPostalCode.Size = new System.Drawing.Size(87, 20);
-            this.txtPostalCode.TabIndex = 13;
+            this.txtPostalCode.TabIndex = 4;
             // 
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(10, 128);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(216, 20);
-            this.txtAddress.TabIndex = 12;
+            this.txtAddress.TabIndex = 2;
             // 
             // lblAddress
             // 
@@ -169,7 +170,7 @@
             this.txtPhone.Location = new System.Drawing.Point(9, 282);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(219, 20);
-            this.txtPhone.TabIndex = 10;
+            this.txtPhone.TabIndex = 6;
             // 
             // lblPhone
             // 
@@ -185,7 +186,7 @@
             this.txtEmail.Location = new System.Drawing.Point(9, 232);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(219, 20);
-            this.txtEmail.TabIndex = 8;
+            this.txtEmail.TabIndex = 5;
             // 
             // lblEmail
             // 
@@ -201,7 +202,7 @@
             this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 333);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(218, 20);
-            this.dtpDateOfBirth.TabIndex = 6;
+            this.dtpDateOfBirth.TabIndex = 7;
             // 
             // lblDateOfBirth
             // 
@@ -217,7 +218,7 @@
             this.txtCity.Location = new System.Drawing.Point(10, 181);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(123, 20);
-            this.txtCity.TabIndex = 4;
+            this.txtCity.TabIndex = 3;
             // 
             // lblCity
             // 
@@ -233,7 +234,7 @@
             this.txtName.Location = new System.Drawing.Point(9, 80);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(217, 20);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 1;
             // 
             // lblName
             // 

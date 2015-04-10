@@ -33,9 +33,21 @@ namespace ReservationSystem
                     txtPhone.Text
             );
             tempAccountManager.AddAccount(newAccount);
+            RefreshList();
         }
 
-       
-       
+        public void RefreshList()
+        {
+            lstPersons.Items.Clear();
+            foreach (Account a in tempAccountManager.Accounts)
+            {
+                lstPersons.Items.Add(a.ToString());
+            }
+        }
+
+        private void lstPersons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
