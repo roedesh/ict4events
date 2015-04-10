@@ -377,5 +377,59 @@ namespace PTDatabaseConnection
                 ,item[4]);
             XCTNonQuery(query);
         }
+        public void SetRental(List<string> rental)
+        {
+            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[3]);
+            string query = String.Format("INSERT INTO RENTAL VALUES({0}{1}{2}{3}{4})"
+                ,rental[0],rental[1],dateStart,dateEnd
+                ,rental[4]);
+            XCTNonQuery(query);
+        }
+        public List<string> GetRental(string ID)
+        {
+            string query = String.Format("SELECT * FROM RENTAL WHERE ID = {0}", ID);
+            result = XCTReader(query);
+            return result;
+        }
+        public void UpdateRental(List<string> rental)
+        {
+            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[3]);
+            string query = String.Format("UPDATE RENTAL SET RENTALID = {0}, GUESTID = {1}, STARTDATE = {2}, ENDDATE = {3}, TOTALAMOUNT = {4})"
+                , rental[0], rental[1], dateStart,dateEnd
+                , rental[4]);
+            XCTNonQuery(query);
+        }
+        public void DeleteRental(string ID)
+        {
+            string query = String.Format("DELETE * FROM RENTAL WHERE RENTALID = {0}", ID);
+            XCTNonQuery(query);            
+        }
+        public void DeleteItemRental(string ID)
+        {
+            string query = String.Format("DELETE * FROM ITEMRENTAL WHERE ITEMRENTALID = {0}", ID);
+            XCTNonQuery(query);
+        }
+        public void DeleteItem(string ID)
+        {
+            string query = String.Format("DELETE * FROM ITEM WHERE ITEMID = {0}", ID);
+            XCTNonQuery(query);
+        }
+        public bool IsReserved(string PlaatsNR)
+        {
+            string query = String.Format("SELECT * FROM RESERVATION R,GUESTRESERVATION GR WHERE R.RESERVATIONID = GR.RESERVATIONID AND LOCATION = {0}", PlaatsNR);
+            result = XCTReader(query);
+            return result == null ? true : false;
+        }
+        public void SetItemRental(List<string> irental)
+        {
+            string query = "SELECT MAX(ITEMRENTALID) FROM ITEMRENTAL";
+            result = XCTReader(query);
+            int ID = Convert.ToInt32(result) + 1;
+            query = String.Format("INSERT INTO CATEGORY VALUES({0}{1}{2})"
+                , ID, irental[1], irental[2]);
+            XCTNonQuery(query); 
+        }
     }
 }
