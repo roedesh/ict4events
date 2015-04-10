@@ -13,10 +13,15 @@ namespace SocialMediaSharingSystem
 {
     public partial class frm_SocialMedia : Form
     {
+        SuperManager superManager = new SuperManager();
         public frm_SocialMedia()
         {
             InitializeComponent();
-            ListDirectoryContent(new DirectoryInfo(@"C:/users/Jeroen/Desktop/Test"));
+            superManager.ListDirectoryContent(new DirectoryInfo(@"C:/users/Jeroen/Desktop/Test"));
+            foreach (object i in superManager.Infos)
+            {
+                lbFolders.Items.Add(i);
+            }
         }
 
         public void GetDirectoryInfo()
@@ -28,39 +33,10 @@ namespace SocialMediaSharingSystem
                 MessageBox.Show("The drive {0}, could not be read", di.Name);
                 return;
             }
-            DirectoryInfo rootDir = di.RootDirectory;
-            
+            DirectoryInfo rootDir = di.RootDirectory;           
         }
 
-        public void ListDirectoryContent(DirectoryInfo root)
-        {
-            FileInfo[] files = null;
-            DirectoryInfo[] subDirs = null;
 
-            try
-            {
-                files = root.GetFiles("*.*");
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                MessageBox.Show(e.Message);
-            }
-
-            if (files != null)
-            {
-                foreach (FileInfo f in files)
-                {
-                    lbFolders.Items.Add(f);
-                }
-
-                subDirs = root.GetDirectories();
-
-                foreach (DirectoryInfo d in subDirs)
-                {
-                    lbFolders.Items.Add(d);
-                }
-            }
-        }
 
         private void lbFolders_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -71,7 +47,13 @@ namespace SocialMediaSharingSystem
                     {
                         DirectoryInfo d = (DirectoryInfo)lbFolders.SelectedItem;
                         lbFolders.Items.Clear();
-                        ListDirectoryContent(d);
+                        superManager.ListDirectoryContent(d);
+
+                        foreach (object o in superManager.Infos)
+                        {
+                            lbFolders.Items.Add(o);                            
+                        }
+
                     }
                 }
         }
