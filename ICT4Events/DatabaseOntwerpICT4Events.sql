@@ -130,12 +130,12 @@ Price			int				CHECK(Price>0)
 
 CREATE TABLE Reservation
 (ReservationID	int				PRIMARY KEY,
-Location		int				NOT NULL,
+LocationTypeID	int				NOT NULL,
 StartDate		date			NOT NULL,
 EndDate			date			NOT NULL,
 TotalAmount		int				CHECK(TotalAmount>0),
 PaymentStatus	varchar(8)		CHECK(PaymentStatus = 'PAID' OR PaymentStatus = 'NOT PAID'),
-CONSTRAINT FK_LocationID FOREIGN KEY (Location) REFERENCES LocationType (LocationID)
+CONSTRAINT FK_LocationTypeID FOREIGN KEY (LocationType) REFERENCES LocationType (LocationTypeID)
 );
 
 CREATE TABLE GuestReservation
