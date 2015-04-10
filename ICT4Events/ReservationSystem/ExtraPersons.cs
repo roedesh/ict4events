@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccountLibrary;
 
 namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
+        public List<Account> accounts { get; set; }
         public ExtraPersons()
         {
             InitializeComponent();
+            btSubmitForm.DialogResult = DialogResult.OK;
+            btCancelForm.DialogResult = DialogResult.Cancel;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
-
-       
     }
 }

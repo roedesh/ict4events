@@ -9,7 +9,7 @@ namespace ReservationSystem
 {
     class ReservationManager
     {
-        List<Reservation> Reservations {get; private set;}
+        List<Reservation> Reservations {get; set;}
 
         public ReservationManager()
         {
@@ -32,7 +32,7 @@ namespace ReservationSystem
 
         public bool EditReservation(int ID)
         {
-
+            return true;
         }
     }
 }

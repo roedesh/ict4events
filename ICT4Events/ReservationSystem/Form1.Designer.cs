@@ -65,10 +65,10 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btAddPersons = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -463,7 +463,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.btAddPersons);
             this.groupBox2.Location = new System.Drawing.Point(2, 2);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -473,15 +473,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
             // 
-            // button6
+            // button1
             // 
-            this.button6.Location = new System.Drawing.Point(92, 77);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(116, 36);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Voeg personen toe";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(5, 77);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 36);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Controleer plaats";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btAddPersons
+            // 
+            this.btAddPersons.Location = new System.Drawing.Point(92, 77);
+            this.btAddPersons.Margin = new System.Windows.Forms.Padding(2);
+            this.btAddPersons.Name = "btAddPersons";
+            this.btAddPersons.Size = new System.Drawing.Size(116, 36);
+            this.btAddPersons.TabIndex = 0;
+            this.btAddPersons.Text = "Voeg personen toe";
+            this.btAddPersons.UseVisualStyleBackColor = true;
+            this.btAddPersons.Click += new System.EventHandler(this.btAddPersons_Click);
             // 
             // tabControl2
             // 
@@ -505,16 +516,6 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Plaatsen";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(5, 77);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 36);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Controleer plaats";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -584,7 +585,7 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btAddPersons;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button1;
