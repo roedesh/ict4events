@@ -1,7 +1,7 @@
 DROP TABLE SwearWord CASCADE CONSTRAINTS;
 DROP TABLE Event CASCADE CONSTRAINTS;
 DROP TABLE Account CASCADE CONSTRAINTS;
-DROP TABLE Categorie CASCADE CONSTRAINTS;
+DROP TABLE Category CASCADE CONSTRAINTS;
 DROP TABLE FileTable CASCADE CONSTRAINTS;
 DROP TABLE CommentTable CASCADE CONSTRAINTS;
 DROP TABLE LikeOrFlag CASCADE CONSTRAINTS;
@@ -10,7 +10,6 @@ DROP TABLE Employee	CASCADE CONSTRAINTS;
 DROP TABLE RFID CASCADE CONSTRAINTS;
 DROP TABLE Guest CASCADE CONSTRAINTS;
 DROP TABLE LocationType CASCADE CONSTRAINTS;
-DROP TABLE Location CASCADE CONSTRAINTS;
 DROP TABLE Reservation CASCADE CONSTRAINTS;
 DROP TABLE GuestReservation CASCADE CONSTRAINTS;
 DROP TABLE Item CASCADE CONSTRAINTS;
@@ -129,12 +128,6 @@ Description		varchar(50)		NULL,
 Price			int				CHECK(Price>0)
 );
 
-CREATE TABLE Location
-(LocationID		int				PRIMARY KEY,
-LocationTypeID	int				NOT NULL,
-CONSTRAINT FK_LocationTypeID FOREIGN KEY (LocationTypeID) REFERENCES LocationType (LocationTypeID)
-);
-
 CREATE TABLE Reservation
 (ReservationID	int				PRIMARY KEY,
 Location		int				NOT NULL,
@@ -142,12 +135,13 @@ StartDate		date			NOT NULL,
 EndDate			date			NOT NULL,
 TotalAmount		int				CHECK(TotalAmount>0),
 PaymentStatus	varchar(8)		CHECK(PaymentStatus = 'PAID' OR PaymentStatus = 'NOT PAID'),
-CONSTRAINT FK_LocationID FOREIGN KEY (Location) REFERENCES Location (LocationID)
+CONSTRAINT FK_LocationID FOREIGN KEY (Location) REFERENCES LocationType (LocationID)
 );
 
 CREATE TABLE GuestReservation
-(GuestID		int				NULL,
-ReservationID	int				NOT NULL,
+(GuestReservationID	int				PRIMARY KEY,
+GuestID				int				NULL,
+ReservationID		int				NOT NULL,
 CONSTRAINT FK_GuestID1 FOREIGN KEY (GuestID) REFERENCES Guest (GuestID),
 CONSTRAINT FK_ReservationID1 FOREIGN KEY (ReservationID) REFERENCES Reservation (ReservationID)
 );
