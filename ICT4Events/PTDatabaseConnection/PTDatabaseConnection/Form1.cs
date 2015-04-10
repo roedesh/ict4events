@@ -15,6 +15,10 @@ namespace PTDatabaseConnection
         public Form1()
         {
             InitializeComponent();
+            DatabaseConnection con = new DatabaseConnection();
+            con.Connect();
+            DataManager dm = new DataManager();
+            lb1.Text = "connected";
         }
 
     }
