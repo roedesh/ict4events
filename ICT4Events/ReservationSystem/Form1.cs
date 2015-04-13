@@ -56,11 +56,13 @@ namespace ReservationSystem
         {
             if (s.CheckPlace(txtCheckPlace.Text))
             {
-                MessageBox.Show(String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text));
+                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                txtPlaceStatus.ForeColor = Color.Red;
             }
             else
             {
-                MessageBox.Show(String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text));
+                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
+                txtPlaceStatus.ForeColor = Color.Green;
             }
         }
 

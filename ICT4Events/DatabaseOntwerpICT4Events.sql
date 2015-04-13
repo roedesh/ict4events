@@ -1,5 +1,3 @@
-
-
 CREATE TABLE SwearWord
 (Word			varchar2(255 char)		PRIMARY KEY
 );

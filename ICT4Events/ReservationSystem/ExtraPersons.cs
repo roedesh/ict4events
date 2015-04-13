@@ -16,6 +16,7 @@ namespace ReservationSystem
         public int currentExistingAccountID = 0; //Holds the ID of a existing account that has been found
         public Account mainBooker;
         public AccountManager tempAccountManager = new AccountManager();
+        public SuperManager s = new SuperManager();
 
         public ExtraPersons()
         {
@@ -123,11 +124,11 @@ namespace ReservationSystem
             {
                 if (IsDigitsOnly(val))
                 {
-                    //TODO: zoek op ID
+                    s.GetAccount(Convert.ToInt32(val));
                 }
                 else
                 {
-                    //TODO: zoek op gebruikersnaam
+                    s.GetAccount(val);
                 }
             }         
             lblFoundAccountInfo.Text = accountInfo;

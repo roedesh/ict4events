@@ -57,13 +57,13 @@ namespace DataLibrary
         }
         public List<string> GetGuestAccount(int ID)
         {
-            string query = String.Format("SELECT * FROM ACCOUNT A, GUEST G WHERE A.ACCOUNTID = G.ACCOUNTID AND A.ACCOUNT = {0}", ID);
+            string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = '{0}'", ID);
             result = XCTReader(query);
             return result;
         }
         public List<string> GetGuestAccount(string name)
         {
-            string query = String.Format("SELECT * FROM ACCOUNT A, GUEST G WHERE A.ACCOUNTID = G.ACCOUNTID AND A.USERNAME = {0}", name);
+            string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.Username = '{0}'", name);
             result = XCTReader(query);
             return result;
         }

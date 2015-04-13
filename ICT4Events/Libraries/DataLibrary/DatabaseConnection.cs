@@ -27,7 +27,7 @@ namespace DataLibrary
         public void Connect()
         {
             con = new OracleConnection();
-            con.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew; ";
+            con.ConnectionString = "Data Source =fhictora01.fhict.local:1521/fhictora; User Id=dbi324352; Password=F05Qo8Sfew;";
             con.Open();
             Console.WriteLine("Connected to Oracle" + con.ServerVersion);
         }

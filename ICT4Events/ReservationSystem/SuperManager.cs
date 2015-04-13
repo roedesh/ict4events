@@ -8,7 +8,7 @@ using DataLibrary;
 
 namespace ReservationSystem
 {
-    class SuperManager
+    public class SuperManager
     {
         ReservationManager rManager = new ReservationManager();
         AccountManager aManager = new AccountManager();
@@ -22,6 +22,15 @@ namespace ReservationSystem
             return dManager.IsReserved(number);
         }
 
-    
+        public void GetAccount(int ID)
+        {
+            List<string> list = dManager.GetGuestAccount(ID);
+        }
+
+        public void GetAccount(string username)
+        {
+            List<string> list = dManager.GetGuestAccount(username);
+            Console.WriteLine(list);
+        }
     }
 }
