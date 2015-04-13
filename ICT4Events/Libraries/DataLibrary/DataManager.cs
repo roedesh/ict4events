@@ -44,6 +44,11 @@ namespace DataLibrary
                     result.Add(reader.ToString());
                 }
             }
+            catch (OracleException ex)
+            {
+            
+                Console.WriteLine("Exception Source: " + ex.Source);
+            }
             finally
             {
                 connect.Close();
@@ -418,7 +423,7 @@ namespace DataLibrary
         }
         public bool IsReserved(string PlaatsNR)
         {
-            string query = String.Format("SELECT * FROM RESERVATION R,GUESTRESERVATION GR WHERE R.RESERVATIONID = GR.RESERVATIONID AND LOCATION = {0}", PlaatsNR);
+            string query = String.Format("SELECT * FROM Reservation r,GuestReservation gr WHERE r.ReservationID = gr.ReservationID AND LocationID = '{0}'", PlaatsNR);
             result = XCTReader(query);
             return result == null ? true : false;
         }

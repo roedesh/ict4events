@@ -14,8 +14,8 @@ namespace ReservationSystem
 
     public partial class Form1 : Form
     {
-
         Account account;
+        SuperManager s = new SuperManager();
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +50,23 @@ namespace ReservationSystem
                     Console.WriteLine(a.ToString());
                 }
             }
+        }
+
+        private void btCheckPlace_Click(object sender, EventArgs e)
+        {
+            if (s.CheckPlace(txtCheckPlace.Text))
+            {
+                MessageBox.Show(String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text));
+            }
+            else
+            {
+                MessageBox.Show(String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text));
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

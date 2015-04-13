@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccountLibrary;
+using DataLibrary;
 
 namespace ReservationSystem
 {
@@ -11,14 +12,16 @@ namespace ReservationSystem
     {
         ReservationManager rManager = new ReservationManager();
         AccountManager aManager = new AccountManager();
+        DataManager dManager = new DataManager();
 
         public SuperManager()
         {
         }
 
-        public bool AddReservation(string naam, string city, DateTime dateOfBirth, int extraPersons, string email)
-        {
-            return true;
+        public bool CheckPlace(string number){
+            return dManager.IsReserved(number);
         }
+
+    
     }
 }

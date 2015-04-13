@@ -378,7 +378,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ExtraPersons";
             this.Text = "Vul de persoonsgegevens in";
-            this.Load += new System.EventHandler(this.ExtraPersons_Load);
             this.gboxPersons.ResumeLayout(false);
             this.gboxAdd.ResumeLayout(false);
             this.gboxAdd.PerformLayout();

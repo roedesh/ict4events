@@ -35,6 +35,9 @@
     <Reference Include="AccountLibrary">
       <HintPath>..\Libraries\AccountLibrary\AccountLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="DataLibrary">
+      <HintPath>..\Libraries\DataLibrary\DataLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

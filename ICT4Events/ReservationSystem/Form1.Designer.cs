@@ -47,7 +47,7 @@
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCheckPlace = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -65,10 +65,13 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btCheckPlace = new System.Windows.Forms.Button();
             this.btAddPersons = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbAmountPersons = new System.Windows.Forms.Label();
+            this.txtPlaceStatus = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -277,13 +280,13 @@
             this.button4.Text = "Aanpassen";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtCheckPlace
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 47);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(203, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtCheckPlace.Location = new System.Drawing.Point(5, 47);
+            this.txtCheckPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCheckPlace.Name = "txtCheckPlace";
+            this.txtCheckPlace.Size = new System.Drawing.Size(83, 20);
+            this.txtCheckPlace.TabIndex = 12;
             // 
             // dataGridView1
             // 
@@ -459,9 +462,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.txtPlaceStatus);
+            this.groupBox2.Controls.Add(this.lbAmountPersons);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.btCheckPlace);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtCheckPlace);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btAddPersons);
             this.groupBox2.Location = new System.Drawing.Point(2, 2);
@@ -472,20 +478,22 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // button1
+            // btCheckPlace
             // 
-            this.button1.Location = new System.Drawing.Point(5, 77);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 36);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Controleer plaats";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btCheckPlace.Location = new System.Drawing.Point(92, 43);
+            this.btCheckPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.btCheckPlace.Name = "btCheckPlace";
+            this.btCheckPlace.Size = new System.Drawing.Size(122, 27);
+            this.btCheckPlace.TabIndex = 14;
+            this.btCheckPlace.Text = "Controleer plaats";
+            this.btCheckPlace.UseVisualStyleBackColor = true;
+            this.btCheckPlace.Click += new System.EventHandler(this.btCheckPlace_Click);
             // 
             // btAddPersons
             // 
-            this.btAddPersons.Location = new System.Drawing.Point(92, 77);
+            this.btAddPersons.Location = new System.Drawing.Point(5, 118);
             this.btAddPersons.Margin = new System.Windows.Forms.Padding(2);
             this.btAddPersons.Name = "btAddPersons";
             this.btAddPersons.Size = new System.Drawing.Size(116, 36);
@@ -516,6 +524,33 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Plaatsen";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Aantal personen:";
+            // 
+            // lbAmountPersons
+            // 
+            this.lbAmountPersons.AutoSize = true;
+            this.lbAmountPersons.Location = new System.Drawing.Point(89, 103);
+            this.lbAmountPersons.Name = "lbAmountPersons";
+            this.lbAmountPersons.Size = new System.Drawing.Size(13, 13);
+            this.lbAmountPersons.TabIndex = 16;
+            this.lbAmountPersons.Text = "0";
+            // 
+            // txtPlaceStatus
+            // 
+            this.txtPlaceStatus.AutoSize = true;
+            this.txtPlaceStatus.Location = new System.Drawing.Point(4, 73);
+            this.txtPlaceStatus.Name = "txtPlaceStatus";
+            this.txtPlaceStatus.Size = new System.Drawing.Size(133, 13);
+            this.txtPlaceStatus.TabIndex = 17;
+            this.txtPlaceStatus.Text = "<vul een plaatsnummer in>";
             // 
             // Form1
             // 
@@ -567,7 +602,7 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCheckPlace;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label9;
@@ -588,7 +623,10 @@
         private System.Windows.Forms.Button btAddPersons;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btCheckPlace;
+        private System.Windows.Forms.Label txtPlaceStatus;
+        public System.Windows.Forms.Label lbAmountPersons;
+        private System.Windows.Forms.Label label2;
 
     }
 }
