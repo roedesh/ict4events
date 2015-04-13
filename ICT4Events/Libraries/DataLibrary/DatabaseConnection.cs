@@ -9,7 +9,7 @@ using Oracle.DataAccess.Types;
 
 namespace DataLibrary
 {
-    class DatabaseConnection
+    public class DatabaseConnection
     {
         private OracleConnection con;
 

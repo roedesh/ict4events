@@ -9,7 +9,7 @@ using Oracle.DataAccess.Types;
 
 namespace DataLibrary
 {
-    class DataManager
+    public class DataManager
     {
         DatabaseConnection connect;
         List<string> result;
