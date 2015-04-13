@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 //download allemaal http://www.oracle.com/technetwork/topics/dotnet/index-085163.html
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
-namespace PTDatabaseConnection
+
+namespace DataLibrary
 {
     class DatabaseConnection
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 
-namespace PTDatabaseConnection
+namespace DataLibrary
 {
     class DataManager
     {
