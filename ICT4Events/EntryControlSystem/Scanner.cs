@@ -19,10 +19,10 @@ namespace EntryControlSystem
             get;
             set;
         }
-        public void Scanner(int serialPort, int connectionSpeed)
+    /*    public void Scanner(int serialPort, int connectionSpeed)
         {
             SerialPort = serialPort;
             ConnectionSpeed = connectionSpeed;
-        }
+        } */
     }
 }
