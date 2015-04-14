@@ -92,7 +92,6 @@
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 13;
             this.label1.Text = "Plaatsnummer:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 
@@ -314,7 +313,6 @@
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Zoekfunctie";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label9
             // 
@@ -478,7 +476,6 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // btCheckPlace
             // 
@@ -563,7 +560,6 @@
             this.Controls.Add(this.tabControl2);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();

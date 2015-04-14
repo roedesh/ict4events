@@ -94,14 +94,8 @@ namespace AccountLibrary
             Phone = phone;
         }
 
-        public override string ToString()
-        {
-            if (ID == 0) // This is a temporary account
-            {
-                return String.Format("{0}: {1}, {2}, {3}, {4}. {5}", Name, Address, City, PostalCode, Email, Phone);
-            }
-            return String.Format("{0} : {1} - {2}", ID, Name, DateOfBirth.ToShortDateString());
-        }
+        public abstract override string ToString();
+
         
     }
 }

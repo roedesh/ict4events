@@ -45,5 +45,14 @@ namespace AccountLibrary
             : base(name, address, city, postalCode, dateOfBirth, email, phone)
         {
         }
+
+        public override string ToString()
+        {
+            if (ID == 0) // This is a temporary account
+            {
+                return String.Format("NIEUW ACCOUNT: {0}, {1}, {2}, {3}, {4}. {5}", Name, Address, City, PostalCode, Email, Phone);
+            }
+            return String.Format("{0} : {1} - {2} - {3}", ID, Name, Email, Role);
+        }
     }
 }
