@@ -40,16 +40,15 @@ namespace EventManagementSystem
             List<Event> showAllEvents = new List<Event>();
             showAllEvents = superManager.ShowEvents();
             dataGridView.DataSource = showAllEvents;
+        }        
+        
+        private void btnEventsDelete_Click(object sender, EventArgs e)
+        {
+            superManager.DeleteEvent(tbEventEventID.Text);
         }
 
         private void btnPersoonShowAll_Click(object sender, EventArgs e)
         {
-            List<string> showAllAccounts = new List<string>();
-            showAllAccounts = superManager.ShowAccounts();
-            foreach (string s in showAllAccounts)
-            {
-                dataGridView.Rows.Add(s);
-            }
         }
 
         private void btnPersoonAdd_Click(object sender, EventArgs e)
@@ -57,10 +56,8 @@ namespace EventManagementSystem
             // eventid, username, password, fullname, adress, city, postalcode, date of birth, email, phonenumber
         }
 
-        private void btnPersoonShowAll_Click_1(object sender, EventArgs e)
-        {
 
-        }
+
 
 
 

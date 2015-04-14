@@ -26,15 +26,16 @@ namespace EventManagementSystem
             }
             //If event doesn't exist
             Event ev = new Event(id, location, startdate, enddate, description, admissionFee);
-            evnt.Add(ev);
+            evnt.Add(ev); 
             return true;
         }
 
-        public bool RemoveEvent(string name)
+        /*
+        public bool RemoveEvent(string id)
         {
             //remove event
             return true;
-        }
+        }*/
 
         public bool EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {

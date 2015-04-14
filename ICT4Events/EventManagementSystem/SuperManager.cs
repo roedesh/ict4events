@@ -23,7 +23,6 @@ namespace EventManagementSystem
 
         public void AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            //eventManager.AddEvent(id, location, startdate, enddate, description, admissionFee);
             List<string> list = new List<string>();
             list.Add(Convert.ToString(id));
             list.Add(location);
@@ -36,13 +35,12 @@ namespace EventManagementSystem
 
         public void EditEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
         {
-            //eventManager.EditEvent(name, adress, city, postalCode, admissionFee);
+            
         }
 
-        public void RemoveEvent(string name)
+        public void DeleteEvent(string id)
         {
-            //eventManager.RemoveEvent(name);
-            //dataManager.DeleteEvent(); -- hoe weet ik de id?
+            dataManager.DeleteEvent(id);
         }
 
         public List<Event> ShowEvents()
