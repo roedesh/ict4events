@@ -141,9 +141,9 @@ namespace DataLibrary
         }
         public void SetEvent(List<string> eventinfo)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[3]);
-            string query = String.Format("INSERT INTO EVENT VALUES ('{0}','{1}',{2},{3},'{4}','{5}')"
+            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
+            string query = String.Format("INSERT INTO EVENT VALUES ('{0}','{1}',{2},{3},'{4}','{5}');"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd
                 , eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
