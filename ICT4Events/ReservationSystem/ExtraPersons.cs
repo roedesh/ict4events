@@ -13,7 +13,7 @@ namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
-        public int currentExistingAccountID = 0; // Holds the ID of a existing account that has been found
+        public Account currentExistingAccount; // Holds the existing account that has been found
         public Account mainBooker;
         public AccountManager tempAccountManager = new AccountManager();
         public SuperManager s = new SuperManager();
@@ -125,22 +125,29 @@ namespace ReservationSystem
                 if (IsDigitsOnly(val))
                 {
                     // Search account by ID
-                    s.GetAccount(Convert.ToInt32(val));
+                    currentExistingAccount = s.GetAccount(Convert.ToInt32(val));
                 }
                 else
                 {
                     // Search account by username
-                    s.GetAccount(val);
+                    currentExistingAccount = s.GetAccount(val);
                 }
-            }         
-            lblFoundAccountInfo.Text = accountInfo;
+            }
+            if (currentExistingAccount != null)
+            {
+                accountInfo = currentExistingAccount.ToString();
+                btAddExistingAccount.Enabled = true;
+            } 
+            txtFoundAccountInfo.Text = accountInfo;
         }
 
         private void btAddExistingAccount_Click(object sender, EventArgs e)
         {
-            if (currentExistingAccountID != 0)
+            if (currentExistingAccount != null)
             {
-                //TODO: voeg bestaand account toe aan reservering
+                tempAccountManager.AddAccount(currentExistingAccount);
+                currentExistingAccount = null;
+                txtFoundAccountInfo.Text = "<geen account gevonden>";
             }
             RefreshList();
         }

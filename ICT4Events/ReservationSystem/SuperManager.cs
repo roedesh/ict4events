@@ -22,31 +22,50 @@ namespace ReservationSystem
             return dManager.IsReserved(number);
         }
 
-        public void GetAccount(int ID)
+        public Account GetAccount(int ID)
         {
             List<Dictionary<string, string>> list = dManager.GetGuestAccount(ID);
-            Account a;
+            Account a = null;
             foreach (Dictionary<string, string> d in list)
             {
                 // Account opbouwen met de waardes uit de dictionary
                 a = new Account(
-                    Convert.ToInt32(d["ID"]), 
+                    Convert.ToInt32(d["ACCOUNTID"]), 
                     d["RFID"], 
-                    d["NAME"], 
-                    d["ADDRESS"], 
+                    d["FULLNAME"], 
+                    d["ADRESS"], 
                     d["CITY"], 
                     d["POSTALCODE"], 
                     Convert.ToDateTime(d["DATEOFBIRTH"]), 
                     d["EMAIL"], 
-                    d["PHONE"], 
+                    d["PHONENUMBER"], 
                     Account.AccountRole.Guest);
                 aManager.AddAccount(a); // Voeg nieuwe gemaakte account toe aan accountmanager
             }
+            return a;
         }
 
-        public void GetAccount(string username)
+        public Account GetAccount(string username)
         {
             List<Dictionary<string, string>> list = dManager.GetGuestAccount(username);
+            Account a = null;
+            foreach (Dictionary<string, string> d in list)
+            {
+                // Account opbouwen met de waardes uit de dictionary
+                a = new Account(
+                    Convert.ToInt32(d["ACCOUNTID"]),
+                    d["RFID"],
+                    d["FULLNAME"],
+                    d["ADRESS"],
+                    d["CITY"],
+                    d["POSTALCODE"],
+                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                    d["EMAIL"],
+                    d["PHONENUMBER"],
+                    Account.AccountRole.Guest);
+                aManager.AddAccount(a); // Voeg nieuwe gemaakte account toe aan accountmanager
+            }
+            return a;
         }
     }
 }

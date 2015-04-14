@@ -53,7 +53,7 @@
             this.lblTutorial = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btAddExistingAccount = new System.Windows.Forms.Button();
-            this.lblFoundAccountInfo = new System.Windows.Forms.Label();
+            this.txtFoundAccountInfo = new System.Windows.Forms.Label();
             this.lblFoundAccount = new System.Windows.Forms.Label();
             this.btSearchAccount = new System.Windows.Forms.Button();
             this.lblAccountEntry = new System.Windows.Forms.Label();
@@ -291,7 +291,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btAddExistingAccount);
-            this.groupBox1.Controls.Add(this.lblFoundAccountInfo);
+            this.groupBox1.Controls.Add(this.txtFoundAccountInfo);
             this.groupBox1.Controls.Add(this.lblFoundAccount);
             this.groupBox1.Controls.Add(this.btSearchAccount);
             this.groupBox1.Controls.Add(this.lblAccountEntry);
@@ -314,13 +314,13 @@
             this.btAddExistingAccount.UseVisualStyleBackColor = true;
             this.btAddExistingAccount.Click += new System.EventHandler(this.btAddExistingAccount_Click);
             // 
-            // lblFoundAccountInfo
+            // txtFoundAccountInfo
             // 
-            this.lblFoundAccountInfo.Location = new System.Drawing.Point(102, 54);
-            this.lblFoundAccountInfo.Name = "lblFoundAccountInfo";
-            this.lblFoundAccountInfo.Size = new System.Drawing.Size(389, 34);
-            this.lblFoundAccountInfo.TabIndex = 19;
-            this.lblFoundAccountInfo.Text = "<geen account gevonden>";
+            this.txtFoundAccountInfo.Location = new System.Drawing.Point(102, 54);
+            this.txtFoundAccountInfo.Name = "txtFoundAccountInfo";
+            this.txtFoundAccountInfo.Size = new System.Drawing.Size(389, 34);
+            this.txtFoundAccountInfo.TabIndex = 19;
+            this.txtFoundAccountInfo.Text = "<geen account gevonden>";
             // 
             // lblFoundAccount
             // 
@@ -418,7 +418,7 @@
         private System.Windows.Forms.TextBox tbAccountEntry;
         private System.Windows.Forms.Label lblFoundAccount;
         private System.Windows.Forms.Button btSearchAccount;
-        private System.Windows.Forms.Label lblFoundAccountInfo;
+        private System.Windows.Forms.Label txtFoundAccountInfo;
         private System.Windows.Forms.Button btAddExistingAccount;
         private System.Windows.Forms.Label label1;
 
