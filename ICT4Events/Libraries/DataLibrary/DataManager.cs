@@ -12,7 +12,7 @@ namespace DataLibrary
     public class DataManager
     {
         DatabaseConnection connect;
-        List<string> result;
+        List<Dictionary<string, string>> result;
         public DataManager()
         {
         }
@@ -30,9 +30,9 @@ namespace DataLibrary
                 connect.Close();
             }
         }
-        public List<string> XCTReader(string query)
+        public List<Dictionary<string, string>> XCTReader(string query)
         {
-            result = new List<string>();
+            result = new List<Dictionary<string, string>>();
             connect = new DatabaseConnection();
             connect.Connect();
             OracleCommand cmd = new OracleCommand(query, connect.Con);
@@ -41,7 +41,14 @@ namespace DataLibrary
             {
                 while (reader.Read())
                 {
-                    result.Add(reader.ToString());
+                    Dictionary<string, string> fields = new Dictionary<string, string>();
+                    for (int f = 0; f < reader.FieldCount; f++)
+                    {
+                        Console.WriteLine(reader.GetName(f));
+                        fields[reader.GetName(f)] = Convert.ToString(reader.GetValue(f));
+                    }
+                        
+                    result.Add(fields);
                 }
             }
             catch (OracleException ex)
@@ -55,25 +62,25 @@ namespace DataLibrary
             }
             return result;
         }
-        public List<string> GetGuestAccount(int ID)
+        public List<Dictionary<string, string>> GetGuestAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = '{0}'", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetGuestAccount(string name)
+        public List<Dictionary<string, string>> GetGuestAccount(string name)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.Username = '{0}'", name);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetEmployeeAccount(int ID)
+        public List<Dictionary<string, string>> GetEmployeeAccount(int ID)
         {
             string query = String.Format("SELECT * FROM ACCOUNT A,EMPLOYEE E WHERE A.ACCOUNTID = E.ACCOUNTID AND A.ACCOUNTID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetEmployeeAccount(string name)
+        public List<Dictionary<string, string>> GetEmployeeAccount(string name)
         {
             string query = String.Format("SELECT * FROM ACCOUNT A,EMPLOYEE E WHERE A.ACCOUNTID = E.ACCOUNTID AND A.USERNAME = {0}", name);
             result = XCTReader(query);
@@ -108,25 +115,25 @@ namespace DataLibrary
                 , employee[0], employee[1], employee[2]);
             XCTNonQuery(query);
         }
-        public List<string> GetAllGuests()
+        public List<Dictionary<string, string>> GetAllGuests()
         {
             string query = "SELECT * FROM GUEST";
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetAllEmployees()
+        public List<Dictionary<string, string>> GetAllEmployees()
         {
             string query = "SELECT * FROM EMPLOYEE";
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetAllEvents()
+        public List<Dictionary<string, string>> GetAllEvents()
         {
             string query = "SELECT * FROM EVENT";
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetEvent(string ID)
+        public List<Dictionary<string, string>> GetEvent(string ID)
         {
             string query = String.Format("SELECT * FROM EVENT WHERE EVENTID = {0}", ID);
             result = XCTReader(query);
@@ -196,7 +203,7 @@ namespace DataLibrary
                 , location[0], location[1], location[2], location[3]);
             XCTNonQuery(query);
         }
-        public List<string> GetItem(string ID)
+        public List<Dictionary<string, string>> GetItem(string ID)
         {
             string query = String.Format("SELECT * FROM ITEM WHERE ITEMID = {0}", ID);
             result = XCTReader(query);
@@ -212,7 +219,7 @@ namespace DataLibrary
                 , item[4]);
             XCTNonQuery(query);
         }
-        public List<string> GetReservation(string ID)
+        public List<Dictionary<string, string>> GetReservation(string ID)
         {
             string query = String.Format("SELECT * FROM RESERVATION R,GUESTRESERVATION G WHERE R.RESERVATIONID = G.RESERVATIONID AND G.GUESTID = {0}", ID);
             result = XCTReader(query);
@@ -238,7 +245,7 @@ namespace DataLibrary
             query = String.Format("INSERT INTO GUESTRESERVATION VALUES({0}{1}{2})", ID, RID, PID);
             XCTNonQuery(query);
         }
-        public List<string> GetPresence(string ID)
+        public List<Dictionary<string, string>> GetPresence(string ID)
         {
             string query = String.Format("SELECT ISPRESENT FROM GUEST WHERE GUESTID = {0}", ID);
             result = XCTReader(query);
@@ -280,19 +287,19 @@ namespace DataLibrary
                 , likeorflag[4], likeorflag[5]);
             XCTNonQuery(query);
         }
-        public List<string> GetFile(string ID)
+        public List<Dictionary<string, string>> GetFile(string ID)
         {
             string query = String.Format("SELECT * FROM FILETABLE WHERE FILEID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetComment(string ID)
+        public List<Dictionary<string, string>> GetComment(string ID)
         {
             string query = String.Format("SELECT * FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetFlagOrLike(string ID)
+        public List<Dictionary<string, string>> GetFlagOrLike(string ID)
         {
             string query = String.Format("SELECT * FROM LIKEORFLAG WHERE LIKEFLAGID = {0}", ID);
             result = XCTReader(query);
@@ -338,13 +345,13 @@ namespace DataLibrary
                 , ID, category[1], category[2]);
             XCTNonQuery(query);
         }
-        public List<string> GetCategory(string ID)
+        public List<Dictionary<string, string>> GetCategory(string ID)
         {
             string query = String.Format("SELECT * FROM CATEGORY WHERE CATEGORYID = {1}", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetAllCategorys()
+        public List<Dictionary<string, string>> GetAllCategorys()
         {
             string query = String.Format("SELECT * FROM CATEGORY");
             result = XCTReader(query);
@@ -363,13 +370,13 @@ namespace DataLibrary
             query = String.Format("DELETE * FROM GUESTRESERVATION WHERE RESERVATIONID = {0}", ID);
             XCTNonQuery(query);
         }
-        public List<string> GetINCReservation(string ID)
+        public List<Dictionary<string, string>> GetINCReservation(string ID)
         {
             string query = String.Format("SELECT * FROM RESERVATION R, GUESTRESERVATION GR, GUEST G, LOCATION L WHERE R.RESERVATIONID = GR.RESERVATIONID AND GR.GUESTID = G.GUESTID AND R.RESERVATIONID = {0}");
             result = XCTReader(query);
             return result;
         }
-        public List<string> GetAllPresentGuests()
+        public List<Dictionary<string, string>> GetAllPresentGuests()
         {
             string query = "SELECT * FROM GUEST WHERE ISPRESENT = 'Y'";
             result = XCTReader(query);
@@ -391,7 +398,7 @@ namespace DataLibrary
                 , rental[4]);
             XCTNonQuery(query);
         }
-        public List<string> GetRental(string ID)
+        public List<Dictionary<string, string>> GetRental(string ID)
         {
             string query = String.Format("SELECT * FROM RENTAL WHERE ID = {0}", ID);
             result = XCTReader(query);

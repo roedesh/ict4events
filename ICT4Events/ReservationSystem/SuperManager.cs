@@ -24,17 +24,17 @@ namespace ReservationSystem
 
         public void GetAccount(int ID)
         {
-            List<string> list = dManager.GetGuestAccount(ID);
+            List<Dictionary<string, string>> list = dManager.GetGuestAccount(ID);
             Console.WriteLine(list);
-            foreach (string l in list)
+            foreach (Dictionary<string, string> d in list)
             {
-                Console.WriteLine(l);
+                Console.WriteLine(d["USERNAME"]);
             }
         }
 
         public void GetAccount(string username)
         {
-            List<string> list = dManager.GetGuestAccount(username);
+            List<Dictionary<string, string>> list = dManager.GetGuestAccount(username);
         }
     }
 }
