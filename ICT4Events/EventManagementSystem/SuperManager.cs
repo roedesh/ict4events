@@ -49,7 +49,7 @@ namespace EventManagementSystem
             List<Dictionary<string, string>> list = dataManager.GetAllEvents();
             foreach (Dictionary<string, string> d in list)
             {
-                eventManager.AddEvent(Convert.ToInt32(d["ID"]),d["LOCATION"], Convert.ToString(d["STARTDATE"]),
+                eventManager.AddEvent(Convert.ToInt32(d["EVENTID"]),d["LOCATION"], Convert.ToString(d["STARTDATE"]),
                    Convert.ToString(d["ENDDATE"]), d["DESCRIPTION"], Convert.ToDecimal(d["ADMISSIONFEE"]));
             }
             return eventManager.ShowEvents();
