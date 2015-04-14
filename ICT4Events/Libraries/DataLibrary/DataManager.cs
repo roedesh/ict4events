@@ -20,7 +20,7 @@ namespace DataLibrary
         {
             connect = new DatabaseConnection();
             connect.Connect();
-            OracleCommand cmd = new OracleCommand(query);
+            OracleCommand cmd = new OracleCommand(query, connect.Con);
             try
             {
                 cmd.ExecuteNonQuery();
