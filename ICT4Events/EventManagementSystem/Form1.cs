@@ -56,6 +56,10 @@ namespace EventManagementSystem
             // eventid, username, password, fullname, adress, city, postalcode, date of birth, email, phonenumber
         }
 
+        private void btnPlaatsEdit_Click(object sender, EventArgs e)
+        {
+        }
+
 
 
 

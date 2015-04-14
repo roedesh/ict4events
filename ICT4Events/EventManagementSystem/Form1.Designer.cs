@@ -182,6 +182,7 @@
             this.btnPlaatsEdit.TabIndex = 3;
             this.btnPlaatsEdit.Text = "Pas aan";
             this.btnPlaatsEdit.UseVisualStyleBackColor = true;
+            this.btnPlaatsEdit.Click += new System.EventHandler(this.btnPlaatsEdit_Click);
             // 
             // groupBox1
             // 
