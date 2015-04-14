@@ -13,7 +13,7 @@ namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
-        public int currentExistingAccountID = 0; //Holds the ID of a existing account that has been found
+        public int currentExistingAccountID = 0; // Holds the ID of a existing account that has been found
         public Account mainBooker;
         public AccountManager tempAccountManager = new AccountManager();
         public SuperManager s = new SuperManager();
@@ -124,10 +124,12 @@ namespace ReservationSystem
             {
                 if (IsDigitsOnly(val))
                 {
+                    // Search account by ID
                     s.GetAccount(Convert.ToInt32(val));
                 }
                 else
                 {
+                    // Search account by username
                     s.GetAccount(val);
                 }
             }         
@@ -169,7 +171,7 @@ namespace ReservationSystem
             }
             else
             {
-                DialogResult result = MessageBox.Show("De reservaring zal worden aangemaakt, weet u zeker dat alle gegevens kloppen?", "Confirmation", MessageBoxButtons.YesNoCancel);
+                DialogResult result = MessageBox.Show("Heeft u alle personen toegevoegd?", "Bevestiging", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
                     this.DialogResult = DialogResult.OK;

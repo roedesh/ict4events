@@ -25,12 +25,12 @@ namespace ReservationSystem
         public void GetAccount(int ID)
         {
             List<string> list = dManager.GetGuestAccount(ID);
+            
         }
 
         public void GetAccount(string username)
         {
             List<string> list = dManager.GetGuestAccount(username);
-            Console.WriteLine(list);
         }
     }
 }
