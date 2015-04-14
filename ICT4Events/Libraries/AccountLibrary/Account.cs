@@ -6,25 +6,8 @@ using System.Threading.Tasks;
 
 namespace AccountLibrary
 {
-    public class Account
+    public abstract class Account
     {
-        /* 
-         *  The enum is called AccountRole instead of Role, 
-         *  because there would be a name clash with the Role property.
-         *       
-         *  In a Form you can call this enum like this: Account.AccountRole.<Role>
-        */
-        public enum AccountRole
-        {
-            EventManager,
-            ReservationManager,
-            AccessManager,
-            EntryManager,
-            SocialMediaManager,
-            Admin,
-            Guest
-        }; 
-
         private int id;
         private string rfid;
         private string name;
@@ -34,13 +17,6 @@ namespace AccountLibrary
         private DateTime dateOfBirth;
         private string email;
         private string phone;
-        private AccountRole role;
-
-        public AccountRole Role
-        {
-            get { return role; }
-            set { role = value; }
-        }
 
         public string Phone
         {
@@ -84,12 +60,6 @@ namespace AccountLibrary
             set { name = value; }
         }
 
-        public string RFID
-        {
-            get { return rfid; }
-            set { rfid = value; }
-        }
-
         public int ID
         {
             get { return id; }
@@ -97,11 +67,10 @@ namespace AccountLibrary
         }
 
         // Main constructor for full accounts with ID, RFID and Role
-        public Account(int id, string rfid, string name, string address, string city, string postalCode,
-                       DateTime dateOfBirth, string email, string phone, AccountRole role)
+        public Account(int id, string name, string address, string city, string postalCode,
+                       DateTime dateOfBirth, string email, string phone)
         {
             ID = id;
-            RFID = rfid;
             Name = name;
             Address = address;
             City = city;
@@ -109,7 +78,6 @@ namespace AccountLibrary
             DateOfBirth = dateOfBirth;
             Email = email;
             Phone = phone;
-            Role = role;
         }
 
         // Smaller constructor for temporary accounts in the ExtraPersonsForm
@@ -117,7 +85,6 @@ namespace AccountLibrary
                        DateTime dateOfBirth, string email, string phone)
         {
             ID = 0;
-            RFID = null;
             Name = name;
             Address = address;
             City = city;
@@ -125,7 +92,6 @@ namespace AccountLibrary
             DateOfBirth = dateOfBirth;
             Email = email;
             Phone = phone;
-            Role = AccountRole.Guest;
         }
 
         public override string ToString()
@@ -134,7 +100,7 @@ namespace AccountLibrary
             {
                 return String.Format("{0}: {1}, {2}, {3}, {4}. {5}", Name, Address, City, PostalCode, Email, Phone);
             }
-            return String.Format("{0} : {1} - {2} - {3}", ID, Name, DateOfBirth.ToShortDateString(), Role);
+            return String.Format("{0} : {1} - {2}", ID, Name, DateOfBirth.ToShortDateString());
         }
         
     }

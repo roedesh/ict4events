@@ -27,7 +27,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                Account newAccount = new Account(
+                Guest newAccount = new Guest(
                     txtName.Text,
                     txtAddress.Text,
                     txtCity.Text,
@@ -46,7 +46,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                Account newAccount = new Account(
+                Guest newAccount = new Guest(
                     txtName.Text,
                     txtAddress.Text,
                     txtCity.Text,

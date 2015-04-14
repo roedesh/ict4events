@@ -22,39 +22,15 @@ namespace ReservationSystem
             return dManager.IsReserved(number);
         }
 
-        public Account GetAccount(int ID)
+        public Guest GetAccount(int ID)
         {
             List<Dictionary<string, string>> list = dManager.GetGuestAccount(ID);
-            Account a = null;
+            Guest g = null;
             foreach (Dictionary<string, string> d in list)
             {
                 // Account opbouwen met de waardes uit de dictionary
-                a = new Account(
-                    Convert.ToInt32(d["ACCOUNTID"]), 
-                    d["RFID"], 
-                    d["FULLNAME"], 
-                    d["ADRESS"], 
-                    d["CITY"], 
-                    d["POSTALCODE"], 
-                    Convert.ToDateTime(d["DATEOFBIRTH"]), 
-                    d["EMAIL"], 
-                    d["PHONENUMBER"], 
-                    Account.AccountRole.Guest);
-                aManager.AddAccount(a); // Voeg nieuwe gemaakte account toe aan accountmanager
-            }
-            return a;
-        }
-
-        public Account GetAccount(string username)
-        {
-            List<Dictionary<string, string>> list = dManager.GetGuestAccount(username);
-            Account a = null;
-            foreach (Dictionary<string, string> d in list)
-            {
-                // Account opbouwen met de waardes uit de dictionary
-                a = new Account(
+                g = new Guest(
                     Convert.ToInt32(d["ACCOUNTID"]),
-                    d["RFID"],
                     d["FULLNAME"],
                     d["ADRESS"],
                     d["CITY"],
@@ -62,10 +38,36 @@ namespace ReservationSystem
                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                     d["EMAIL"],
                     d["PHONENUMBER"],
-                    Account.AccountRole.Guest);
-                aManager.AddAccount(a); // Voeg nieuwe gemaakte account toe aan accountmanager
+                    d["RFID"],
+                    d["ISPRESENT"]
+                    );
+                aManager.AddAccount(g); // Voeg nieuwe gemaakte account toe aan accountmanager
             }
-            return a;
+            return g;
+        }
+
+        public Guest GetAccount(string username)
+        {
+            List<Dictionary<string, string>> list = dManager.GetGuestAccount(username);
+            Guest g = null;
+            foreach (Dictionary<string, string> d in list)
+            {
+                // Account opbouwen met de waardes uit de dictionary
+                g = new Guest(
+                    Convert.ToInt32(d["ACCOUNTID"]),
+                    d["FULLNAME"],
+                    d["ADRESS"],
+                    d["CITY"],
+                    d["POSTALCODE"],
+                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                    d["EMAIL"],
+                    d["PHONENUMBER"],
+                    d["RFID"],
+                    d["ISPRESENT"]
+                    );
+                aManager.AddAccount(g); // Voeg nieuwe gemaakte account toe aan accountmanager
+            }
+            return g;
         }
     }
 }
