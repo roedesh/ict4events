@@ -17,14 +17,17 @@ namespace EventManagementSystem
         public Form1()
         {
             InitializeComponent();
-
+            cbPersoonRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
+            cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
         }
 
         private void btnEventsAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                //superManager.AddEvent();
+                superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
+                    tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
+                    Convert.ToDecimal(tbEventPrijs.Text));
             }
             catch (FormatException)
             {
@@ -36,10 +39,7 @@ namespace EventManagementSystem
         {
             List<Event> showAllEvents = new List<Event>();
             showAllEvents = superManager.ShowEvents();
-            foreach (Event ev in showAllEvents)
-            {
-                dataGridView.Rows.Add(ev);
-            }
+            dataGridView.DataSource = showAllEvents;
         }
 
         private void btnPersoonShowAll_Click(object sender, EventArgs e)

@@ -21,16 +21,17 @@ namespace EventManagementSystem
             dataManager = new DataManager();
         }
 
-        public void AddEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public void AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            //eventManager.AddEvent(name, adress, city, postalCode, admissionFee);  --moet dit worden gedaan?
-            List<string> eventList = new List<string>();
-            eventList.Add(name);
-            eventList.Add(adress);
-            eventList.Add(city);
-            eventList.Add(postalCode);
-            eventList.Add(Convert.ToString(admissionFee));
-            dataManager.SetEvent(eventList);
+            //eventManager.AddEvent(id, location, startdate, enddate, description, admissionFee);
+            List<string> list = new List<string>();
+            list.Add(Convert.ToString(id));
+            list.Add(location);
+            list.Add(startdate);
+            list.Add(enddate);
+            list.Add(description);
+            list.Add(Convert.ToString(admissionFee));
+            dataManager.SetEvent(list);
         }
 
         public void EditEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
@@ -58,12 +59,7 @@ namespace EventManagementSystem
 
         public void AddAccount(string name, string adress, string city, string postalCode)
         {
-            List<string> acc = new List<string>();
-            acc.Add(name);
-            acc.Add(adress);
-            acc.Add(city);
-            acc.Add(postalCode);
-           //dataManager.SetGuestAccount();
+            
         }
 
         public void EditAccount()
