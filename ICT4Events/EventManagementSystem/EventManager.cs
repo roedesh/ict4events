@@ -15,17 +15,17 @@ namespace EventManagementSystem
             evnt = new List<Event>();
         }
 
-        public bool AddEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public bool AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
             foreach (Event e in evnt)
             {
-                if(e.Name == name)
+                if(e.Id == id)
                 {
                     return false;
                 }
             }
             //If event doesn't exist
-            Event ev = new Event(name, adress, city, postalCode, admissionFee);
+            Event ev = new Event(id, location, startdate, enddate, description, admissionFee);
             evnt.Add(ev);
             return true;
         }
@@ -36,17 +36,18 @@ namespace EventManagementSystem
             return true;
         }
 
-        public bool EditEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public bool EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
             foreach (Event e in evnt)
             {
                 //if event exists, edit the settings
-                if(e.Name == name)
+                if(e.Id == id)
                 {
-                    e.Name = name;
-                    e.Adress = adress;
-                    e.City = city;
-                    e.PostalCode = postalCode;
+                    e.Id = id;
+                    e.Location = location;
+                    e.StartDate = startdate;
+                    e.EndDate = enddate;
+                    e.Description = description;
                     e.AdmissionFee = admissionFee;
                     return true;
                 }

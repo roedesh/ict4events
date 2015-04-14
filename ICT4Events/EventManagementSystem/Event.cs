@@ -8,26 +8,31 @@ namespace EventManagementSystem
 {
     class Event
     {
-
-        public string Name
+        public int Id
         {
             get;
             set;
         }
 
-        public string Adress
+        public string Location
         {
             get;
             set;
         }
 
-        public string City
+        public string StartDate
         {
             get;
             set;
         }
 
-        public string PostalCode
+        public string EndDate
+        {
+            get;
+            set;
+        }
+
+        public string Description
         {
             get;
             set;
@@ -40,18 +45,19 @@ namespace EventManagementSystem
         }
 
 
-        public Event(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public Event(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            Name = name;
-            Adress = adress;
-            City = city;
-            PostalCode = postalCode;
+            Id = id;
+            Location = location;
+            StartDate = startdate;
+            EndDate = enddate;
+            Description = description;
             AdmissionFee = admissionFee;
         }
 
         public override string ToString()
         {
-            return Name + Adress + City + PostalCode + AdmissionFee;
+            return Id + Location + StartDate + EndDate + Description + AdmissionFee;
         }
 
 

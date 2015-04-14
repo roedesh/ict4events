@@ -46,7 +46,14 @@ namespace EventManagementSystem
 
         public List<Event> ShowEvents()
         {
+            List<Dictionary<string, string>> list = dataManager.GetAllEvents();
+            foreach (Dictionary<string, string> d in list)
+            {
+                eventManager.AddEvent(Convert.ToInt32(d["ID"]),d["LOCATION"], Convert.ToString(d["STARTDATE"]),
+                   Convert.ToString(d["ENDDATE"]), d["DESCRIPTION"], Convert.ToDecimal(d["ADMISSIONFEE"]));
+            }
             return eventManager.ShowEvents();
+
         }
 
         public void AddAccount(string name, string adress, string city, string postalCode)
@@ -66,7 +73,17 @@ namespace EventManagementSystem
 
         public List<string> ShowAccounts() // string list return ipv void
         {
-            return dataManager.GetAllGuests();
+            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            List<string> showAll = new List<string>();
+            foreach (Dictionary<string, string> d in list)
+            {
+                showAll.Add(d["GUESTID"]);
+                showAll.Add(d["ACCOUNTID"]);
+                showAll.Add(d["RFID"]);
+                showAll.Add(d["ISPRESENT"]);
+
+            }
+            return showAll;
         }
     }
 }

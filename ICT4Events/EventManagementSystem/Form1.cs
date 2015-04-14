@@ -34,9 +34,9 @@ namespace EventManagementSystem
 
         private void btnEventsShow_Click(object sender, EventArgs e)
         {
-            List<Event> showEvents = new List<Event>();
-            showEvents = superManager.ShowEvents();
-            foreach (Event ev in showEvents)
+            List<Event> showAllEvents = new List<Event>();
+            showAllEvents = superManager.ShowEvents();
+            foreach (Event ev in showAllEvents)
             {
                 dataGridView.Rows.Add(ev);
             }
