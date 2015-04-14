@@ -31,6 +31,7 @@ namespace EntryControlSystem
 
         private void btnToonAanwezigen_Click(object sender, EventArgs e)
         {
+            lbInfo.Items.Clear();
             List<string> AllGuests = new List<string>();
             try
             {
@@ -49,6 +50,7 @@ namespace EntryControlSystem
 
         private void btnZoekPersoon_Click(object sender, EventArgs e)
         {
+            lbInfo.Items.Clear();
             List<string> Search = new List<string>();
             try
             {
@@ -110,13 +112,24 @@ namespace EntryControlSystem
         //Tag event handler...we'll display the tag code in the field on the GUI
         void rfid_Tag(object sender, TagEventArgs e)
         {
-            tbRFID.Text = e.Tag;
+            string RFID = e.Tag;
+            tbRFID.Text = RFID;
+            bool hasPaid = supermanager.CheckPayment(RFID);
+            if (hasPaid)
+            {
+                pbBetaalstatus.Enabled = true;
+            }
+            else
+            {
+                pbBetaalstatus.Enabled = false;
+            }
+
         }
 
         //Tag lost event handler...here we simply want to clear our tag field in the GUI
         void rfid_TagLost(object sender, TagEventArgs e)
         {
-            //  tbTagID.Text = "";
+            //  eventuele codes
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

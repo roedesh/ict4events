@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lbInfo = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPersoonToelaten = new System.Windows.Forms.Button();
@@ -109,6 +110,7 @@
             // 
             // pbBetaalstatus
             // 
+            this.pbBetaalstatus.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbBetaalstatus.InitialImage")));
             this.pbBetaalstatus.Location = new System.Drawing.Point(113, 113);
             this.pbBetaalstatus.Name = "pbBetaalstatus";
             this.pbBetaalstatus.Size = new System.Drawing.Size(173, 63);

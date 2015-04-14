@@ -13,17 +13,27 @@ namespace EntryControlSystem
     {
         private AccountManager accountManager;
         private DataManager dataManager;
-        List<string> presentGuests;
+        
 
         public void SuperMager()
         {
             accountManager = new AccountManager();
             dataManager = new DataManager();
-            presentGuests = new List<string>();
         }
         public List<string> ShowAllPresent()
         {
-            presentGuests = dataManager.GetAllGuests();
+            List<string> presentGuests = new List<string>();
+            string userInfo = "";
+            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            Console.WriteLine(list);
+            foreach (Dictionary<string, string> d in list)
+            {
+                string fullName = d["FULLNAME"];
+                string isPresent = d["ISPRESENT"];
+                string RFID = d["RFID"];
+                userInfo = fullName + " , " + isPresent + " , " + RFID;
+                presentGuests.Add(userInfo);
+            }
             return presentGuests;
         }
         public List<string> ShowSearchedPerson(string idName)
@@ -49,16 +59,84 @@ namespace EntryControlSystem
         }
         public List<string> SearchPersonID(int id)
         {
-            return dataManager.GetGuestAccount(id);
+            List<string> persons = new List<string>();
+            string userInfo = "";
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(id);
+            Console.WriteLine(list);
+            foreach (Dictionary<string, string> d in list)
+            {
+                string fullName = d["FULLNAME"];
+                string isPresent = d["ISPRESENT"];
+                string RFID = d["RFID"];
+                userInfo = fullName + " , " + isPresent + " , " + RFID;
+                persons.Add(userInfo);
+            }
+            return persons;
         }
         public List<string> SearchPersonName(string name)
         {
-            return dataManager.GetGuestAccount(name);
+            List<string> persons = new List<string>();
+            string userInfo = "";
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(name);
+            Console.WriteLine(list);
+            foreach (Dictionary<string, string> d in list)
+            {
+                string fullName = d["FULLNAME"];
+                string isPresent = d["ISPRESENT"];
+                string RFID = d["RFID"];
+                userInfo = fullName + " , " + isPresent + " , " + RFID;
+                persons.Add(userInfo);
+            }
+            return persons;
         }
 
         public bool SetPresence(int accountID)
         {
             return true;
+        }
+        
+        public bool CheckPayment(string RFID)
+        {
+            string username = "";
+            string paymentStatus = "";
+            //GetUsername
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccountWithRFID(RFID);
+            Console.WriteLine(list);
+            foreach(Dictionary<string,string> d in list)
+            {
+                username = d["USERNAME"];
+            }
+            //get paymentstatus
+            list = dataManager.GetPaymentStatus(username);
+            Console.WriteLine(list);
+            foreach (Dictionary<string, string> d in list)
+            {
+                paymentStatus = d["PAYMENTSTATUS"];
+            }
+            //check paymentstatus
+            if (paymentStatus == "PAID")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string GetUserInfo(string RFID)
+        {
+            string userInfo = "";
+            //GetUsername
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccountWithRFID(RFID);
+            Console.WriteLine(list);
+            foreach (Dictionary<string, string> d in list)
+            {
+                string fullName = d["FULLNAME"];
+                string isPresent = d["ISPRESENT"];
+                userInfo = fullName + " , " + isPresent;
+            }
+            return userInfo;
         }
 
     }
