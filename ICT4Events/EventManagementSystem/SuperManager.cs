@@ -51,7 +51,12 @@ namespace EventManagementSystem
 
         public void AddAccount(string name, string adress, string city, string postalCode)
         {
-           // dataManager.SetGuestAccount(); // 2 lists meegeven?
+            List<string> acc = new List<string>();
+            acc.Add(name);
+            acc.Add(adress);
+            acc.Add(city);
+            acc.Add(postalCode);
+           //dataManager.SetGuestAccount();
         }
 
         public void EditAccount()
@@ -59,9 +64,9 @@ namespace EventManagementSystem
             
         }
 
-        public void ShowAccounts()
+        public List<string> ShowAccounts() // string list return ipv void
         {
-            dataManager.GetAllGuests();
+            return dataManager.GetAllGuests();
         }
     }
 }

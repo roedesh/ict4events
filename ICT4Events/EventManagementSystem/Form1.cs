@@ -24,7 +24,7 @@ namespace EventManagementSystem
         {
             try
             {
-                superManager.AddEvent(tbEventName.Text, tbEventAdress.Text, tbEventCity.Text, tbEventPostalCode.Text, Convert.ToDecimal(tbEventPrice.Text));
+                //superManager.AddEvent();
             }
             catch (FormatException)
             {
@@ -40,6 +40,26 @@ namespace EventManagementSystem
             {
                 dataGridView.Rows.Add(ev);
             }
+        }
+
+        private void btnPersoonShowAll_Click(object sender, EventArgs e)
+        {
+            List<string> showAllAccounts = new List<string>();
+            showAllAccounts = superManager.ShowAccounts();
+            foreach (string s in showAllAccounts)
+            {
+                dataGridView.Rows.Add(s);
+            }
+        }
+
+        private void btnPersoonAdd_Click(object sender, EventArgs e)
+        {
+            // eventid, username, password, fullname, adress, city, postalcode, date of birth, email, phonenumber
+        }
+
+        private void btnPersoonShowAll_Click_1(object sender, EventArgs e)
+        {
+
         }
 
 
