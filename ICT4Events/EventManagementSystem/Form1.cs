@@ -32,6 +32,16 @@ namespace EventManagementSystem
             }
         }
 
+        private void btnEventsShow_Click(object sender, EventArgs e)
+        {
+            List<Event> showEvents = new List<Event>();
+            showEvents = superManager.ShowEvents();
+            foreach (Event ev in showEvents)
+            {
+                dataGridView.Rows.Add(ev);
+            }
+        }
+
 
 
 
