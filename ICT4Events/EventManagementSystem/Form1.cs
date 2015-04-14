@@ -21,6 +21,17 @@ namespace EventManagementSystem
             cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
         }
 
+
+
+        private void btnEventsShow_Click(object sender, EventArgs e)
+        {
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
+            List<Event> showAllEvents = new List<Event>();
+            showAllEvents = superManager.ShowEvents();
+            dataGridView.DataSource = showAllEvents;
+        }
+
         private void btnEventsAdd_Click(object sender, EventArgs e)
         {
             try
@@ -28,6 +39,7 @@ namespace EventManagementSystem
                 superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
                     tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
                     Convert.ToDecimal(tbEventPrijs.Text));
+                MessageBox.Show("Event " + tbEventEventID.Text + " toegevoegd");
             }
             catch (FormatException)
             {
@@ -38,22 +50,13 @@ namespace EventManagementSystem
                 btnEventsShow_Click(sender, e);
             }
         }
-
-        private void btnEventsShow_Click(object sender, EventArgs e)
-        {
-            dataGridView.DataSource = null;
-            dataGridView.Refresh();
-            List<Event> showAllEvents = new List<Event>();
-            showAllEvents = superManager.ShowEvents();
-            dataGridView.DataSource = showAllEvents;
-        }        
         
         private void btnEventsDelete_Click(object sender, EventArgs e)
         {
             try
             {
                 superManager.DeleteEvent(tbEventEventID.Text);
-                MessageBox.Show("Event " + tbEventEventID.Text + " deleted");
+                MessageBox.Show("Event " + tbEventEventID.Text + " verwijderd");
             }
             catch
             {
@@ -66,18 +69,80 @@ namespace EventManagementSystem
 
         }
 
+        private void btnEventsEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                superManager.EditEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
+                    tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
+                    Convert.ToDecimal(tbEventPrijs.Text));
+                MessageBox.Show("Event " + tbEventEventID.Text + " aangepast");
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                btnEventsShow_Click(sender, e);
+            }
+        }
+
         private void btnPersoonShowAll_Click(object sender, EventArgs e)
         {
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
+            List<Account> showAllAccounts = new List<Account>();
+            showAllAccounts = superManager.ShowAccounts();
+            dataGridView.DataSource = showAllAccounts;
         }
 
         private void btnPersoonAdd_Click(object sender, EventArgs e)
         {
-            // eventid, username, password, fullname, adress, city, postalcode, date of birth, email, phonenumber
+            try
+            {
+                superManager.AddAccount(Convert.ToInt32())
+                MessageBox.Show("Event " + tbEventEventID.Text + " toegevoegd");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+            }
+            finally
+            {
+                btnEventsShow_Click(sender, e);
+            }
         }
 
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
         }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewCell cell = null;
+            foreach (DataGridViewCell selectedCell in dataGridView.SelectedCells)
+            {
+                cell = selectedCell;
+                break;
+            }
+            if (cell != null)
+            {
+                DataGridViewRow row = cell.OwningRow;
+                tbEventEventID.Text = row.Cells["ID"].Value.ToString();
+                tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
+                tbEventBeginDatum.Text = row.Cells["StartDate"].Value.ToString();
+                tbEventEindDatum.Text = row.Cells["EndDate"].Value.ToString();
+                tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
+                tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
+            }
+
+        }
+
+
+
+
 
 
 
