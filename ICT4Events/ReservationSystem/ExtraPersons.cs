@@ -13,14 +13,16 @@ namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {
-        public Account currentExistingAccount; // Holds the existing account that has been found
-        public Account mainBooker;
-        public AccountManager tempAccountManager = new AccountManager();
         public SuperManager s = new SuperManager();
 
-        public ExtraPersons()
+        public ExtraPersons(Account mainBooker, AccountManager tempAccountManager)
         {
             InitializeComponent();
+            if (mainBooker != null)
+                s.mainBooker = mainBooker;
+            if (tempAccountManager != null)
+                s.tempAccountManager = tempAccountManager;
+            RefreshList();
         }
 
         private void btAddPerson_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace ReservationSystem
                     txtEmail.Text,
                     txtPhone.Text
                 );
-                tempAccountManager.AddAccount(newAccount);
+                s.tempAccountManager.AddAccount(newAccount);
                 RefreshList();
                 EmptyTextboxes();
             }
@@ -55,7 +57,7 @@ namespace ReservationSystem
                     txtEmail.Text,
                     txtPhone.Text
                 );
-                mainBooker = newAccount;
+                s.mainBooker = newAccount;
                 btAddMainBooker.Enabled = false;
                 RefreshList();
                 EmptyTextboxes();
@@ -65,11 +67,11 @@ namespace ReservationSystem
         public void RefreshList()
         {
             lstPersons.Items.Clear();
-            if (mainBooker != null)
+            if (s.mainBooker != null)
             {
-                lstPersons.Items.Add(mainBooker.ToString());
+                lstPersons.Items.Add("HOOFDBOEKER | " + s.mainBooker.ToString());
             }
-            foreach (Account a in tempAccountManager.Accounts)
+            foreach (Account a in s.tempAccountManager.Accounts)
             {
                 lstPersons.Items.Add(a.ToString());
             }
@@ -125,17 +127,17 @@ namespace ReservationSystem
                 if (IsDigitsOnly(val))
                 {
                     // Search account by ID
-                    currentExistingAccount = s.GetAccount(Convert.ToInt32(val));
+                    s.currentExistingAccount = s.GetAccount(Convert.ToInt32(val));
                 }
                 else
                 {
                     // Search account by username
-                    currentExistingAccount = s.GetAccount(val);
+                    s.currentExistingAccount = s.GetAccount(val);
                 }
             }
-            if (currentExistingAccount != null)
+            if (s.currentExistingAccount != null)
             {
-                accountInfo = currentExistingAccount.ToString();
+                accountInfo = s.currentExistingAccount.ToString();
                 btAddExistingAccount.Enabled = true;
             } 
             txtFoundAccountInfo.Text = accountInfo;
@@ -143,10 +145,10 @@ namespace ReservationSystem
 
         private void btAddExistingAccount_Click(object sender, EventArgs e)
         {
-            if (currentExistingAccount != null)
+            if (s.currentExistingAccount != null)
             {
-                tempAccountManager.AddAccount(currentExistingAccount);
-                currentExistingAccount = null;
+                s.tempAccountManager.AddAccount(s.currentExistingAccount);
+                s.currentExistingAccount = null;
                 txtFoundAccountInfo.Text = "<geen account gevonden>";
             }
             RefreshList();
@@ -154,17 +156,20 @@ namespace ReservationSystem
 
         private void btDeleteAccount_Click(object sender, EventArgs e)
         {
-            if (mainBooker != null & mainBooker.ToString() == lstPersons.SelectedItem.ToString())
+            if (s.mainBooker != null)
             {
-                mainBooker = null;
-                btAddMainBooker.Enabled = true;
+                if ("HOOFDBOEKER | " + s.mainBooker.ToString() == lstPersons.SelectedItem.ToString())
+                {
+                    s.mainBooker = null;
+                    btAddMainBooker.Enabled = true;
+                }
             }
             else
             {
-                Account account = tempAccountManager.Accounts.Find(a => a.ToString() == lstPersons.SelectedItem.ToString());
+                Account account = s.tempAccountManager.Accounts.Find(a => a.ToString() == lstPersons.SelectedItem.ToString());
                 if (account != null)
                 {
-                    tempAccountManager.Accounts.Remove(account);
+                    s.tempAccountManager.Accounts.Remove(account);
                 }
             }
             RefreshList();
@@ -172,7 +177,7 @@ namespace ReservationSystem
 
         private void btSubmitForm_Click(object sender, EventArgs e)
         {
-            if (mainBooker == null)
+            if (s.mainBooker == null)
             {
                 MessageBox.Show("Er is geen hoofdboeker. Maak eerst een hoofdboeker aan!");
             }
@@ -193,6 +198,27 @@ namespace ReservationSystem
             {
                 this.DialogResult = DialogResult.Cancel;
             }
+        }
+
+        private void btMakeMainBooker_Click(object sender, EventArgs e)
+        {
+            if (s.mainBooker == null)
+            {
+                Account switchAccount = s.tempAccountManager.Accounts.Find(a => a.ToString() == lstPersons.SelectedItem.ToString());
+                s.tempAccountManager.RemoveAccount(switchAccount);
+                s.mainBooker = switchAccount;
+            }
+            if (s.mainBooker != null)
+            {
+                if ("HOOFDBOEKER | " + s.mainBooker.ToString() != lstPersons.SelectedItem.ToString())
+                {
+                    s.tempAccountManager.AddAccount(s.mainBooker);
+                    Account switchAccount = s.tempAccountManager.Accounts.Find(a => a.ToString() == lstPersons.SelectedItem.ToString());
+                    s.tempAccountManager.RemoveAccount(switchAccount);
+                    s.mainBooker = switchAccount;
+                }
+            }
+            RefreshList();
         }
     }
 }

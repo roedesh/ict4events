@@ -43,5 +43,11 @@ namespace AccountLibrary
             // No account found, return false
             return false;
         }
+
+        public bool RemoveAccount(Account a)
+        {
+            Accounts.Remove(a);
+            return true;
+        }
     }
 }

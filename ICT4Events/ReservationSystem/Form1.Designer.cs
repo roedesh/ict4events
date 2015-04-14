@@ -65,13 +65,13 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtPlaceStatus = new System.Windows.Forms.Label();
+            this.txtAmountPersons = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btCheckPlace = new System.Windows.Forms.Button();
             this.btAddPersons = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbAmountPersons = new System.Windows.Forms.Label();
-            this.txtPlaceStatus = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -461,7 +461,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtPlaceStatus);
-            this.groupBox2.Controls.Add(this.lbAmountPersons);
+            this.groupBox2.Controls.Add(this.txtAmountPersons);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.btCheckPlace);
             this.groupBox2.Controls.Add(this.label1);
@@ -476,6 +476,33 @@
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
+            // 
+            // txtPlaceStatus
+            // 
+            this.txtPlaceStatus.AutoSize = true;
+            this.txtPlaceStatus.Location = new System.Drawing.Point(4, 73);
+            this.txtPlaceStatus.Name = "txtPlaceStatus";
+            this.txtPlaceStatus.Size = new System.Drawing.Size(133, 13);
+            this.txtPlaceStatus.TabIndex = 17;
+            this.txtPlaceStatus.Text = "<vul een plaatsnummer in>";
+            // 
+            // txtAmountPersons
+            // 
+            this.txtAmountPersons.AutoSize = true;
+            this.txtAmountPersons.Location = new System.Drawing.Point(89, 103);
+            this.txtAmountPersons.Name = "txtAmountPersons";
+            this.txtAmountPersons.Size = new System.Drawing.Size(13, 13);
+            this.txtAmountPersons.TabIndex = 16;
+            this.txtAmountPersons.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Aantal personen:";
             // 
             // btCheckPlace
             // 
@@ -521,33 +548,6 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Plaatsen";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Aantal personen:";
-            // 
-            // lbAmountPersons
-            // 
-            this.lbAmountPersons.AutoSize = true;
-            this.lbAmountPersons.Location = new System.Drawing.Point(89, 103);
-            this.lbAmountPersons.Name = "lbAmountPersons";
-            this.lbAmountPersons.Size = new System.Drawing.Size(13, 13);
-            this.lbAmountPersons.TabIndex = 16;
-            this.lbAmountPersons.Text = "0";
-            // 
-            // txtPlaceStatus
-            // 
-            this.txtPlaceStatus.AutoSize = true;
-            this.txtPlaceStatus.Location = new System.Drawing.Point(4, 73);
-            this.txtPlaceStatus.Name = "txtPlaceStatus";
-            this.txtPlaceStatus.Size = new System.Drawing.Size(133, 13);
-            this.txtPlaceStatus.TabIndex = 17;
-            this.txtPlaceStatus.Text = "<vul een plaatsnummer in>";
             // 
             // Form1
             // 
@@ -621,7 +621,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btCheckPlace;
         private System.Windows.Forms.Label txtPlaceStatus;
-        public System.Windows.Forms.Label lbAmountPersons;
+        public System.Windows.Forms.Label txtAmountPersons;
         private System.Windows.Forms.Label label2;
 
     }

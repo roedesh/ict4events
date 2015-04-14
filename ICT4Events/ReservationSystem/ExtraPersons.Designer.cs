@@ -59,6 +59,7 @@
             this.lblAccountEntry = new System.Windows.Forms.Label();
             this.tbAccountEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btMakeMainBooker = new System.Windows.Forms.Button();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // gboxPersons
             // 
+            this.gboxPersons.Controls.Add(this.btMakeMainBooker);
             this.gboxPersons.Controls.Add(this.btDeleteAccount);
             this.gboxPersons.Controls.Add(this.lstPersons);
             this.gboxPersons.Location = new System.Drawing.Point(256, 143);
@@ -364,6 +366,16 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
             // 
+            // btMakeMainBooker
+            // 
+            this.btMakeMainBooker.Location = new System.Drawing.Point(93, 233);
+            this.btMakeMainBooker.Name = "btMakeMainBooker";
+            this.btMakeMainBooker.Size = new System.Drawing.Size(106, 32);
+            this.btMakeMainBooker.TabIndex = 21;
+            this.btMakeMainBooker.Text = "Maak hoofdboeker";
+            this.btMakeMainBooker.UseVisualStyleBackColor = true;
+            this.btMakeMainBooker.Click += new System.EventHandler(this.btMakeMainBooker_Click);
+            // 
             // ExtraPersons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +433,7 @@
         private System.Windows.Forms.Label txtFoundAccountInfo;
         private System.Windows.Forms.Button btAddExistingAccount;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btMakeMainBooker;
 
 
     }

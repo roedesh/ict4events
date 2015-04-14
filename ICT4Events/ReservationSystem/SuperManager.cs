@@ -14,6 +14,13 @@ namespace ReservationSystem
         AccountManager aManager = new AccountManager();
         DataManager dManager = new DataManager();
 
+        /*  Temporary managers and accounts 
+         *  Works as a link between the main form and "Add persons" form
+         */
+        public Account currentExistingAccount; // Holds the existing account that has been found in the "Add persons" form
+        public Account mainBooker;
+        public AccountManager tempAccountManager = new AccountManager();
+
         public SuperManager()
         {
         }
@@ -28,7 +35,6 @@ namespace ReservationSystem
             Guest g = null;
             foreach (Dictionary<string, string> d in list)
             {
-                // Account opbouwen met de waardes uit de dictionary
                 g = new Guest(
                     Convert.ToInt32(d["ACCOUNTID"]),
                     d["FULLNAME"],
@@ -41,7 +47,7 @@ namespace ReservationSystem
                     d["RFID"],
                     d["ISPRESENT"]
                     );
-                aManager.AddAccount(g); // Voeg nieuwe gemaakte account toe aan accountmanager
+                aManager.AddAccount(g);
             }
             return g;
         }
@@ -52,7 +58,6 @@ namespace ReservationSystem
             Guest g = null;
             foreach (Dictionary<string, string> d in list)
             {
-                // Account opbouwen met de waardes uit de dictionary
                 g = new Guest(
                     Convert.ToInt32(d["ACCOUNTID"]),
                     d["FULLNAME"],
@@ -65,9 +70,14 @@ namespace ReservationSystem
                     d["RFID"],
                     d["ISPRESENT"]
                     );
-                aManager.AddAccount(g); // Voeg nieuwe gemaakte account toe aan accountmanager
+                aManager.AddAccount(g); 
             }
             return g;
+        }
+
+        public void AddAccount(Account a)
+        {
+            aManager.AddAccount(a);
         }
     }
 }

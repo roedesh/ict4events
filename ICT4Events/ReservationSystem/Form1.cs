@@ -15,6 +15,7 @@ namespace ReservationSystem
     public partial class Form1 : Form
     {
         SuperManager s = new SuperManager();
+
         public Form1()
         {
             InitializeComponent();
@@ -22,14 +23,16 @@ namespace ReservationSystem
 
         private void btAddPersons_Click(object sender, EventArgs e)
         {
-            ExtraPersons epForm = new ExtraPersons();
+            ExtraPersons epForm = new ExtraPersons(s.mainBooker, s.tempAccountManager);
             var result = epForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                AccountManager tempAccountManager = epForm.tempAccountManager;
-                foreach (Account a in tempAccountManager.Accounts){
-                    Console.WriteLine(a.ToString());
-                }
+                s.tempAccountManager = epForm.s.tempAccountManager;
+                s.mainBooker = epForm.s.mainBooker;
+                int count = s.tempAccountManager.Accounts.Count() + 1;
+                txtAmountPersons.Text = Convert.ToString(count);
+                if (count > 0)
+                    btAddPersons.Text = "Personen bewerken";
             }
         }
 
