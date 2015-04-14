@@ -25,7 +25,11 @@ namespace ReservationSystem
         public void GetAccount(int ID)
         {
             List<string> list = dManager.GetGuestAccount(ID);
-            
+            Console.WriteLine(list);
+            foreach (string l in list)
+            {
+                Console.WriteLine(l);
+            }
         }
 
         public void GetAccount(string username)
