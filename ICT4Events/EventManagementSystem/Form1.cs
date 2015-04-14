@@ -31,12 +31,18 @@ namespace EventManagementSystem
             }
             catch (FormatException)
             {
-                MessageBox.Show("Prijs moet uit cijfers bestaan");
+                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+            }
+            finally
+            {
+                btnEventsShow_Click(sender, e);
             }
         }
 
         private void btnEventsShow_Click(object sender, EventArgs e)
         {
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
             List<Event> showAllEvents = new List<Event>();
             showAllEvents = superManager.ShowEvents();
             dataGridView.DataSource = showAllEvents;
@@ -44,7 +50,20 @@ namespace EventManagementSystem
         
         private void btnEventsDelete_Click(object sender, EventArgs e)
         {
-            superManager.DeleteEvent(tbEventEventID.Text);
+            try
+            {
+                superManager.DeleteEvent(tbEventEventID.Text);
+                MessageBox.Show("Event " + tbEventEventID.Text + " deleted");
+            }
+            catch
+            {
+            
+            }
+            finally
+            {
+                btnEventsShow_Click(sender, e);
+            }
+
         }
 
         private void btnPersoonShowAll_Click(object sender, EventArgs e)

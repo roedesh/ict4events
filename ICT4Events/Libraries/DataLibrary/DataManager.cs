@@ -25,6 +25,10 @@ namespace DataLibrary
             {
                 cmd.ExecuteNonQuery();
             }
+            catch (OracleException ex)
+            {
+                Console.WriteLine("Exception Source: " + ex);
+            }
             finally
             {
                 connect.Close();
@@ -143,7 +147,7 @@ namespace DataLibrary
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
             string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
-            string query = String.Format("INSERT INTO EVENT VALUES ('{0}','{1}',{2},{3},'{4}','{5}'); COMMIT;"
+            string query = String.Format("INSERT INTO Event VALUES ('{0}','{1}',{2},{3},'{4}','{5}')"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd
                 , eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
@@ -160,9 +164,9 @@ namespace DataLibrary
         }
         public void DeleteEvent(string ID)
         {
-            string query = String.Format("DELETE EVENTID FROM ACCOUNT WHERE EVENTID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE * FROM EVENT WHERE EVENTID = {0}", ID);
+            //string query = String.Format("DELETE EVENTID FROM Account WHERE EVENTID = {0}", ID);
+            //XCTNonQuery(query);
+            string query = String.Format("DELETE FROM Event WHERE EventID = {0}", ID);
             XCTNonQuery(query);
         }
         public void UpdateGuest(List<string> guest)

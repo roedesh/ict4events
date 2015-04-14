@@ -41,6 +41,7 @@ namespace EventManagementSystem
         public void DeleteEvent(string id)
         {
             dataManager.DeleteEvent(id);
+            eventManager.RemoveEvent(Convert.ToInt32(id));
         }
 
         public List<Event> ShowEvents()
