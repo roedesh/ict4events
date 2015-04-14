@@ -141,13 +141,10 @@ namespace DataLibrary
         }
         public void SetEvent(List<string> eventinfo)
         {
-            string query = "SELECT MAX(EVENTID) FROM EVENT";
-            result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
             string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[2]);
             string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[3]);
-            query = String.Format("INSERT INTO EVENT VALUES({0}{1}{2}{3}{4}{5})"
-                , ID, eventinfo[1], dateStart, dateEnd
+            string query = String.Format("INSERT INTO EVENT VALUES({0}{1}{2}{3}{4}{5})"
+                , eventinfo[0], eventinfo[1], dateStart, dateEnd
                 , eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
         }
