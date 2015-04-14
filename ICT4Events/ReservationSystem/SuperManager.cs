@@ -25,10 +25,22 @@ namespace ReservationSystem
         public void GetAccount(int ID)
         {
             List<Dictionary<string, string>> list = dManager.GetGuestAccount(ID);
-            Console.WriteLine(list);
+            Account a;
             foreach (Dictionary<string, string> d in list)
             {
-                Console.WriteLine(d["USERNAME"]);
+                // Account opbouwen met de waardes uit de dictionary
+                a = new Account(
+                    Convert.ToInt32(d["ID"]), 
+                    d["RFID"], 
+                    d["NAME"], 
+                    d["ADDRESS"], 
+                    d["CITY"], 
+                    d["POSTALCODE"], 
+                    Convert.ToDateTime(d["DATEOFBIRTH"]), 
+                    d["EMAIL"], 
+                    d["PHONE"], 
+                    Account.AccountRole.Guest);
+                aManager.AddAccount(a); // Voeg nieuwe gemaakte account toe aan accountmanager
             }
         }
 
