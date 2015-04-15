@@ -66,18 +66,37 @@ namespace DataLibrary
             }
             return result;
         }
+
         public List<Dictionary<string, string>> GetGuestAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-        public List<Dictionary<string, string>> GetGuestAccount(string name)
+
+        public List<Dictionary<string, string>> GetGuestAccount(string username)
         {
-            string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = '{0}'", name);
+            string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.Username = '{0}'", username);
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> GetFreeGuestAccount(int ID)
+        {
+            string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0} AND 
+                                        g.GuestID NOT IN (SELECT gr.GuestID FROM GuestReservation gr WHERE GuestID = g.GuestID)", ID);
+            result = XCTReader(query);
+            return result;
+        }
+
+        public List<Dictionary<string, string>> GetFreeGuestAccount(string username)
+        {
+            string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.Username = {0} AND 
+                                        g.GuestID NOT IN (SELECT gr.GuestID FROM GuestReservation gr WHERE GuestID = g.GuestID)", username);
+            result = XCTReader(query);
+            return result;
+        }
+
         public List<Dictionary<string, string>> GetGuestAccountWithRFID(string RFID)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.RFID = '{0}'", RFID);
@@ -234,12 +253,13 @@ namespace DataLibrary
         {
             string query = "SELECT MAX(RESERVATIONID) FROM Reservation";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[3]);
+            int ID = Convert.ToInt32(result[0]["RESERVATIONID"]) + 1;
+            Console.WriteLine("ID");
+            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[1]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[2]);
             query = String.Format("INSERT INTO Reservation VALUES({0},'{1}',{2},{3},'{4}','{5}')"
-                , ID, reservation[1], dateStart, dateEnd
-                , reservation[4], reservation[5]);
+                , ID, reservation[0], dateStart, dateEnd
+                , reservation[3], reservation[4]);
             XCTNonQuery(query);
         }
         public void SetGuestReservation(string RID, string PID)
@@ -437,9 +457,9 @@ namespace DataLibrary
         }
         public bool IsReserved(string PlaatsNR)
         {
-            string query = String.Format("SELECT * FROM Reservation r,GuestReservation gr WHERE r.ReservationID = gr.ReservationID AND LocationID = '{0}'", PlaatsNR);
+            string query = String.Format("SELECT l.LocationID FROM Location l WHERE l.LocationID NOT IN (SELECT r.LocationID FROM Reservation r) AND l.LocationID = '{0}'", PlaatsNR);
             result = XCTReader(query);
-            return result == null ? true : false;
+            return result.Count != 0 ? true : false;
         }
         public void SetItemRental(List<string> irental)
         {
