@@ -36,14 +36,16 @@
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.gb_MediaBrowser = new System.Windows.Forms.GroupBox();
             this.gb_MediaInfo = new System.Windows.Forms.GroupBox();
-            this.lbl_Title = new System.Windows.Forms.Label();
-            this.btn_Download = new System.Windows.Forms.Button();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_Like = new System.Windows.Forms.Button();
-            this.btn_Flag = new System.Windows.Forms.Button();
-            this.lbl_Comments = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbl_Comments = new System.Windows.Forms.Label();
+            this.btn_Flag = new System.Windows.Forms.Button();
+            this.btn_Like = new System.Windows.Forms.Button();
+            this.lbl_Uploader = new System.Windows.Forms.Label();
+            this.btn_Download = new System.Windows.Forms.Button();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.lbl_UploadDate = new System.Windows.Forms.Label();
+            this.lbl_Likes = new System.Windows.Forms.Label();
             this.cms_FileViewer.SuspendLayout();
             this.gb_MediaBrowser.SuspendLayout();
             this.gb_MediaInfo.SuspendLayout();
@@ -103,11 +105,13 @@
             // 
             // gb_MediaInfo
             // 
+            this.gb_MediaInfo.Controls.Add(this.lbl_Likes);
+            this.gb_MediaInfo.Controls.Add(this.lbl_UploadDate);
             this.gb_MediaInfo.Controls.Add(this.listBox1);
             this.gb_MediaInfo.Controls.Add(this.lbl_Comments);
             this.gb_MediaInfo.Controls.Add(this.btn_Flag);
             this.gb_MediaInfo.Controls.Add(this.btn_Like);
-            this.gb_MediaInfo.Controls.Add(this.label1);
+            this.gb_MediaInfo.Controls.Add(this.lbl_Uploader);
             this.gb_MediaInfo.Controls.Add(this.btn_Download);
             this.gb_MediaInfo.Controls.Add(this.lbl_Title);
             this.gb_MediaInfo.Location = new System.Drawing.Point(342, 12);
@@ -117,14 +121,49 @@
             this.gb_MediaInfo.TabStop = false;
             this.gb_MediaInfo.Text = "Media Info";
             // 
-            // lbl_Title
+            // listBox1
             // 
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Location = new System.Drawing.Point(7, 20);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(30, 13);
-            this.lbl_Title.TabIndex = 0;
-            this.lbl_Title.Text = "Titel:";
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(10, 216);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(472, 199);
+            this.listBox1.TabIndex = 6;
+            // 
+            // lbl_Comments
+            // 
+            this.lbl_Comments.AutoSize = true;
+            this.lbl_Comments.Location = new System.Drawing.Point(13, 199);
+            this.lbl_Comments.Name = "lbl_Comments";
+            this.lbl_Comments.Size = new System.Drawing.Size(52, 13);
+            this.lbl_Comments.TabIndex = 5;
+            this.lbl_Comments.Text = "Reacties:";
+            // 
+            // btn_Flag
+            // 
+            this.btn_Flag.Location = new System.Drawing.Point(312, 143);
+            this.btn_Flag.Name = "btn_Flag";
+            this.btn_Flag.Size = new System.Drawing.Size(42, 23);
+            this.btn_Flag.TabIndex = 4;
+            this.btn_Flag.Text = "Flag";
+            this.btn_Flag.UseVisualStyleBackColor = true;
+            // 
+            // btn_Like
+            // 
+            this.btn_Like.Location = new System.Drawing.Point(264, 143);
+            this.btn_Like.Name = "btn_Like";
+            this.btn_Like.Size = new System.Drawing.Size(42, 23);
+            this.btn_Like.TabIndex = 3;
+            this.btn_Like.Text = "Like";
+            this.btn_Like.UseVisualStyleBackColor = true;
+            // 
+            // lbl_Uploader
+            // 
+            this.lbl_Uploader.AutoSize = true;
+            this.lbl_Uploader.Location = new System.Drawing.Point(13, 53);
+            this.lbl_Uploader.Name = "lbl_Uploader";
+            this.lbl_Uploader.Size = new System.Drawing.Size(56, 13);
+            this.lbl_Uploader.TabIndex = 2;
+            this.lbl_Uploader.Text = "Uploader: ";
             // 
             // btn_Download
             // 
@@ -137,49 +176,32 @@
             this.btn_Download.UseVisualStyleBackColor = true;
             this.btn_Download.Click += new System.EventHandler(this.btn_Download_Click);
             // 
-            // label1
+            // lbl_Title
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Uploader: ";
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Location = new System.Drawing.Point(13, 24);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(30, 13);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "Titel:";
             // 
-            // btn_Like
+            // lbl_UploadDate
             // 
-            this.btn_Like.Location = new System.Drawing.Point(264, 143);
-            this.btn_Like.Name = "btn_Like";
-            this.btn_Like.Size = new System.Drawing.Size(42, 23);
-            this.btn_Like.TabIndex = 3;
-            this.btn_Like.Text = "Like";
-            this.btn_Like.UseVisualStyleBackColor = true;
+            this.lbl_UploadDate.AutoSize = true;
+            this.lbl_UploadDate.Location = new System.Drawing.Point(243, 53);
+            this.lbl_UploadDate.Name = "lbl_UploadDate";
+            this.lbl_UploadDate.Size = new System.Drawing.Size(41, 13);
+            this.lbl_UploadDate.TabIndex = 7;
+            this.lbl_UploadDate.Text = "Datum:";
             // 
-            // btn_Flag
+            // lbl_Likes
             // 
-            this.btn_Flag.Location = new System.Drawing.Point(312, 143);
-            this.btn_Flag.Name = "btn_Flag";
-            this.btn_Flag.Size = new System.Drawing.Size(42, 23);
-            this.btn_Flag.TabIndex = 4;
-            this.btn_Flag.Text = "Flag";
-            this.btn_Flag.UseVisualStyleBackColor = true;
-            // 
-            // lbl_Comments
-            // 
-            this.lbl_Comments.AutoSize = true;
-            this.lbl_Comments.Location = new System.Drawing.Point(13, 199);
-            this.lbl_Comments.Name = "lbl_Comments";
-            this.lbl_Comments.Size = new System.Drawing.Size(52, 13);
-            this.lbl_Comments.TabIndex = 5;
-            this.lbl_Comments.Text = "Reacties:";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(10, 216);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(472, 199);
-            this.listBox1.TabIndex = 6;
+            this.lbl_Likes.AutoSize = true;
+            this.lbl_Likes.Location = new System.Drawing.Point(13, 81);
+            this.lbl_Likes.Name = "lbl_Likes";
+            this.lbl_Likes.Size = new System.Drawing.Size(64, 13);
+            this.lbl_Likes.TabIndex = 8;
+            this.lbl_Likes.Text = "Aantal likes:";
             // 
             // frm_SocialMedia
             // 
@@ -210,11 +232,13 @@
         private System.Windows.Forms.Label lbl_Title;
         private System.Windows.Forms.Button btn_Download;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_Uploader;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label lbl_Comments;
         private System.Windows.Forms.Button btn_Flag;
         private System.Windows.Forms.Button btn_Like;
+        private System.Windows.Forms.Label lbl_Likes;
+        private System.Windows.Forms.Label lbl_UploadDate;
 
     }
 }

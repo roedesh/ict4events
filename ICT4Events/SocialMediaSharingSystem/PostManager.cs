@@ -8,59 +8,40 @@ namespace SocialMediaSharingSystem
 {
     public class PostManager
     {
-        private List<Post> posts;
+        public List<File> Files { get; private set; }
+        public List<Comment> Comments { get; private set; }
 
-        public List<Post> Posts
-        {
-            get { return posts; }
-            set { posts = value; }
-        }
+
 
         public PostManager()
         {
-            posts = new List<Post>();
-
+            Files = new List<File>();
+            Comments = new List<Comment>();
         }
 
-        public bool AddPost(Post post)
+        public bool AddFile(File file)
         {
-            if(posts.Find(p => p.PostID == post.PostID) == null)
+            File exists = Files.Find(f => f.PostID == file.PostID);
+            if (exists != null && file.PostID != 0)
             {
-                posts.Add(post);               
+                return false;
+            }
+            Files.Add(file);
+            return true;
+        }
+
+        public bool RemoveFile(int id)
+        {
+            File file = Files.Find(f => f.PostID == id);
+            if (file != null)
+            {
+                Files.Remove(file);
                 return true;
             }
 
             return false;
         }
 
-        public bool LikePost(int postID, int accountID)
-        {
-            foreach (Post p in posts)
-            {
-                if (p.PostID == postID)
-                {
-                    p.AmountOfLikes++;
-                    return true;
-                }
 
-            }
-            return false;
-        }
-
-        public bool FlagPost(int postID, int accountID)
-        {
-            foreach (Post p in posts)
-            {
-                if (p.PostID == postID)
-                {
-                    p.AmountOfFlags++;
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-
-   
-    
+    }   
 }

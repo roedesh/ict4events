@@ -62,10 +62,11 @@ namespace SocialMediaSharingSystem
 
         #endregion
 
-        public Post(int postID, int uploaderID, string title, int amountOfLikes, int amountOfFlags)
+        public Post(int postID, int uploaderID, DateTime date, string title, int amountOfLikes, int amountOfFlags)
         {
             this.postID = postID;
             this.uploaderID = uploaderID;
+            this.date = date;
             this.title = title;
             this.amountOfLikes = amountOfLikes;
             this.amountOfFlags = amountOfFlags;

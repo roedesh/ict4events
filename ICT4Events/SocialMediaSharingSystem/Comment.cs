@@ -16,8 +16,8 @@ namespace SocialMediaSharingSystem
             set { message = value; }
         }
 
-        public Comment(int postID, int uploaderID, string title, int amountOfLikes, int amountOfFlags, string message)
-            : base(postID, uploaderID, title, amountOfLikes, amountOfFlags)
+        public Comment(int postID, int uploaderID, DateTime date, string title, int amountOfLikes, int amountOfFlags, string message)
+            : base(postID, uploaderID, date, title, amountOfLikes, amountOfFlags)
         {
             this.message = message;
         }

@@ -23,8 +23,8 @@ namespace SocialMediaSharingSystem
             set { categorieID = value; }
         }
 
-        public File(int postID, int uploaderID, string title, int amountOfLikes, int amountOfFlags, string filePath, int categorieID)
-            : base(postID, uploaderID, title, amountOfLikes, amountOfFlags)
+        public File(int postID, int uploaderID, int categorieID, DateTime date, string title, string filePath, int amountOfLikes, int amountOfFlags)
+            : base(postID, uploaderID, date, title, amountOfLikes, amountOfFlags)
         {
             this.filePath = filePath;
             this.categorieID = categorieID;

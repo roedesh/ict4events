@@ -15,29 +15,38 @@ namespace SocialMediaSharingSystem
 {
     public partial class UploadForm : Form
     {
-
-        private int currentAccountID;
+        private int accountID;
         private string sourceFilePath;
         private string destFilePath;
         private string fileName;
-        private Form mainForm;
 
-        DataManager dManager = new DataManager();
+        SuperManager superManager;
 
-        public UploadForm(int accountID, string destFile, Form mainForm)
+        public UploadForm(int accountID, string destFile)
         {
             this.destFilePath = destFile;
-            this.mainForm = mainForm;
-            currentAccountID = accountID;
+            this.accountID = accountID;
+            superManager = new SuperManager();
             InitializeComponent();
         }
 
         private void btn_Upload2_Click(object sender, EventArgs e)
         {
-            System.IO.File.Copy(sourceFilePath, @"C:/users/Jeroen/Desktop/" + destFilePath + '/' + fileName  , true);
+            try
+            {
+                string filePath = frm_SocialMedia.BASEPATH + destFilePath + '/' + fileName;
+                superManager.AddFile(0, accountID, 0, DateTime.Now, tb_Title.Text, filePath, sourceFilePath);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer.");
+            }
+            finally
+            {
+                // refresh main form
+                this.Close();
+            }
 
-            // Send to DB   
-            this.Close();
         }
 
         private void btn_Browse_Click(object sender, EventArgs e)

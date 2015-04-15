@@ -13,6 +13,7 @@ namespace SocialMediaSharingSystem
 {
     public partial class frm_SocialMedia : Form
     {
+        public const string BASEPATH = @"C:/users/Jeroen/Desktop/";
         SuperManager superManager = new SuperManager();
         private File currentFile;
 
@@ -21,7 +22,7 @@ namespace SocialMediaSharingSystem
         {
             InitializeComponent();
 
-            ListDirectory(tv_Directories, @"C:/users/Jeroen/Desktop/Test");
+            ListDirectory(tv_Directories, BASEPATH + "Test");
         }
 
         public void GetDirectoryInfo()
@@ -82,7 +83,7 @@ namespace SocialMediaSharingSystem
         private void uploadFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string destinationPath = tv_Directories.SelectedNode.FullPath;
-            UploadForm uploadForm = new UploadForm(1, destinationPath, this);
+            UploadForm uploadForm = new UploadForm(1, destinationPath);
             var result = uploadForm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -94,8 +95,10 @@ namespace SocialMediaSharingSystem
         {
             string categoryPath = tv_Directories.SelectedNode.FullPath;
             CategoryForm categoryForm = new CategoryForm(categoryPath);
-            categoryForm.ShowDialog();
+            categoryForm.Show();
         }
+
+
 
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
@@ -121,7 +124,9 @@ namespace SocialMediaSharingSystem
         {
             currentFile = superManager.GetFile(sourcePath);
 
-            lbl_Title.Text += (" " + currentFile.Title);
+            lbl_Title.Text = "Title: " + currentFile.Title;
+            lbl_Uploader.Text = "Uploader: " + currentFile.UploaderID;
+
             btn_Download.Enabled = true;
 
 

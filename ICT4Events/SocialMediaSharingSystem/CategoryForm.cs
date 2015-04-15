@@ -22,11 +22,12 @@ namespace SocialMediaSharingSystem
 
         private void btn_Create_Click(object sender, EventArgs e)
         {
-            if (tb_Name.Text != null)
+            if (tb_Name.Text != "")
             {
                 Console.WriteLine(destination + @"\" + tb_Name.Text);
 
                 Directory.CreateDirectory(@"C:/users/Jeroen/Desktop/" + destination + @"\" + tb_Name.Text);
+                this.Close();
             }
             else
             {
