@@ -12,7 +12,7 @@ namespace AccountLibrary
          *  The enum is called AccountRole instead of Role, 
          *  because there would be a name clash with the Role property.
          *       
-         *  In a Form you can call this enum like this: Account.AccountRole.<Role>
+         *  In a Form you can call this enum like this: Employee.AccountRole.<Role>
         */
         public enum AccountRole
         {
@@ -33,9 +33,9 @@ namespace AccountLibrary
             set { role = value; }
         }
         
-        public Employee(int id, string name, string address, string city, string postalCode,
+        public Employee(int id, int eventId, string username, string password, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone, AccountRole role)
-            : base(id, name, address, city, postalCode, dateOfBirth, email, phone)
+            : base(id, eventId, username, password, name, address, city, postalCode, dateOfBirth, email, phone)
         {
             Role = role;
         }

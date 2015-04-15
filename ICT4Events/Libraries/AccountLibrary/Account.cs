@@ -9,7 +9,9 @@ namespace AccountLibrary
     public abstract class Account
     {
         private int id;
-        private string rfid;
+        private int eventId;
+        private string username;
+        private string password;
         private string name;
         private string address;
         private string city;
@@ -17,6 +19,25 @@ namespace AccountLibrary
         private DateTime dateOfBirth;
         private string email;
         private string phone;
+
+        
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+        
+        public int EventID {
+            get { return eventId; }
+            set { eventId = value; }
+        }
 
         public string Phone
         {
@@ -66,11 +87,14 @@ namespace AccountLibrary
             set { id = value; }
         }
 
-        // Main constructor for full accounts with ID, RFID and Role
-        public Account(int id, string name, string address, string city, string postalCode,
+        // Main constructor for full accounts
+        public Account(int id, int eventId, string username, string password, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone)
         {
             ID = id;
+            EventID = eventId;
+            Username = username;
+            Password = password;
             Name = name;
             Address = address;
             City = city;
@@ -95,6 +119,11 @@ namespace AccountLibrary
         }
 
         public abstract override string ToString();
+
+        public string DateToString()
+        {
+            return DateOfBirth.ToShortDateString();
+        }
 
         
     }

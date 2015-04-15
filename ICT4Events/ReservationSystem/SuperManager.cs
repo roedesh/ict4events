@@ -37,6 +37,9 @@ namespace ReservationSystem
             {
                 g = new Guest(
                     Convert.ToInt32(d["ACCOUNTID"]),
+                    Convert.ToInt32(d["EVENTID"]),
+                    d["USERNAME"],
+                    d["PASSWORD"],
                     d["FULLNAME"],
                     d["ADRESS"],
                     d["CITY"],
@@ -60,6 +63,9 @@ namespace ReservationSystem
             {
                 g = new Guest(
                     Convert.ToInt32(d["ACCOUNTID"]),
+                    Convert.ToInt32(d["EVENTID"]),
+                    d["USERNAME"],
+                    d["PASSWORD"],
                     d["FULLNAME"],
                     d["ADRESS"],
                     d["CITY"],

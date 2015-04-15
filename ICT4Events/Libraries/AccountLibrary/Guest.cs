@@ -23,9 +23,9 @@ namespace AccountLibrary
             set { rfid = value; }
         }
         
-        public Guest(int id, string name, string address, string city, string postalCode,
+        public Guest(int id, int eventId, string username, string password, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone, string rfid, string isPresent)
-            : base(id, name, address, city, postalCode, dateOfBirth, email, phone)
+            : base(id, eventId, username, password, name, address, city, postalCode, dateOfBirth, email, phone)
         {
             RFID = rfid;
             IsPresent = isPresent;
