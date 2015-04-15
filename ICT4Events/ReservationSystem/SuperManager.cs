@@ -86,6 +86,11 @@ namespace ReservationSystem
             aManager.AddAccount(a);
         }
 
+        public bool SetReservation()
+        {
+            dManager.SetReservation();
+            return true;
+        }
   
     }
 }

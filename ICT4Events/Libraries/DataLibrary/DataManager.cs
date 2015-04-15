@@ -249,18 +249,32 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-        public void SetReservation(List<string> reservation)
+        public void SetReservation()
         {
-            string query = "SELECT MAX(RESERVATIONID) FROM Reservation";
+            string query = "SELECT ReservationID FROM Reservation WHERE ReservationID = (SELECT MAX(ReservationID) FROM Reservation)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result[0]["RESERVATIONID"]) + 1;
-            Console.WriteLine("ID");
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                string number = result[0]["RESERVATIONID"];
+                ID = Convert.ToInt32(number) + 1;
+                Console.WriteLine(number);
+            }
+            
+            Console.WriteLine(ID);
+            /*
             string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[1]);
             string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[2]);
             query = String.Format("INSERT INTO Reservation VALUES({0},'{1}',{2},{3},'{4}','{5}')"
                 , ID, reservation[0], dateStart, dateEnd
                 , reservation[3], reservation[4]);
             XCTNonQuery(query);
+            */ 
+            
         }
         public void SetGuestReservation(string RID, string PID)
         {

@@ -79,7 +79,12 @@ namespace ReservationSystem
                 DialogResult result = MessageBox.Show("Weet u zeker dat alle gegevens kloppen?", "Reservering plaatsen", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    
+                    List<string> list = new List<string>();
+                    s.SetReservation();
+
+
+
+
                 }
             }
         }
