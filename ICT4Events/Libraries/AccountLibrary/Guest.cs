@@ -32,9 +32,9 @@ namespace AccountLibrary
         }
 
 
-        public Guest(string name, string address, string city, string postalCode,
+        public Guest(int eventId, string username, string password, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone)
-            : base(name, address, city, postalCode, dateOfBirth, email, phone)
+            : base(eventId, username, password, name, address, city, postalCode, dateOfBirth, email, phone)
         {
         }
 

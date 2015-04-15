@@ -60,11 +60,11 @@
             this.lblAccountEntry = new System.Windows.Forms.Label();
             this.txtAccountEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtEventID = new System.Windows.Forms.TextBox();
             this.lblEventID = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassWord = new System.Windows.Forms.Label();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
@@ -139,9 +139,9 @@
             // 
             // gboxAdd
             // 
-            this.gboxAdd.Controls.Add(this.textBox3);
+            this.gboxAdd.Controls.Add(this.txtPassword);
             this.gboxAdd.Controls.Add(this.lblPassWord);
-            this.gboxAdd.Controls.Add(this.textBox1);
+            this.gboxAdd.Controls.Add(this.txtUsername);
             this.gboxAdd.Controls.Add(this.lblUsername);
             this.gboxAdd.Controls.Add(this.txtEventID);
             this.gboxAdd.Controls.Add(this.lblEventID);
@@ -250,7 +250,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(3, 343);
+            this.lblEmail.Location = new System.Drawing.Point(4, 343);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 7;
@@ -282,7 +282,7 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(3, 292);
+            this.lblCity.Location = new System.Drawing.Point(4, 292);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(67, 13);
             this.lblCity.TabIndex = 3;
@@ -389,21 +389,21 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
             // 
-            // textBox1
+            // txtUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 120);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 20);
-            this.textBox1.TabIndex = 18;
+            this.txtUsername.Location = new System.Drawing.Point(6, 117);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(217, 20);
+            this.txtUsername.TabIndex = 18;
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(7, 104);
+            this.lblUsername.Location = new System.Drawing.Point(4, 101);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(34, 13);
+            this.lblUsername.Size = new System.Drawing.Size(58, 13);
             this.lblUsername.TabIndex = 19;
-            this.lblUsername.Text = "Adres";
+            this.lblUsername.Text = "Username:";
             // 
             // txtEventID
             // 
@@ -417,25 +417,25 @@
             this.lblEventID.AutoSize = true;
             this.lblEventID.Location = new System.Drawing.Point(3, 56);
             this.lblEventID.Name = "lblEventID";
-            this.lblEventID.Size = new System.Drawing.Size(38, 13);
+            this.lblEventID.Size = new System.Drawing.Size(49, 13);
             this.lblEventID.TabIndex = 17;
-            this.lblEventID.Text = "Naam:";
+            this.lblEventID.Text = "Event ID";
             // 
-            // textBox3
+            // txtPassword
             // 
-            this.textBox3.Location = new System.Drawing.Point(7, 166);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(217, 20);
-            this.textBox3.TabIndex = 20;
+            this.txtPassword.Location = new System.Drawing.Point(6, 160);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(217, 20);
+            this.txtPassword.TabIndex = 20;
             // 
             // lblPassWord
             // 
             this.lblPassWord.AutoSize = true;
-            this.lblPassWord.Location = new System.Drawing.Point(6, 150);
+            this.lblPassWord.Location = new System.Drawing.Point(5, 144);
             this.lblPassWord.Name = "lblPassWord";
-            this.lblPassWord.Size = new System.Drawing.Size(34, 13);
+            this.lblPassWord.Size = new System.Drawing.Size(56, 13);
             this.lblPassWord.TabIndex = 21;
-            this.lblPassWord.Text = "Adres";
+            this.lblPassWord.Text = "Password:";
             // 
             // ExtraPersons
             // 
@@ -495,9 +495,9 @@
         private System.Windows.Forms.Button btAddExistingAccount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btMakeMainBooker;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassWord;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtEventID;
         private System.Windows.Forms.Label lblEventID;
