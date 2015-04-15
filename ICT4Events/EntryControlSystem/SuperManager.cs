@@ -15,7 +15,7 @@ namespace EntryControlSystem
         private DataManager dataManager;
         
 
-        public void SuperMager()
+        public SuperManager()
         {
             accountManager = new AccountManager();
             dataManager = new DataManager();
