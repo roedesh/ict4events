@@ -120,11 +120,5 @@ namespace AccountLibrary
 
         public abstract override string ToString();
 
-        public string DateToString()
-        {
-            return DateOfBirth.ToShortDateString();
-        }
-
-        
     }
 }
