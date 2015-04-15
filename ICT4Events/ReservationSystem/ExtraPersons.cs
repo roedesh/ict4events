@@ -23,6 +23,7 @@ namespace ReservationSystem
             if (tempAccountManager != null)
                 s.tempAccountManager = tempAccountManager;
             RefreshList();
+            
         }
 
         private void btAddPerson_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace ReservationSystem
                 if (!IsDigitsOnly(txtEventID.Text))
                 {
                     Guest newAccount = new Guest(
-                        txtEventID.Text,
+                        Convert.ToInt32(txtEventID.Text),
                         txtUsername.Text,
                         txtPassword.Text,
                         txtName.Text,
@@ -65,7 +66,7 @@ namespace ReservationSystem
                 if (!IsDigitsOnly(txtEventID.Text))
                 {
                     Guest newAccount = new Guest(
-                        txtEventID.Text,
+                        Convert.ToInt32(txtEventID.Text),
                         txtUsername.Text,
                         txtPassword.Text,
                         txtName.Text,

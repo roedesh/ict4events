@@ -31,7 +31,7 @@ namespace ReservationSystem
 
         public Guest GetAccount(int ID)
         {
-            List<Dictionary<string, string>> list = dManager.GetGuestAccount(ID);
+            List<Dictionary<string, string>> list = dManager.GetFreeGuestAccount(ID);
             Guest g = null;
             foreach (Dictionary<string, string> d in list)
             {
@@ -57,7 +57,7 @@ namespace ReservationSystem
 
         public Guest GetAccount(string username)
         {
-            List<Dictionary<string, string>> list = dManager.GetGuestAccount(username);
+            List<Dictionary<string, string>> list = dManager.GetFreeGuestAccount(username);
             Guest g = null;
             foreach (Dictionary<string, string> d in list)
             {
@@ -85,5 +85,7 @@ namespace ReservationSystem
         {
             aManager.AddAccount(a);
         }
+
+  
     }
 }

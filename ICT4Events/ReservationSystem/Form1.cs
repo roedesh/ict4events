@@ -15,6 +15,7 @@ namespace ReservationSystem
     public partial class Form1 : Form
     {
         SuperManager s = new SuperManager();
+        bool isValidPlace = false;
 
         public Form1()
         {
@@ -40,13 +41,46 @@ namespace ReservationSystem
         {
             if (s.CheckPlace(txtCheckPlace.Text))
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Red;
+                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
+                txtPlaceStatus.ForeColor = Color.Green;
+                isValidPlace = true;
             }
             else
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Green;
+                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                txtPlaceStatus.ForeColor = Color.Red;
+                isValidPlace = false;
+            }
+        }
+
+        private void btReset_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Weet u zeker dat u alles wilt resetten?", "Bevestiging", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                txtCheckPlace.Clear();
+                txtAmountPersons.Text = "0";
+                s.mainBooker = null;
+                s.tempAccountManager.Accounts.Clear();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (isValidPlace == false)
+            {
+                MessageBox.Show("Ongeldig plaatsnummer!");
+            }
+            else if (dtpStartDate.Value.Date == dtpEndDate.Value.Date){
+                MessageBox.Show("Start en einddatum mag niet hetzelfde zijn!");
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Weet u zeker dat alle gegevens kloppen?", "Reservering plaatsen", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    
+                }
             }
         }
 
