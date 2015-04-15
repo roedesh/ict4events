@@ -31,6 +31,7 @@ namespace SocialMediaSharingSystem
 
         }
 
+        public 
 
         public bool ListDirectoryContent(DirectoryInfo root)
         {

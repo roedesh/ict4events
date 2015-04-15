@@ -20,12 +20,14 @@ namespace SocialMediaSharingSystem
         private string sourceFilePath;
         private string destFilePath;
         private string fileName;
+        private Form mainForm;
 
         DataManager dManager = new DataManager();
 
-        public UploadForm(int accountID, string destFile)
+        public UploadForm(int accountID, string destFile, Form mainForm)
         {
             this.destFilePath = destFile;
+            this.mainForm = mainForm;
             currentAccountID = accountID;
             InitializeComponent();
         }
@@ -35,7 +37,6 @@ namespace SocialMediaSharingSystem
             System.IO.File.Copy(sourceFilePath, @"C:/users/Jeroen/Desktop/" + destFilePath + '/' + fileName  , true);
 
             // Send to DB   
-            
             this.Close();
         }
 

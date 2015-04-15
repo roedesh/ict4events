@@ -82,7 +82,7 @@ namespace SocialMediaSharingSystem
         private void uploadFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string destinationPath = tv_Directories.SelectedNode.FullPath;
-            UploadForm uploadForm = new UploadForm(1, destinationPath);
+            UploadForm uploadForm = new UploadForm(1, destinationPath, this);
             var result = uploadForm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -132,8 +132,12 @@ namespace SocialMediaSharingSystem
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
 
-
             }
+        }
+
+        public void RefreshForm()
+        {
+            this.Refresh();
         }
     }
 }
