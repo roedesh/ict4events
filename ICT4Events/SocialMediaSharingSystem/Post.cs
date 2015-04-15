@@ -29,7 +29,7 @@ namespace SocialMediaSharingSystem
             set { uploaderID = value; }
         }
 
-        private string Title
+        public string Title
         {
             get { return title;}
             set { title = value;}
