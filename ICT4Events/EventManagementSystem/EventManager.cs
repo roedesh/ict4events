@@ -30,12 +30,19 @@ namespace EventManagementSystem
             return true;
         }
 
-        /*
-        public bool RemoveEvent(string id)
+        
+        public bool RemoveEvent(int id)
         {
-            //remove event
-            return true;
-        }*/
+            foreach (Event e in evnt)
+            {
+                if(e.Id == id)
+                {
+                    evnt.Remove(e);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public bool EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {

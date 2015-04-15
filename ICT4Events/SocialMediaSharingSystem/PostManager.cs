@@ -8,7 +8,7 @@ namespace SocialMediaSharingSystem
 {
     public class PostManager
     {
-        private List<Post> posts = new List<Post>();
+        private List<Post> posts;
 
         public List<Post> Posts
         {
@@ -18,7 +18,19 @@ namespace SocialMediaSharingSystem
 
         public PostManager()
         {
+            posts = new List<Post>();
 
+        }
+
+        public bool AddPost(Post post)
+        {
+            if(posts.Find(p => p.PostID == post.PostID) == null)
+            {
+                posts.Add(post);               
+                return true;
+            }
+
+            return false;
         }
 
         public bool LikePost(int postID, int accountID)

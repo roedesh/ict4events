@@ -20,10 +20,14 @@ namespace DataLibrary
         {
             connect = new DatabaseConnection();
             connect.Connect();
-            OracleCommand cmd = new OracleCommand(query);
+            OracleCommand cmd = new OracleCommand(query, connect.Con);
             try
             {
                 cmd.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                Console.WriteLine("Exception Source: " + ex);
             }
             finally
             {
@@ -94,15 +98,12 @@ namespace DataLibrary
         }
         public void SetGuestAccount(List<string> account, List<string> guest)
         {
-            string query = "SELECT MAX(ACCOUNTID) FROM ACCOUNT";
-            result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
-            query = String.Format("INSERT INTO ACCOUNT VALUES({0}{1}{2}{3}{4}{5}{6}{7}{8}{9})"
-                , ID, account[1], account[2], account[3]
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
+            string query = String.Format("INSERT INTO ACCOUNT VALUES({0},{1},'{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
+                , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
-                , date, account[9]);
-            query = String.Format("INSERT INTO GUEST VALUES({0}{1}{2}{3})"
+                , date, account[9],account[10]);
+            query = String.Format("INSERT INTO GUEST VALUES({0},{1},'{2}','{3}')"
                 , guest[0], guest[1], guest[2], guest[3]);
             XCTNonQuery(query);
         }
@@ -123,7 +124,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllGuests()
         {
-            string query = "SELECT * FROM GUEST";
+            string query = "SELECT * FROM Guest g, Account a WHERE a.AccountID = g.AccountID ";
             result = XCTReader(query);
             return result;
         }
@@ -147,9 +148,9 @@ namespace DataLibrary
         }
         public void SetEvent(List<string> eventinfo)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[3]);
-            string query = String.Format("INSERT INTO EVENT VALUES({0}{1}{2}{3}{4}{5})"
+            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
+            string query = String.Format("INSERT INTO Event VALUES ('{0}','{1}',{2},{3},'{4}','{5}')"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd
                 , eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
@@ -166,9 +167,9 @@ namespace DataLibrary
         }
         public void DeleteEvent(string ID)
         {
-            string query = String.Format("DELETE EVENTID FROM ACCOUNT WHERE EVENTID = {0}", ID);
+            string query = String.Format("DELETE FROM Account WHERE EVENTID = {0}", ID);
             XCTNonQuery(query);
-            query = String.Format("DELETE * FROM EVENT WHERE EVENTID = {0}", ID);
+            query = String.Format("DELETE FROM Event WHERE EventID = {0}", ID);
             XCTNonQuery(query);
         }
         public void UpdateGuest(List<string> guest)
@@ -185,8 +186,8 @@ namespace DataLibrary
         }
         public void UpdateEvent(List<string> eventinfo)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", eventinfo[3]);
+            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
             string query = String.Format("UPDATE EVENT SET EVENTID = {0}, LOCATION = {1}, STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = {4}, ADMISSIONFEE = {5};"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd, eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);

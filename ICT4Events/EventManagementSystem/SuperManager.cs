@@ -33,14 +33,23 @@ namespace EventManagementSystem
             dataManager.SetEvent(list);
         }
 
-        public void EditEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public void EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            
+            List<string> list = new List<string>();
+            list.Add(Convert.ToString(id));
+            list.Add(location);
+            list.Add(startdate);
+            list.Add(enddate);
+            list.Add(description);
+            list.Add(Convert.ToString(admissionFee));
+            dataManager.UpdateEvent(list);
+            eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
         }
 
         public void DeleteEvent(string id)
         {
             dataManager.DeleteEvent(id);
+            eventManager.RemoveEvent(Convert.ToInt32(id));
         }
 
         public List<Event> ShowEvents()
@@ -55,9 +64,28 @@ namespace EventManagementSystem
 
         }
 
-        public void AddAccount(string name, string adress, string city, string postalCode)
+        public void AddAccount(int accountID, int eventID, string username, string password, string fullname,
+            string adress, string city, string postalcode, string dateofbirth, string email, int phonenumber,
+            int guestID, string RFID, string IsPresent)
         {
-            
+            List<string> listAccount = new List<string>();
+            listAccount.Add(Convert.ToString(accountID));
+            listAccount.Add(Convert.ToString(eventID));
+            listAccount.Add(username);
+            listAccount.Add(password);
+            listAccount.Add(fullname);
+            listAccount.Add(adress);
+            listAccount.Add(city);
+            listAccount.Add(postalcode);
+            listAccount.Add(dateofbirth);
+            listAccount.Add(email);
+            listAccount.Add(Convert.ToString(phonenumber));
+            List<string> listGuest = new List<string>();
+            listGuest.Add(Convert.ToString(guestID));
+            listGuest.Add(Convert.ToString(accountID));
+            listGuest.Add(RFID);
+            listGuest.Add(IsPresent);
+            dataManager.SetGuestAccount(listAccount, listGuest);
         }
 
         public void EditAccount()
@@ -65,19 +93,16 @@ namespace EventManagementSystem
             
         }
 
-        public List<string> ShowAccounts() // string list return ipv void
+        public List<Account> ShowAccounts() // string list return ipv void
         {
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
-            List<string> showAll = new List<string>();
             foreach (Dictionary<string, string> d in list)
             {
-                showAll.Add(d["GUESTID"]);
-                showAll.Add(d["ACCOUNTID"]);
-                showAll.Add(d["RFID"]);
-                showAll.Add(d["ISPRESENT"]);
+                //Account a = new Account()
+                //accountManager.AddAccount();
 
             }
-            return showAll;
+            return accountManager.Accounts;
         }
     }
 }

@@ -14,18 +14,7 @@ namespace AccountLibrary
             Accounts = new List<Account>();
         }
 
-        public int CheckRole(int id)
-        {
-            // Look for account with the given ID
-            Account account = Accounts.Find(a => a.ID == id);
-            if (account != null)
-            {
-                // Account found, return role as int
-                return (int)account.Role;
-            }
-            // No account found, return -1
-            return -1;
-        }
+        
 
         public bool AddAccount(Account account)
         {
@@ -53,6 +42,12 @@ namespace AccountLibrary
             }
             // No account found, return false
             return false;
+        }
+
+        public bool RemoveAccount(Account a)
+        {
+            Accounts.Remove(a);
+            return true;
         }
     }
 }

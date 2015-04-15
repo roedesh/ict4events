@@ -38,7 +38,7 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnMedewerkersAdd = new System.Windows.Forms.Button();
             this.btnMedewerkersShow = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbMedewerkersRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -83,42 +83,14 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.cbPersoonRole = new System.Windows.Forms.ComboBox();
-            this.btnPersoonShowAll = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.tbPersoonAdress = new System.Windows.Forms.TextBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.tbPersoonBirthDate = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbPersoonAmount = new System.Windows.Forms.TextBox();
-            this.tbPersoonName = new System.Windows.Forms.TextBox();
-            this.btnPersoonDelete = new System.Windows.Forms.Button();
-            this.btnPersoonEdit = new System.Windows.Forms.Button();
-            this.btnPersoonAdd = new System.Windows.Forms.Button();
+            this.btnMedewerkersShowAllAcc = new System.Windows.Forms.Button();
+            this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -182,6 +154,7 @@
             this.btnPlaatsEdit.TabIndex = 3;
             this.btnPlaatsEdit.Text = "Pas aan";
             this.btnPlaatsEdit.UseVisualStyleBackColor = true;
+            this.btnPlaatsEdit.Click += new System.EventHandler(this.btnPlaatsEdit_Click);
             // 
             // groupBox1
             // 
@@ -204,6 +177,7 @@
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(714, 338);
             this.dataGridView.TabIndex = 5;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // btnMedewerkersAdd
             // 
@@ -225,21 +199,22 @@
             this.btnMedewerkersShow.Text = "Toon alle medewerkers";
             this.btnMedewerkersShow.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(9, 10);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(438, 356);
-            this.tabControl1.TabIndex = 9;
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Location = new System.Drawing.Point(9, 10);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(438, 356);
+            this.tabControl.TabIndex = 20;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnMedewerkersShowAllGuest);
+            this.tabPage1.Controls.Add(this.btnMedewerkersShowAllAcc);
             this.tabPage1.Controls.Add(this.cbMedewerkersRole);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label7);
@@ -657,7 +632,7 @@
             this.btnEventsEdit.TabIndex = 8;
             this.btnEventsEdit.Text = "Pas aan";
             this.btnEventsEdit.UseVisualStyleBackColor = true;
-            this.btnEventsEdit.Click += new System.EventHandler(this.btnEventsAdd_Click);
+            this.btnEventsEdit.Click += new System.EventHandler(this.btnEventsEdit_Click);
             // 
             // btnEventsAdd
             // 
@@ -681,299 +656,24 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // tabPage3
+            // btnMedewerkersShowAllAcc
             // 
-            this.tabPage3.Controls.Add(this.cbPersoonRole);
-            this.tabPage3.Controls.Add(this.btnPersoonShowAll);
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.label24);
-            this.tabPage3.Controls.Add(this.label27);
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.label34);
-            this.tabPage3.Controls.Add(this.label33);
-            this.tabPage3.Controls.Add(this.label32);
-            this.tabPage3.Controls.Add(this.label25);
-            this.tabPage3.Controls.Add(this.label31);
-            this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.label29);
-            this.tabPage3.Controls.Add(this.textBox5);
-            this.tabPage3.Controls.Add(this.label30);
-            this.tabPage3.Controls.Add(this.textBox23);
-            this.tabPage3.Controls.Add(this.tbPersoonAdress);
-            this.tabPage3.Controls.Add(this.textBox22);
-            this.tabPage3.Controls.Add(this.textBox21);
-            this.tabPage3.Controls.Add(this.textBox10);
-            this.tabPage3.Controls.Add(this.textBox9);
-            this.tabPage3.Controls.Add(this.tbPersoonBirthDate);
-            this.tabPage3.Controls.Add(this.textBox1);
-            this.tabPage3.Controls.Add(this.tbPersoonAmount);
-            this.tabPage3.Controls.Add(this.tbPersoonName);
-            this.tabPage3.Controls.Add(this.btnPersoonDelete);
-            this.tabPage3.Controls.Add(this.btnPersoonEdit);
-            this.tabPage3.Controls.Add(this.btnPersoonAdd);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(430, 330);
-            this.tabPage3.TabIndex = 7;
-            this.tabPage3.Text = "Persoon";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllAcc.Location = new System.Drawing.Point(312, 98);
+            this.btnMedewerkersShowAllAcc.Name = "btnMedewerkersShowAllAcc";
+            this.btnMedewerkersShowAllAcc.Size = new System.Drawing.Size(109, 32);
+            this.btnMedewerkersShowAllAcc.TabIndex = 60;
+            this.btnMedewerkersShowAllAcc.Text = "Toon alle accounts";
+            this.btnMedewerkersShowAllAcc.UseVisualStyleBackColor = true;
             // 
-            // cbPersoonRole
+            // btnMedewerkersShowAllGuest
             // 
-            this.cbPersoonRole.FormattingEnabled = true;
-            this.cbPersoonRole.Location = new System.Drawing.Point(95, 55);
-            this.cbPersoonRole.Name = "cbPersoonRole";
-            this.cbPersoonRole.Size = new System.Drawing.Size(204, 21);
-            this.cbPersoonRole.TabIndex = 3;
-            // 
-            // btnPersoonShowAll
-            // 
-            this.btnPersoonShowAll.Location = new System.Drawing.Point(315, 170);
-            this.btnPersoonShowAll.Name = "btnPersoonShowAll";
-            this.btnPersoonShowAll.Size = new System.Drawing.Size(101, 36);
-            this.btnPersoonShowAll.TabIndex = 13;
-            this.btnPersoonShowAll.Text = "Toon alle personen";
-            this.btnPersoonShowAll.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 58);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "Rol:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(8, 34);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 13);
-            this.label24.TabIndex = 35;
-            this.label24.Text = "Wachtwoord:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(8, 11);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(65, 13);
-            this.label27.TabIndex = 34;
-            this.label27.Text = "Login naam:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 297);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 33;
-            this.label5.Text = "Account ID:";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(8, 269);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(86, 13);
-            this.label34.TabIndex = 33;
-            this.label34.Text = "Reserverings ID:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(8, 228);
-            this.label33.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(52, 13);
-            this.label33.TabIndex = 32;
-            this.label33.Text = "Telefoon:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(8, 204);
-            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(64, 13);
-            this.label32.TabIndex = 31;
-            this.label32.Text = "Email adres:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(8, 180);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(86, 13);
-            this.label25.TabIndex = 30;
-            this.label25.Text = "Geboorte datum:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(8, 156);
-            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(55, 13);
-            this.label31.TabIndex = 29;
-            this.label31.Text = "Postcode:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(8, 132);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(32, 13);
-            this.label28.TabIndex = 28;
-            this.label28.Text = "Stad:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(8, 109);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(37, 13);
-            this.label29.TabIndex = 27;
-            this.label29.Text = "Adres:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(95, 295);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(204, 20);
-            this.textBox5.TabIndex = 12;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(7, 85);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(38, 13);
-            this.label30.TabIndex = 26;
-            this.label30.Text = "Naam:";
-            // 
-            // textBox23
-            // 
-            this.textBox23.Location = new System.Drawing.Point(95, 267);
-            this.textBox23.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(204, 20);
-            this.textBox23.TabIndex = 11;
-            // 
-            // tbPersoonAdress
-            // 
-            this.tbPersoonAdress.Location = new System.Drawing.Point(95, 106);
-            this.tbPersoonAdress.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPersoonAdress.Name = "tbPersoonAdress";
-            this.tbPersoonAdress.Size = new System.Drawing.Size(204, 20);
-            this.tbPersoonAdress.TabIndex = 5;
-            // 
-            // textBox22
-            // 
-            this.textBox22.Location = new System.Drawing.Point(95, 226);
-            this.textBox22.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(204, 20);
-            this.textBox22.TabIndex = 10;
-            // 
-            // textBox21
-            // 
-            this.textBox21.Location = new System.Drawing.Point(95, 202);
-            this.textBox21.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(204, 20);
-            this.textBox21.TabIndex = 9;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(95, 178);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(204, 20);
-            this.textBox10.TabIndex = 8;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(95, 154);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(204, 20);
-            this.textBox9.TabIndex = 7;
-            // 
-            // tbPersoonBirthDate
-            // 
-            this.tbPersoonBirthDate.Location = new System.Drawing.Point(95, 130);
-            this.tbPersoonBirthDate.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPersoonBirthDate.Name = "tbPersoonBirthDate";
-            this.tbPersoonBirthDate.Size = new System.Drawing.Size(204, 20);
-            this.tbPersoonBirthDate.TabIndex = 6;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(95, 31);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 20);
-            this.textBox1.TabIndex = 2;
-            // 
-            // tbPersoonAmount
-            // 
-            this.tbPersoonAmount.Location = new System.Drawing.Point(95, 8);
-            this.tbPersoonAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPersoonAmount.Name = "tbPersoonAmount";
-            this.tbPersoonAmount.Size = new System.Drawing.Size(204, 20);
-            this.tbPersoonAmount.TabIndex = 1;
-            // 
-            // tbPersoonName
-            // 
-            this.tbPersoonName.Location = new System.Drawing.Point(95, 82);
-            this.tbPersoonName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPersoonName.Name = "tbPersoonName";
-            this.tbPersoonName.Size = new System.Drawing.Size(204, 20);
-            this.tbPersoonName.TabIndex = 4;
-            // 
-            // btnPersoonDelete
-            // 
-            this.btnPersoonDelete.Location = new System.Drawing.Point(316, 282);
-            this.btnPersoonDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersoonDelete.Name = "btnPersoonDelete";
-            this.btnPersoonDelete.Size = new System.Drawing.Size(101, 33);
-            this.btnPersoonDelete.TabIndex = 16;
-            this.btnPersoonDelete.Text = "Verwijder";
-            this.btnPersoonDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnPersoonEdit
-            // 
-            this.btnPersoonEdit.Location = new System.Drawing.Point(315, 210);
-            this.btnPersoonEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersoonEdit.Name = "btnPersoonEdit";
-            this.btnPersoonEdit.Size = new System.Drawing.Size(101, 33);
-            this.btnPersoonEdit.TabIndex = 14;
-            this.btnPersoonEdit.Text = "Pas aan";
-            this.btnPersoonEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnPersoonAdd
-            // 
-            this.btnPersoonAdd.Location = new System.Drawing.Point(316, 245);
-            this.btnPersoonAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPersoonAdd.Name = "btnPersoonAdd";
-            this.btnPersoonAdd.Size = new System.Drawing.Size(101, 33);
-            this.btnPersoonAdd.TabIndex = 15;
-            this.btnPersoonAdd.Text = "Voeg toe";
-            this.btnPersoonAdd.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllGuest.Location = new System.Drawing.Point(312, 136);
+            this.btnMedewerkersShowAllGuest.Name = "btnMedewerkersShowAllGuest";
+            this.btnMedewerkersShowAllGuest.Size = new System.Drawing.Size(109, 32);
+            this.btnMedewerkersShowAllGuest.TabIndex = 61;
+            this.btnMedewerkersShowAllGuest.Text = "Toon alle gasten";
+            this.btnMedewerkersShowAllGuest.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllGuest.Click += new System.EventHandler(this.btnMedewerkersShowAllGuest_Click);
             // 
             // Form1
             // 
@@ -981,20 +681,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 381);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.Text = "Event Management System";
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1011,12 +709,11 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnMedewerkersAdd;
         private System.Windows.Forms.Button btnMedewerkersShow;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnEventsAdd;
         private System.Windows.Forms.Button btnEventsShow;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox tbEventBeschrijving;
         private System.Windows.Forms.TextBox tbEventPrijs;
         private System.Windows.Forms.Label label23;
@@ -1033,34 +730,6 @@
         private System.Windows.Forms.Button btnMedewerkersEdit;
         private System.Windows.Forms.Button btnEventsDelete;
         private System.Windows.Forms.Button btnEventsEdit;
-        private System.Windows.Forms.Button btnPersoonShowAll;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox tbPersoonAdress;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox tbPersoonBirthDate;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox tbPersoonAmount;
-        private System.Windows.Forms.TextBox tbPersoonName;
-        private System.Windows.Forms.Button btnPersoonDelete;
-        private System.Windows.Forms.Button btnPersoonEdit;
-        private System.Windows.Forms.Button btnPersoonAdd;
-        private System.Windows.Forms.ComboBox cbPersoonRole;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbMedewerkersRole;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
@@ -1085,6 +754,8 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Button btnMedewerkersShowAllGuest;
+        private System.Windows.Forms.Button btnMedewerkersShowAllAcc;
     }
 }
 

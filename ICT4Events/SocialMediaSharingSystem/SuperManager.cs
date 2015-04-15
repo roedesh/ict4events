@@ -5,25 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using AccountLibrary;
 using System.IO;
+using DataLibrary;
 
 
 namespace SocialMediaSharingSystem
 {
     public class SuperManager
     {
-        Account a = new Account();
 
+        PostManager pManager = new PostManager();
+        AccountManager aManager = new AccountManager();
+        DataManager dManager = new DataManager();
 
+        private List<Object> infos = new List<Object>();
 
-        //  private List<Object> infos = new List<Object>();
-
-        //  public List<Object> Infos
-        // {
-        //     get { return infos; }
-        //      set { infos = value; }
-        //  }
-
-        PostManager postmanager = new PostManager();
+        public List<Object> Infos
+        {
+            get { return infos; }
+            set { infos = value; }
+        }
 
 
         public SuperManager()
@@ -31,10 +31,9 @@ namespace SocialMediaSharingSystem
 
         }
 
-        public List<object> ListDirectoryContent(DirectoryInfo root)
-        {
-            List<object> infos = new List<object>();
 
+        public bool ListDirectoryContent(DirectoryInfo root)
+        {
             FileInfo[] files = null;
             DirectoryInfo[] subDirs = null;
 
@@ -42,9 +41,9 @@ namespace SocialMediaSharingSystem
             {
                 files = root.GetFiles("*.*");
             }
-            catch (DirectoryNotFoundException e)
+            catch (DirectoryNotFoundException)
             {
-                //MessageBox.Show(e.Message);
+                return false;
             }
 
             if (files != null)
@@ -52,6 +51,7 @@ namespace SocialMediaSharingSystem
                 foreach (FileInfo f in files)
                 {
                     infos.Add(f);
+                    //pManager.AddPost()
                 }
             }
 
@@ -62,6 +62,23 @@ namespace SocialMediaSharingSystem
                 infos.Add(d);
             }
 
+            return true;
+        }
+
+        public bool UploadFile(File file)
+        {
+            return true;
+        }
+
+        public void CopyFile(string sourceFile, string destFile)
+        {
+            System.IO.File.Copy(sourceFile, destFile, true);
+
+        }
+
+        public File GetFile(string filePath)
+        {
+            return new File(1, 1, "Test title", 12, 14, "path", 2);
         }
     }
 
