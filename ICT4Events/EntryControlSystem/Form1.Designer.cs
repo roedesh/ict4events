@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lbInfo = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnZoekPersoon = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pbBetaalstatus = new System.Windows.Forms.PictureBox();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnPersoonToelaten = new System.Windows.Forms.Button();
             this.tbRFID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pbBetaalstatus = new System.Windows.Forms.PictureBox();
-            this.btnClearFields = new System.Windows.Forms.Button();
             this.btnToonAanwezigen = new System.Windows.Forms.Button();
+            this.btnClearFields = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tbSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnZoekPersoon = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBetaalstatus)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -73,6 +73,50 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Toegangs Controle";
             // 
+            // btnZoekPersoon
+            // 
+            this.btnZoekPersoon.Location = new System.Drawing.Point(186, 57);
+            this.btnZoekPersoon.Name = "btnZoekPersoon";
+            this.btnZoekPersoon.Size = new System.Drawing.Size(100, 24);
+            this.btnZoekPersoon.TabIndex = 10;
+            this.btnZoekPersoon.Text = "ZoekPersoon";
+            this.btnZoekPersoon.UseVisualStyleBackColor = true;
+            this.btnZoekPersoon.Click += new System.EventHandler(this.btnZoekPersoon_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(183, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Naam/id";
+            // 
+            // pbBetaalstatus
+            // 
+            this.pbBetaalstatus.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbBetaalstatus.InitialImage")));
+            this.pbBetaalstatus.Location = new System.Drawing.Point(113, 113);
+            this.pbBetaalstatus.Name = "pbBetaalstatus";
+            this.pbBetaalstatus.Size = new System.Drawing.Size(173, 63);
+            this.pbBetaalstatus.TabIndex = 2;
+            this.pbBetaalstatus.TabStop = false;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Location = new System.Drawing.Point(186, 31);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(100, 20);
+            this.tbSearch.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(110, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "BetaalStatus";
+            // 
             // btnPersoonToelaten
             // 
             this.btnPersoonToelaten.Location = new System.Drawing.Point(186, 84);
@@ -81,6 +125,7 @@
             this.btnPersoonToelaten.TabIndex = 6;
             this.btnPersoonToelaten.Text = "Persoon toelaten";
             this.btnPersoonToelaten.UseVisualStyleBackColor = true;
+            this.btnPersoonToelaten.Click += new System.EventHandler(this.btnPersoonToelaten_Click);
             // 
             // tbRFID
             // 
@@ -99,23 +144,15 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "RFID Tag:";
             // 
-            // label1
+            // btnToonAanwezigen
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 97);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "BetaalStatus";
-            // 
-            // pbBetaalstatus
-            // 
-            this.pbBetaalstatus.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbBetaalstatus.InitialImage")));
-            this.pbBetaalstatus.Location = new System.Drawing.Point(113, 113);
-            this.pbBetaalstatus.Name = "pbBetaalstatus";
-            this.pbBetaalstatus.Size = new System.Drawing.Size(173, 63);
-            this.pbBetaalstatus.TabIndex = 2;
-            this.pbBetaalstatus.TabStop = false;
+            this.btnToonAanwezigen.Location = new System.Drawing.Point(4, 116);
+            this.btnToonAanwezigen.Name = "btnToonAanwezigen";
+            this.btnToonAanwezigen.Size = new System.Drawing.Size(103, 56);
+            this.btnToonAanwezigen.TabIndex = 0;
+            this.btnToonAanwezigen.Text = "Toon alle aanwezigen";
+            this.btnToonAanwezigen.UseVisualStyleBackColor = true;
+            this.btnToonAanwezigen.Click += new System.EventHandler(this.btnToonAanwezigen_Click);
             // 
             // btnClearFields
             // 
@@ -127,16 +164,6 @@
             this.btnClearFields.UseVisualStyleBackColor = true;
             this.btnClearFields.Click += new System.EventHandler(this.btnClearFields_Click);
             // 
-            // btnToonAanwezigen
-            // 
-            this.btnToonAanwezigen.Location = new System.Drawing.Point(4, 116);
-            this.btnToonAanwezigen.Name = "btnToonAanwezigen";
-            this.btnToonAanwezigen.Size = new System.Drawing.Size(103, 56);
-            this.btnToonAanwezigen.TabIndex = 0;
-            this.btnToonAanwezigen.Text = "Toon alle aanwezigen";
-            this.btnToonAanwezigen.UseVisualStyleBackColor = true;
-            this.btnToonAanwezigen.Click += new System.EventHandler(this.btnToonAanwezigen_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbInfo);
@@ -147,32 +174,6 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gevonden Informatie";
-            // 
-            // tbSearch
-            // 
-            this.tbSearch.Location = new System.Drawing.Point(186, 31);
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(100, 20);
-            this.tbSearch.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Naam/id";
-            // 
-            // btnZoekPersoon
-            // 
-            this.btnZoekPersoon.Location = new System.Drawing.Point(186, 57);
-            this.btnZoekPersoon.Name = "btnZoekPersoon";
-            this.btnZoekPersoon.Size = new System.Drawing.Size(100, 24);
-            this.btnZoekPersoon.TabIndex = 10;
-            this.btnZoekPersoon.Text = "ZoekPersoon";
-            this.btnZoekPersoon.UseVisualStyleBackColor = true;
-            this.btnZoekPersoon.Click += new System.EventHandler(this.btnZoekPersoon_Click);
             // 
             // Form1
             // 

@@ -25,7 +25,6 @@ namespace EntryControlSystem
             List<string> presentGuests = new List<string>();
             string userInfo = "";
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
-            Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
                 string fullName = d["FULLNAME"];
@@ -137,6 +136,16 @@ namespace EntryControlSystem
                 userInfo = fullName + " , " + isPresent;
             }
             return userInfo;
+        }
+
+        public void test()
+        {
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(1);
+            foreach (Dictionary<string, string> d in list)
+            {
+                string fullName = d["FULLNAME"];
+                Console.WriteLine(fullName);
+            }
         }
 
     }

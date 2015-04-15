@@ -126,6 +126,7 @@ namespace DataLibrary
         {
             string query = "SELECT * FROM Guest g, Account a WHERE a.AccountID = g.AccountID ";
             result = XCTReader(query);
+            Console.WriteLine(result);
             return result;
         }
         public List<Dictionary<string, string>> GetAllEmployees()

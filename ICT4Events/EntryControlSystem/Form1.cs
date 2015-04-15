@@ -230,5 +230,10 @@ namespace EntryControlSystem
             Application.Exit();
         }
         #endregion
+
+        private void btnPersoonToelaten_Click(object sender, EventArgs e)
+        {
+            supermanager.test();
+        }
     }
 }
