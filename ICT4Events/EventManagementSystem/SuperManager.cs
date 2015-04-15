@@ -112,8 +112,15 @@ namespace EventManagementSystem
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
             foreach (Dictionary<string, string> d in list)
             {
-                Account a = new Employee(d["FULLNAME"], d["ADRESS"], d["CITY"], d["POSTALCODE"], Convert.ToDateTime(d["DATEOFBIRTH"]), d["EMAIL"],
-                    d["PHONENUMBER"]);
+                Account a = new Employee(Convert.ToInt32(d["ACCOUNTID"]),
+                    Convert.ToInt32(d["EVENTID"]), 
+                    d["USERNAME"], d["PASSWORD"], 
+                    d["FULLNAME"], d["ADRESS"], 
+                    d["CITY"], d["POSTALCODE"], 
+                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                    d["EMAIL"], d["PHONENUMBER"],
+                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLEID"]));
+
                 accountManager.AddAccount(a);
             }
             return accountManager.Accounts;
