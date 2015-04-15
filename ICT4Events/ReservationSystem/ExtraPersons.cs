@@ -116,7 +116,7 @@ namespace ReservationSystem
 
         private void btSearchAccount_Click(object sender, EventArgs e)
         {
-            string val = tbAccountEntry.Text;
+            string val = txtAccountEntry.Text;
             string accountInfo = "<geen account gevonden>";
             if (val == null || val == "")
             {
@@ -219,6 +219,11 @@ namespace ReservationSystem
                 }
             }
             RefreshList();
+        }
+
+        private void lblCity_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

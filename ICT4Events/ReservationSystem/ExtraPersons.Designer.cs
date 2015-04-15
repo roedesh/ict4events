@@ -30,6 +30,7 @@
         {
             this.lstPersons = new System.Windows.Forms.ListBox();
             this.gboxPersons = new System.Windows.Forms.GroupBox();
+            this.btMakeMainBooker = new System.Windows.Forms.Button();
             this.btDeleteAccount = new System.Windows.Forms.Button();
             this.btCancelForm = new System.Windows.Forms.Button();
             this.btSubmitForm = new System.Windows.Forms.Button();
@@ -57,9 +58,14 @@
             this.lblFoundAccount = new System.Windows.Forms.Label();
             this.btSearchAccount = new System.Windows.Forms.Button();
             this.lblAccountEntry = new System.Windows.Forms.Label();
-            this.tbAccountEntry = new System.Windows.Forms.TextBox();
+            this.txtAccountEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btMakeMainBooker = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtEventID = new System.Windows.Forms.TextBox();
+            this.lblEventID = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblPassWord = new System.Windows.Forms.Label();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -87,6 +93,16 @@
             this.gboxPersons.TabIndex = 6;
             this.gboxPersons.TabStop = false;
             this.gboxPersons.Text = "Bijbehorende personen";
+            // 
+            // btMakeMainBooker
+            // 
+            this.btMakeMainBooker.Location = new System.Drawing.Point(93, 233);
+            this.btMakeMainBooker.Name = "btMakeMainBooker";
+            this.btMakeMainBooker.Size = new System.Drawing.Size(106, 32);
+            this.btMakeMainBooker.TabIndex = 21;
+            this.btMakeMainBooker.Text = "Maak hoofdboeker";
+            this.btMakeMainBooker.UseVisualStyleBackColor = true;
+            this.btMakeMainBooker.Click += new System.EventHandler(this.btMakeMainBooker_Click);
             // 
             // btDeleteAccount
             // 
@@ -123,6 +139,12 @@
             // 
             // gboxAdd
             // 
+            this.gboxAdd.Controls.Add(this.textBox3);
+            this.gboxAdd.Controls.Add(this.lblPassWord);
+            this.gboxAdd.Controls.Add(this.textBox1);
+            this.gboxAdd.Controls.Add(this.lblUsername);
+            this.gboxAdd.Controls.Add(this.txtEventID);
+            this.gboxAdd.Controls.Add(this.lblEventID);
             this.gboxAdd.Controls.Add(this.btAddMainBooker);
             this.gboxAdd.Controls.Add(this.lblPostalCode);
             this.gboxAdd.Controls.Add(this.txtPostalCode);
@@ -142,7 +164,7 @@
             this.gboxAdd.Controls.Add(this.lblTutorial);
             this.gboxAdd.Location = new System.Drawing.Point(13, 10);
             this.gboxAdd.Name = "gboxAdd";
-            this.gboxAdd.Size = new System.Drawing.Size(234, 412);
+            this.gboxAdd.Size = new System.Drawing.Size(234, 543);
             this.gboxAdd.TabIndex = 7;
             this.gboxAdd.TabStop = false;
             this.gboxAdd.Text = "Nieuwe accounts aanmaken";
@@ -150,7 +172,7 @@
             // btAddMainBooker
             // 
             this.btAddMainBooker.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAddMainBooker.Location = new System.Drawing.Point(9, 367);
+            this.btAddMainBooker.Location = new System.Drawing.Point(6, 494);
             this.btAddMainBooker.Margin = new System.Windows.Forms.Padding(2);
             this.btAddMainBooker.Name = "btAddMainBooker";
             this.btAddMainBooker.Size = new System.Drawing.Size(110, 33);
@@ -162,7 +184,7 @@
             // lblPostalCode
             // 
             this.lblPostalCode.AutoSize = true;
-            this.lblPostalCode.Location = new System.Drawing.Point(136, 165);
+            this.lblPostalCode.Location = new System.Drawing.Point(133, 292);
             this.lblPostalCode.Name = "lblPostalCode";
             this.lblPostalCode.Size = new System.Drawing.Size(55, 13);
             this.lblPostalCode.TabIndex = 14;
@@ -170,22 +192,22 @@
             // 
             // txtPostalCode
             // 
-            this.txtPostalCode.Location = new System.Drawing.Point(139, 181);
+            this.txtPostalCode.Location = new System.Drawing.Point(136, 308);
             this.txtPostalCode.Name = "txtPostalCode";
-            this.txtPostalCode.Size = new System.Drawing.Size(87, 20);
+            this.txtPostalCode.Size = new System.Drawing.Size(88, 20);
             this.txtPostalCode.TabIndex = 4;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(10, 128);
+            this.txtAddress.Location = new System.Drawing.Point(7, 255);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(216, 20);
+            this.txtAddress.Size = new System.Drawing.Size(217, 20);
             this.txtAddress.TabIndex = 2;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(7, 112);
+            this.lblAddress.Location = new System.Drawing.Point(4, 239);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(34, 13);
             this.lblAddress.TabIndex = 11;
@@ -193,7 +215,7 @@
             // 
             // btAddPerson
             // 
-            this.btAddPerson.Location = new System.Drawing.Point(123, 367);
+            this.btAddPerson.Location = new System.Drawing.Point(120, 494);
             this.btAddPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btAddPerson.Name = "btAddPerson";
             this.btAddPerson.Size = new System.Drawing.Size(104, 33);
@@ -204,7 +226,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(9, 282);
+            this.txtPhone.Location = new System.Drawing.Point(6, 409);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(219, 20);
             this.txtPhone.TabIndex = 6;
@@ -212,7 +234,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(7, 266);
+            this.lblPhone.Location = new System.Drawing.Point(4, 393);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(52, 13);
             this.lblPhone.TabIndex = 9;
@@ -220,7 +242,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(9, 232);
+            this.txtEmail.Location = new System.Drawing.Point(6, 359);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(219, 20);
             this.txtEmail.TabIndex = 5;
@@ -228,7 +250,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(6, 216);
+            this.lblEmail.Location = new System.Drawing.Point(3, 343);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 7;
@@ -236,7 +258,7 @@
             // 
             // dtpDateOfBirth
             // 
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(9, 333);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(6, 460);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(218, 20);
             this.dtpDateOfBirth.TabIndex = 7;
@@ -244,7 +266,7 @@
             // lblDateOfBirth
             // 
             this.lblDateOfBirth.AutoSize = true;
-            this.lblDateOfBirth.Location = new System.Drawing.Point(6, 316);
+            this.lblDateOfBirth.Location = new System.Drawing.Point(3, 443);
             this.lblDateOfBirth.Name = "lblDateOfBirth";
             this.lblDateOfBirth.Size = new System.Drawing.Size(83, 13);
             this.lblDateOfBirth.TabIndex = 5;
@@ -252,7 +274,7 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(10, 181);
+            this.txtCity.Location = new System.Drawing.Point(7, 308);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(123, 20);
             this.txtCity.TabIndex = 3;
@@ -260,23 +282,24 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(6, 165);
+            this.lblCity.Location = new System.Drawing.Point(3, 292);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(67, 13);
             this.lblCity.TabIndex = 3;
             this.lblCity.Text = "Woonplaats:";
+            this.lblCity.Click += new System.EventHandler(this.lblCity_Click);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(9, 80);
+            this.txtName.Location = new System.Drawing.Point(6, 207);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(217, 20);
+            this.txtName.Size = new System.Drawing.Size(218, 20);
             this.txtName.TabIndex = 1;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(7, 64);
+            this.lblName.Location = new System.Drawing.Point(4, 191);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(38, 13);
             this.lblName.TabIndex = 1;
@@ -297,7 +320,7 @@
             this.groupBox1.Controls.Add(this.lblFoundAccount);
             this.groupBox1.Controls.Add(this.btSearchAccount);
             this.groupBox1.Controls.Add(this.lblAccountEntry);
-            this.groupBox1.Controls.Add(this.tbAccountEntry);
+            this.groupBox1.Controls.Add(this.txtAccountEntry);
             this.groupBox1.Location = new System.Drawing.Point(256, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(510, 128);
@@ -350,12 +373,12 @@
             this.lblAccountEntry.TabIndex = 16;
             this.lblAccountEntry.Text = "Vul een account ID of gebruikersnaam in:";
             // 
-            // tbAccountEntry
+            // txtAccountEntry
             // 
-            this.tbAccountEntry.Location = new System.Drawing.Point(229, 13);
-            this.tbAccountEntry.Name = "tbAccountEntry";
-            this.tbAccountEntry.Size = new System.Drawing.Size(178, 20);
-            this.tbAccountEntry.TabIndex = 0;
+            this.txtAccountEntry.Location = new System.Drawing.Point(229, 13);
+            this.txtAccountEntry.Name = "txtAccountEntry";
+            this.txtAccountEntry.Size = new System.Drawing.Size(178, 20);
+            this.txtAccountEntry.TabIndex = 0;
             // 
             // label1
             // 
@@ -366,21 +389,59 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
             // 
-            // btMakeMainBooker
+            // textBox1
             // 
-            this.btMakeMainBooker.Location = new System.Drawing.Point(93, 233);
-            this.btMakeMainBooker.Name = "btMakeMainBooker";
-            this.btMakeMainBooker.Size = new System.Drawing.Size(106, 32);
-            this.btMakeMainBooker.TabIndex = 21;
-            this.btMakeMainBooker.Text = "Maak hoofdboeker";
-            this.btMakeMainBooker.UseVisualStyleBackColor = true;
-            this.btMakeMainBooker.Click += new System.EventHandler(this.btMakeMainBooker_Click);
+            this.textBox1.Location = new System.Drawing.Point(7, 120);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(217, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(7, 104);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(34, 13);
+            this.lblUsername.TabIndex = 19;
+            this.lblUsername.Text = "Adres";
+            // 
+            // txtEventID
+            // 
+            this.txtEventID.Location = new System.Drawing.Point(5, 72);
+            this.txtEventID.Name = "txtEventID";
+            this.txtEventID.Size = new System.Drawing.Size(219, 20);
+            this.txtEventID.TabIndex = 16;
+            // 
+            // lblEventID
+            // 
+            this.lblEventID.AutoSize = true;
+            this.lblEventID.Location = new System.Drawing.Point(3, 56);
+            this.lblEventID.Name = "lblEventID";
+            this.lblEventID.Size = new System.Drawing.Size(38, 13);
+            this.lblEventID.TabIndex = 17;
+            this.lblEventID.Text = "Naam:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(7, 166);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(217, 20);
+            this.textBox3.TabIndex = 20;
+            // 
+            // lblPassWord
+            // 
+            this.lblPassWord.AutoSize = true;
+            this.lblPassWord.Location = new System.Drawing.Point(6, 150);
+            this.lblPassWord.Name = "lblPassWord";
+            this.lblPassWord.Size = new System.Drawing.Size(34, 13);
+            this.lblPassWord.TabIndex = 21;
+            this.lblPassWord.Text = "Adres";
             // 
             // ExtraPersons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 469);
+            this.ClientSize = new System.Drawing.Size(775, 565);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btCancelForm);
@@ -427,13 +488,19 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btDeleteAccount;
         private System.Windows.Forms.Label lblAccountEntry;
-        private System.Windows.Forms.TextBox tbAccountEntry;
+        private System.Windows.Forms.TextBox txtAccountEntry;
         private System.Windows.Forms.Label lblFoundAccount;
         private System.Windows.Forms.Button btSearchAccount;
         private System.Windows.Forms.Label txtFoundAccountInfo;
         private System.Windows.Forms.Button btAddExistingAccount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btMakeMainBooker;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblPassWord;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.TextBox txtEventID;
+        private System.Windows.Forms.Label lblEventID;
 
 
     }
