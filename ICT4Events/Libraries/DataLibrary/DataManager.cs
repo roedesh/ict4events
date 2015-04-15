@@ -78,6 +78,12 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+        public List<Dictionary<string, string>> GetGuestAccountWithRFID(string RFID)
+        {
+            string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.RFID = '{0}'", RFID);
+            result = XCTReader(query);
+            return result;
+        }
         public List<Dictionary<string, string>> GetEmployeeAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
@@ -443,9 +449,17 @@ namespace DataLibrary
                 , ID, irental[1], irental[2]);
             XCTNonQuery(query);
         }
+
         public List<Dictionary<string, string>> GetFileByFilePath(string filepath)
         {
             string query = String.Format("SELECT * FROM FileTable a, WHERE a.FILEPATH = '{0}'", filepath);
+            result = XCTReader(query);
+            return result;
+        }
+
+        public List<Dictionary<string,string>> GetPaymentStatus(string name)
+        {
+            string query = String.Format("SELECT r.PaymentStatus FROM Account a, Guest g, GuestReservation gr, Reservation r WHERE a.AccountID = g.AccountID AND g.GuestID = gr. GuestID AND gr.ReservationID = r.ReservationID AND a.Username = '{0}'", name);
             result = XCTReader(query);
             return result;
         }

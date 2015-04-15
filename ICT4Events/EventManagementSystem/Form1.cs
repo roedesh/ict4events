@@ -17,8 +17,8 @@ namespace EventManagementSystem
         public Form1()
         {
             InitializeComponent();
-            cbPersoonRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
-            cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
+           /* cbPersoonRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
+            cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));*/
         }
 
 
@@ -88,7 +88,7 @@ namespace EventManagementSystem
             }
         }
 
-        private void btnPersoonShowAll_Click(object sender, EventArgs e)
+        private void btnMedewerkersShowAllGuest_Click(object sender, EventArgs e)
         {
             dataGridView.DataSource = null;
             dataGridView.Refresh();
@@ -96,23 +96,7 @@ namespace EventManagementSystem
             showAllAccounts = superManager.ShowAccounts();
             dataGridView.DataSource = showAllAccounts;
         }
-
-        private void btnPersoonAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                superManager.AddAccount(Convert.ToInt32())
-                MessageBox.Show("Event " + tbEventEventID.Text + " toegevoegd");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
-            }
-            finally
-            {
-                btnEventsShow_Click(sender, e);
-            }
-        }
+       
 
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
@@ -139,6 +123,8 @@ namespace EventManagementSystem
             }
 
         }
+
+
 
 
 
