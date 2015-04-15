@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.Plaats = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -37,9 +37,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnMedewerkersAdd = new System.Windows.Forms.Button();
-            this.btnMedewerkersShow = new System.Windows.Forms.Button();
+            this.btnMedewerkersShowAllEmployee = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Medewerkers = new System.Windows.Forms.TabPage();
+            this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
+            this.btnMedewerkersShowAllAcc = new System.Windows.Forms.Button();
             this.cbMedewerkersRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -52,21 +54,21 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerAccountID = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerAddress = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerPhonenumber = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerEmail = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerDateOfBirth = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerPostalcode = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerCity = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerPassword = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerLoginName = new System.Windows.Forms.TextBox();
+            this.tbMedewerkerName = new System.Windows.Forms.TextBox();
             this.btnMedewerkersDelete = new System.Windows.Forms.Button();
             this.btnMedewerkersEdit = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Events = new System.Windows.Forms.TabPage();
             this.tbEventBeschrijving = new System.Windows.Forms.TextBox();
             this.tbEventPrijs = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -83,31 +85,29 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.btnMedewerkersShowAllAcc = new System.Windows.Forms.Button();
-            this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
-            this.tabPage4.SuspendLayout();
+            this.Plaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Medewerkers.SuspendLayout();
+            this.Events.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabPage4
+            // Plaats
             // 
-            this.tabPage4.Controls.Add(this.label2);
-            this.tabPage4.Controls.Add(this.label3);
-            this.tabPage4.Controls.Add(this.textBox2);
-            this.tabPage4.Controls.Add(this.textBox3);
-            this.tabPage4.Controls.Add(this.btnPlaatsEdit);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Size = new System.Drawing.Size(430, 330);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Plaats";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.Plaats.Controls.Add(this.label2);
+            this.Plaats.Controls.Add(this.label3);
+            this.Plaats.Controls.Add(this.textBox2);
+            this.Plaats.Controls.Add(this.textBox3);
+            this.Plaats.Controls.Add(this.btnPlaatsEdit);
+            this.Plaats.Location = new System.Drawing.Point(4, 22);
+            this.Plaats.Margin = new System.Windows.Forms.Padding(2);
+            this.Plaats.Name = "Plaats";
+            this.Plaats.Padding = new System.Windows.Forms.Padding(2);
+            this.Plaats.Size = new System.Drawing.Size(430, 330);
+            this.Plaats.TabIndex = 3;
+            this.Plaats.Text = "Plaats";
+            this.Plaats.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -189,21 +189,22 @@
             this.btnMedewerkersAdd.Text = "Voeg toe";
             this.btnMedewerkersAdd.UseVisualStyleBackColor = true;
             // 
-            // btnMedewerkersShow
+            // btnMedewerkersShowAllEmployee
             // 
-            this.btnMedewerkersShow.Location = new System.Drawing.Point(311, 173);
-            this.btnMedewerkersShow.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMedewerkersShow.Name = "btnMedewerkersShow";
-            this.btnMedewerkersShow.Size = new System.Drawing.Size(110, 34);
-            this.btnMedewerkersShow.TabIndex = 12;
-            this.btnMedewerkersShow.Text = "Toon alle medewerkers";
-            this.btnMedewerkersShow.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllEmployee.Location = new System.Drawing.Point(311, 173);
+            this.btnMedewerkersShowAllEmployee.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMedewerkersShowAllEmployee.Name = "btnMedewerkersShowAllEmployee";
+            this.btnMedewerkersShowAllEmployee.Size = new System.Drawing.Size(110, 34);
+            this.btnMedewerkersShowAllEmployee.TabIndex = 12;
+            this.btnMedewerkersShowAllEmployee.Text = "Toon alle medewerkers";
+            this.btnMedewerkersShowAllEmployee.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllEmployee.Click += new System.EventHandler(this.btnMedewerkersShowAllEmployee_Click);
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.Medewerkers);
+            this.tabControl.Controls.Add(this.Events);
+            this.tabControl.Controls.Add(this.Plaats);
             this.tabControl.Location = new System.Drawing.Point(9, 10);
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
@@ -211,46 +212,65 @@
             this.tabControl.Size = new System.Drawing.Size(438, 356);
             this.tabControl.TabIndex = 20;
             // 
-            // tabPage1
+            // Medewerkers
             // 
-            this.tabPage1.Controls.Add(this.btnMedewerkersShowAllGuest);
-            this.tabPage1.Controls.Add(this.btnMedewerkersShowAllAcc);
-            this.tabPage1.Controls.Add(this.cbMedewerkersRole);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.label13);
-            this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label17);
-            this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.label19);
-            this.tabPage1.Controls.Add(this.textBox6);
-            this.tabPage1.Controls.Add(this.textBox7);
-            this.tabPage1.Controls.Add(this.textBox8);
-            this.tabPage1.Controls.Add(this.textBox11);
-            this.tabPage1.Controls.Add(this.textBox12);
-            this.tabPage1.Controls.Add(this.textBox13);
-            this.tabPage1.Controls.Add(this.textBox14);
-            this.tabPage1.Controls.Add(this.textBox15);
-            this.tabPage1.Controls.Add(this.textBox16);
-            this.tabPage1.Controls.Add(this.textBox17);
-            this.tabPage1.Controls.Add(this.btnMedewerkersDelete);
-            this.tabPage1.Controls.Add(this.btnMedewerkersEdit);
-            this.tabPage1.Controls.Add(this.btnMedewerkersAdd);
-            this.tabPage1.Controls.Add(this.btnMedewerkersShow);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(430, 330);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Medewerkers";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.Medewerkers.Controls.Add(this.btnMedewerkersShowAllGuest);
+            this.Medewerkers.Controls.Add(this.btnMedewerkersShowAllAcc);
+            this.Medewerkers.Controls.Add(this.cbMedewerkersRole);
+            this.Medewerkers.Controls.Add(this.label4);
+            this.Medewerkers.Controls.Add(this.label7);
+            this.Medewerkers.Controls.Add(this.label8);
+            this.Medewerkers.Controls.Add(this.label11);
+            this.Medewerkers.Controls.Add(this.label12);
+            this.Medewerkers.Controls.Add(this.label13);
+            this.Medewerkers.Controls.Add(this.label14);
+            this.Medewerkers.Controls.Add(this.label15);
+            this.Medewerkers.Controls.Add(this.label16);
+            this.Medewerkers.Controls.Add(this.label17);
+            this.Medewerkers.Controls.Add(this.label18);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerAccountID);
+            this.Medewerkers.Controls.Add(this.label19);
+            this.Medewerkers.Controls.Add(this.textBox6);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerAddress);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerPhonenumber);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerEmail);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerDateOfBirth);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerPostalcode);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerCity);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerPassword);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerLoginName);
+            this.Medewerkers.Controls.Add(this.tbMedewerkerName);
+            this.Medewerkers.Controls.Add(this.btnMedewerkersDelete);
+            this.Medewerkers.Controls.Add(this.btnMedewerkersEdit);
+            this.Medewerkers.Controls.Add(this.btnMedewerkersAdd);
+            this.Medewerkers.Controls.Add(this.btnMedewerkersShowAllEmployee);
+            this.Medewerkers.Location = new System.Drawing.Point(4, 22);
+            this.Medewerkers.Margin = new System.Windows.Forms.Padding(2);
+            this.Medewerkers.Name = "Medewerkers";
+            this.Medewerkers.Padding = new System.Windows.Forms.Padding(2);
+            this.Medewerkers.Size = new System.Drawing.Size(430, 330);
+            this.Medewerkers.TabIndex = 0;
+            this.Medewerkers.Text = "Medewerkers";
+            this.Medewerkers.UseVisualStyleBackColor = true;
+            // 
+            // btnMedewerkersShowAllGuest
+            // 
+            this.btnMedewerkersShowAllGuest.Location = new System.Drawing.Point(312, 136);
+            this.btnMedewerkersShowAllGuest.Name = "btnMedewerkersShowAllGuest";
+            this.btnMedewerkersShowAllGuest.Size = new System.Drawing.Size(109, 32);
+            this.btnMedewerkersShowAllGuest.TabIndex = 61;
+            this.btnMedewerkersShowAllGuest.Text = "Toon alle gasten";
+            this.btnMedewerkersShowAllGuest.UseVisualStyleBackColor = true;
+            this.btnMedewerkersShowAllGuest.Click += new System.EventHandler(this.btnMedewerkersShowAllGuest_Click);
+            // 
+            // btnMedewerkersShowAllAcc
+            // 
+            this.btnMedewerkersShowAllAcc.Location = new System.Drawing.Point(312, 98);
+            this.btnMedewerkersShowAllAcc.Name = "btnMedewerkersShowAllAcc";
+            this.btnMedewerkersShowAllAcc.Size = new System.Drawing.Size(109, 32);
+            this.btnMedewerkersShowAllAcc.TabIndex = 60;
+            this.btnMedewerkersShowAllAcc.Text = "Toon alle accounts";
+            this.btnMedewerkersShowAllAcc.UseVisualStyleBackColor = true;
             // 
             // cbMedewerkersRole
             // 
@@ -370,13 +390,13 @@
             this.label18.TabIndex = 49;
             this.label18.Text = "Adres:";
             // 
-            // textBox4
+            // tbMedewerkerAccountID
             // 
-            this.textBox4.Location = new System.Drawing.Point(96, 299);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 20);
-            this.textBox4.TabIndex = 47;
+            this.tbMedewerkerAccountID.Location = new System.Drawing.Point(96, 299);
+            this.tbMedewerkerAccountID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerAccountID.Name = "tbMedewerkerAccountID";
+            this.tbMedewerkerAccountID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerAccountID.TabIndex = 47;
             // 
             // label19
             // 
@@ -396,77 +416,77 @@
             this.textBox6.Size = new System.Drawing.Size(204, 20);
             this.textBox6.TabIndex = 46;
             // 
-            // textBox7
+            // tbMedewerkerAddress
             // 
-            this.textBox7.Location = new System.Drawing.Point(96, 110);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(204, 20);
-            this.textBox7.TabIndex = 40;
+            this.tbMedewerkerAddress.Location = new System.Drawing.Point(96, 110);
+            this.tbMedewerkerAddress.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerAddress.Name = "tbMedewerkerAddress";
+            this.tbMedewerkerAddress.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerAddress.TabIndex = 40;
             // 
-            // textBox8
+            // tbMedewerkerPhonenumber
             // 
-            this.textBox8.Location = new System.Drawing.Point(96, 230);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(204, 20);
-            this.textBox8.TabIndex = 45;
+            this.tbMedewerkerPhonenumber.Location = new System.Drawing.Point(96, 230);
+            this.tbMedewerkerPhonenumber.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerPhonenumber.Name = "tbMedewerkerPhonenumber";
+            this.tbMedewerkerPhonenumber.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerPhonenumber.TabIndex = 45;
             // 
-            // textBox11
+            // tbMedewerkerEmail
             // 
-            this.textBox11.Location = new System.Drawing.Point(96, 206);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(204, 20);
-            this.textBox11.TabIndex = 44;
+            this.tbMedewerkerEmail.Location = new System.Drawing.Point(96, 206);
+            this.tbMedewerkerEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerEmail.Name = "tbMedewerkerEmail";
+            this.tbMedewerkerEmail.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerEmail.TabIndex = 44;
             // 
-            // textBox12
+            // tbMedewerkerDateOfBirth
             // 
-            this.textBox12.Location = new System.Drawing.Point(96, 182);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(204, 20);
-            this.textBox12.TabIndex = 43;
+            this.tbMedewerkerDateOfBirth.Location = new System.Drawing.Point(96, 182);
+            this.tbMedewerkerDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerDateOfBirth.Name = "tbMedewerkerDateOfBirth";
+            this.tbMedewerkerDateOfBirth.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerDateOfBirth.TabIndex = 43;
             // 
-            // textBox13
+            // tbMedewerkerPostalcode
             // 
-            this.textBox13.Location = new System.Drawing.Point(96, 158);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(204, 20);
-            this.textBox13.TabIndex = 42;
+            this.tbMedewerkerPostalcode.Location = new System.Drawing.Point(96, 158);
+            this.tbMedewerkerPostalcode.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerPostalcode.Name = "tbMedewerkerPostalcode";
+            this.tbMedewerkerPostalcode.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerPostalcode.TabIndex = 42;
             // 
-            // textBox14
+            // tbMedewerkerCity
             // 
-            this.textBox14.Location = new System.Drawing.Point(96, 134);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(204, 20);
-            this.textBox14.TabIndex = 41;
+            this.tbMedewerkerCity.Location = new System.Drawing.Point(96, 134);
+            this.tbMedewerkerCity.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerCity.Name = "tbMedewerkerCity";
+            this.tbMedewerkerCity.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerCity.TabIndex = 41;
             // 
-            // textBox15
+            // tbMedewerkerPassword
             // 
-            this.textBox15.Location = new System.Drawing.Point(96, 35);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(204, 20);
-            this.textBox15.TabIndex = 37;
+            this.tbMedewerkerPassword.Location = new System.Drawing.Point(96, 35);
+            this.tbMedewerkerPassword.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerPassword.Name = "tbMedewerkerPassword";
+            this.tbMedewerkerPassword.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerPassword.TabIndex = 37;
             // 
-            // textBox16
+            // tbMedewerkerLoginName
             // 
-            this.textBox16.Location = new System.Drawing.Point(96, 12);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(204, 20);
-            this.textBox16.TabIndex = 36;
+            this.tbMedewerkerLoginName.Location = new System.Drawing.Point(96, 12);
+            this.tbMedewerkerLoginName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerLoginName.Name = "tbMedewerkerLoginName";
+            this.tbMedewerkerLoginName.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerLoginName.TabIndex = 36;
             // 
-            // textBox17
+            // tbMedewerkerName
             // 
-            this.textBox17.Location = new System.Drawing.Point(96, 86);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(204, 20);
-            this.textBox17.TabIndex = 39;
+            this.tbMedewerkerName.Location = new System.Drawing.Point(96, 86);
+            this.tbMedewerkerName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkerName.Name = "tbMedewerkerName";
+            this.tbMedewerkerName.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerName.TabIndex = 39;
             // 
             // btnMedewerkersDelete
             // 
@@ -488,32 +508,32 @@
             this.btnMedewerkersEdit.Text = "Pas aan";
             this.btnMedewerkersEdit.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // Events
             // 
-            this.tabPage2.Controls.Add(this.tbEventBeschrijving);
-            this.tabPage2.Controls.Add(this.tbEventPrijs);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.tbEventEindDatum);
-            this.tabPage2.Controls.Add(this.tbEventBeginDatum);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.tbEventLocatie);
-            this.tabPage2.Controls.Add(this.label35);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.tbEventEventID);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.btnEventsDelete);
-            this.tabPage2.Controls.Add(this.btnEventsEdit);
-            this.tabPage2.Controls.Add(this.btnEventsAdd);
-            this.tabPage2.Controls.Add(this.btnEventsShow);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(430, 330);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Events";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.Events.Controls.Add(this.tbEventBeschrijving);
+            this.Events.Controls.Add(this.tbEventPrijs);
+            this.Events.Controls.Add(this.label23);
+            this.Events.Controls.Add(this.tbEventEindDatum);
+            this.Events.Controls.Add(this.tbEventBeginDatum);
+            this.Events.Controls.Add(this.label22);
+            this.Events.Controls.Add(this.tbEventLocatie);
+            this.Events.Controls.Add(this.label35);
+            this.Events.Controls.Add(this.label10);
+            this.Events.Controls.Add(this.tbEventEventID);
+            this.Events.Controls.Add(this.label9);
+            this.Events.Controls.Add(this.label1);
+            this.Events.Controls.Add(this.btnEventsDelete);
+            this.Events.Controls.Add(this.btnEventsEdit);
+            this.Events.Controls.Add(this.btnEventsAdd);
+            this.Events.Controls.Add(this.btnEventsShow);
+            this.Events.Location = new System.Drawing.Point(4, 22);
+            this.Events.Margin = new System.Windows.Forms.Padding(2);
+            this.Events.Name = "Events";
+            this.Events.Padding = new System.Windows.Forms.Padding(2);
+            this.Events.Size = new System.Drawing.Size(430, 330);
+            this.Events.TabIndex = 1;
+            this.Events.Text = "Events";
+            this.Events.UseVisualStyleBackColor = true;
             // 
             // tbEventBeschrijving
             // 
@@ -656,25 +676,6 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // btnMedewerkersShowAllAcc
-            // 
-            this.btnMedewerkersShowAllAcc.Location = new System.Drawing.Point(312, 98);
-            this.btnMedewerkersShowAllAcc.Name = "btnMedewerkersShowAllAcc";
-            this.btnMedewerkersShowAllAcc.Size = new System.Drawing.Size(109, 32);
-            this.btnMedewerkersShowAllAcc.TabIndex = 60;
-            this.btnMedewerkersShowAllAcc.Text = "Toon alle accounts";
-            this.btnMedewerkersShowAllAcc.UseVisualStyleBackColor = true;
-            // 
-            // btnMedewerkersShowAllGuest
-            // 
-            this.btnMedewerkersShowAllGuest.Location = new System.Drawing.Point(312, 136);
-            this.btnMedewerkersShowAllGuest.Name = "btnMedewerkersShowAllGuest";
-            this.btnMedewerkersShowAllGuest.Size = new System.Drawing.Size(109, 32);
-            this.btnMedewerkersShowAllGuest.TabIndex = 61;
-            this.btnMedewerkersShowAllGuest.Text = "Toon alle gasten";
-            this.btnMedewerkersShowAllGuest.UseVisualStyleBackColor = true;
-            this.btnMedewerkersShowAllGuest.Click += new System.EventHandler(this.btnMedewerkersShowAllGuest_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,22 +685,22 @@
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.Text = "Event Management System";
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.Plaats.ResumeLayout(false);
+            this.Plaats.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.Medewerkers.ResumeLayout(false);
+            this.Medewerkers.PerformLayout();
+            this.Events.ResumeLayout(false);
+            this.Events.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage Plaats;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
@@ -708,10 +709,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnMedewerkersAdd;
-        private System.Windows.Forms.Button btnMedewerkersShow;
+        private System.Windows.Forms.Button btnMedewerkersShowAllEmployee;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage Medewerkers;
+        private System.Windows.Forms.TabPage Events;
         private System.Windows.Forms.Button btnEventsAdd;
         private System.Windows.Forms.Button btnEventsShow;
         private System.Windows.Forms.TextBox tbEventBeschrijving;
@@ -742,18 +743,18 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbMedewerkerAccountID;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox tbMedewerkerAddress;
+        private System.Windows.Forms.TextBox tbMedewerkerPhonenumber;
+        private System.Windows.Forms.TextBox tbMedewerkerEmail;
+        private System.Windows.Forms.TextBox tbMedewerkerDateOfBirth;
+        private System.Windows.Forms.TextBox tbMedewerkerPostalcode;
+        private System.Windows.Forms.TextBox tbMedewerkerCity;
+        private System.Windows.Forms.TextBox tbMedewerkerPassword;
+        private System.Windows.Forms.TextBox tbMedewerkerLoginName;
+        private System.Windows.Forms.TextBox tbMedewerkerName;
         private System.Windows.Forms.Button btnMedewerkersShowAllGuest;
         private System.Windows.Forms.Button btnMedewerkersShowAllAcc;
     }

@@ -64,7 +64,7 @@ namespace EventManagementSystem
 
         }
 
-        public void AddAccount(int accountID, int eventID, string username, string password, string fullname,
+       /* public void AddAccount(int accountID, int eventID, string username, string password, string fullname,
             string adress, string city, string postalcode, string dateofbirth, string email, int phonenumber,
             int guestID, string RFID, string IsPresent)
         {
@@ -86,21 +86,35 @@ namespace EventManagementSystem
             listGuest.Add(RFID);
             listGuest.Add(IsPresent);
             dataManager.SetGuestAccount(listAccount, listGuest);
-        }
+        }*/
 
         public void EditAccount()
         {
             
         }
 
-        public List<Account> ShowAccounts() // string list return ipv void
+        public List<Account> ShowGuestAccounts() // string list return ipv void
         {
+            accountManager.Accounts.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
             foreach (Dictionary<string, string> d in list)
             {
-                //Account a = new Account()
-                //accountManager.AddAccount();
+                Account a = new Guest(d["FULLNAME"], d["ADRESS"], d["CITY"], d["POSTALCODE"], Convert.ToDateTime(d["DATEOFBIRTH"]), d["EMAIL"],
+                    d["PHONENUMBER"]);
+                accountManager.AddAccount(a);
+            }
+            return accountManager.Accounts;
+        }
 
+        public List<Account> ShowEmployeeAccounts()
+        {
+            accountManager.Accounts.Clear();
+            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            foreach (Dictionary<string, string> d in list)
+            {
+                Account a = new Employee(d["FULLNAME"], d["ADRESS"], d["CITY"], d["POSTALCODE"], Convert.ToDateTime(d["DATEOFBIRTH"]), d["EMAIL"],
+                    d["PHONENUMBER"]);
+                accountManager.AddAccount(a);
             }
             return accountManager.Accounts;
         }
