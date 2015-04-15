@@ -175,8 +175,8 @@ namespace DataLibrary
         }
         public void UpdateGuest(List<string> guest)
         {
-            string query = String.Format("UPDATE Guest SET GuestID = {0}, AccountID = {1}, RFID = '{2}', IsPresent = '{3}';"
-                , guest[0], guest[1], guest[2], guest[3]);
+            string query = String.Format("UPDATE Guest SET RFID = '{1}', IsPresent = '{2}' WHERE AccountID = guest{0};"
+                , guest[0], guest[1], guest[2]);
             XCTNonQuery(query);
         }
         public void UpdateEmployee(List<string> employee)
@@ -195,11 +195,11 @@ namespace DataLibrary
         }
         public void UpdateAccount(List<string> account)
         {
-            string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
-            string query = String.Format("UPDATE  Account SET ACCOUNTID = {0}, EVENTID = {1}, USERNAME = '{2}', PASSWORD = '{3}', FULLNAME = '{4}', ADRESS = '{5}', CITY = '{6}', POSTALCODE = '{7}', DATEOFBIRTH = {8}, EMAIL = '{9}', PHONENUMBER = '{10}'"
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
+            string query = String.Format("UPDATE  Account SET EVENTID = {1}, USERNAME = '{2}', PASSWORD = '{3}', FULLNAME = '{4}', ADRESS = '{5}', CITY = '{6}', POSTALCODE = '{7}', DATEOFBIRTH = {8}, EMAIL = '{9}', PHONENUMBER = '{10}' WHERE AccountID = {0}"
                 , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
-                , date, account[9]);
+                , date, account[9], account[10]);
             XCTNonQuery(query);
         }
         public void UpdateLocation(List<string> location)

@@ -64,49 +64,26 @@ namespace EventManagementSystem
 
         }
 
-       /* public void AddAccount(int accountID, int eventID, string username, string password, string fullname,
-            string adress, string city, string postalcode, string dateofbirth, string email, int phonenumber,
-            int guestID, string RFID, string IsPresent)
-        {
-            List<string> listAccount = new List<string>();
-            listAccount.Add(Convert.ToString(accountID));
-            listAccount.Add(Convert.ToString(eventID));
-            listAccount.Add(username);
-            listAccount.Add(password);
-            listAccount.Add(fullname);
-            listAccount.Add(adress);
-            listAccount.Add(city);
-            listAccount.Add(postalcode);
-            listAccount.Add(dateofbirth);
-            listAccount.Add(email);
-            listAccount.Add(Convert.ToString(phonenumber));
-            List<string> listGuest = new List<string>();
-            listGuest.Add(Convert.ToString(guestID));
-            listGuest.Add(Convert.ToString(accountID));
-            listGuest.Add(RFID);
-            listGuest.Add(IsPresent);
-            dataManager.SetGuestAccount(listAccount, listGuest);
-        }*/
-
-        public void EditAccount()
-        {
-            
-        }
-
-        public List<Account> ShowGuestAccounts() // string list return ipv void
+        public List<Account> ShowGuestAccounts()
         {
             accountManager.Accounts.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
             foreach (Dictionary<string, string> d in list)
             {
-                Account a = new Guest(d["FULLNAME"], d["ADRESS"], d["CITY"], d["POSTALCODE"], Convert.ToDateTime(d["DATEOFBIRTH"]), d["EMAIL"],
-                    d["PHONENUMBER"]);
+                Account a = new Guest(Convert.ToInt32(d["ACCOUNTID"]),
+                    Convert.ToInt32(d["EVENTID"]), 
+                    d["USERNAME"], d["PASSWORD"], 
+                    d["FULLNAME"], d["ADRESS"], 
+                    d["CITY"], d["POSTALCODE"], 
+                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                    d["EMAIL"], d["PHONENUMBER"], d["RFID"],
+                    d["ISPRESENT"]);
                 accountManager.AddAccount(a);
             }
             return accountManager.Accounts;
         }
 
-        public List<Account> ShowEmployeeAccounts()
+        public List<Account> ShowEmployeeAccounts() // 2x name van database
         {
             accountManager.Accounts.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
@@ -124,6 +101,28 @@ namespace EventManagementSystem
                 accountManager.AddAccount(a);
             }
             return accountManager.Accounts;
+        }
+
+        public void EditGuest(int id, int eventId, string username, string password, string fullname,
+            string address, string city, string postalcode, string dateOfBirth, string email,
+            int phonenumber)
+        {
+            //create account list
+            List<string> ac = new List<string>();
+            ac.Add(Convert.ToString(id));
+            ac.Add(Convert.ToString(eventId));
+            ac.Add(username);
+            ac.Add(password);
+            ac.Add(fullname);
+            ac.Add(address);
+            ac.Add(city);
+            ac.Add(postalcode);
+            ac.Add(dateOfBirth);
+            ac.Add(email);
+            ac.Add(Convert.ToString(phonenumber));
+            //send items to datamanager
+            dataManager.UpdateAccount(ac);
+
         }
     }
 }

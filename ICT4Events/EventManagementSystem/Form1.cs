@@ -93,19 +93,70 @@ namespace EventManagementSystem
         {
             dataGridView.DataSource = null;
             dataGridView.Refresh();
-            List<Account> showAllAccounts = new List<Account>();
-            showAllAccounts = superManager.ShowGuestAccounts();
-            dataGridView.DataSource = showAllAccounts;
+            List<Account> showAllGuestAccounts = new List<Account>();
+            showAllGuestAccounts = superManager.ShowGuestAccounts();
+            dataGridView.DataSource = showAllGuestAccounts;
+            cbMedewerkersRole.Enabled = false;
         }
 
         private void btnMedewerkersShowAllEmployee_Click(object sender, EventArgs e)
         {
-
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
+            List<Account> showAllEmployeeAccounts = new List<Account>();
+            showAllEmployeeAccounts = superManager.ShowEmployeeAccounts();
+            dataGridView.DataSource = showAllEmployeeAccounts;
+            cbMedewerkersRole.Enabled = true;
         }
 
+        //mederwerker edit nog doen
+        private void btnMedewerkersEdit_Click(object sender, EventArgs e)
+        {
+           
+            //check if it is a Guest
+            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            {
+                superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
+                MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
+
+                btnMedewerkersShowAllGuest_Click(sender, e);
+            }
+            else // it's an Employee
+            {
+
+            }
+        }
+
+        //nog doen
+        private void btnMedewerkersAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        //nog doen --> zoek hoe je sql gelijk hele row delete from tabelen .. where ID = ..
+        private void btnMedewerkersDelete_Click(object sender, EventArgs e)
+        {
+            //check if it is a Guest
+            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            {
+                
+            }
+            else // it's an Employee
+            {
+
+            }
+        }
+
+        //nog doen
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
         }
+
+        
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -119,8 +170,10 @@ namespace EventManagementSystem
             if (cell != null)
             {
                 DataGridViewRow row = cell.OwningRow;
-                if (tabControl.SelectedTab == tabControl.TabPages["Medewerkers"])
+                if (tabControl.SelectedTab == tabControl.TabPages["tpMedewerkers"])
                 {
+                    tbMedewerkerUsername.Text = row.Cells["Username"].Value.ToString();
+                    tbMedewerkerPassword.Text = row.Cells["Password"].Value.ToString();
                     tbMedewerkerName.Text = row.Cells["Name"].Value.ToString();
                     tbMedewerkerAddress.Text = row.Cells["Address"].Value.ToString();
                     tbMedewerkerCity.Text = row.Cells["City"].Value.ToString();
@@ -128,11 +181,12 @@ namespace EventManagementSystem
                     tbMedewerkerDateOfBirth.Text = row.Cells["DateOfBirth"].Value.ToString();
                     tbMedewerkerEmail.Text = row.Cells["Email"].Value.ToString();
                     tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
+                    tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
 
                     cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
                 }
-                if (tabControl.SelectedTab == tabControl.TabPages["Events"])
+                if (tabControl.SelectedTab == tabControl.TabPages["tpEvent"])
                 {
                     tbEventEventID.Text = row.Cells["ID"].Value.ToString();
                     tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
@@ -147,6 +201,10 @@ namespace EventManagementSystem
             }
 
         }
+
+
+
+
 
 
 
