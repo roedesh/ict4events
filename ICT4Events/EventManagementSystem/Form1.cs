@@ -17,8 +17,7 @@ namespace EventManagementSystem
         public Form1()
         {
             InitializeComponent();
-           /* cbPersoonRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));
-            cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Account.AccountRole));*/
+            cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Employee.AccountRole));
         }
 
 
@@ -88,15 +87,21 @@ namespace EventManagementSystem
             }
         }
 
+
+
         private void btnMedewerkersShowAllGuest_Click(object sender, EventArgs e)
         {
             dataGridView.DataSource = null;
             dataGridView.Refresh();
             List<Account> showAllAccounts = new List<Account>();
-            showAllAccounts = superManager.ShowAccounts();
+            showAllAccounts = superManager.ShowGuestAccounts();
             dataGridView.DataSource = showAllAccounts;
         }
-       
+
+        private void btnMedewerkersShowAllEmployee_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
@@ -114,15 +119,36 @@ namespace EventManagementSystem
             if (cell != null)
             {
                 DataGridViewRow row = cell.OwningRow;
-                tbEventEventID.Text = row.Cells["ID"].Value.ToString();
-                tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
-                tbEventBeginDatum.Text = row.Cells["StartDate"].Value.ToString();
-                tbEventEindDatum.Text = row.Cells["EndDate"].Value.ToString();
-                tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
-                tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
+                if (tabControl.SelectedTab == tabControl.TabPages["Medewerkers"])
+                {
+                    tbMedewerkerName.Text = row.Cells["Name"].Value.ToString();
+                    tbMedewerkerAddress.Text = row.Cells["Address"].Value.ToString();
+                    tbMedewerkerCity.Text = row.Cells["City"].Value.ToString();
+                    tbMedewerkerPostalcode.Text = row.Cells["PostalCode"].Value.ToString();
+                    tbMedewerkerDateOfBirth.Text = row.Cells["DateOfBirth"].Value.ToString();
+                    tbMedewerkerEmail.Text = row.Cells["Email"].Value.ToString();
+                    tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
+                    tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
+
+                    cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
+                }
+                if (tabControl.SelectedTab == tabControl.TabPages["Events"])
+                {
+                    tbEventEventID.Text = row.Cells["ID"].Value.ToString();
+                    tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
+                    tbEventBeginDatum.Text = row.Cells["StartDate"].Value.ToString();
+                    tbEventEindDatum.Text = row.Cells["EndDate"].Value.ToString();
+                    tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
+                    tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
+                }
+                
+
+
             }
 
         }
+
+
 
 
 
