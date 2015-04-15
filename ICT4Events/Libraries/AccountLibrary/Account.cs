@@ -105,10 +105,13 @@ namespace AccountLibrary
         }
 
         // Smaller constructor for temporary accounts in the ExtraPersonsForm
-        public Account(string name, string address, string city, string postalCode,
+        public Account(int eventId, string username, string password, string name, string address, string city, string postalCode,
                        DateTime dateOfBirth, string email, string phone)
         {
             ID = 0;
+            EventID = eventId;
+            Username = username;
+            Password = password;
             Name = name;
             Address = address;
             City = city;

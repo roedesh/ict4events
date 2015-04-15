@@ -29,18 +29,32 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                Guest newAccount = new Guest(
-                    txtName.Text,
-                    txtAddress.Text,
-                    txtCity.Text,
-                    txtPostalCode.Text,
-                    dtpDateOfBirth.Value.Date,
-                    txtEmail.Text,
-                    txtPhone.Text
-                );
-                s.tempAccountManager.AddAccount(newAccount);
-                RefreshList();
-                EmptyTextboxes();
+                if (!IsDigitsOnly(txtEventID.Text))
+                {
+                    Guest newAccount = new Guest(
+                        txtEventID.Text,
+                        txtUsername.Text,
+                        txtPassword.Text,
+                        txtName.Text,
+                        txtAddress.Text,
+                        txtCity.Text,
+                        txtPostalCode.Text,
+                        dtpDateOfBirth.Value.Date,
+                        txtEmail.Text,
+                        txtPhone.Text
+                    );
+                    s.tempAccountManager.AddAccount(newAccount);
+                    RefreshList();
+                    EmptyTextboxes();
+                }
+                else
+                {
+                    MessageBox.Show("Event ID moet een getal zijn!");
+                } 
+            }
+            else
+            {
+                MessageBox.Show("Niet alles ingevuld!");
             }
         }
 
@@ -48,20 +62,34 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                Guest newAccount = new Guest(
-                    txtName.Text,
-                    txtAddress.Text,
-                    txtCity.Text,
-                    txtPostalCode.Text,
-                    dtpDateOfBirth.Value.Date,
-                    txtEmail.Text,
-                    txtPhone.Text
-                );
-                s.mainBooker = newAccount;
-                btAddMainBooker.Enabled = false;
-                RefreshList();
-                EmptyTextboxes();
-            } 
+                if (!IsDigitsOnly(txtEventID.Text))
+                {
+                    Guest newAccount = new Guest(
+                        txtEventID.Text,
+                        txtUsername.Text,
+                        txtPassword.Text,
+                        txtName.Text,
+                        txtAddress.Text,
+                        txtCity.Text,
+                        txtPostalCode.Text,
+                        dtpDateOfBirth.Value.Date,
+                        txtEmail.Text,
+                        txtPhone.Text
+                    );
+                    s.mainBooker = newAccount;
+                    btAddMainBooker.Enabled = false;
+                    RefreshList();
+                    EmptyTextboxes();
+                }
+                else
+                {
+                    MessageBox.Show("Event ID moet een getal zijn!");
+                } 
+            }
+            else
+            {
+                MessageBox.Show("Niet alles ingevuld!");
+            }
         }
 
         public void RefreshList()
