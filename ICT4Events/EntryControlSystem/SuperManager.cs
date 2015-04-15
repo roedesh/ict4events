@@ -11,8 +11,8 @@ namespace EntryControlSystem
     
     class SuperManager
     {
-        private AccountManager accountManager;
-        private DataManager dataManager;
+         AccountManager accountManager;
+         DataManager dataManager;
         
 
         public SuperManager()
