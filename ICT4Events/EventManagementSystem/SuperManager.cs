@@ -21,42 +21,43 @@ namespace EventManagementSystem
             dataManager = new DataManager();
         }
 
-        public void AddEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
+        public void AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            //eventManager.AddEvent(name, adress, city, postalCode, admissionFee);  --moet dit worden gedaan?
-            List<string> eventList = new List<string>();
-            eventList.Add(name);
-            eventList.Add(adress);
-            eventList.Add(city);
-            eventList.Add(postalCode);
-            eventList.Add(Convert.ToString(admissionFee));
-            dataManager.SetEvent(eventList);
+            List<string> list = new List<string>();
+            list.Add(Convert.ToString(id));
+            list.Add(location);
+            list.Add(startdate);
+            list.Add(enddate);
+            list.Add(description);
+            list.Add(Convert.ToString(admissionFee));
+            dataManager.SetEvent(list);
         }
 
         public void EditEvent(string name, string adress, string city, string postalCode, decimal admissionFee)
         {
-            //eventManager.EditEvent(name, adress, city, postalCode, admissionFee);
+            
         }
 
-        public void RemoveEvent(string name)
+        public void DeleteEvent(string id)
         {
-            //eventManager.RemoveEvent(name);
-            //dataManager.DeleteEvent(); -- hoe weet ik de id?
+            dataManager.DeleteEvent(id);
         }
 
         public List<Event> ShowEvents()
         {
+            List<Dictionary<string, string>> list = dataManager.GetAllEvents();
+            foreach (Dictionary<string, string> d in list)
+            {
+                eventManager.AddEvent(Convert.ToInt32(d["EVENTID"]),d["LOCATION"], Convert.ToString(d["STARTDATE"]),
+                   Convert.ToString(d["ENDDATE"]), d["DESCRIPTION"], Convert.ToDecimal(d["ADMISSIONFEE"]));
+            }
             return eventManager.ShowEvents();
+
         }
 
         public void AddAccount(string name, string adress, string city, string postalCode)
         {
-            List<string> acc = new List<string>();
-            acc.Add(name);
-            acc.Add(adress);
-            acc.Add(city);
-            acc.Add(postalCode);
-           //dataManager.SetGuestAccount();
+            
         }
 
         public void EditAccount()
@@ -66,7 +67,17 @@ namespace EventManagementSystem
 
         public List<string> ShowAccounts() // string list return ipv void
         {
-            return dataManager.GetAllGuests();
+            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            List<string> showAll = new List<string>();
+            foreach (Dictionary<string, string> d in list)
+            {
+                showAll.Add(d["GUESTID"]);
+                showAll.Add(d["ACCOUNTID"]);
+                showAll.Add(d["RFID"]);
+                showAll.Add(d["ISPRESENT"]);
+
+            }
+            return showAll;
         }
     }
 }

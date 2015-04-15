@@ -1,4 +1,4 @@
-CREATE TABLE SwearWord
+CoCREATE TABLE SwearWord
 (Word			varchar2(255 char)		PRIMARY KEY
 );
 
@@ -158,4 +158,6 @@ RentalID		int				NULL,
 CONSTRAINT FK_RentalID1 FOREIGN KEY (RentalID) REFERENCES Rental (RentalID),
 CONSTRAINT FK_ItemID1 FOREIGN KEY (ItemID) REFERENCES Item (ItemID)
 );
+
+COMMIT;
 

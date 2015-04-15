@@ -29,62 +29,62 @@
         private void InitializeComponent()
         {
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.tbUitlPersID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tbUitlAantal = new System.Windows.Forms.TextBox();
+            this.tbUitlprijs = new System.Windows.Forms.TextBox();
+            this.tbUitlType = new System.Windows.Forms.TextBox();
+            this.tbUitlNaam = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnArtikelPasAan = new System.Windows.Forms.Button();
+            this.tbRmvAantal = new System.Windows.Forms.TextBox();
+            this.btnArtikelVerwijder = new System.Windows.Forms.Button();
+            this.tbRmvPrijs = new System.Windows.Forms.TextBox();
+            this.tbRmvType = new System.Windows.Forms.TextBox();
+            this.tbRmvNaam = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.tbNeemInPersID = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.tbNeemInAantal = new System.Windows.Forms.TextBox();
+            this.tbNeemInPrijs = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.tbAddAantal = new System.Windows.Forms.TextBox();
+            this.tbAddPrijs = new System.Windows.Forms.TextBox();
+            this.btnArtikelVoegToe = new System.Windows.Forms.Button();
+            this.tbAddType = new System.Windows.Forms.TextBox();
+            this.tbAddName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.tbNeemInType = new System.Windows.Forms.TextBox();
+            this.tbNeemInNaam = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label17
@@ -97,13 +97,13 @@
             this.label17.TabIndex = 68;
             this.label17.Text = "Persoon ID:";
             // 
-            // textBox17
+            // tbUitlPersID
             // 
-            this.textBox17.Location = new System.Drawing.Point(4, 171);
-            this.textBox17.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(157, 20);
-            this.textBox17.TabIndex = 66;
+            this.tbUitlPersID.Location = new System.Drawing.Point(4, 171);
+            this.tbUitlPersID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUitlPersID.Name = "tbUitlPersID";
+            this.tbUitlPersID.Size = new System.Drawing.Size(157, 20);
+            this.tbUitlPersID.TabIndex = 66;
             // 
             // label7
             // 
@@ -135,37 +135,37 @@
             this.button6.Text = "Leen uit";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // tbUitlAantal
             // 
-            this.textBox7.Location = new System.Drawing.Point(4, 132);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(254, 20);
-            this.textBox7.TabIndex = 63;
+            this.tbUitlAantal.Location = new System.Drawing.Point(4, 132);
+            this.tbUitlAantal.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUitlAantal.Name = "tbUitlAantal";
+            this.tbUitlAantal.Size = new System.Drawing.Size(254, 20);
+            this.tbUitlAantal.TabIndex = 63;
             // 
-            // textBox8
+            // tbUitlprijs
             // 
-            this.textBox8.Location = new System.Drawing.Point(4, 58);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(254, 20);
-            this.textBox8.TabIndex = 55;
+            this.tbUitlprijs.Location = new System.Drawing.Point(4, 58);
+            this.tbUitlprijs.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUitlprijs.Name = "tbUitlprijs";
+            this.tbUitlprijs.Size = new System.Drawing.Size(254, 20);
+            this.tbUitlprijs.TabIndex = 55;
             // 
-            // textBox9
+            // tbUitlType
             // 
-            this.textBox9.Location = new System.Drawing.Point(4, 95);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(254, 20);
-            this.textBox9.TabIndex = 61;
+            this.tbUitlType.Location = new System.Drawing.Point(4, 95);
+            this.tbUitlType.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUitlType.Name = "tbUitlType";
+            this.tbUitlType.Size = new System.Drawing.Size(254, 20);
+            this.tbUitlType.TabIndex = 61;
             // 
-            // textBox10
+            // tbUitlNaam
             // 
-            this.textBox10.Location = new System.Drawing.Point(4, 22);
-            this.textBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(254, 20);
-            this.textBox10.TabIndex = 54;
+            this.tbUitlNaam.Location = new System.Drawing.Point(4, 22);
+            this.tbUitlNaam.Margin = new System.Windows.Forms.Padding(2);
+            this.tbUitlNaam.Name = "tbUitlNaam";
+            this.tbUitlNaam.Size = new System.Drawing.Size(254, 20);
+            this.tbUitlNaam.TabIndex = 54;
             // 
             // label9
             // 
@@ -181,12 +181,12 @@
             // 
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.label2);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.textBox1);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox5);
-            this.tabPage2.Controls.Add(this.textBox6);
+            this.tabPage2.Controls.Add(this.btnArtikelPasAan);
+            this.tabPage2.Controls.Add(this.tbRmvAantal);
+            this.tabPage2.Controls.Add(this.btnArtikelVerwijder);
+            this.tabPage2.Controls.Add(this.tbRmvPrijs);
+            this.tabPage2.Controls.Add(this.tbRmvType);
+            this.tabPage2.Controls.Add(this.tbRmvNaam);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -218,57 +218,58 @@
             this.label2.TabIndex = 44;
             this.label2.Text = "Vul hier de naam in:";
             // 
-            // button2
+            // btnArtikelPasAan
             // 
-            this.button2.Location = new System.Drawing.Point(7, 154);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(261, 34);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Pas aan";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnArtikelPasAan.Location = new System.Drawing.Point(7, 154);
+            this.btnArtikelPasAan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArtikelPasAan.Name = "btnArtikelPasAan";
+            this.btnArtikelPasAan.Size = new System.Drawing.Size(261, 34);
+            this.btnArtikelPasAan.TabIndex = 47;
+            this.btnArtikelPasAan.Text = "Pas aan";
+            this.btnArtikelPasAan.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbRmvAantal
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 132);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 20);
-            this.textBox1.TabIndex = 51;
+            this.tbRmvAantal.Location = new System.Drawing.Point(4, 132);
+            this.tbRmvAantal.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRmvAantal.Name = "tbRmvAantal";
+            this.tbRmvAantal.Size = new System.Drawing.Size(254, 20);
+            this.tbRmvAantal.TabIndex = 51;
             // 
-            // button3
+            // btnArtikelVerwijder
             // 
-            this.button3.Location = new System.Drawing.Point(7, 193);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(261, 34);
-            this.button3.TabIndex = 48;
-            this.button3.Text = "Verwijder";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnArtikelVerwijder.Location = new System.Drawing.Point(7, 193);
+            this.btnArtikelVerwijder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArtikelVerwijder.Name = "btnArtikelVerwijder";
+            this.btnArtikelVerwijder.Size = new System.Drawing.Size(261, 34);
+            this.btnArtikelVerwijder.TabIndex = 48;
+            this.btnArtikelVerwijder.Text = "Verwijder";
+            this.btnArtikelVerwijder.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tbRmvPrijs
             // 
-            this.textBox2.Location = new System.Drawing.Point(4, 58);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 20);
-            this.textBox2.TabIndex = 43;
+            this.tbRmvPrijs.Location = new System.Drawing.Point(4, 58);
+            this.tbRmvPrijs.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRmvPrijs.Name = "tbRmvPrijs";
+            this.tbRmvPrijs.Size = new System.Drawing.Size(254, 20);
+            this.tbRmvPrijs.TabIndex = 43;
             // 
-            // textBox5
+            // tbRmvType
             // 
-            this.textBox5.Location = new System.Drawing.Point(4, 95);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 20);
-            this.textBox5.TabIndex = 49;
+            this.tbRmvType.Location = new System.Drawing.Point(4, 95);
+            this.tbRmvType.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRmvType.Name = "tbRmvType";
+            this.tbRmvType.Size = new System.Drawing.Size(254, 20);
+            this.tbRmvType.TabIndex = 49;
             // 
-            // textBox6
+            // tbRmvNaam
             // 
-            this.textBox6.Location = new System.Drawing.Point(4, 22);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(254, 20);
-            this.textBox6.TabIndex = 42;
+            this.tbRmvNaam.Location = new System.Drawing.Point(4, 22);
+            this.tbRmvNaam.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRmvNaam.Name = "tbRmvNaam";
+            this.tbRmvNaam.Size = new System.Drawing.Size(254, 20);
+            this.tbRmvNaam.TabIndex = 42;
+            this.tbRmvNaam.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label5
             // 
@@ -320,13 +321,13 @@
             this.button4.Text = "Leg persoon vast";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox13
+            // tbNeemInPersID
             // 
-            this.textBox13.Location = new System.Drawing.Point(4, 171);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(157, 20);
-            this.textBox13.TabIndex = 78;
+            this.tbNeemInPersID.Location = new System.Drawing.Point(4, 171);
+            this.tbNeemInPersID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNeemInPersID.Name = "tbNeemInPersID";
+            this.tbNeemInPersID.Size = new System.Drawing.Size(157, 20);
+            this.tbNeemInPersID.TabIndex = 78;
             // 
             // label14
             // 
@@ -358,31 +359,31 @@
             this.button5.Text = "Neem in";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox14
+            // tbNeemInAantal
             // 
-            this.textBox14.Location = new System.Drawing.Point(4, 132);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(254, 20);
-            this.textBox14.TabIndex = 76;
+            this.tbNeemInAantal.Location = new System.Drawing.Point(4, 132);
+            this.tbNeemInAantal.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNeemInAantal.Name = "tbNeemInAantal";
+            this.tbNeemInAantal.Size = new System.Drawing.Size(254, 20);
+            this.tbNeemInAantal.TabIndex = 76;
             // 
-            // textBox15
+            // tbNeemInPrijs
             // 
-            this.textBox15.Location = new System.Drawing.Point(4, 58);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(254, 20);
-            this.textBox15.TabIndex = 70;
+            this.tbNeemInPrijs.Location = new System.Drawing.Point(4, 58);
+            this.tbNeemInPrijs.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNeemInPrijs.Name = "tbNeemInPrijs";
+            this.tbNeemInPrijs.Size = new System.Drawing.Size(254, 20);
+            this.tbNeemInPrijs.TabIndex = 70;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.textBox4);
-            this.tabPage1.Controls.Add(this.textBox12);
-            this.tabPage1.Controls.Add(this.button12);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.textBox11);
+            this.tabPage1.Controls.Add(this.tbAddAantal);
+            this.tabPage1.Controls.Add(this.tbAddPrijs);
+            this.tabPage1.Controls.Add(this.btnArtikelVoegToe);
+            this.tabPage1.Controls.Add(this.tbAddType);
+            this.tabPage1.Controls.Add(this.tbAddName);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -414,47 +415,47 @@
             this.label12.TabIndex = 44;
             this.label12.Text = "Enter your name:";
             // 
-            // textBox4
+            // tbAddAantal
             // 
-            this.textBox4.Location = new System.Drawing.Point(4, 132);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 20);
-            this.textBox4.TabIndex = 51;
+            this.tbAddAantal.Location = new System.Drawing.Point(4, 132);
+            this.tbAddAantal.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddAantal.Name = "tbAddAantal";
+            this.tbAddAantal.Size = new System.Drawing.Size(254, 20);
+            this.tbAddAantal.TabIndex = 51;
             // 
-            // textBox12
+            // tbAddPrijs
             // 
-            this.textBox12.Location = new System.Drawing.Point(4, 58);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(254, 20);
-            this.textBox12.TabIndex = 43;
+            this.tbAddPrijs.Location = new System.Drawing.Point(4, 58);
+            this.tbAddPrijs.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddPrijs.Name = "tbAddPrijs";
+            this.tbAddPrijs.Size = new System.Drawing.Size(254, 20);
+            this.tbAddPrijs.TabIndex = 43;
             // 
-            // button12
+            // btnArtikelVoegToe
             // 
-            this.button12.Location = new System.Drawing.Point(7, 194);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(261, 33);
-            this.button12.TabIndex = 52;
-            this.button12.Text = "Voeg toe";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnArtikelVoegToe.Location = new System.Drawing.Point(7, 194);
+            this.btnArtikelVoegToe.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArtikelVoegToe.Name = "btnArtikelVoegToe";
+            this.btnArtikelVoegToe.Size = new System.Drawing.Size(261, 33);
+            this.btnArtikelVoegToe.TabIndex = 52;
+            this.btnArtikelVoegToe.Text = "Voeg toe";
+            this.btnArtikelVoegToe.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tbAddType
             // 
-            this.textBox3.Location = new System.Drawing.Point(4, 95);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 20);
-            this.textBox3.TabIndex = 49;
+            this.tbAddType.Location = new System.Drawing.Point(4, 95);
+            this.tbAddType.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddType.Name = "tbAddType";
+            this.tbAddType.Size = new System.Drawing.Size(254, 20);
+            this.tbAddType.TabIndex = 49;
             // 
-            // textBox11
+            // tbAddName
             // 
-            this.textBox11.Location = new System.Drawing.Point(4, 22);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(254, 20);
-            this.textBox11.TabIndex = 42;
+            this.tbAddName.Location = new System.Drawing.Point(4, 22);
+            this.tbAddName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddName.Name = "tbAddName";
+            this.tbAddName.Size = new System.Drawing.Size(254, 20);
+            this.tbAddName.TabIndex = 42;
             // 
             // label11
             // 
@@ -486,21 +487,21 @@
             this.label13.TabIndex = 80;
             this.label13.Text = "Persoon ID:";
             // 
-            // textBox16
+            // tbNeemInType
             // 
-            this.textBox16.Location = new System.Drawing.Point(4, 95);
-            this.textBox16.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(254, 20);
-            this.textBox16.TabIndex = 74;
+            this.tbNeemInType.Location = new System.Drawing.Point(4, 95);
+            this.tbNeemInType.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNeemInType.Name = "tbNeemInType";
+            this.tbNeemInType.Size = new System.Drawing.Size(254, 20);
+            this.tbNeemInType.TabIndex = 74;
             // 
-            // textBox18
+            // tbNeemInNaam
             // 
-            this.textBox18.Location = new System.Drawing.Point(4, 22);
-            this.textBox18.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(254, 20);
-            this.textBox18.TabIndex = 69;
+            this.tbNeemInNaam.Location = new System.Drawing.Point(4, 22);
+            this.tbNeemInNaam.Margin = new System.Windows.Forms.Padding(2);
+            this.tbNeemInNaam.Name = "tbNeemInNaam";
+            this.tbNeemInNaam.Size = new System.Drawing.Size(254, 20);
+            this.tbNeemInNaam.TabIndex = 69;
             // 
             // label18
             // 
@@ -516,14 +517,14 @@
             // 
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.textBox17);
+            this.tabPage3.Controls.Add(this.tbUitlPersID);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label8);
             this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.textBox7);
-            this.tabPage3.Controls.Add(this.textBox8);
-            this.tabPage3.Controls.Add(this.textBox9);
-            this.tabPage3.Controls.Add(this.textBox10);
+            this.tabPage3.Controls.Add(this.tbUitlAantal);
+            this.tabPage3.Controls.Add(this.tbUitlprijs);
+            this.tabPage3.Controls.Add(this.tbUitlType);
+            this.tabPage3.Controls.Add(this.tbUitlNaam);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -537,7 +538,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.dataGridView);
             this.groupBox1.Location = new System.Drawing.Point(291, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -546,16 +547,6 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 17);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(380, 236);
-            this.dataGridView1.TabIndex = 5;
             // 
             // tabControl1
             // 
@@ -574,14 +565,14 @@
             // 
             this.tabPage4.Controls.Add(this.label13);
             this.tabPage4.Controls.Add(this.button4);
-            this.tabPage4.Controls.Add(this.textBox13);
+            this.tabPage4.Controls.Add(this.tbNeemInPersID);
             this.tabPage4.Controls.Add(this.label14);
             this.tabPage4.Controls.Add(this.label15);
             this.tabPage4.Controls.Add(this.button5);
-            this.tabPage4.Controls.Add(this.textBox14);
-            this.tabPage4.Controls.Add(this.textBox15);
-            this.tabPage4.Controls.Add(this.textBox16);
-            this.tabPage4.Controls.Add(this.textBox18);
+            this.tabPage4.Controls.Add(this.tbNeemInAantal);
+            this.tabPage4.Controls.Add(this.tbNeemInPrijs);
+            this.tabPage4.Controls.Add(this.tbNeemInType);
+            this.tabPage4.Controls.Add(this.tbNeemInNaam);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.label18);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -603,6 +594,14 @@
             this.label16.TabIndex = 72;
             this.label16.Text = "Vul hier de prijs in:";
             // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(5, 18);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(378, 232);
+            this.dataGridView.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -619,10 +618,10 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,55 +629,55 @@
         #endregion
 
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox tbUitlPersID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tbUitlAantal;
+        private System.Windows.Forms.TextBox tbUitlprijs;
+        private System.Windows.Forms.TextBox tbUitlType;
+        private System.Windows.Forms.TextBox tbUitlNaam;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button btnArtikelPasAan;
+        private System.Windows.Forms.TextBox tbRmvAantal;
+        private System.Windows.Forms.Button btnArtikelVerwijder;
+        private System.Windows.Forms.TextBox tbRmvPrijs;
+        private System.Windows.Forms.TextBox tbRmvType;
+        private System.Windows.Forms.TextBox tbRmvNaam;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox tbNeemInPersID;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox tbNeemInAantal;
+        private System.Windows.Forms.TextBox tbNeemInPrijs;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox tbAddAantal;
+        private System.Windows.Forms.TextBox tbAddPrijs;
+        private System.Windows.Forms.Button btnArtikelVoegToe;
+        private System.Windows.Forms.TextBox tbAddType;
+        private System.Windows.Forms.TextBox tbAddName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox tbNeemInType;
+        private System.Windows.Forms.TextBox tbNeemInNaam;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
 
