@@ -131,7 +131,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllEmployees()
         {
-            string query = "SELECT * FROM Employee g, Account a WHERE a.AccountID = g.AccountID ";
+            string query = "SELECT * FROM Employee g, Account a, Role r WHERE a.AccountID = g.AccountID AND g.RoleID = r.RoleID ";
             result = XCTReader(query);
             return result;
         }
