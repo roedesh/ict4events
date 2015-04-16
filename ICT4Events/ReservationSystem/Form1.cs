@@ -79,7 +79,7 @@ namespace ReservationSystem
                 DialogResult result = MessageBox.Show("Weet u zeker dat alle gegevens kloppen?", "Reservering plaatsen", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    List<int> accountsToAdd = new List<int>();
+                    List<int> guestsToAdd = new List<int>();
                     foreach (Account a in s.tempAccountManager.Accounts)
                     {
                         if (a.ID == 0)
@@ -96,11 +96,11 @@ namespace ReservationSystem
                             accountParams.Add(a.Email);
                             accountParams.Add(a.Phone);
                             int ID = s.SetAccount(accountParams);
-                            accountsToAdd.Add(ID);
+                            guestsToAdd.Add(ID);
                         }
                         else
                         {
-                            accountsToAdd.Add(a.ID);
+                            guestsToAdd.Add(a.ID);
                         }
                     }
 
@@ -116,12 +116,21 @@ namespace ReservationSystem
                     mainBookerParams.Add(s.mainBooker.Email);
                     mainBookerParams.Add(s.mainBooker.Phone);
                     int mainBookerID = s.SetAccount(mainBookerParams);
-                    accountsToAdd.Add(mainBookerID);
-                    s.SetReservation();
+                    guestsToAdd.Add(mainBookerID);
 
+                    List<string> reservationParams = new List<string>();
+                    reservationParams.Add(txtCheckPlace.Text);
+                    reservationParams.Add(dtpStartDate.Value.ToShortDateString());
+                    reservationParams.Add(dtpEndDate.Value.ToShortDateString());
+                    reservationParams.Add(Convert.ToString(guestsToAdd.Count));
+                    reservationParams.Add("NOT PAID");
+                    int reservationID = s.SetReservation(reservationParams);
 
-
-
+                    foreach (int a in guestsToAdd)
+                    {
+                        Console.WriteLine("Try to make guestreservation!!!");
+                        s.SetGuestReservation(a, reservationID);
+                    }
                 }
             }
         }

@@ -132,6 +132,7 @@ namespace DataLibrary
             }
             query = "SELECT GuestID FROM Guest WHERE GuestID = (SELECT MAX(GuestID) FROM Guest)";
             result = XCTReader(query);
+            Console.WriteLine("Count: " + result.Count);
             int guestID;
             if (result.Count == 0)
             {
@@ -143,7 +144,7 @@ namespace DataLibrary
                 guestID = Convert.ToInt32(number) + 1;
                 Console.WriteLine("GUESTID " + number);
             }
-            query = "SELECT RFID FROM RFID WHERE InUse = 'N' AND ROWNUM = 1";
+            query = "SELECT RFID FROM RFID";
             string RFID;
             result = XCTReader(query);
             if (result.Count == 0)
@@ -155,15 +156,16 @@ namespace DataLibrary
                 RFID = result[0]["RFID"];
             }
             string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[7]);
-            query = String.Format("INSERT INTO ACCOUNT VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
+            query = String.Format("INSERT INTO ACCOUNT VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}', {11})"
                 , accountID, account[0], account[1], account[2]
                 , account[3], account[4], account[5], account[6]
                 , date, account[8],account[9]);
             XCTNonQuery(query);
-            query = String.Format("INSERT INTO GUEST VALUES({0},{1},'{2}','{3}')"
-                , guestID, accountID, RFID, 'N');
+            query = String.Format("INSERT INTO GUEST VALUES('{0}',{1},'{2}','N')"
+                , guestID, accountID, RFID);
+            Console.WriteLine("Try to add a guest with account ID: " + accountID);
             XCTNonQuery(query);
-            return accountID;
+            return guestID;
         }
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
@@ -288,7 +290,7 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-        public void SetReservation()
+        public int SetReservation(List<string> reservation)
         {
             string query = "SELECT ReservationID FROM Reservation WHERE ReservationID = (SELECT MAX(ReservationID) FROM Reservation)";
             result = XCTReader(query);
@@ -305,22 +307,31 @@ namespace DataLibrary
             }
             
             Console.WriteLine(ID);
-            /*
+            
             string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[1]);
             string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", reservation[2]);
             query = String.Format("INSERT INTO Reservation VALUES({0},'{1}',{2},{3},'{4}','{5}')"
                 , ID, reservation[0], dateStart, dateEnd
                 , reservation[3], reservation[4]);
             XCTNonQuery(query);
-            */ 
+            return ID;
             
         }
-        public void SetGuestReservation(string RID, string PID)
+        public void SetGuestReservation(string PID, string RID)
         {
-            string query = "SELECT MAX(GUESTRESERVATIONID) FROM GUESTRESERVATION";
+            string query = "SELECT GuestReservationID FROM GuestReservation WHERE GuestReservationID = (SELECT MAX(GuestReservationID) FROM GuestReservation)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            query = String.Format("INSERT INTO GUESTRESERVATION VALUES({0},{1},{2})", ID, RID, PID);
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                ID = Convert.ToInt32(result[0]["GUESTRESERVATIONID"]) + 1;
+            }
+            
+            query = String.Format("INSERT INTO GUESTRESERVATION VALUES({0},{1},{2})", ID, PID, RID);
             XCTNonQuery(query);
         }
         public List<Dictionary<string, string>> GetPresence(string ID)

@@ -86,16 +86,21 @@ namespace ReservationSystem
             aManager.AddAccount(a);
         }
 
-        public bool SetReservation()
+        public int SetReservation(List<string> reservationParams)
         {
-            dManager.SetReservation();
-            return true;
+            int ID = dManager.SetReservation(reservationParams);
+            return ID;
         }
 
         public int SetAccount(List<string> accountParams)
         {
             int accountID = dManager.SetGuestAccount(accountParams);
             return accountID;
+        }
+
+        public void SetGuestReservation(int ID, int RID)
+        {
+            dManager.SetGuestReservation(Convert.ToString(ID), Convert.ToString(RID));
         }
   
     }
