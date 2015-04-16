@@ -18,52 +18,44 @@ namespace EntryControlSystem
     {
         private RFID rfid; //Declare an RFID object
         private SuperManager supermanager;
+        private List<Guest> Guests;
         public Form1()
         {
             InitializeComponent();
             supermanager = new SuperManager();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            Guests = new List<Guest>();
         }
 
         private void btnToonAanwezigen_Click(object sender, EventArgs e)
         {
-            lbInfo.Items.Clear();
-            List<string> AllGuests = new List<string>();
             try
             {
-                AllGuests = supermanager.ShowAllPresent();
-                foreach (string guest in AllGuests)
-                {
-                    lbInfo.Items.Add(guest);
-                }
+                Guests = supermanager.ShowAllPresent();
+                UpdateLb();
             }
             catch
             {
-                string error = "Error";
-                lbInfo.Items.Add(error);
+                lbInfo.Items.Add("error");
             }
         }
-
-        private void btnZoekPersoon_Click(object sender, EventArgs e)
+        private void UpdateLb()
         {
             lbInfo.Items.Clear();
-            List<string> Search = new List<string>();
+            foreach (Guest guest in Guests)
+            {
+                lbInfo.Items.Add(guest);
+            }
+        }
+        private void btnZoekPersoon_Click(object sender, EventArgs e)
+        {
             try
             {
-                Search = supermanager.ShowSearchedPerson(tbSearch.Text);
-                foreach (string guest in Search)
-                {
-                    lbInfo.Items.Add(guest);
-                }
+                Guests = supermanager.ShowSearchedPerson(tbSearch.Text);
+                UpdateLb();
             }
             catch
             {
-                string error = "Niemand gevonden";
-                lbInfo.Items.Add(error);
+                lbInfo.Items.Add("Niemand gevonden");
             }
         }
 
@@ -117,11 +109,11 @@ namespace EntryControlSystem
             bool hasPaid = supermanager.CheckPayment(RFID);
             if (hasPaid)
             {
-                pbBetaalstatus.Enabled = true;
+                pbBetaalstatus.BackColor = Color.FromArgb(0, 0, 0);
             }
             else
             {
-                pbBetaalstatus.Enabled = false;
+                pbBetaalstatus.BackColor = Color.FromArgb(255, 0, 0);
             }
 
         }
@@ -233,7 +225,12 @@ namespace EntryControlSystem
 
         private void btnPersoonToelaten_Click(object sender, EventArgs e)
         {
-            supermanager.test();
+            if(lbInfo.SelectedItem != null)
+            {
+                Guest guest = lbInfo.SelectedItem as Guest;
+                string ID = guest.ID.ToString();
+                supermanager.SetPresence(ID, "Y");
+            }
         }
     }
 }

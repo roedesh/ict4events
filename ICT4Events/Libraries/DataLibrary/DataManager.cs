@@ -91,7 +91,7 @@ namespace DataLibrary
 
         public List<Dictionary<string, string>> GetFreeGuestAccount(string username)
         {
-            string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.Username = {0} AND 
+            string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.USERNAME = {0} AND 
                                         g.GuestID NOT IN (SELECT gr.GuestID FROM GuestReservation gr WHERE GuestID = g.GuestID)", username);
             result = XCTReader(query);
             return result;
@@ -182,7 +182,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllGuests()
         {
-            string query = "SELECT * FROM Guest g, Account a WHERE a.AccountID = g.AccountID ";
+            string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.ISPRESENT = 'Y'";
             result = XCTReader(query);
             Console.WriteLine(result);
             return result;

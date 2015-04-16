@@ -74,17 +74,16 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbInfo = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label17
@@ -269,7 +268,6 @@
             this.tbRmvNaam.Name = "tbRmvNaam";
             this.tbRmvNaam.Size = new System.Drawing.Size(254, 20);
             this.tbRmvNaam.TabIndex = 42;
-            this.tbRmvNaam.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label5
             // 
@@ -411,9 +409,9 @@
             this.label12.Location = new System.Drawing.Point(4, 6);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 13);
+            this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 44;
-            this.label12.Text = "Enter your name:";
+            this.label12.Text = "Artikel naam:";
             // 
             // tbAddAantal
             // 
@@ -440,6 +438,7 @@
             this.btnArtikelVoegToe.TabIndex = 52;
             this.btnArtikelVoegToe.Text = "Voeg toe";
             this.btnArtikelVoegToe.UseVisualStyleBackColor = true;
+            this.btnArtikelVoegToe.Click += new System.EventHandler(this.btnArtikelVoegToe_Click);
             // 
             // tbAddType
             // 
@@ -538,7 +537,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView);
+            this.groupBox1.Controls.Add(this.lbInfo);
             this.groupBox1.Location = new System.Drawing.Point(291, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -547,6 +546,14 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
+            // 
+            // lbInfo
+            // 
+            this.lbInfo.FormattingEnabled = true;
+            this.lbInfo.Location = new System.Drawing.Point(5, 18);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(378, 238);
+            this.lbInfo.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -594,14 +601,6 @@
             this.label16.TabIndex = 72;
             this.label16.Text = "Vul hier de prijs in:";
             // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(5, 18);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(378, 232);
-            this.dataGridView.TabIndex = 1;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,7 +620,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -677,7 +675,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.ListBox lbInfo;
     }
 }
 
