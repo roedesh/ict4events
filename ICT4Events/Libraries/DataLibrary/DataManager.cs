@@ -156,7 +156,7 @@ namespace DataLibrary
                 RFID = result[0]["RFID"];
             }
             string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[7]);
-            query = String.Format("INSERT INTO ACCOUNT VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}', {11})"
+            query = String.Format("INSERT INTO ACCOUNT VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
                 , accountID, account[0], account[1], account[2]
                 , account[3], account[4], account[5], account[6]
                 , date, account[8],account[9]);
