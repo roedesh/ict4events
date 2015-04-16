@@ -79,7 +79,44 @@ namespace ReservationSystem
                 DialogResult result = MessageBox.Show("Weet u zeker dat alle gegevens kloppen?", "Reservering plaatsen", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
                 {
-                    List<string> list = new List<string>();
+                    List<int> accountsToAdd = new List<int>();
+                    foreach (Account a in s.tempAccountManager.Accounts)
+                    {
+                        if (a.ID == 0)
+                        {
+                            List<string> accountParams = new List<string>() ;
+                            accountParams.Add(Convert.ToString(a.EventID));
+                            accountParams.Add(a.Username);
+                            accountParams.Add(a.Password);
+                            accountParams.Add(a.Name);
+                            accountParams.Add(a.Address);
+                            accountParams.Add(a.City);
+                            accountParams.Add(a.PostalCode);
+                            accountParams.Add(a.DateOfBirth.ToShortDateString());
+                            accountParams.Add(a.Email);
+                            accountParams.Add(a.Phone);
+                            int ID = s.SetAccount(accountParams);
+                            accountsToAdd.Add(ID);
+                        }
+                        else
+                        {
+                            accountsToAdd.Add(a.ID);
+                        }
+                    }
+
+                    List<string> mainBookerParams = new List<string>();
+                    mainBookerParams.Add(Convert.ToString(s.mainBooker.EventID));
+                    mainBookerParams.Add(s.mainBooker.Username);
+                    mainBookerParams.Add(s.mainBooker.Password);
+                    mainBookerParams.Add(s.mainBooker.Name);
+                    mainBookerParams.Add(s.mainBooker.Address);
+                    mainBookerParams.Add(s.mainBooker.City);
+                    mainBookerParams.Add(s.mainBooker.PostalCode);
+                    mainBookerParams.Add(s.mainBooker.DateOfBirth.ToShortDateString());
+                    mainBookerParams.Add(s.mainBooker.Email);
+                    mainBookerParams.Add(s.mainBooker.Phone);
+                    int mainBookerID = s.SetAccount(mainBookerParams);
+                    accountsToAdd.Add(mainBookerID);
                     s.SetReservation();
 
 

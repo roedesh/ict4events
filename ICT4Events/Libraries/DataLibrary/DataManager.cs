@@ -115,16 +115,55 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-        public void SetGuestAccount(List<string> account, List<string> guest)
+        public int SetGuestAccount(List<string> account)
         {
-            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
-            string query = String.Format("INSERT INTO ACCOUNT VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
-                , account[0], account[1], account[2], account[3]
-                , account[4], account[5], account[6], account[7]
-                , date, account[9],account[10]);
-            query = String.Format("INSERT INTO GUEST VALUES({0},{1},'{2}','{3}')"
-                , guest[0], guest[1], guest[2], guest[3]);
+            string query = "SELECT AccountID FROM Account WHERE AccountID = (SELECT MAX(AccountID) FROM Account)";
+            result = XCTReader(query);
+            int accountID;
+            if (result.Count == 0)
+            {
+                accountID = 1;
+            }
+            else
+            {
+                string number = result[0]["ACCOUNTID"];
+                accountID = Convert.ToInt32(number) + 1;
+                Console.WriteLine("ACCOUNTID " + number);
+            }
+            query = "SELECT GuestID FROM Guest WHERE GuestID = (SELECT MAX(GuestID) FROM Guest)";
+            result = XCTReader(query);
+            int guestID;
+            if (result.Count == 0)
+            {
+                guestID = 1;
+            }
+            else
+            {
+                string number = result[0]["GUESTID"];
+                guestID = Convert.ToInt32(number) + 1;
+                Console.WriteLine("GUESTID " + number);
+            }
+            query = "SELECT RFID FROM RFID WHERE InUse = 'N' AND ROWNUM = 1";
+            string RFID;
+            result = XCTReader(query);
+            if (result.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                RFID = result[0]["RFID"];
+            }
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[7]);
+            query = String.Format("INSERT INTO ACCOUNT VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
+                , accountID, account[0], account[1], account[2]
+                , account[3], account[4], account[5], account[6]
+                , date, account[8],account[9]);
             XCTNonQuery(query);
+            query = String.Format("INSERT INTO GUEST VALUES({0},{1},'{2}','{3}')"
+                , guestID, accountID, RFID, 'N');
+            XCTNonQuery(query);
+            return accountID;
         }
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {

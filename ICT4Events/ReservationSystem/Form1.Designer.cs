@@ -65,6 +65,12 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btReset = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.txtPlaceStatus = new System.Windows.Forms.Label();
             this.txtAmountPersons = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,12 +78,6 @@
             this.btAddPersons = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btReset = new System.Windows.Forms.Button();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -489,6 +489,62 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
             // 
+            // btReset
+            // 
+            this.btReset.Location = new System.Drawing.Point(4, 266);
+            this.btReset.Margin = new System.Windows.Forms.Padding(2);
+            this.btReset.Name = "btReset";
+            this.btReset.Size = new System.Drawing.Size(94, 36);
+            this.btReset.TabIndex = 23;
+            this.btReset.Text = "Reset alles";
+            this.btReset.UseVisualStyleBackColor = true;
+            this.btReset.Click += new System.EventHandler(this.btReset_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(102, 266);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 36);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Plaats reservering";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.Location = new System.Drawing.Point(7, 161);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(202, 20);
+            this.dtpEndDate.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 145);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Einddatum:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 95);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Begindatum:";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Location = new System.Drawing.Point(7, 111);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(202, 20);
+            this.dtpStartDate.TabIndex = 18;
+            // 
             // txtPlaceStatus
             // 
             this.txtPlaceStatus.AutoSize = true;
@@ -501,7 +557,7 @@
             // txtAmountPersons
             // 
             this.txtAmountPersons.AutoSize = true;
-            this.txtAmountPersons.Location = new System.Drawing.Point(88, 199);
+            this.txtAmountPersons.Location = new System.Drawing.Point(88, 197);
             this.txtAmountPersons.Name = "txtAmountPersons";
             this.txtAmountPersons.Size = new System.Drawing.Size(13, 13);
             this.txtAmountPersons.TabIndex = 16;
@@ -510,7 +566,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 199);
+            this.label2.Location = new System.Drawing.Point(2, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 13);
             this.label2.TabIndex = 15;
@@ -529,7 +585,7 @@
             // 
             // btAddPersons
             // 
-            this.btAddPersons.Location = new System.Drawing.Point(4, 214);
+            this.btAddPersons.Location = new System.Drawing.Point(4, 212);
             this.btAddPersons.Margin = new System.Windows.Forms.Padding(2);
             this.btAddPersons.Name = "btAddPersons";
             this.btAddPersons.Size = new System.Drawing.Size(116, 36);
@@ -560,62 +616,6 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Plaatsen";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.Location = new System.Drawing.Point(7, 111);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(202, 20);
-            this.dtpStartDate.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 95);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Begindatum:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 145);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Einddatum:";
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Location = new System.Drawing.Point(7, 161);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(202, 20);
-            this.dtpEndDate.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(102, 266);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 36);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Plaats reservering";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btReset
-            // 
-            this.btReset.Location = new System.Drawing.Point(4, 266);
-            this.btReset.Margin = new System.Windows.Forms.Padding(2);
-            this.btReset.Name = "btReset";
-            this.btReset.Size = new System.Drawing.Size(94, 36);
-            this.btReset.TabIndex = 23;
-            this.btReset.Text = "Reset alles";
-            this.btReset.UseVisualStyleBackColor = true;
-            this.btReset.Click += new System.EventHandler(this.btReset_Click);
             // 
             // Form1
             // 

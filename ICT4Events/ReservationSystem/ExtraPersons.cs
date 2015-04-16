@@ -30,7 +30,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                if (!IsDigitsOnly(txtEventID.Text))
+                if (IsDigitsOnly(txtEventID.Text))
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),
@@ -63,7 +63,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                if (!IsDigitsOnly(txtEventID.Text))
+                if (IsDigitsOnly(txtEventID.Text))
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),

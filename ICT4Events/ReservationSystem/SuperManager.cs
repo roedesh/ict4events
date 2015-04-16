@@ -91,6 +91,12 @@ namespace ReservationSystem
             dManager.SetReservation();
             return true;
         }
+
+        public int SetAccount(List<string> accountParams)
+        {
+            int accountID = dManager.SetGuestAccount(accountParams);
+            return accountID;
+        }
   
     }
 }
