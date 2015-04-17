@@ -105,11 +105,11 @@ namespace EntryControlSystem
             return persons;
         }
 
-        public bool SetPresence(string accountID,string YN)
+        public bool UpdatePresence(string accountID,string YN)
         {
             try
             {
-                dataManager.SetPresence(YN, accountID);
+//dataManager.UpdatePresence(YN, accountID);
                 return true;
             }
             catch
@@ -147,7 +147,7 @@ namespace EntryControlSystem
             }
         }
 
-        public List<Guest> GetUserInfo(string RFID)
+        public List<Guest> SearchPersonRFID(string RFID)
         {
             List<Guest> persons = new List<Guest>();
             Guest account;

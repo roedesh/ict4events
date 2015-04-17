@@ -362,9 +362,9 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-        public void SetPresence(string Pvalue, string ID)
+        public void UpdatePresence(string GuestID, string AccountID, string RFID, string isPresent)
         {
-            string query = String.Format("INSERT INTO GUEST (ISPRESENT) VALUES('{0}') WHERE ACCOUNTID = {1}", Pvalue, ID);
+            string query = String.Format("UPDATE GUESTTABLE SET GUESTID = {0}, SET ACCOUNTID = {1},SET RFID = {2},SET ISPRESENT = {3},", GuestID, AccountID,RFID,isPresent);
             XCTNonQuery(query);
         }
         public void SetFile(List<string> file)

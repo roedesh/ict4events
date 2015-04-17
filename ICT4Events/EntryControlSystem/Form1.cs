@@ -46,7 +46,15 @@ namespace EntryControlSystem
             {
                 lbInfo.Items.Add(guest);
             }
-            lbInfo.SelectedItem = lbInfo.Items[0];
+            try
+            {
+                lbInfo.SelectedItem = lbInfo.Items[0];
+            }
+            catch
+            {
+                tbRFID.Text = "";
+                pbBetaalstatus.BackColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void btnZoekPersoon_Click(object sender, EventArgs e)
         {
@@ -106,8 +114,9 @@ namespace EntryControlSystem
         //Tag event handler...we'll display the tag code in the field on the GUI
         void rfid_Tag(object sender, TagEventArgs e)
         {
+            string RFIDtag = e.Tag;
+            Guests = supermanager.SearchPersonRFID(RFIDtag);
             UpdateLb();
-            
         }
 
         //Tag lost event handler...here we simply want to clear our tag field in the GUI
@@ -221,13 +230,14 @@ namespace EntryControlSystem
             {
                 Guest guest = lbInfo.SelectedItem as Guest;
                 string ID = guest.ID.ToString();
+                string isPresent = guest.IsPresent;
                 if(guest.IsPresent == "Y")
                 {
-                    supermanager.SetPresence(ID, "N");
+                    supermanager.UpdatePresence(ID, "N");
                 }
                 else if(guest.IsPresent == "N")
                 {
-                    supermanager.SetPresence(ID, "Y");
+                    supermanager.UpdatePresence(ID, "Y");
                 }
                 
             }
