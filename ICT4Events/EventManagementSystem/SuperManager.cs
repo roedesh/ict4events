@@ -189,5 +189,15 @@ namespace EventManagementSystem
         {
             dataManager.DeleteEmployee(Convert.ToString(accountID));
         }
+
+        public List<string> ShowLocations()
+        {
+            return null;
+        }
+
+        public int getEnum(string s)
+        {
+            return (int)(AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), s);
+        }
     }
 }

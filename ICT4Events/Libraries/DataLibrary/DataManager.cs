@@ -315,7 +315,9 @@ namespace DataLibrary
         /// <param name="ID">string ID</param>
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM Guest WHERE A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -324,7 +326,9 @@ namespace DataLibrary
         /// <param name="ID">string ID</param>
         public void DeleteEmployee(string ID)
         {
-            string query = String.Format("DELETE FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Employee WHERE AccountID = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -770,6 +774,13 @@ namespace DataLibrary
         public List<Dictionary<string, string>> GetAllLocations()
         {
             string query = "SELECT * FROM LOCATION";
+            result = XCTReader(query);
+            return result;
+        }
+
+        public List<Dictionary<string, string>> Login(string username, string password)
+        {
+            string query = String.Format("SELECT * FROM Account WHERE USERNAME = '{0}' AND PASSWORD = '{1}'", username, password);
             result = XCTReader(query);
             return result;
         }

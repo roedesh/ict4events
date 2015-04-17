@@ -35,6 +35,12 @@
             this.btCancelForm = new System.Windows.Forms.Button();
             this.btSubmitForm = new System.Windows.Forms.Button();
             this.gboxAdd = new System.Windows.Forms.GroupBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblPassWord = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtEventID = new System.Windows.Forms.TextBox();
+            this.lblEventID = new System.Windows.Forms.Label();
             this.btAddMainBooker = new System.Windows.Forms.Button();
             this.lblPostalCode = new System.Windows.Forms.Label();
             this.txtPostalCode = new System.Windows.Forms.TextBox();
@@ -60,12 +66,6 @@
             this.lblAccountEntry = new System.Windows.Forms.Label();
             this.txtAccountEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.txtEventID = new System.Windows.Forms.TextBox();
-            this.lblEventID = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassWord = new System.Windows.Forms.Label();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -168,6 +168,54 @@
             this.gboxAdd.TabIndex = 7;
             this.gboxAdd.TabStop = false;
             this.gboxAdd.Text = "Nieuwe accounts aanmaken";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(6, 160);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(217, 20);
+            this.txtPassword.TabIndex = 20;
+            // 
+            // lblPassWord
+            // 
+            this.lblPassWord.AutoSize = true;
+            this.lblPassWord.Location = new System.Drawing.Point(5, 144);
+            this.lblPassWord.Name = "lblPassWord";
+            this.lblPassWord.Size = new System.Drawing.Size(56, 13);
+            this.lblPassWord.TabIndex = 21;
+            this.lblPassWord.Text = "Password:";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(6, 117);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(217, 20);
+            this.txtUsername.TabIndex = 18;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(4, 101);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(58, 13);
+            this.lblUsername.TabIndex = 19;
+            this.lblUsername.Text = "Username:";
+            // 
+            // txtEventID
+            // 
+            this.txtEventID.Location = new System.Drawing.Point(5, 72);
+            this.txtEventID.Name = "txtEventID";
+            this.txtEventID.Size = new System.Drawing.Size(219, 20);
+            this.txtEventID.TabIndex = 16;
+            // 
+            // lblEventID
+            // 
+            this.lblEventID.AutoSize = true;
+            this.lblEventID.Location = new System.Drawing.Point(3, 56);
+            this.lblEventID.Name = "lblEventID";
+            this.lblEventID.Size = new System.Drawing.Size(49, 13);
+            this.lblEventID.TabIndex = 17;
+            this.lblEventID.Text = "Event ID";
             // 
             // btAddMainBooker
             // 
@@ -383,59 +431,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(246, 438);
+            this.label1.Location = new System.Drawing.Point(250, 438);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(339, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(6, 117);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(217, 20);
-            this.txtUsername.TabIndex = 18;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(4, 101);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(58, 13);
-            this.lblUsername.TabIndex = 19;
-            this.lblUsername.Text = "Username:";
-            // 
-            // txtEventID
-            // 
-            this.txtEventID.Location = new System.Drawing.Point(5, 72);
-            this.txtEventID.Name = "txtEventID";
-            this.txtEventID.Size = new System.Drawing.Size(219, 20);
-            this.txtEventID.TabIndex = 16;
-            // 
-            // lblEventID
-            // 
-            this.lblEventID.AutoSize = true;
-            this.lblEventID.Location = new System.Drawing.Point(3, 56);
-            this.lblEventID.Name = "lblEventID";
-            this.lblEventID.Size = new System.Drawing.Size(49, 13);
-            this.lblEventID.TabIndex = 17;
-            this.lblEventID.Text = "Event ID";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(6, 160);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(217, 20);
-            this.txtPassword.TabIndex = 20;
-            // 
-            // lblPassWord
-            // 
-            this.lblPassWord.AutoSize = true;
-            this.lblPassWord.Location = new System.Drawing.Point(5, 144);
-            this.lblPassWord.Name = "lblPassWord";
-            this.lblPassWord.Size = new System.Drawing.Size(56, 13);
-            this.lblPassWord.TabIndex = 21;
-            this.lblPassWord.Text = "Password:";
             // 
             // ExtraPersons
             // 
