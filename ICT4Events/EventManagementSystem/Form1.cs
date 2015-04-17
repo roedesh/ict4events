@@ -104,7 +104,7 @@ namespace EventManagementSystem
         {
             dataGridView.DataSource = null;
             dataGridView.Refresh();
-            List<Account> showAllEmployeeAccounts = new List<Account>();
+            List<Employee> showAllEmployeeAccounts = new List<Employee>();
             showAllEmployeeAccounts = superManager.ShowEmployeeAccounts();
             dataGridView.DataSource = showAllEmployeeAccounts;
             cbMedewerkersRole.Enabled = true;
