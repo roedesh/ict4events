@@ -100,7 +100,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btLogin);
             this.Name = "LoginForm";
-            this.Text = "LoginForm";
+            this.Text = "Reserveringssysteem";
             this.ResumeLayout(false);
             this.PerformLayout();
 

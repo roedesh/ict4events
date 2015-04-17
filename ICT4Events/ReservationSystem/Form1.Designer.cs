@@ -412,7 +412,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Reserveringssysteem";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgReservations)).EndInit();
             this.groupBox3.ResumeLayout(false);
