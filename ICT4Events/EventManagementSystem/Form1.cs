@@ -128,7 +128,14 @@ namespace EventManagementSystem
             }
             else // it's an Employee
             {
-
+                    superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), Convert.ToInt32(tbMedewerkersRoleID.Text),
+                    cbMedewerkersRole.SelectedItem.ToString());
+                    MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
             }
         }
 
@@ -186,9 +193,6 @@ namespace EventManagementSystem
                     tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
                     tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
-
-                    
-                    
 
                     tbMedewerkerAccountID.Enabled = false;
                     tbMedewerkersEventID.Enabled = false;

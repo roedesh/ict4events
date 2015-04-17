@@ -83,7 +83,7 @@ namespace EventManagementSystem
             return accountManager.Accounts;
         }
 
-        public List<Account> ShowEmployeeAccounts() // 2x name van database
+        public List<Account> ShowEmployeeAccounts() 
         {
             accountManager.Accounts.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllGuests();
@@ -96,7 +96,7 @@ namespace EventManagementSystem
                     d["CITY"], d["POSTALCODE"], 
                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                     d["EMAIL"], d["PHONENUMBER"],
-                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLEID"]));
+                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]));
 
                 accountManager.AddAccount(a);
             }
@@ -129,7 +129,21 @@ namespace EventManagementSystem
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int EmployeeID, int RoleID, string rolename )
         {
-
+            //create account list
+            List<string> ac = new List<string>();
+            ac.Add(Convert.ToString(id));
+            ac.Add(Convert.ToString(eventId));
+            ac.Add(username);
+            ac.Add(password);
+            ac.Add(fullname);
+            ac.Add(address);
+            ac.Add(city);
+            ac.Add(postalcode);
+            ac.Add(dateOfBirth);
+            ac.Add(email);
+            ac.Add(Convert.ToString(phonenumber));
+            //send items to datamanager
+            dataManager.UpdateAccount(ac);
         }
 
         public void DeleteAccountGuest(int accountID)

@@ -192,7 +192,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllGuests()
         {
-            string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.ISPRESENT = 'Y'";
+            string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID";
             result = XCTReader(query);
             Console.WriteLine(result);
             return result;
