@@ -229,17 +229,21 @@ namespace EntryControlSystem
             if(lbInfo.SelectedItem != null)
             {
                 Guest guest = lbInfo.SelectedItem as Guest;
-                string ID = guest.ID.ToString();
+                string accountID = guest.ID.ToString();
+                string guestID = guest.GuestID.ToString();
+                string RFID = guest.RFID;
                 string isPresent = guest.IsPresent;
                 if(guest.IsPresent == "Y")
                 {
-                    supermanager.UpdatePresence(ID, "N");
+                    supermanager.UpdatePresence(guestID,accountID,RFID, "N");
                 }
                 else if(guest.IsPresent == "N")
                 {
-                    supermanager.UpdatePresence(ID, "Y");
+                    supermanager.UpdatePresence(guestID, accountID, RFID, "Y");
                 }
-                
+                lbInfo.Items.Clear();
+                string message = guest.Name.ToString() + " checked in/out.";
+                lbInfo.Items.Add(message);
             }
         }
 

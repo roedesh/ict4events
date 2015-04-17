@@ -35,7 +35,7 @@ namespace EntryControlSystem
                                     d["CITY"], d["POSTALCODE"],
                                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                                     d["EMAIL"], d["PHONENUMBER"], d["RFID"],
-                                    d["ISPRESENT"]);
+                                    d["ISPRESENT"], Convert.ToInt32(d["GUESTID"]));
                 presentPersons.Add(account);
 
             }
@@ -77,7 +77,7 @@ namespace EntryControlSystem
                                     d["CITY"], d["POSTALCODE"],
                                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                                     d["EMAIL"], d["PHONENUMBER"], d["RFID"],
-                                    d["ISPRESENT"]);
+                                    d["ISPRESENT"], Convert.ToInt32(d["GUESTID"]));
                 persons.Add(account);
 
             }
@@ -98,18 +98,18 @@ namespace EntryControlSystem
                                     d["CITY"], d["POSTALCODE"],
                                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                                     d["EMAIL"], d["PHONENUMBER"], d["RFID"],
-                                    d["ISPRESENT"]);
+                                    d["ISPRESENT"], Convert.ToInt32(d["GUESTID"]));
                 persons.Add(account);
 
             }
             return persons;
         }
 
-        public bool UpdatePresence(string accountID,string YN)
+        public bool UpdatePresence(string GuestID,string AccountID, string RFID, string Presence)
         {
             try
             {
-//dataManager.UpdatePresence(YN, accountID);
+                dataManager.UpdatePresence(GuestID, AccountID, RFID, Presence);
                 return true;
             }
             catch
@@ -163,7 +163,7 @@ namespace EntryControlSystem
                                     d["CITY"], d["POSTALCODE"],
                                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                                     d["EMAIL"], d["PHONENUMBER"], d["RFID"],
-                                    d["ISPRESENT"]);
+                                    d["ISPRESENT"], Convert.ToInt32(d["GUESTID"]));
                 persons.Add(account);
             }
             return persons;

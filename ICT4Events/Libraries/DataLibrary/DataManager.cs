@@ -364,7 +364,7 @@ namespace DataLibrary
         }
         public void UpdatePresence(string GuestID, string AccountID, string RFID, string isPresent)
         {
-            string query = String.Format("UPDATE GUESTTABLE SET GUESTID = {0}, SET ACCOUNTID = {1},SET RFID = {2},SET ISPRESENT = {3},", GuestID, AccountID,RFID,isPresent);
+            string query = String.Format("UPDATE GUEST SET GUESTID = {0}, ACCOUNTID = {1},RFID = '{2}',ISPRESENT = '{3}' WHERE GUESTID = {0}", GuestID, AccountID,RFID,isPresent);
             XCTNonQuery(query);
         }
         public void SetFile(List<string> file)
