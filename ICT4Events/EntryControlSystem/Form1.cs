@@ -40,11 +40,13 @@ namespace EntryControlSystem
         }
         private void UpdateLb()
         {
+            // put list with guests into listbox
             lbInfo.Items.Clear();
             foreach (Guest guest in Guests)
             {
                 lbInfo.Items.Add(guest);
             }
+            lbInfo.SelectedItem = lbInfo.Items[0];
         }
         private void btnZoekPersoon_Click(object sender, EventArgs e)
         {
@@ -104,18 +106,8 @@ namespace EntryControlSystem
         //Tag event handler...we'll display the tag code in the field on the GUI
         void rfid_Tag(object sender, TagEventArgs e)
         {
-            string RFID = e.Tag;
-            tbRFID.Text = RFID;
-            bool hasPaid = supermanager.CheckPayment(RFID);
-            if (hasPaid)
-            {
-                pbBetaalstatus.BackColor = Color.FromArgb(0, 0, 0);
-            }
-            else
-            {
-                pbBetaalstatus.BackColor = Color.FromArgb(255, 0, 0);
-            }
-
+            UpdateLb();
+            
         }
 
         //Tag lost event handler...here we simply want to clear our tag field in the GUI
@@ -229,7 +221,32 @@ namespace EntryControlSystem
             {
                 Guest guest = lbInfo.SelectedItem as Guest;
                 string ID = guest.ID.ToString();
-                supermanager.SetPresence(ID, "Y");
+                if(guest.IsPresent == "Y")
+                {
+                    supermanager.SetPresence(ID, "N");
+                }
+                else if(guest.IsPresent == "N")
+                {
+                    supermanager.SetPresence(ID, "Y");
+                }
+                
+            }
+        }
+
+        private void lbInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // check if selected has paid
+            Guest guest = lbInfo.SelectedItem as Guest;
+            string RFIDtag = guest.RFID;
+            tbRFID.Text = guest.RFID;
+            bool hasPaid = supermanager.CheckPayment(RFIDtag);
+            if (hasPaid)
+            {
+                pbBetaalstatus.BackColor = Color.FromArgb(0, 255, 0);
+            }
+            else
+            {
+                pbBetaalstatus.BackColor = Color.FromArgb(255, 0, 0);
             }
         }
     }

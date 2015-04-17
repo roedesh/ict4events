@@ -81,6 +81,14 @@ namespace DataLibrary
             return result;
         }
 
+        public List<Dictionary<string, string>> GetGuestAccountWithName(string name)
+        {
+            string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.FULLNAME LIKE '%{0}%'", name);
+            result = XCTReader(query);
+            return result;
+        }
+
+
         public List<Dictionary<string, string>> GetFreeGuestAccount(int ID)
         {
             string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0} AND 
@@ -178,12 +186,9 @@ namespace DataLibrary
         }
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
-            string query = "SELECT MAX(AccountID) FROM Account";
-            result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
             string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
-            query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}')"
-                , ID, account[1], account[2], account[3]
+            string query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}')"
+                , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
                 , date, account[9]);
             XCTNonQuery(query);
@@ -193,14 +198,14 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllGuests()
         {
-            string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.ISPRESENT = 'Y'";
+            string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID";
             result = XCTReader(query);
             Console.WriteLine(result);
             return result;
         }
         public List<Dictionary<string, string>> GetAllEmployees()
         {
-            string query = "SELECT * FROM Employee g, Account a, Role r WHERE a.AccountID = g.AccountID AND g.RoleID = r.RoleID ";
+            string query = "SELECT g.*, a.*, r.name as RoleName FROM Employee g, Account a, Role r WHERE a.AccountID = g.AccountID AND g.RoleID = r.RoleID ";
             result = XCTReader(query);
             return result;
         }
@@ -227,12 +232,12 @@ namespace DataLibrary
         }
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE * FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEmployee(string ID)
         {
-            string query = String.Format("DELETE * FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEvent(string ID)
@@ -486,9 +491,12 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllPresentGuests()
         {
-            string query = "SELECT * FROM GUEST WHERE ISPRESENT = 'Y'";
-            result = XCTReader(query);
-            return result;
+            {
+                string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.ISPRESENT = 'Y'";
+                result = XCTReader(query);
+                Console.WriteLine(result);
+                return result;
+            }
         }
         public void UpdateItem(List<string> item)
         {

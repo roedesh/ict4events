@@ -54,6 +54,7 @@
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(406, 160);
             this.lbInfo.TabIndex = 4;
+            this.lbInfo.SelectedIndexChanged += new System.EventHandler(this.lbInfo_SelectedIndexChanged);
             // 
             // groupBox1
             // 

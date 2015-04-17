@@ -96,6 +96,7 @@ namespace EventManagementSystem
             List<Account> showAllGuestAccounts = new List<Account>();
             showAllGuestAccounts = superManager.ShowGuestAccounts();
             dataGridView.DataSource = showAllGuestAccounts;
+            cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
         }
 
@@ -109,7 +110,7 @@ namespace EventManagementSystem
             cbMedewerkersRole.Enabled = true;
         }
 
-        //mederwerker edit nog doen
+        
         private void btnMedewerkersEdit_Click(object sender, EventArgs e)
         {
            
@@ -127,27 +128,50 @@ namespace EventManagementSystem
             }
             else // it's an Employee
             {
-
+                    superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
+                    MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
             }
         }
 
-        //nog doen
         private void btnMedewerkersAdd_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
+                MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+            }
+            finally
+            {
+                btnMedewerkersShowAllEmployee_Click(sender, e);
+            }
         }
-        
-        //nog doen --> zoek hoe je sql gelijk hele row delete from tabelen .. where ID = ..
+
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
             //check if it is a Guest
             if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
             {
-                
+                superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllGuest_Click(sender, e);
             }
             else // it's an Employee
             {
-
+                superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllEmployee_Click(sender, e);
             }
         }
 
@@ -184,9 +208,10 @@ namespace EventManagementSystem
                     tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
 
-                    cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
+                    tbMedewerkerAccountID.Enabled = false;
+                    tbMedewerkersEventID.Enabled = false;
                 }
-                if (tabControl.SelectedTab == tabControl.TabPages["tpEvent"])
+                if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
                     tbEventEventID.Text = row.Cells["ID"].Value.ToString();
                     tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
