@@ -81,6 +81,14 @@ namespace DataLibrary
             return result;
         }
 
+        public List<Dictionary<string, string>> GetGuestAccountWithName(string name)
+        {
+            string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.FullName = '{0}'", name);
+            result = XCTReader(query);
+            return result;
+        }
+
+
         public List<Dictionary<string, string>> GetFreeGuestAccount(int ID)
         {
             string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0} AND 
