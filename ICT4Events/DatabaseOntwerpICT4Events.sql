@@ -68,7 +68,7 @@ CONSTRAINT FK_CommentID1 FOREIGN KEY (CommentID) REFERENCES CommentTable (Commen
 
 CREATE TABLE Role
 (RoleID			int						PRIMARY KEY,
-Name			varchar2(255 char)		NOT NULL,
+RoleName		varchar2(255 char)		NOT NULL,
 Description		varchar2(255 char)		NULL
 );
 

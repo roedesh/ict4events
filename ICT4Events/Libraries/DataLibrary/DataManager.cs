@@ -81,6 +81,14 @@ namespace DataLibrary
             return result;
         }
 
+        public List<Dictionary<string, string>> GetGuestAccountWithName(string name)
+        {
+            string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.FullName = '{0}'", name);
+            result = XCTReader(query);
+            return result;
+        }
+
+
         public List<Dictionary<string, string>> GetFreeGuestAccount(int ID)
         {
             string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0} AND 
@@ -218,12 +226,12 @@ namespace DataLibrary
         }
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE * FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEmployee(string ID)
         {
-            string query = String.Format("DELETE * FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEvent(string ID)

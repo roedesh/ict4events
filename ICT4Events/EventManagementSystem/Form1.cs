@@ -96,6 +96,7 @@ namespace EventManagementSystem
             List<Account> showAllGuestAccounts = new List<Account>();
             showAllGuestAccounts = superManager.ShowGuestAccounts();
             dataGridView.DataSource = showAllGuestAccounts;
+            cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
         }
 
@@ -137,17 +138,19 @@ namespace EventManagementSystem
 
         }
         
-        //nog doen --> zoek hoe je sql gelijk hele row delete from tabelen .. where ID = ..
+        
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
             //check if it is a Guest
             if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
             {
-                
+                superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllGuest_Click(sender, e);
             }
             else // it's an Employee
             {
-
+                superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllEmployee_Click(sender, e);
             }
         }
 
@@ -184,9 +187,13 @@ namespace EventManagementSystem
                     tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
 
-                    cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
+                    
+                    
+
+                    tbMedewerkerAccountID.Enabled = false;
+                    tbMedewerkersEventID.Enabled = false;
                 }
-                if (tabControl.SelectedTab == tabControl.TabPages["tpEvent"])
+                if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
                     tbEventEventID.Text = row.Cells["ID"].Value.ToString();
                     tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
