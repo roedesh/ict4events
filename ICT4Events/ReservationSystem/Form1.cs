@@ -96,6 +96,11 @@ namespace ReservationSystem
                             accountParams.Add(a.Email);
                             accountParams.Add(a.Phone);
                             int ID = s.SetAccount(accountParams);
+                            if (ID == 0)
+                            {
+                                MessageBox.Show("Er zijn geen RFID's meer beschikbaar");
+                                return;
+                            }
                             guestsToAdd.Add(ID);
                         }
                         else
@@ -128,10 +133,40 @@ namespace ReservationSystem
 
                     foreach (int a in guestsToAdd)
                     {
-                        Console.WriteLine("Try to make guestreservation!!!");
                         s.SetGuestReservation(a, reservationID);
                     }
+
+                    s.tempAccountManager.Accounts.Clear();
+                    s.mainBooker = null;
+                    isValidPlace = false;
+                    guestsToAdd.Clear();
+                    txtCheckPlace.Clear();
+                    txtPlaceStatus.Text = "<vul een plaatsnummer in>";
+                    txtPlaceStatus.ForeColor = Color.Black;
                 }
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btCancelReservation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btSearchReservation_Click(object sender, EventArgs e)
+        {
+            List<Reservation> reservations = s.GetReservations(Convert.ToString(cbField.SelectedItem), txtFieldValue.Text);
+            if (reservations != null)
+            {
+                dgReservations.DataSource = reservations;
+            }
+            else
+            {
+                MessageBox.Show("Geen reserveringen gevonden!");
             }
         }
 

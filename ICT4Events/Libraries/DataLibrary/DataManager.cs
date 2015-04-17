@@ -103,6 +103,15 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> GetGuestAccountByReservationID(string reservationID)
+        {
+            string query = String.Format(@"SELECT a.* FROM Account a, Guest g, GuestReservation gr, Reservation r WHERE a.AccountID = g.AccountID 
+                                           AND gr.GuestID = g.GuestID AND gr.ReservationID = r.ReservationID AND r.ReservationID = {0} ", reservationID);
+            result = XCTReader(query);
+            return result;
+        }
+
         public List<Dictionary<string, string>> GetEmployeeAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
@@ -290,6 +299,14 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> GetReservationByField(string field, string value)
+        {
+            string query = String.Format("SELECT * FROM RESERVATION WHERE {0} = '{1}'", field, value);
+            result = XCTReader(query);
+            return result;
+        }
+
         public int SetReservation(List<string> reservation)
         {
             string query = "SELECT ReservationID FROM Reservation WHERE ReservationID = (SELECT MAX(ReservationID) FROM Reservation)";
