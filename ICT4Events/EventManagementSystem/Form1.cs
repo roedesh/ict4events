@@ -133,8 +133,7 @@ namespace EventManagementSystem
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
                     tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
                     tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
-                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), Convert.ToInt32(tbMedewerkersRoleID.Text),
-                    cbMedewerkersRole.SelectedItem.ToString());
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
                     MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
             }
         }

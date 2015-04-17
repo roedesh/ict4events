@@ -177,12 +177,9 @@ namespace DataLibrary
         }
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
-            string query = "SELECT MAX(AccountID) FROM Account";
-            result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
             string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
-            query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}')"
-                , ID, account[1], account[2], account[3]
+            string query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}')"
+                , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
                 , date, account[9]);
             XCTNonQuery(query);
