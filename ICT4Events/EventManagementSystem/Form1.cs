@@ -96,6 +96,7 @@ namespace EventManagementSystem
             List<Account> showAllGuestAccounts = new List<Account>();
             showAllGuestAccounts = superManager.ShowGuestAccounts();
             dataGridView.DataSource = showAllGuestAccounts;
+            cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
         }
 
@@ -144,10 +145,12 @@ namespace EventManagementSystem
             if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
             {
                 superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllGuest_Click(sender, e);
             }
             else // it's an Employee
             {
                 superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                btnMedewerkersShowAllEmployee_Click(sender, e);
             }
         }
 
@@ -184,7 +187,8 @@ namespace EventManagementSystem
                     tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
 
-                    cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
+                    
+                    
 
                     tbMedewerkerAccountID.Enabled = false;
                     tbMedewerkersEventID.Enabled = false;

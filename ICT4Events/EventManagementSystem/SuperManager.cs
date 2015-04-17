@@ -125,9 +125,17 @@ namespace EventManagementSystem
 
         }
 
+        public void EditEmployee(int id, int eventId, string username, string password, string fullname,
+            string address, string city, string postalcode, string dateOfBirth, string email,
+            int phonenumber, int EmployeeID, int RoleID, string rolename )
+        {
+
+        }
+
         public void DeleteAccountGuest(int accountID)
         {
             dataManager.DeleteGuest(Convert.ToString(accountID));
+
         }
 
         public void DeleteAccountEmployee(int accountID)
