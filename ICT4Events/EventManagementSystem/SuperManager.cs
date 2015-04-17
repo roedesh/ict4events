@@ -175,8 +175,7 @@ namespace EventManagementSystem
             acEmpl.Add(Convert.ToString(employeeID));
             acEmpl.Add(Convert.ToString(roleID));
             //send items to datamanager
-            dataManager.UpdateAccount(ac);
-            dataManager.UpdateEmployee(acEmpl);
+            dataManager.SetEmployeeAccount(ac, acEmpl);
         }
 
         public void DeleteAccountGuest(int accountID)
