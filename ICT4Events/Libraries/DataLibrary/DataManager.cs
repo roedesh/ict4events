@@ -320,7 +320,7 @@ namespace DataLibrary
         {
             string query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
-            query = String.Format("DELETE FROM Guest WHERE A.AccountID = {0}", ID);
+            query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEvent(string ID)
