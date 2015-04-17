@@ -318,7 +318,7 @@ namespace DataLibrary
         }
         public void DeleteEmployee(string ID)
         {
-            string query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Employee WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
             query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
             XCTNonQuery(query);

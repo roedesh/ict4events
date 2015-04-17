@@ -228,8 +228,7 @@ namespace EventManagementSystem
                     }
                     
 
-                    tbMedewerkerAccountID.Enabled = false;
-                    tbMedewerkersEventID.Enabled = false;
+                   
                 }
                 if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
