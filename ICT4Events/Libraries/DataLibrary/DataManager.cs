@@ -250,7 +250,7 @@ namespace DataLibrary
                 , account[4], account[5], account[6], account[7]
                 , date, account[9]);
             XCTNonQuery(query);
-            query = String.Format("INSERT INTO Employee VALUES({0},{1},'{2}')"
+            query = String.Format("INSERT INTO Employee VALUES({0},{1},{2})"
                 , employee[0], employee[1], employee[2]);
             XCTNonQuery(query);
         }
@@ -299,7 +299,7 @@ namespace DataLibrary
         /// <summary>
         /// Set an event in the database using the eventinfo from a given list.
         /// </summary>
-        /// <param name="eventinfo"></param>
+        /// <param name="eventinfo">List-string eventinfo</param>
         public void SetEvent(List<string> eventinfo)
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
@@ -309,16 +309,28 @@ namespace DataLibrary
                 , eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Delete a guest from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
         public void DeleteGuest(string ID)
         {
             string query = String.Format("DELETE FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Delete an employee from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
         public void DeleteEmployee(string ID)
         {
             string query = String.Format("DELETE FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Delete an event from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
         public void DeleteEvent(string ID)
         {
             string query = String.Format("DELETE FROM Account WHERE EventID = {0}", ID);
@@ -326,18 +338,30 @@ namespace DataLibrary
             query = String.Format("DELETE FROM Event WHERE EventID = {0}", ID);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update a guest in the database using a list of strings.
+        /// </summary>
+        /// <param name="guest">list-string guest</param>
         public void UpdateGuest(List<string> guest)
         {
             string query = String.Format("UPDATE Guest SET RFID = '{1}', IsPresent = '{2}' WHERE AccountID = guest{0};"
                 , guest[0], guest[1], guest[2]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update an employee in the database using a list of strings.
+        /// </summary>
+        /// <param name="employee">list-string employee</param>
         public void UpdateEmployee(List<string> employee)
         {
             string query = String.Format("UPDATE Employee SET EMPLOYEEID = {0}, ACCOUNTID = {1}, ROLEID = '{2}';"
                 , employee[0], employee[1], employee[2]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update an event in the database using a list of strings.
+        /// </summary>
+        /// <param name="eventinfo">list-string eventinfo</param>
         public void UpdateEvent(List<string> eventinfo)
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
@@ -346,6 +370,10 @@ namespace DataLibrary
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd, eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update an account in the database using a list of strings.
+        /// </summary>
+        /// <param name="account">list-string account</param>
         public void UpdateAccount(List<string> account)
         {
             string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
@@ -355,18 +383,31 @@ namespace DataLibrary
                 , date, account[9], account[10]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update a location in the database using a list of strings.
+        /// </summary>
+        /// <param name="location">list-string location</param>
         public void UpdateLocation(List<string> location)
         {
             string query = String.Format("UPDATE LocationType LOCATIONTYPEID = {0}, NAME = '{1}', DESCRIPTION = '{2}', PRICE = '{3}'"
                 , location[0], location[1], location[2], location[3]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Get an item from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetItem(string ID)
         {
             string query = String.Format("SELECT * FROM Item WHERE ITEMID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Set an item in the database using a list of strings.
+        /// </summary>
+        /// <param name="item">list-string item</param>
         public void SetItem(List<string> item)
         {
             string query = "SELECT MAX(ITEMID) FROM Item";
@@ -377,20 +418,34 @@ namespace DataLibrary
                 , item[4]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Get a reservation from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetReservation(string ID)
         {
             string query = String.Format("SELECT * FROM RESERVATION R,GUESTRESERVATION G WHERE R.RESERVATIONID = G.RESERVATIONID AND G.GUESTID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get a reservation from the database using a value and a field.
+        /// </summary>
+        /// <param name="field">string field</param>
+        /// <param name="value">string value</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetReservationByField(string field, string value)
         {
             string query = String.Format("SELECT * FROM RESERVATION WHERE {0} = '{1}'", field, value);
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Set a reservation in the database using a list of strings.
+        /// </summary>
+        /// <param name="reservation">list-string reservation</param>
+        /// <returns>int ID</returns>
         public int SetReservation(List<string> reservation)
         {
             string query = "SELECT ReservationID FROM Reservation WHERE ReservationID = (SELECT MAX(ReservationID) FROM Reservation)";
@@ -418,6 +473,11 @@ namespace DataLibrary
             return ID;
             
         }
+        /// <summary>
+        /// Set a guestreservation in the database using a guestID and a reservationID
+        /// </summary>
+        /// <param name="PID">string guestID</param>
+        /// <param name="RID">string reservationID</param>
         public void SetGuestReservation(string PID, string RID)
         {
             string query = "SELECT GuestReservationID FROM GuestReservation WHERE GuestReservationID = (SELECT MAX(GuestReservationID) FROM GuestReservation)";
@@ -435,17 +495,33 @@ namespace DataLibrary
             query = String.Format("INSERT INTO GUESTRESERVATION VALUES({0},{1},{2})", ID, PID, RID);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Get the presence of a guest from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetPresence(string ID)
         {
             string query = String.Format("SELECT ISPRESENT FROM GUEST WHERE GUESTID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Update the presence of a guest in the database using list of strings.
+        /// </summary>
+        /// <param name="GuestID">string guestID</param>
+        /// <param name="AccountID">string accountID</param>
+        /// <param name="RFID">string RFID</param>
+        /// <param name="isPresent">string isPresent</param>
         public void UpdatePresence(string GuestID, string AccountID, string RFID, string isPresent)
         {
             string query = String.Format("UPDATE GUEST SET GUESTID = {0}, ACCOUNTID = {1},RFID = '{2}',ISPRESENT = '{3}' WHERE GUESTID = {0}", GuestID, AccountID,RFID,isPresent);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Set a file in the database using a list of strings.
+        /// </summary>
+        /// <param name="file">list-string file</param>
         public void SetFile(List<string> file)
         {
             string query = "SELECT MAX(FILEID) FROM FILETABLE";
@@ -456,6 +532,10 @@ namespace DataLibrary
                 , file[4], file[5], file[6], file[7]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Set a comment in the database using a list of strings
+        /// </summary>
+        /// <param name="comment">list-string comment</param>
         public void SetComment(List<string> comment)
         {
             string query = "SELECT MAX(COMMENTID) FROM COMMENT";
@@ -468,6 +548,10 @@ namespace DataLibrary
                 , comment[8]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Set a like/flag in the database using a list of strings.
+        /// </summary>
+        /// <param name="likeorflag">list-string likeorflag</param>
         public void SetLikeOrFlag(List<string> likeorflag)
         {
             string query = "SELECT MAX(LIKEFLAGID) FROM LIKEORFLAG";
@@ -478,24 +562,43 @@ namespace DataLibrary
                 , likeorflag[4], likeorflag[5]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Get a file from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetFile(string ID)
         {
             string query = String.Format("SELECT * FROM FILETABLE WHERE FILEID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Get a comment from the database using an ID.    
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetComment(string ID)
         {
             string query = String.Format("SELECT * FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Get a like/flag from the database using an ID.
+        /// </summary>
+        /// <param name="ID">string ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetFlagOrLike(string ID)
         {
             string query = String.Format("SELECT * FROM LIKEORFLAG WHERE LIKEFLAGID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Update a file using a list of strings.
+        /// </summary>
+        /// <param name="file">list-string file</param>
         public void UpdateFile(List<string> file)
         {
             string query = String.Format("UPDATE FILETABLE SET FILEID = {0}, ACCOUNTID = {1}, CATEGORYID = '{2}', DATETIMEFILE = '{3}', TITEL = '{4}', FILEPATH = '{5}', NUMBEROFLIKES = '{6}', NUMBEROFFLAGS = '{7}'"
@@ -503,6 +606,10 @@ namespace DataLibrary
                 , file[4], file[5], file[6], file[7]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Update a comment 
+        /// </summary>
+        /// <param name="file"></param>
         public void UpdateComment(List<string> file)
         {
             string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", file[4]);
