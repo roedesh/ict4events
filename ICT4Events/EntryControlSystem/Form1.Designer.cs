@@ -80,7 +80,7 @@
             this.btnZoekPersoon.Name = "btnZoekPersoon";
             this.btnZoekPersoon.Size = new System.Drawing.Size(100, 24);
             this.btnZoekPersoon.TabIndex = 10;
-            this.btnZoekPersoon.Text = "ZoekPersoon";
+            this.btnZoekPersoon.Text = "Zoek persoon";
             this.btnZoekPersoon.UseVisualStyleBackColor = true;
             this.btnZoekPersoon.Click += new System.EventHandler(this.btnZoekPersoon_Click);
             // 
@@ -95,7 +95,7 @@
             // 
             // pbBetaalstatus
             // 
-            this.pbBetaalstatus.BackColor = System.Drawing.Color.Lime;
+            this.pbBetaalstatus.BackColor = System.Drawing.Color.White;
             this.pbBetaalstatus.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbBetaalstatus.InitialImage")));
             this.pbBetaalstatus.Location = new System.Drawing.Point(113, 113);
             this.pbBetaalstatus.Name = "pbBetaalstatus";
@@ -125,7 +125,7 @@
             this.btnPersoonToelaten.Name = "btnPersoonToelaten";
             this.btnPersoonToelaten.Size = new System.Drawing.Size(100, 26);
             this.btnPersoonToelaten.TabIndex = 6;
-            this.btnPersoonToelaten.Text = "Persoon toelaten";
+            this.btnPersoonToelaten.Text = "In/uit checken";
             this.btnPersoonToelaten.UseVisualStyleBackColor = true;
             this.btnPersoonToelaten.Click += new System.EventHandler(this.btnPersoonToelaten_Click);
             // 
