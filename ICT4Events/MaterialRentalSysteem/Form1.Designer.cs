@@ -61,8 +61,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tbAddAantal = new System.Windows.Forms.TextBox();
-            this.tbAddPrijs = new System.Windows.Forms.TextBox();
+            this.tbAddStock = new System.Windows.Forms.TextBox();
+            this.tbAddPrice = new System.Windows.Forms.TextBox();
             this.btnArtikelVoegToe = new System.Windows.Forms.Button();
             this.tbAddType = new System.Windows.Forms.TextBox();
             this.tbAddName = new System.Windows.Forms.TextBox();
@@ -78,6 +78,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnAllItems = new System.Windows.Forms.Button();
+            this.btnClearLb = new System.Windows.Forms.Button();
+            this.btnAvaillableItems = new System.Windows.Forms.Button();
+            this.btnUnavaillableItems = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -377,8 +381,8 @@
             // 
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.tbAddAantal);
-            this.tabPage1.Controls.Add(this.tbAddPrijs);
+            this.tabPage1.Controls.Add(this.tbAddStock);
+            this.tabPage1.Controls.Add(this.tbAddPrice);
             this.tabPage1.Controls.Add(this.btnArtikelVoegToe);
             this.tabPage1.Controls.Add(this.tbAddType);
             this.tabPage1.Controls.Add(this.tbAddName);
@@ -413,21 +417,21 @@
             this.label12.TabIndex = 44;
             this.label12.Text = "Artikel naam:";
             // 
-            // tbAddAantal
+            // tbAddStock
             // 
-            this.tbAddAantal.Location = new System.Drawing.Point(4, 132);
-            this.tbAddAantal.Margin = new System.Windows.Forms.Padding(2);
-            this.tbAddAantal.Name = "tbAddAantal";
-            this.tbAddAantal.Size = new System.Drawing.Size(254, 20);
-            this.tbAddAantal.TabIndex = 51;
+            this.tbAddStock.Location = new System.Drawing.Point(4, 132);
+            this.tbAddStock.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddStock.Name = "tbAddStock";
+            this.tbAddStock.Size = new System.Drawing.Size(254, 20);
+            this.tbAddStock.TabIndex = 51;
             // 
-            // tbAddPrijs
+            // tbAddPrice
             // 
-            this.tbAddPrijs.Location = new System.Drawing.Point(4, 58);
-            this.tbAddPrijs.Margin = new System.Windows.Forms.Padding(2);
-            this.tbAddPrijs.Name = "tbAddPrijs";
-            this.tbAddPrijs.Size = new System.Drawing.Size(254, 20);
-            this.tbAddPrijs.TabIndex = 43;
+            this.tbAddPrice.Location = new System.Drawing.Point(4, 58);
+            this.tbAddPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbAddPrice.Name = "tbAddPrice";
+            this.tbAddPrice.Size = new System.Drawing.Size(254, 20);
+            this.tbAddPrice.TabIndex = 43;
             // 
             // btnArtikelVoegToe
             // 
@@ -537,12 +541,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnUnavaillableItems);
+            this.groupBox1.Controls.Add(this.btnAvaillableItems);
+            this.groupBox1.Controls.Add(this.btnClearLb);
             this.groupBox1.Controls.Add(this.lbInfo);
+            this.groupBox1.Controls.Add(this.btnAllItems);
             this.groupBox1.Location = new System.Drawing.Point(291, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(388, 257);
+            this.groupBox1.Size = new System.Drawing.Size(476, 257);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
@@ -601,15 +609,55 @@
             this.label16.TabIndex = 72;
             this.label16.Text = "Vul hier de prijs in:";
             // 
+            // btnAllItems
+            // 
+            this.btnAllItems.Location = new System.Drawing.Point(389, 18);
+            this.btnAllItems.Name = "btnAllItems";
+            this.btnAllItems.Size = new System.Drawing.Size(75, 47);
+            this.btnAllItems.TabIndex = 13;
+            this.btnAllItems.Text = "Alle Artikelen";
+            this.btnAllItems.UseVisualStyleBackColor = true;
+            this.btnAllItems.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnClearLb
+            // 
+            this.btnClearLb.Location = new System.Drawing.Point(389, 197);
+            this.btnClearLb.Name = "btnClearLb";
+            this.btnClearLb.Size = new System.Drawing.Size(75, 60);
+            this.btnClearLb.TabIndex = 14;
+            this.btnClearLb.Text = "Wis alle gegevens";
+            this.btnClearLb.UseVisualStyleBackColor = true;
+            this.btnClearLb.Click += new System.EventHandler(this.btnClearLb_Click);
+            // 
+            // btnAvaillableItems
+            // 
+            this.btnAvaillableItems.Location = new System.Drawing.Point(389, 71);
+            this.btnAvaillableItems.Name = "btnAvaillableItems";
+            this.btnAvaillableItems.Size = new System.Drawing.Size(75, 47);
+            this.btnAvaillableItems.TabIndex = 15;
+            this.btnAvaillableItems.Text = "Beschikbare Artikelen";
+            this.btnAvaillableItems.UseVisualStyleBackColor = true;
+            // 
+            // btnUnavaillableItems
+            // 
+            this.btnUnavaillableItems.Location = new System.Drawing.Point(389, 124);
+            this.btnUnavaillableItems.Name = "btnUnavaillableItems";
+            this.btnUnavaillableItems.Size = new System.Drawing.Size(75, 47);
+            this.btnUnavaillableItems.TabIndex = 16;
+            this.btnUnavaillableItems.Text = "Uitgeleende Artikelen";
+            this.btnUnavaillableItems.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 272);
+            this.ClientSize = new System.Drawing.Size(778, 272);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Material Rental System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -659,8 +707,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbAddAantal;
-        private System.Windows.Forms.TextBox tbAddPrijs;
+        private System.Windows.Forms.TextBox tbAddStock;
+        private System.Windows.Forms.TextBox tbAddPrice;
         private System.Windows.Forms.Button btnArtikelVoegToe;
         private System.Windows.Forms.TextBox tbAddType;
         private System.Windows.Forms.TextBox tbAddName;
@@ -676,6 +724,10 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ListBox lbInfo;
+        private System.Windows.Forms.Button btnUnavaillableItems;
+        private System.Windows.Forms.Button btnAvaillableItems;
+        private System.Windows.Forms.Button btnClearLb;
+        private System.Windows.Forms.Button btnAllItems;
     }
 }
 
