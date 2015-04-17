@@ -1,4 +1,24 @@
-CoCREATE TABLE SwearWord
+DROP TABLE SwearWord CASCADE CONSTRAINTS;
+DROP TABLE Event CASCADE CONSTRAINTS;
+DROP TABLE Account CASCADE CONSTRAINTS;
+DROP TABLE FileTable CASCADE CONSTRAINTS;
+DROP TABLE CommentTable CASCADE CONSTRAINTS;
+DROP TABLE LikeOrFlag CASCADE CONSTRAINTS;
+DROP TABLE Role	CASCADE CONSTRAINTS;
+DROP TABLE Employee	CASCADE CONSTRAINTS;
+DROP TABLE RFID CASCADE CONSTRAINTS;
+DROP TABLE Guest CASCADE CONSTRAINTS;
+DROP TABLE Location CASCADE CONSTRAINTS;
+DROP TABLE LocationType CASCADE CONSTRAINTS;
+DROP TABLE Reservation CASCADE CONSTRAINTS;
+DROP TABLE GuestReservation CASCADE CONSTRAINTS;
+DROP TABLE Item CASCADE CONSTRAINTS;
+DROP TABLE Rental CASCADE CONSTRAINTS;
+DROP TABLE ItemRental CASCADE CONSTRAINTS;
+
+COMMIT;
+
+CREATE TABLE SwearWord
 (Word			varchar2(255 char)		PRIMARY KEY
 );
 
@@ -31,12 +51,12 @@ CONSTRAINT FK_EventID1 FOREIGN KEY (EventID) REFERENCES Event (EventID)
 CREATE TABLE FileTable	
 (FileID			int						PRIMARY KEY,
 AccountID		int						NOT NULL,
-DateTimeFile	timestamp				NOT NULL,
+DateTimeFile	date	NOT NULL,
 Titel			varchar2(255 char)		NOT NULL,
 FilePath		varchar2(255 char)		NOT NULL,
 NumberOfLikes	int						DEFAULT 0,
 NumberOfFlags	int						DEFAULT 0,
-CONSTRAINT FK_AccountID1 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
+CONSTRAINT FK_AccountID1 FOREIGN KEY (AccountID) REFERENCES Account (AccountID)
 );
 
 
@@ -45,7 +65,7 @@ CREATE TABLE CommentTable
 FileID			int						NOT NULL,
 AccountID		int						NOT NULL,
 CommentRecu		int						NULL,
-DateTimeComment	timestamp				NOT NULL,
+DateTimeComment	date	NOT NULL,
 Titel			varchar2(255 char)		NOT NULL,
 Message			varchar2(255 char)		NULL,
 NumberOfLikes	int						DEFAULT 0,
@@ -59,7 +79,7 @@ CREATE TABLE LikeOrFlag
 AccountID		int						NOT NULL,
 CommentID		int						NULL,
 FileId			int						NULL,
-DateTimeLoF		timestamp				NOT NULL,
+DateTimeLoF		date	NOT NULL,
 TypeLOF			varchar2(255 char)		CHECK(TypeLOF = 'LIKE' OR TypeLOF = 'FLAG'),
 CONSTRAINT FK_AccountID3 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
 CONSTRAINT FK_FileID2 FOREIGN KEY (FileID) REFERENCES FileTable (FileID),
@@ -81,14 +101,14 @@ CONSTRAINT FK_RoleID1 FOREIGN KEY (RoleID) REFERENCES Role (RoleID)
 );
 
 CREATE TABLE RFID
-(RFID			varchar2(255 char)		PRIMARY KEY,
+(RFID			varchar2(255 char)		PRIMARY KEY
 );
 
 CREATE TABLE Guest
 (GuestID		int						PRIMARY KEY,
 AccountID		int						NOT NULL,
 RFID			varchar2(255 char)		NOT NULL,
-IsPresent		varchar2(255 char)		CHECK(IsPresent = 'Y' OR IsPresent = 'N'),
+IsPresent		char		CHECK(IsPresent = 'Y' OR IsPresent = 'N'),
 CONSTRAINT FK_AccountID5 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
 CONSTRAINT FK_RFID FOREIGN KEY (RFID) REFERENCES RFID (RFID)
 );

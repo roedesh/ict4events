@@ -147,22 +147,29 @@ namespace EntryControlSystem
             }
         }
 
-        public string GetUserInfo(string RFID)
+        public List<Guest> GetUserInfo(string RFID)
         {
-            string userInfo = "";
+            List<Guest> persons = new List<Guest>();
+            Guest account;
             //GetUsername
             List<Dictionary<string, string>> list = dataManager.GetGuestAccountWithRFID(RFID);
             Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
-                string fullName = d["FULLNAME"];
-                string isPresent = d["ISPRESENT"];
-                userInfo = fullName + " , " + isPresent;
+                account = new Guest(Convert.ToInt32(d["ACCOUNTID"]),
+                                    Convert.ToInt32(d["EVENTID"]),
+                                    d["USERNAME"], d["PASSWORD"],
+                                    d["FULLNAME"], d["ADRESS"],
+                                    d["CITY"], d["POSTALCODE"],
+                                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                                    d["EMAIL"], d["PHONENUMBER"], d["RFID"],
+                                    d["ISPRESENT"]);
+                persons.Add(account);
             }
-            return userInfo;
+            return persons;
         }
 
-        public void test()
+        public void Test()
         {
             List<Dictionary<string, string>> list = dataManager.GetGuestAccount(1);
             foreach (Dictionary<string, string> d in list)

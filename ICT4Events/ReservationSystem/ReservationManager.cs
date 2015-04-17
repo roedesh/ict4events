@@ -9,7 +9,7 @@ namespace ReservationSystem
 {
     class ReservationManager
     {
-        List<Reservation> Reservations {get; set;}
+        public List<Reservation> Reservations {get; set;}
 
         public ReservationManager()
         {
@@ -34,5 +34,11 @@ namespace ReservationSystem
         {
             return true;
         }
+
+        public List<Reservation> ReturnReservations()
+        {
+            return Reservations;
+        }
+   
     }
 }
