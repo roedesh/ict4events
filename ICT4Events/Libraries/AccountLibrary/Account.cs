@@ -20,8 +20,6 @@ namespace AccountLibrary
         private string email;
         private string phone;
 
-        
-
         public string Password
         {
             get { return password; }

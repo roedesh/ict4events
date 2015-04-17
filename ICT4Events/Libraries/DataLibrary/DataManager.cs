@@ -666,5 +666,12 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> Login(string username, string password)
+        {
+            string query = String.Format("SELECT * FROM Account WHERE USERNAME = '{0}' AND PASSWORD = '{1}'", username, password);
+            result = XCTReader(query);
+            return result;
+        }
     }
 }

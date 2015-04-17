@@ -25,10 +25,20 @@ namespace ReservationSystem
         {
         }
 
+        /// <summary>
+        /// Check if a location is not reserved
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>true or false</returns>
         public bool CheckPlace(string number){
             return dManager.IsReserved(number);
         }
 
+        /// <summary>
+        /// Get account from database, search by ID
+        /// </summary>
+        /// <param name="ID">Account ID</param>
+        /// <returns></returns>
         public Guest GetAccount(int ID)
         {
             List<Dictionary<string, string>> list = dManager.GetFreeGuestAccount(ID);
@@ -55,6 +65,11 @@ namespace ReservationSystem
             return g;
         }
 
+        /// <summary>
+        /// Get account from database, search by ID
+        /// </summary>
+        /// <param name="username">Accont username</param>
+        /// <returns>Instance of Guest class</returns>
         public Guest GetAccount(string username)
         {
             List<Dictionary<string, string>> list = dManager.GetFreeGuestAccount(username);
@@ -81,28 +96,53 @@ namespace ReservationSystem
             return g;
         }
 
+        /// <summary>
+        /// Add account to accountmanager
+        /// </summary>
+        /// <param name="a">Instance of Account class</param>
         public void AddAccount(Account a)
         {
             aManager.AddAccount(a);
         }
 
+        /// <summary>
+        /// Set reservation
+        /// </summary>
+        /// <param name="reservationParams">Field values for reservation table</param>
+        /// <returns>ID of set reservation</returns>
         public int SetReservation(List<string> reservationParams)
         {
             int ID = dManager.SetReservation(reservationParams);
             return ID;
         }
 
+        /// <summary>
+        /// Create a new guest account in database
+        /// </summary>
+        /// <param name="accountParams">Field values for account table</param>
+        /// <returns>ID of created account</returns>
         public int SetAccount(List<string> accountParams)
         {
             int accountID = dManager.SetGuestAccount(accountParams);
             return accountID;
         }
 
+        /// <summary>
+        /// Create new GuestReservation
+        /// </summary>
+        /// <param name="ID">ID of guest account</param>
+        /// <param name="RID">reservation ID</param>
         public void SetGuestReservation(int ID, int RID)
         {
             dManager.SetGuestReservation(Convert.ToString(ID), Convert.ToString(RID));
         }
 
+        /// <summary>
+        /// Get reservations where fieldvalue matches the value parameter
+        /// </summary>
+        /// <param name="field">Name of the field</param>
+        /// <param name="value">Value of the field</param>
+        /// <returns>List of Reservation objects</returns>
         public List<Reservation> GetReservations(string field, string value){
             List<Dictionary<string, string>> list = dManager.GetReservationByField(field, value);
             if (list.Count == 0)
@@ -125,11 +165,14 @@ namespace ReservationSystem
             return reservations;
         }
 
+        /// <summary>
+        /// Delete reservation with given ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns>true of false</returns>
         public bool DeleteReservation(string ID)
         {
             return dManager.DeleteReservation(ID);
         }
-  
-  
     }
 }
