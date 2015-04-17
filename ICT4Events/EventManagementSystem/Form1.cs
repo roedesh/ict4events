@@ -152,7 +152,7 @@ namespace EventManagementSystem
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
                     tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
                     tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
-                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex + 1);
                 MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
             }
             /*catch ()
