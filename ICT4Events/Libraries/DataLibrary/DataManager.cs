@@ -83,7 +83,7 @@ namespace DataLibrary
 
         public List<Dictionary<string, string>> GetGuestAccountWithName(string name)
         {
-            string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.FullName = '{0}'", name);
+            string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.FULLNAME LIKE '%{0}%'", name);
             result = XCTReader(query);
             return result;
         }
@@ -477,9 +477,12 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllPresentGuests()
         {
-            string query = "SELECT * FROM GUEST WHERE ISPRESENT = 'Y'";
-            result = XCTReader(query);
-            return result;
+            {
+                string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.ISPRESENT = 'Y'";
+                result = XCTReader(query);
+                Console.WriteLine(result);
+                return result;
+            }
         }
         public void UpdateItem(List<string> item)
         {
