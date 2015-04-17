@@ -11,11 +11,17 @@ namespace DataLibrary
 {
     public class DataManager
     {
+        //FIELDS
         DatabaseConnection connect;
         List<Dictionary<string, string>> result;
+        //CONSTRUCTOR
         public DataManager()
         {
         }
+        /// <summary>
+        /// Universal execute non-query (delete,update,insert).
+        /// </summary>
+        /// <param name="query">string query</param>
         public void XCTNonQuery(string query)
         {
             connect = new DatabaseConnection();
@@ -34,6 +40,11 @@ namespace DataLibrary
                 connect.Close();
             }
         }
+        /// <summary>
+        /// Universal execute reader (select).
+        /// </summary>
+        /// <param name="query">string query</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> XCTReader(string query)
         {
             result = new List<Dictionary<string, string>>();
@@ -66,21 +77,33 @@ namespace DataLibrary
             }
             return result;
         }
-
+        /// <summary>
+        /// Get a guest from the database using an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetGuestAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get a guest from the database using a username.
+        /// </summary>
+        /// <param name="username">string username</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetGuestAccount(string username)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.Username = '{0}'", username);
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get a guest from the database using a name.
+        /// </summary>
+        /// <param name="name">string name</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetGuestAccountWithName(string name)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.FULLNAME LIKE '%{0}%'", name);
@@ -88,7 +111,11 @@ namespace DataLibrary
             return result;
         }
 
-
+        /// <summary>
+        /// Get all guests that have no connection to a reservation an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetFreeGuestAccount(int ID)
         {
             string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.AccountID = {0} AND 
@@ -96,7 +123,11 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get all guests that have no connection to a reservation using a username.
+        /// </summary>
+        /// <param name="username">string username</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetFreeGuestAccount(string username)
         {
             string query = String.Format(@"SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND a.USERNAME = {0} AND 
@@ -104,14 +135,22 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get a guest from the database using the RFID.
+        /// </summary>
+        /// <param name="RFID">string RFID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetGuestAccountWithRFID(string RFID)
         {
             string query = String.Format("SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID AND g.RFID = '{0}'", RFID);
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get a guest from the database using the reservationID.
+        /// </summary>
+        /// <param name="reservationID">string reservationID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetGuestAccountByReservationID(string reservationID)
         {
             string query = String.Format(@"SELECT a.* FROM Account a, Guest g, GuestReservation gr, Reservation r WHERE a.AccountID = g.AccountID 
@@ -119,19 +158,33 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-
+        /// <summary>
+        /// Get an employee from the database using an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetEmployeeAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Get an employee from the database using a name.
+        /// </summary>
+        /// <param name="name">string name</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetEmployeeAccount(string name)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = '{0}'", name);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Set a guest in the database using the accountlibrary.account.
+        /// </summary>
+        /// <param name="account">list account</string></param>
+        /// <returns>List dictrionary of string-string</returns>
         public int SetGuestAccount(List<string> account)
         {
             string query = "SELECT AccountID FROM Account WHERE AccountID = (SELECT MAX(AccountID) FROM Account)";
@@ -184,6 +237,11 @@ namespace DataLibrary
             XCTNonQuery(query);
             return guestID;
         }
+        /// <summary>
+        /// Set an employee in the database using the accountlibrary.account and accountlibrary.employee.
+        /// </summary>
+        /// <param name="account">list account and list employee</param>
+        /// <param name="employee">List dictrionary of string-string</param>
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
             string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
@@ -196,6 +254,10 @@ namespace DataLibrary
                 , employee[0], employee[1], employee[2]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// Get all guests from the database.
+        /// </summary>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetAllGuests()
         {
             string query = "SELECT * FROM Account a, Guest g WHERE a.AccountID = g.AccountID";
@@ -203,24 +265,41 @@ namespace DataLibrary
             Console.WriteLine(result);
             return result;
         }
+        /// <summary>
+        /// Get all employees from the database.
+        /// </summary>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetAllEmployees()
         {
             string query = "SELECT g.*, a.*, r.name as RoleName FROM Employee g, Account a, Role r WHERE a.AccountID = g.AccountID AND g.RoleID = r.RoleID ";
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Get all events from the database.
+        /// </summary>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetAllEvents()
         {
             string query = "SELECT * FROM Event";
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Get an event from the database using an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        /// <returns>List dictrionary of string-string</returns>
         public List<Dictionary<string, string>> GetEvent(string ID)
         {
             string query = String.Format("SELECT * FROM Event WHERE EventID = {0}", ID);
             result = XCTReader(query);
             return result;
         }
+        /// <summary>
+        /// Set an event in the database using the eventinfo from a given list.
+        /// </summary>
+        /// <param name="eventinfo"></param>
         public void SetEvent(List<string> eventinfo)
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
@@ -570,6 +649,12 @@ namespace DataLibrary
         public List<Dictionary<string,string>> GetPaymentStatus(string name)
         {
             string query = String.Format("SELECT r.PaymentStatus FROM Account a, Guest g, GuestReservation gr, Reservation r WHERE a.AccountID = g.AccountID AND g.GuestID = gr. GuestID AND gr.ReservationID = r.ReservationID AND a.Username = '{0}'", name);
+            result = XCTReader(query);
+            return result;
+        }
+        public List<Dictionary<string, string>> GetAllLocations()
+        {
+            string query = "SELECT * FROM LOCATION";
             result = XCTReader(query);
             return result;
         }
