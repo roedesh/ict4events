@@ -111,6 +111,15 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> GetGuestAccountByReservationID(string reservationID)
+        {
+            string query = String.Format(@"SELECT a.* FROM Account a, Guest g, GuestReservation gr, Reservation r WHERE a.AccountID = g.AccountID 
+                                           AND gr.GuestID = g.GuestID AND gr.ReservationID = r.ReservationID AND r.ReservationID = {0} ", reservationID);
+            result = XCTReader(query);
+            return result;
+        }
+
         public List<Dictionary<string, string>> GetEmployeeAccount(int ID)
         {
             string query = String.Format("SELECT * FROM Account a, Employee g WHERE a.AccountID = g.AccountID AND a.AccountID = {0}", ID);
@@ -152,7 +161,7 @@ namespace DataLibrary
                 guestID = Convert.ToInt32(number) + 1;
                 Console.WriteLine("GUESTID " + number);
             }
-            query = "SELECT RFID FROM RFID";
+            query = "SELECT RFID FROM RFID WHERE RFID NOT IN (SELECT RFID FROM Guest)";
             string RFID;
             result = XCTReader(query);
             if (result.Count == 0)
@@ -295,6 +304,14 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+
+        public List<Dictionary<string, string>> GetReservationByField(string field, string value)
+        {
+            string query = String.Format("SELECT * FROM RESERVATION WHERE {0} = '{1}'", field, value);
+            result = XCTReader(query);
+            return result;
+        }
+
         public int SetReservation(List<string> reservation)
         {
             string query = "SELECT ReservationID FROM Reservation WHERE ReservationID = (SELECT MAX(ReservationID) FROM Reservation)";
@@ -459,12 +476,20 @@ namespace DataLibrary
                 , category[0], category[1], category[2]);
             XCTNonQuery(query);
         }
-        public void DeleteReservation(string ID)
+        public bool DeleteReservation(string ID)
         {
-            string query = String.Format("DELETE * FROM RESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE * FROM GUESTRESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
+            try
+            {
+                string query = String.Format("DELETE FROM GuestReservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                query = String.Format("DELETE FROM Reservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<Dictionary<string, string>> GetINCReservation(string ID)
         {

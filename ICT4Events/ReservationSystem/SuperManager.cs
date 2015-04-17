@@ -102,6 +102,34 @@ namespace ReservationSystem
         {
             dManager.SetGuestReservation(Convert.ToString(ID), Convert.ToString(RID));
         }
+
+        public List<Reservation> GetReservations(string field, string value){
+            List<Dictionary<string, string>> list = dManager.GetReservationByField(field, value);
+            if (list.Count == 0)
+            {
+                return null;
+            }
+            List<Account> dummyList = new List<Account>();
+            List<Reservation> reservations = new List<Reservation>();
+            foreach (Dictionary<string, string> d in list)
+            {
+                Reservation r = new Reservation(
+                    Convert.ToInt32(d["RESERVATIONID"]),
+                    Convert.ToInt32(d["LOCATIONID"]),
+                    Convert.ToInt32(d["TOTALAMOUNT"]),
+                    d["PAYMENTSTATUS"],
+                    dummyList
+                );
+                reservations.Add(r);
+            }
+            return reservations;
+        }
+
+        public bool DeleteReservation(string ID)
+        {
+            return dManager.DeleteReservation(ID);
+        }
+  
   
     }
 }

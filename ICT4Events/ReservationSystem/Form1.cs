@@ -31,7 +31,7 @@ namespace ReservationSystem
                 s.tempAccountManager = epForm.s.tempAccountManager;
                 s.mainBooker = epForm.s.mainBooker;
                 int count = s.tempAccountManager.Accounts.Count() + 1;
-                txtAmountPersons.Text = Convert.ToString(count);
+                lbAmountPersonsValue.Text = Convert.ToString(count);
                 if (count > 0)
                     btAddPersons.Text = "Personen bewerken";
             }
@@ -41,14 +41,14 @@ namespace ReservationSystem
         {
             if (s.CheckPlace(txtCheckPlace.Text))
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Green;
+                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
+                lbPlaceStatus.ForeColor = Color.Green;
                 isValidPlace = true;
             }
             else
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Red;
+                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                lbPlaceStatus.ForeColor = Color.Red;
                 isValidPlace = false;
             }
         }
@@ -59,7 +59,7 @@ namespace ReservationSystem
             if (result == DialogResult.Yes)
             {
                 txtCheckPlace.Clear();
-                txtAmountPersons.Text = "0";
+                lbAmountPersonsValue.Text = "0";
                 s.mainBooker = null;
                 s.tempAccountManager.Accounts.Clear();
             }
@@ -96,6 +96,11 @@ namespace ReservationSystem
                             accountParams.Add(a.Email);
                             accountParams.Add(a.Phone);
                             int ID = s.SetAccount(accountParams);
+                            if (ID == 0)
+                            {
+                                MessageBox.Show("Er zijn geen RFID's meer beschikbaar");
+                                return;
+                            }
                             guestsToAdd.Add(ID);
                         }
                         else
@@ -128,10 +133,60 @@ namespace ReservationSystem
 
                     foreach (int a in guestsToAdd)
                     {
-                        Console.WriteLine("Try to make guestreservation!!!");
                         s.SetGuestReservation(a, reservationID);
                     }
+
+                    s.tempAccountManager.Accounts.Clear();
+                    s.mainBooker = null;
+                    isValidPlace = false;
+                    guestsToAdd.Clear();
+                    txtCheckPlace.Clear();
+                    lbPlaceStatus.Text = "<vul een plaatsnummer in>";
+                    lbPlaceStatus.ForeColor = Color.Black;
+                    lbAmountPersonsValue.Text = "0";
                 }
+            }
+        }
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
+
+        private void btCancelReservation_Click(object sender, EventArgs e)
+        {
+            if (!IsDigitsOnly(txtReservationIDDelete.Text))
+            {
+                MessageBox.Show("ReserveringsID moet een nummer zijn!");
+            }
+            else
+            {
+                if (s.DeleteReservation(txtReservationIDDelete.Text))
+                {
+                    MessageBox.Show("Verwijderen is gelukt");
+                }
+                else
+                {
+                    MessageBox.Show("Verwijderen is mislukt!");
+                }
+            }
+        }
+
+        private void btSearchReservation_Click(object sender, EventArgs e)
+        {
+            List<Reservation> reservations = s.GetReservations(Convert.ToString(cbField.SelectedItem), txtFieldValue.Text);
+            if (reservations != null)
+            {
+                dgReservations.DataSource = reservations;
+            }
+            else
+            {
+                MessageBox.Show("Geen reserveringen gevonden!");
             }
         }
 
