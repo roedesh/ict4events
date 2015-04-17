@@ -7,16 +7,20 @@ using AccountLibrary;
 
 namespace ReservationSystem
 {
-    class Reservation
+    public class Reservation
     {
         public int ReservationID { get; private set; }
-        public Place Place { get; private set; }
+        public int LocationID { get; private set; }
+        public int TotalAmount { get; private set; }
+        public string PaymentStatus { get; private set; }
         public List<Account> Accounts { get; private set; }
 
-        public Reservation(int reservationID, Place place, List<Account> accounts)
+        public Reservation(int reservationID, int locationID, int totalAmount, string paymentStatus, List<Account> accounts)
         {
             ReservationID = reservationID;
-            Place = place;
+            LocationID = locationID;
+            TotalAmount = totalAmount;
+            PaymentStatus = paymentStatus;
             Accounts = accounts;
         }
 

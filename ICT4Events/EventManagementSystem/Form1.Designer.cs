@@ -46,6 +46,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -53,6 +54,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tbMedewerkerAccountID = new System.Windows.Forms.TextBox();
+            this.tbMedewerkersEventID = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.tbMedewerkerAddress = new System.Windows.Forms.TextBox();
             this.tbMedewerkerPhonenumber = new System.Windows.Forms.TextBox();
@@ -82,8 +84,10 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.tbMedewerkersEventID = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tbMedewerkersRoleID = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbMedewerkerEmployeeID = new System.Windows.Forms.TextBox();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -103,7 +107,7 @@
             this.tpPlaats.Margin = new System.Windows.Forms.Padding(2);
             this.tpPlaats.Name = "tpPlaats";
             this.tpPlaats.Padding = new System.Windows.Forms.Padding(2);
-            this.tpPlaats.Size = new System.Drawing.Size(430, 330);
+            this.tpPlaats.Size = new System.Drawing.Size(430, 364);
             this.tpPlaats.TabIndex = 3;
             this.tpPlaats.Text = "Plaats";
             this.tpPlaats.UseVisualStyleBackColor = true;
@@ -214,12 +218,16 @@
             // 
             // tpMedewerkers
             // 
+            this.tpMedewerkers.Controls.Add(this.tbMedewerkerEmployeeID);
+            this.tpMedewerkers.Controls.Add(this.tbMedewerkersRoleID);
             this.tpMedewerkers.Controls.Add(this.btnMedewerkersShowAllGuest);
             this.tpMedewerkers.Controls.Add(this.cbMedewerkersRole);
             this.tpMedewerkers.Controls.Add(this.label4);
             this.tpMedewerkers.Controls.Add(this.label7);
             this.tpMedewerkers.Controls.Add(this.label8);
+            this.tpMedewerkers.Controls.Add(this.label12);
             this.tpMedewerkers.Controls.Add(this.label11);
+            this.tpMedewerkers.Controls.Add(this.label6);
             this.tpMedewerkers.Controls.Add(this.label5);
             this.tpMedewerkers.Controls.Add(this.label13);
             this.tpMedewerkers.Controls.Add(this.label14);
@@ -310,6 +318,16 @@
             this.label11.TabIndex = 56;
             this.label11.Text = "Account ID:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 311);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 55;
+            this.label5.Text = "Event ID:";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -377,6 +395,14 @@
             this.tbMedewerkerAccountID.Name = "tbMedewerkerAccountID";
             this.tbMedewerkerAccountID.Size = new System.Drawing.Size(204, 20);
             this.tbMedewerkerAccountID.TabIndex = 47;
+            // 
+            // tbMedewerkersEventID
+            // 
+            this.tbMedewerkersEventID.Location = new System.Drawing.Point(96, 309);
+            this.tbMedewerkersEventID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbMedewerkersEventID.Name = "tbMedewerkersEventID";
+            this.tbMedewerkersEventID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkersEventID.TabIndex = 46;
             // 
             // label19
             // 
@@ -504,7 +530,7 @@
             this.tpEvents.Margin = new System.Windows.Forms.Padding(2);
             this.tpEvents.Name = "tpEvents";
             this.tpEvents.Padding = new System.Windows.Forms.Padding(2);
-            this.tpEvents.Size = new System.Drawing.Size(430, 330);
+            this.tpEvents.Size = new System.Drawing.Size(430, 364);
             this.tpEvents.TabIndex = 1;
             this.tpEvents.Text = "Events";
             this.tpEvents.UseVisualStyleBackColor = true;
@@ -650,23 +676,39 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // tbMedewerkersEventID
+            // tbMedewerkersRoleID
             // 
-            this.tbMedewerkersEventID.Location = new System.Drawing.Point(96, 309);
-            this.tbMedewerkersEventID.Margin = new System.Windows.Forms.Padding(2);
-            this.tbMedewerkersEventID.Name = "tbMedewerkersEventID";
-            this.tbMedewerkersEventID.Size = new System.Drawing.Size(204, 20);
-            this.tbMedewerkersEventID.TabIndex = 46;
+            this.tbMedewerkersRoleID.Location = new System.Drawing.Point(96, 284);
+            this.tbMedewerkersRoleID.Name = "tbMedewerkersRoleID";
+            this.tbMedewerkersRoleID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkersRoleID.TabIndex = 62;
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 311);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "Event ID:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 287);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 55;
+            this.label6.Text = "Role ID:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 261);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 55;
+            this.label12.Text = "Employee ID:";
+            // 
+            // tbMedewerkerEmployeeID
+            // 
+            this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(96, 258);
+            this.tbMedewerkerEmployeeID.Name = "tbMedewerkerEmployeeID";
+            this.tbMedewerkerEmployeeID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerEmployeeID.TabIndex = 62;
             // 
             // Form1
             // 
@@ -748,6 +790,10 @@
         private System.Windows.Forms.Button btnMedewerkersShowAllGuest;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbMedewerkersEventID;
+        private System.Windows.Forms.TextBox tbMedewerkersRoleID;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbMedewerkerEmployeeID;
+        private System.Windows.Forms.Label label12;
     }
 }
 
