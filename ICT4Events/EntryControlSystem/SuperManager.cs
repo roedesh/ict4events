@@ -83,11 +83,11 @@ namespace EntryControlSystem
             }
             return persons;
         }
-        public List<Guest> SearchPersonName(string username)
+        public List<Guest> SearchPersonName(string name)
         {
             List<Guest> persons = new List<Guest>();
             Guest account;
-            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(username);
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccountWithName(name);
             Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
