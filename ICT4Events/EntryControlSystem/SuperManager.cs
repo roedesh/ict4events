@@ -20,22 +20,28 @@ namespace EntryControlSystem
             accountManager = new AccountManager();
             dataManager = new DataManager();
         }
-        public List<string> ShowAllPresent()
+        public List<Guest> ShowAllPresent()
         {
-            List<string> presentGuests = new List<string>();
-            string userInfo = "";
-            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            List<Guest> presentPersons = new List<Guest>();
+            Guest account;
+            List<Dictionary<string, string>> list = dataManager.GetAllPresentGuests();
+            Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
-                string fullName = d["FULLNAME"];
-                string isPresent = d["ISPRESENT"];
-                string RFID = d["RFID"];
-                userInfo = fullName + " , " + isPresent + " , " + RFID;
-                presentGuests.Add(userInfo);
+                account = new Guest(Convert.ToInt32(d["ACCOUNTID"]),
+                                    Convert.ToInt32(d["EVENTID"]),
+                                    d["USERNAME"], d["PASSWORD"],
+                                    d["FULLNAME"], d["ADRESS"],
+                                    d["CITY"], d["POSTALCODE"],
+                                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                                    d["EMAIL"], d["PHONENUMBER"], d["RFID"],
+                                    d["ISPRESENT"]);
+                presentPersons.Add(account);
+
             }
-            return presentGuests;
+            return presentPersons;
         }
-        public List<string> ShowSearchedPerson(string idName)
+        public List<Guest> ShowSearchedPerson(string idName)
         {
             int id = -1;
             bool succes = true;
@@ -56,42 +62,60 @@ namespace EntryControlSystem
                 return SearchPersonName(idName);
             }
         }
-        public List<string> SearchPersonID(int id)
+        public List<Guest> SearchPersonID(int id)
         {
-            List<string> persons = new List<string>();
-            string userInfo = "";
+            List<Guest> persons = new List<Guest>();
+            Guest account;
             List<Dictionary<string, string>> list = dataManager.GetGuestAccount(id);
             Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
-                string fullName = d["FULLNAME"];
-                string isPresent = d["ISPRESENT"];
-                string RFID = d["RFID"];
-                userInfo = fullName + " , " + isPresent + " , " + RFID;
-                persons.Add(userInfo);
+                account = new Guest(Convert.ToInt32(d["ACCOUNTID"]),
+                                    Convert.ToInt32(d["EVENTID"]),
+                                    d["USERNAME"], d["PASSWORD"],
+                                    d["FULLNAME"], d["ADRESS"],
+                                    d["CITY"], d["POSTALCODE"],
+                                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                                    d["EMAIL"], d["PHONENUMBER"], d["RFID"],
+                                    d["ISPRESENT"]);
+                persons.Add(account);
+
             }
             return persons;
         }
-        public List<string> SearchPersonName(string name)
+        public List<Guest> SearchPersonName(string username)
         {
-            List<string> persons = new List<string>();
-            string userInfo = "";
-            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(name);
+            List<Guest> persons = new List<Guest>();
+            Guest account;
+            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(username);
             Console.WriteLine(list);
             foreach (Dictionary<string, string> d in list)
             {
-                string fullName = d["FULLNAME"];
-                string isPresent = d["ISPRESENT"];
-                string RFID = d["RFID"];
-                userInfo = fullName + " , " + isPresent + " , " + RFID;
-                persons.Add(userInfo);
+                account = new Guest(Convert.ToInt32(d["ACCOUNTID"]),
+                                    Convert.ToInt32(d["EVENTID"]),
+                                    d["USERNAME"], d["PASSWORD"],
+                                    d["FULLNAME"], d["ADRESS"],
+                                    d["CITY"], d["POSTALCODE"],
+                                    Convert.ToDateTime(d["DATEOFBIRTH"]),
+                                    d["EMAIL"], d["PHONENUMBER"], d["RFID"],
+                                    d["ISPRESENT"]);
+                persons.Add(account);
+
             }
             return persons;
         }
 
-        public bool SetPresence(int accountID)
+        public bool SetPresence(string accountID,string YN)
         {
-            return true;
+            try
+            {
+                dataManager.SetPresence(YN, accountID);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         
         public bool CheckPayment(string RFID)

@@ -94,6 +94,7 @@
             // 
             // pbBetaalstatus
             // 
+            this.pbBetaalstatus.BackColor = System.Drawing.Color.Lime;
             this.pbBetaalstatus.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbBetaalstatus.InitialImage")));
             this.pbBetaalstatus.Location = new System.Drawing.Point(113, 113);
             this.pbBetaalstatus.Name = "pbBetaalstatus";
