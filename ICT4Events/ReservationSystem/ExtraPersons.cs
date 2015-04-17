@@ -30,7 +30,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                if (IsDigitsOnly(txtEventID.Text))
+                if (IsDigitsOnly(txtEventID.Text) & IsDigitsOnly(txtPhone.Text))
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),
@@ -50,7 +50,7 @@ namespace ReservationSystem
                 }
                 else
                 {
-                    MessageBox.Show("Event ID moet een getal zijn!");
+                    MessageBox.Show("Ingevulde EventID en/of telefoonnummer is geen getal");
                 } 
             }
             else
@@ -63,7 +63,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                if (IsDigitsOnly(txtEventID.Text))
+                if (IsDigitsOnly(txtEventID.Text) & IsDigitsOnly(txtPhone.Text))
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),
@@ -84,7 +84,7 @@ namespace ReservationSystem
                 }
                 else
                 {
-                    MessageBox.Show("Event ID moet een getal zijn!");
+                    MessageBox.Show("Ingevulde EventID en/of telefoonnummer is geen getal");
                 } 
             }
             else
