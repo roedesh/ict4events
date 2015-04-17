@@ -288,14 +288,30 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+        public List<Dictionary<string, string>> GetAllItems()
+        {
+            string query = String.Format("SELECT * FROM Item");
+            result = XCTReader(query);
+            return result;
+        }
         public void SetItem(List<string> item)
         {
-            string query = "SELECT MAX(ITEMID) FROM Item";
+            string query = "SELECT ITEMID FROM Item WHERE ITEMID=(Select MAX(ITEMID) FROM Item)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                string number = result[0]["ITEMID"];
+                ID = Convert.ToInt32(number) + 1;
+                Console.WriteLine(number);
+            }
             query = String.Format("INSERT INTO Item VALUES({0},'{1}','{2}','{3}','{4}')"
-                , ID, item[1], item[2], item[3]
-                , item[4]);
+                , ID, item[0], item[1], item[2]
+                , item[3]);
             XCTNonQuery(query);
         }
         public List<Dictionary<string, string>> GetReservation(string ID)
