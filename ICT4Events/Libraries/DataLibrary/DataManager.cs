@@ -622,6 +622,10 @@ namespace DataLibrary
                 , dateStart, file[5], file[6], file[7]);
             XCTNonQuery(query);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
         public void DeleteFile(string ID)
         {
             string query = String.Format("DELETE * FROM FILETABLE WHERE FILEID = {0}", ID);
