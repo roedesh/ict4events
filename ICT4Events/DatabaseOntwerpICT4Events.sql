@@ -28,23 +28,15 @@ Phonenumber		int						NOT NULL,
 CONSTRAINT FK_EventID1 FOREIGN KEY (EventID) REFERENCES Event (EventID)
 );
 
-CREATE TABLE Category
-(CategoryID	int							PRIMARY KEY,
-CategoryParent int						NULL,
-Name			varchar2(255 char)		NOT NULL
-);
-
 CREATE TABLE FileTable	
 (FileID			int						PRIMARY KEY,
 AccountID		int						NOT NULL,
-CategoryID		int						NOT NULL,
 DateTimeFile	timestamp				NOT NULL,
 Titel			varchar2(255 char)		NOT NULL,
 FilePath		varchar2(255 char)		NOT NULL,
 NumberOfLikes	int						DEFAULT 0,
 NumberOfFlags	int						DEFAULT 0,
 CONSTRAINT FK_AccountID1 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
-CONSTRAINT FK_Category1 FOREIGN KEY (CategoryID) REFERENCES Category (CategoryID)
 );
 
 
@@ -90,8 +82,6 @@ CONSTRAINT FK_RoleID1 FOREIGN KEY (RoleID) REFERENCES Role (RoleID)
 
 CREATE TABLE RFID
 (RFID			varchar2(255 char)		PRIMARY KEY,
-EndDate			date					NOT NULL,
-InUse			char		CHECK(InUse = 'Y' OR InUse = 'N')
 );
 
 CREATE TABLE Guest
