@@ -110,7 +110,7 @@ namespace EventManagementSystem
             cbMedewerkersRole.Enabled = true;
         }
 
-        //mederwerker edit nog doen
+        
         private void btnMedewerkersEdit_Click(object sender, EventArgs e)
         {
            
@@ -138,13 +138,28 @@ namespace EventManagementSystem
             }
         }
 
-        //nog doen
         private void btnMedewerkersAdd_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
+                MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+            }
+            finally
+            {
+                btnMedewerkersShowAllEmployee_Click(sender, e);
+            }
         }
-        
-        
+
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
             //check if it is a Guest
