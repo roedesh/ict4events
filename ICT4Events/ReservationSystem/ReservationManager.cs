@@ -16,6 +16,11 @@ namespace ReservationSystem
             Reservations = new List<Reservation>();
         }
 
+        /// <summary>
+        /// Adds a reservation to Reservations
+        /// </summary>
+        /// <param name="reservation">Instance of Reservation class</param>
+        /// <returns>true or false</returns>
         public bool AddReservation(Reservation reservation)
         {
             Reservation exists = Reservations.Find(r => r.ReservationID == reservation.ReservationID);
@@ -25,16 +30,20 @@ namespace ReservationSystem
             return true;
         }
 
+        /// <summary>
+        /// Delete reservation from Reservations
+        /// </summary>
+        /// <param name="reservation">Instance of Reservation class</param>
+        /// <returns>true or false</returns>
         public bool DeleteReservation(Reservation reservation)
         {
             return Reservations.Remove(reservation);
         }
 
-        public bool EditReservation(int ID)
-        {
-            return true;
-        }
-
+        /// <summary>
+        /// Return all Reservations
+        /// </summary>
+        /// <returns>List of Reservation objects</returns>
         public List<Reservation> ReturnReservations()
         {
             return Reservations;
