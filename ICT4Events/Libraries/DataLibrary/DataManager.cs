@@ -161,7 +161,7 @@ namespace DataLibrary
                 guestID = Convert.ToInt32(number) + 1;
                 Console.WriteLine("GUESTID " + number);
             }
-            query = "SELECT RFID FROM RFID";
+            query = "SELECT RFID FROM RFID WHERE RFID NOT IN (SELECT RFID FROM Guest)";
             string RFID;
             result = XCTReader(query);
             if (result.Count == 0)
@@ -476,12 +476,20 @@ namespace DataLibrary
                 , category[0], category[1], category[2]);
             XCTNonQuery(query);
         }
-        public void DeleteReservation(string ID)
+        public bool DeleteReservation(string ID)
         {
-            string query = String.Format("DELETE * FROM RESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE * FROM GUESTRESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
+            try
+            {
+                string query = String.Format("DELETE FROM GuestReservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                query = String.Format("DELETE FROM Reservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<Dictionary<string, string>> GetINCReservation(string ID)
         {
