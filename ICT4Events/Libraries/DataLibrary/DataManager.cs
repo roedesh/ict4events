@@ -408,19 +408,17 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-<<<<<<< HEAD
+
         public List<Dictionary<string, string>> GetAllItems()
         {
             string query = String.Format("SELECT * FROM Item");
             result = XCTReader(query);
             return result;
         }
-=======
         /// <summary>
         /// Set an item in the database using a list of strings.
         /// </summary>
         /// <param name="item">list-string item</param>
->>>>>>> origin/master
         public void SetItem(List<string> item)
         {
             string query = "SELECT ITEMID FROM Item WHERE ITEMID=(Select MAX(ITEMID) FROM Item)";

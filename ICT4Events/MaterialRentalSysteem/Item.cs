@@ -21,7 +21,7 @@ namespace MaterialRentalSysteem
             this.Stock = stock;
             this.Price = price;
         }
-        public string ToString()
+        public override string ToString()
         {
             return Name + ", " + Type + "  Stock: " + Stock.ToString() + ",Price: " + Price.ToString();
         }
