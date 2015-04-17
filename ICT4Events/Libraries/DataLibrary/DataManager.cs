@@ -218,12 +218,12 @@ namespace DataLibrary
         }
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE * FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Guest G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEmployee(string ID)
         {
-            string query = String.Format("DELETE * FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Employee G, Account A WHERE A.AccountID = G.AccountID AND A.AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteEvent(string ID)

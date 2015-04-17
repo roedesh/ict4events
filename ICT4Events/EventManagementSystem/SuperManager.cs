@@ -124,5 +124,15 @@ namespace EventManagementSystem
             dataManager.UpdateAccount(ac);
 
         }
+
+        public void DeleteAccountGuest(int accountID)
+        {
+            dataManager.DeleteGuest(Convert.ToString(accountID));
+        }
+
+        public void DeleteAccountEmployee(int accountID)
+        {
+            dataManager.DeleteEmployee(Convert.ToString(accountID));
+        }
     }
 }

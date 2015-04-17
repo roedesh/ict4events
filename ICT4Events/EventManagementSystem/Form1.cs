@@ -137,17 +137,17 @@ namespace EventManagementSystem
 
         }
         
-        //nog doen --> zoek hoe je sql gelijk hele row delete from tabelen .. where ID = ..
+        
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
             //check if it is a Guest
             if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
             {
-                
+                superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
             }
             else // it's an Employee
             {
-
+                superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
             }
         }
 
@@ -185,8 +185,11 @@ namespace EventManagementSystem
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
 
                     cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
+
+                    tbMedewerkerAccountID.Enabled = false;
+                    tbMedewerkersEventID.Enabled = false;
                 }
-                if (tabControl.SelectedTab == tabControl.TabPages["tpEvent"])
+                if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
                     tbEventEventID.Text = row.Cells["ID"].Value.ToString();
                     tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
