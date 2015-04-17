@@ -86,6 +86,9 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbMedewerkerRoleID = new System.Windows.Forms.TextBox();
+            this.btnPlaatsShowAllLocations = new System.Windows.Forms.Button();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -96,6 +99,7 @@
             // 
             // tpPlaats
             // 
+            this.tpPlaats.Controls.Add(this.btnPlaatsShowAllLocations);
             this.tpPlaats.Controls.Add(this.label2);
             this.tpPlaats.Controls.Add(this.label3);
             this.tpPlaats.Controls.Add(this.textBox2);
@@ -216,11 +220,13 @@
             // 
             // tpMedewerkers
             // 
+            this.tpMedewerkers.Controls.Add(this.tbMedewerkerRoleID);
             this.tpMedewerkers.Controls.Add(this.tbMedewerkerEmployeeID);
             this.tpMedewerkers.Controls.Add(this.btnMedewerkersShowAllGuest);
             this.tpMedewerkers.Controls.Add(this.cbMedewerkersRole);
             this.tpMedewerkers.Controls.Add(this.label4);
             this.tpMedewerkers.Controls.Add(this.label7);
+            this.tpMedewerkers.Controls.Add(this.label6);
             this.tpMedewerkers.Controls.Add(this.label8);
             this.tpMedewerkers.Controls.Add(this.label12);
             this.tpMedewerkers.Controls.Add(this.label11);
@@ -258,7 +264,7 @@
             // 
             // tbMedewerkerEmployeeID
             // 
-            this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(96, 284);
+            this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(97, 284);
             this.tbMedewerkerEmployeeID.Name = "tbMedewerkerEmployeeID";
             this.tbMedewerkerEmployeeID.Size = new System.Drawing.Size(204, 20);
             this.tbMedewerkerEmployeeID.TabIndex = 62;
@@ -314,7 +320,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 287);
+            this.label12.Location = new System.Drawing.Point(10, 287);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(70, 13);
@@ -689,6 +695,33 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 261);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 55;
+            this.label6.Text = "Role ID:";
+            // 
+            // tbMedewerkerRoleID
+            // 
+            this.tbMedewerkerRoleID.Location = new System.Drawing.Point(96, 258);
+            this.tbMedewerkerRoleID.Name = "tbMedewerkerRoleID";
+            this.tbMedewerkerRoleID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerRoleID.TabIndex = 62;
+            // 
+            // btnPlaatsShowAllLocations
+            // 
+            this.btnPlaatsShowAllLocations.Location = new System.Drawing.Point(278, 147);
+            this.btnPlaatsShowAllLocations.Name = "btnPlaatsShowAllLocations";
+            this.btnPlaatsShowAllLocations.Size = new System.Drawing.Size(86, 40);
+            this.btnPlaatsShowAllLocations.TabIndex = 31;
+            this.btnPlaatsShowAllLocations.Text = "Toon alle plaatsen";
+            this.btnPlaatsShowAllLocations.UseVisualStyleBackColor = true;
+            this.btnPlaatsShowAllLocations.Click += new System.EventHandler(this.btnPlaatsShowAllLocations_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,6 +804,9 @@
         private System.Windows.Forms.TextBox tbMedewerkersEventID;
         private System.Windows.Forms.TextBox tbMedewerkerEmployeeID;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbMedewerkerRoleID;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnPlaatsShowAllLocations;
     }
 }
 
