@@ -83,24 +83,24 @@ namespace EventManagementSystem
             return accountManager.Accounts;
         }
 
-        public List<Account> ShowEmployeeAccounts() 
+        public List<Employee> ShowEmployeeAccounts() 
         {
-            accountManager.Accounts.Clear();
-            List<Dictionary<string, string>> list = dataManager.GetAllGuests();
+            accountManager.Employees.Clear();
+            List<Dictionary<string, string>> list = dataManager.GetAllEmployees();
             foreach (Dictionary<string, string> d in list)
             {
                 Account a = new Employee(Convert.ToInt32(d["ACCOUNTID"]),
-                    Convert.ToInt32(d["EVENTID"]), 
-                    d["USERNAME"], d["PASSWORD"], 
-                    d["FULLNAME"], d["ADRESS"], 
-                    d["CITY"], d["POSTALCODE"], 
+                    Convert.ToInt32(d["EVENTID"]),
+                    d["USERNAME"], d["PASSWORD"],
+                    d["FULLNAME"], d["ADRESS"],
+                    d["CITY"], d["POSTALCODE"],
                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                     d["EMAIL"], d["PHONENUMBER"],
                     (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]));
 
-                accountManager.AddAccount(a);
+                accountManager.AddAccountE((Employee)a);
             }
-            return accountManager.Accounts;
+            return accountManager.Employees;
         }
 
         public void EditGuest(int id, int eventId, string username, string password, string fullname,
@@ -127,7 +127,7 @@ namespace EventManagementSystem
 
         public void EditEmployee(int id, int eventId, string username, string password, string fullname,
             string address, string city, string postalcode, string dateOfBirth, string email,
-            int phonenumber, int EmployeeID, int RoleID, string rolename )
+            int phonenumber, int employeeID, int roleID)
         {
             //create account list
             List<string> ac = new List<string>();
@@ -142,8 +142,41 @@ namespace EventManagementSystem
             ac.Add(dateOfBirth);
             ac.Add(email);
             ac.Add(Convert.ToString(phonenumber));
+
+            List<string> acEmpl = new List<string>();
+            acEmpl.Add(Convert.ToString(id));
+            acEmpl.Add(Convert.ToString(employeeID));
+            acEmpl.Add(Convert.ToString(roleID));
             //send items to datamanager
             dataManager.UpdateAccount(ac);
+            dataManager.UpdateEmployee(acEmpl);
+        }
+
+        public void AddEmployee(int id, int eventId, string username, string password, string fullname,
+            string address, string city, string postalcode, string dateOfBirth, string email,
+            int phonenumber, int employeeID, int roleID)
+        {
+            //create account list
+            List<string> ac = new List<string>();
+            ac.Add(Convert.ToString(id));
+            ac.Add(Convert.ToString(eventId));
+            ac.Add(username);
+            ac.Add(password);
+            ac.Add(fullname);
+            ac.Add(address);
+            ac.Add(city);
+            ac.Add(postalcode);
+            ac.Add(dateOfBirth);
+            ac.Add(email);
+            ac.Add(Convert.ToString(phonenumber));
+
+            List<string> acEmpl = new List<string>();
+            acEmpl.Add(Convert.ToString(id));
+            acEmpl.Add(Convert.ToString(employeeID));
+            acEmpl.Add(Convert.ToString(roleID));
+            //send items to datamanager
+            dataManager.UpdateAccount(ac);
+            dataManager.UpdateEmployee(acEmpl);
         }
 
         public void DeleteAccountGuest(int accountID)
