@@ -125,6 +125,10 @@ namespace ReservationSystem
             return reservations;
         }
 
+        public bool DeleteReservation(string ID)
+        {
+            return dManager.DeleteReservation(ID);
+        }
   
   
     }

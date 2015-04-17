@@ -45,20 +45,20 @@
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btAddPersons = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCheckPlace = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btCheckPlace = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtAmountPersons = new System.Windows.Forms.Label();
-            this.txtPlaceStatus = new System.Windows.Forms.Label();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.btReset = new System.Windows.Forms.Button();
+            this.btPlaceReservation = new System.Windows.Forms.Button();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lbPlaceStatus = new System.Windows.Forms.Label();
+            this.lbAmountPersonsValue = new System.Windows.Forms.Label();
+            this.lbAmountPersons = new System.Windows.Forms.Label();
+            this.btCheckPlace = new System.Windows.Forms.Button();
+            this.lbPlaceNumber = new System.Windows.Forms.Label();
+            this.txtCheckPlace = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btAddPersons = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgReservations)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -92,7 +92,6 @@
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Zoekfunctie";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label9
             // 
@@ -248,16 +247,16 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btReset);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btPlaceReservation);
             this.groupBox2.Controls.Add(this.dtpEndDate);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dtpStartDate);
-            this.groupBox2.Controls.Add(this.txtPlaceStatus);
-            this.groupBox2.Controls.Add(this.txtAmountPersons);
-            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.lbPlaceStatus);
+            this.groupBox2.Controls.Add(this.lbAmountPersonsValue);
+            this.groupBox2.Controls.Add(this.lbAmountPersons);
             this.groupBox2.Controls.Add(this.btCheckPlace);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lbPlaceNumber);
             this.groupBox2.Controls.Add(this.txtCheckPlace);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btAddPersons);
@@ -270,44 +269,88 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reservering";
             // 
-            // btAddPersons
+            // btReset
             // 
-            this.btAddPersons.Location = new System.Drawing.Point(4, 212);
-            this.btAddPersons.Margin = new System.Windows.Forms.Padding(2);
-            this.btAddPersons.Name = "btAddPersons";
-            this.btAddPersons.Size = new System.Drawing.Size(116, 36);
-            this.btAddPersons.TabIndex = 0;
-            this.btAddPersons.Text = "Voeg personen toe";
-            this.btAddPersons.UseVisualStyleBackColor = true;
-            this.btAddPersons.Click += new System.EventHandler(this.btAddPersons_Click);
+            this.btReset.Location = new System.Drawing.Point(4, 266);
+            this.btReset.Margin = new System.Windows.Forms.Padding(2);
+            this.btReset.Name = "btReset";
+            this.btReset.Size = new System.Drawing.Size(94, 36);
+            this.btReset.TabIndex = 23;
+            this.btReset.Text = "Reset alles";
+            this.btReset.UseVisualStyleBackColor = true;
+            this.btReset.Click += new System.EventHandler(this.btReset_Click);
             // 
-            // label3
+            // btPlaceReservation
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(-2, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(219, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Vul alle gegevens in en plaat een reservering";
+            this.btPlaceReservation.Location = new System.Drawing.Point(102, 266);
+            this.btPlaceReservation.Margin = new System.Windows.Forms.Padding(2);
+            this.btPlaceReservation.Name = "btPlaceReservation";
+            this.btPlaceReservation.Size = new System.Drawing.Size(112, 36);
+            this.btPlaceReservation.TabIndex = 22;
+            this.btPlaceReservation.Text = "Plaats reservering";
+            this.btPlaceReservation.UseVisualStyleBackColor = true;
+            this.btPlaceReservation.Click += new System.EventHandler(this.button1_Click);
             // 
-            // txtCheckPlace
+            // dtpEndDate
             // 
-            this.txtCheckPlace.Location = new System.Drawing.Point(5, 47);
-            this.txtCheckPlace.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCheckPlace.Name = "txtCheckPlace";
-            this.txtCheckPlace.Size = new System.Drawing.Size(83, 20);
-            this.txtCheckPlace.TabIndex = 12;
+            this.dtpEndDate.Location = new System.Drawing.Point(7, 161);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(202, 20);
+            this.dtpEndDate.TabIndex = 21;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Plaatsnummer:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 145);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Einddatum:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 95);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Begindatum:";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.Location = new System.Drawing.Point(7, 111);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(202, 20);
+            this.dtpStartDate.TabIndex = 18;
+            // 
+            // lbPlaceStatus
+            // 
+            this.lbPlaceStatus.AutoSize = true;
+            this.lbPlaceStatus.Location = new System.Drawing.Point(4, 73);
+            this.lbPlaceStatus.Name = "lbPlaceStatus";
+            this.lbPlaceStatus.Size = new System.Drawing.Size(133, 13);
+            this.lbPlaceStatus.TabIndex = 17;
+            this.lbPlaceStatus.Text = "<vul een plaatsnummer in>";
+            // 
+            // lbAmountPersonsValue
+            // 
+            this.lbAmountPersonsValue.AutoSize = true;
+            this.lbAmountPersonsValue.Location = new System.Drawing.Point(88, 197);
+            this.lbAmountPersonsValue.Name = "lbAmountPersonsValue";
+            this.lbAmountPersonsValue.Size = new System.Drawing.Size(13, 13);
+            this.lbAmountPersonsValue.TabIndex = 16;
+            this.lbAmountPersonsValue.Text = "0";
+            // 
+            // lbAmountPersons
+            // 
+            this.lbAmountPersons.AutoSize = true;
+            this.lbAmountPersons.Location = new System.Drawing.Point(2, 197);
+            this.lbAmountPersons.Name = "lbAmountPersons";
+            this.lbAmountPersons.Size = new System.Drawing.Size(87, 13);
+            this.lbAmountPersons.TabIndex = 15;
+            this.lbAmountPersons.Text = "Aantal personen:";
             // 
             // btCheckPlace
             // 
@@ -320,88 +363,44 @@
             this.btCheckPlace.UseVisualStyleBackColor = true;
             this.btCheckPlace.Click += new System.EventHandler(this.btCheckPlace_Click);
             // 
-            // label2
+            // lbPlaceNumber
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 197);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Aantal personen:";
+            this.lbPlaceNumber.AutoSize = true;
+            this.lbPlaceNumber.Location = new System.Drawing.Point(4, 31);
+            this.lbPlaceNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbPlaceNumber.Name = "lbPlaceNumber";
+            this.lbPlaceNumber.Size = new System.Drawing.Size(76, 13);
+            this.lbPlaceNumber.TabIndex = 13;
+            this.lbPlaceNumber.Text = "Plaatsnummer:";
             // 
-            // txtAmountPersons
+            // txtCheckPlace
             // 
-            this.txtAmountPersons.AutoSize = true;
-            this.txtAmountPersons.Location = new System.Drawing.Point(88, 197);
-            this.txtAmountPersons.Name = "txtAmountPersons";
-            this.txtAmountPersons.Size = new System.Drawing.Size(13, 13);
-            this.txtAmountPersons.TabIndex = 16;
-            this.txtAmountPersons.Text = "0";
+            this.txtCheckPlace.Location = new System.Drawing.Point(5, 47);
+            this.txtCheckPlace.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCheckPlace.Name = "txtCheckPlace";
+            this.txtCheckPlace.Size = new System.Drawing.Size(83, 20);
+            this.txtCheckPlace.TabIndex = 12;
             // 
-            // txtPlaceStatus
+            // label3
             // 
-            this.txtPlaceStatus.AutoSize = true;
-            this.txtPlaceStatus.Location = new System.Drawing.Point(4, 73);
-            this.txtPlaceStatus.Name = "txtPlaceStatus";
-            this.txtPlaceStatus.Size = new System.Drawing.Size(133, 13);
-            this.txtPlaceStatus.TabIndex = 17;
-            this.txtPlaceStatus.Text = "<vul een plaatsnummer in>";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(-2, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(219, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Vul alle gegevens in en plaat een reservering";
             // 
-            // dtpStartDate
+            // btAddPersons
             // 
-            this.dtpStartDate.Location = new System.Drawing.Point(7, 111);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(202, 20);
-            this.dtpStartDate.TabIndex = 18;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 95);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Begindatum:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 145);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Einddatum:";
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Location = new System.Drawing.Point(7, 161);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(202, 20);
-            this.dtpEndDate.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(102, 266);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 36);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Plaats reservering";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btReset
-            // 
-            this.btReset.Location = new System.Drawing.Point(4, 266);
-            this.btReset.Margin = new System.Windows.Forms.Padding(2);
-            this.btReset.Name = "btReset";
-            this.btReset.Size = new System.Drawing.Size(94, 36);
-            this.btReset.TabIndex = 23;
-            this.btReset.Text = "Reset alles";
-            this.btReset.UseVisualStyleBackColor = true;
-            this.btReset.Click += new System.EventHandler(this.btReset_Click);
+            this.btAddPersons.Location = new System.Drawing.Point(4, 212);
+            this.btAddPersons.Margin = new System.Windows.Forms.Padding(2);
+            this.btAddPersons.Name = "btAddPersons";
+            this.btAddPersons.Size = new System.Drawing.Size(116, 36);
+            this.btAddPersons.TabIndex = 0;
+            this.btAddPersons.Text = "Voeg personen toe";
+            this.btAddPersons.UseVisualStyleBackColor = true;
+            this.btAddPersons.Click += new System.EventHandler(this.btAddPersons_Click);
             // 
             // Form1
             // 
@@ -446,16 +445,16 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btReset;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btPlaceReservation;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.Label txtPlaceStatus;
-        public System.Windows.Forms.Label txtAmountPersons;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbPlaceStatus;
+        public System.Windows.Forms.Label lbAmountPersonsValue;
+        private System.Windows.Forms.Label lbAmountPersons;
         private System.Windows.Forms.Button btCheckPlace;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbPlaceNumber;
         private System.Windows.Forms.TextBox txtCheckPlace;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btAddPersons;

@@ -31,7 +31,7 @@ namespace ReservationSystem
                 s.tempAccountManager = epForm.s.tempAccountManager;
                 s.mainBooker = epForm.s.mainBooker;
                 int count = s.tempAccountManager.Accounts.Count() + 1;
-                txtAmountPersons.Text = Convert.ToString(count);
+                lbAmountPersonsValue.Text = Convert.ToString(count);
                 if (count > 0)
                     btAddPersons.Text = "Personen bewerken";
             }
@@ -41,14 +41,14 @@ namespace ReservationSystem
         {
             if (s.CheckPlace(txtCheckPlace.Text))
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Green;
+                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
+                lbPlaceStatus.ForeColor = Color.Green;
                 isValidPlace = true;
             }
             else
             {
-                txtPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
-                txtPlaceStatus.ForeColor = Color.Red;
+                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                lbPlaceStatus.ForeColor = Color.Red;
                 isValidPlace = false;
             }
         }
@@ -59,7 +59,7 @@ namespace ReservationSystem
             if (result == DialogResult.Yes)
             {
                 txtCheckPlace.Clear();
-                txtAmountPersons.Text = "0";
+                lbAmountPersonsValue.Text = "0";
                 s.mainBooker = null;
                 s.tempAccountManager.Accounts.Clear();
             }
@@ -141,20 +141,40 @@ namespace ReservationSystem
                     isValidPlace = false;
                     guestsToAdd.Clear();
                     txtCheckPlace.Clear();
-                    txtPlaceStatus.Text = "<vul een plaatsnummer in>";
-                    txtPlaceStatus.ForeColor = Color.Black;
+                    lbPlaceStatus.Text = "<vul een plaatsnummer in>";
+                    lbPlaceStatus.ForeColor = Color.Black;
+                    lbAmountPersonsValue.Text = "0";
                 }
             }
         }
 
-        private void groupBox3_Enter(object sender, EventArgs e)
+        bool IsDigitsOnly(string str)
         {
-
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
         }
 
         private void btCancelReservation_Click(object sender, EventArgs e)
         {
-
+            if (!IsDigitsOnly(txtReservationIDDelete.Text))
+            {
+                MessageBox.Show("ReserveringsID moet een nummer zijn!");
+            }
+            else
+            {
+                if (s.DeleteReservation(txtReservationIDDelete.Text))
+                {
+                    MessageBox.Show("Verwijderen is gelukt");
+                }
+                else
+                {
+                    MessageBox.Show("Verwijderen is mislukt!");
+                }
+            }
         }
 
         private void btSearchReservation_Click(object sender, EventArgs e)

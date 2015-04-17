@@ -10,6 +10,14 @@ namespace AccountLibrary
     {
         private string isPresent;
         private string rfid;
+        private int guestID;
+
+        public int GuestID
+        {
+            get { return guestID; }
+            set { guestID = value; }
+        }
+        
         
         public string IsPresent
         {
@@ -29,6 +37,16 @@ namespace AccountLibrary
         {
             RFID = rfid;
             IsPresent = isPresent;
+        }
+
+        // Extra constructor to include guestID
+        public Guest(int id, int eventId, string username, string password, string name, string address, string city, string postalCode,
+                       DateTime dateOfBirth, string email, string phone, string rfid, string isPresent, int guestID)
+            : base(id, eventId, username, password, name, address, city, postalCode, dateOfBirth, email, phone)
+        {
+            RFID = rfid;
+            IsPresent = isPresent;
+            GuestID = guestID;
         }
 
 

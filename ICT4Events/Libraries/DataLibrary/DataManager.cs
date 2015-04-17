@@ -214,7 +214,7 @@ namespace DataLibrary
                 guestID = Convert.ToInt32(number) + 1;
                 Console.WriteLine("GUESTID " + number);
             }
-            query = "SELECT RFID FROM RFID";
+            query = "SELECT RFID FROM RFID WHERE RFID NOT IN (SELECT RFID FROM Guest)";
             string RFID;
             result = XCTReader(query);
             if (result.Count == 0)
@@ -441,9 +441,9 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
-        public void SetPresence(string Pvalue, string ID)
+        public void UpdatePresence(string GuestID, string AccountID, string RFID, string isPresent)
         {
-            string query = String.Format("INSERT INTO GUEST (ISPRESENT) VALUES('{0}') WHERE ACCOUNTID = {1}", Pvalue, ID);
+            string query = String.Format("UPDATE GUEST SET GUESTID = {0}, ACCOUNTID = {1},RFID = '{2}',ISPRESENT = '{3}' WHERE GUESTID = {0}", GuestID, AccountID,RFID,isPresent);
             XCTNonQuery(query);
         }
         public void SetFile(List<string> file)
@@ -555,12 +555,20 @@ namespace DataLibrary
                 , category[0], category[1], category[2]);
             XCTNonQuery(query);
         }
-        public void DeleteReservation(string ID)
+        public bool DeleteReservation(string ID)
         {
-            string query = String.Format("DELETE * FROM RESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE * FROM GUESTRESERVATION WHERE RESERVATIONID = {0}", ID);
-            XCTNonQuery(query);
+            try
+            {
+                string query = String.Format("DELETE FROM GuestReservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                query = String.Format("DELETE FROM Reservation WHERE RESERVATIONID = {0}", ID);
+                XCTNonQuery(query);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         public List<Dictionary<string, string>> GetINCReservation(string ID)
         {
