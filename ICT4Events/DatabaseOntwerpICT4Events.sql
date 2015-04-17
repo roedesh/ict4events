@@ -108,7 +108,7 @@ CREATE TABLE Guest
 (GuestID		int						PRIMARY KEY,
 AccountID		int						NOT NULL,
 RFID			varchar2(255 char)		NOT NULL,
-IsPresent		varchar2(255 char)		CHECK(IsPresent = 'Y' OR IsPresent = 'N'),
+IsPresent		char		CHECK(IsPresent = 'Y' OR IsPresent = 'N'),
 CONSTRAINT FK_AccountID5 FOREIGN KEY (AccountID) REFERENCES Account (AccountID),
 CONSTRAINT FK_RFID FOREIGN KEY (RFID) REFERENCES RFID (RFID)
 );
