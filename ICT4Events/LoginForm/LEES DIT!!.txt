@@ -1,0 +1,18 @@
+In Program.cs vervang de regel 
+
+Application.Run(new Form1()) 
+
+met 
+
+Application.Run(new LoginForm())
+
+
+
+Maak daarna in je eigen form (Form1) een FormClosed event aan en voeg deze regel toe:
+
+Application.Exit();
+
+
+
+
+En natuurlijk ff het label aanpassen, want nu staat er nog Reserveringssysteem ;)

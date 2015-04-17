@@ -14,6 +14,7 @@ namespace EventManagementSystem
     public partial class Form1 : Form
     {
         SuperManager superManager = new SuperManager();
+        bool isEmployee;
         public Form1()
         {
             InitializeComponent();
@@ -98,6 +99,7 @@ namespace EventManagementSystem
             dataGridView.DataSource = showAllGuestAccounts;
             cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
+            isEmployee = false;
         }
 
         private void btnMedewerkersShowAllEmployee_Click(object sender, EventArgs e)
@@ -108,6 +110,7 @@ namespace EventManagementSystem
             showAllEmployeeAccounts = superManager.ShowEmployeeAccounts();
             dataGridView.DataSource = showAllEmployeeAccounts;
             cbMedewerkersRole.Enabled = true;
+            isEmployee = true;
         }
 
         
@@ -123,7 +126,7 @@ namespace EventManagementSystem
                     tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
                     tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
                 MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
-
+                isEmployee = false;
                 btnMedewerkersShowAllGuest_Click(sender, e);
             }
             else // it's an Employee
@@ -135,6 +138,8 @@ namespace EventManagementSystem
                     tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
                     Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
                     MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
+                    isEmployee = true;
+                    btnMedewerkersShowAllEmployee_Click(sender, e);
             }
         }
 
@@ -150,14 +155,16 @@ namespace EventManagementSystem
                     Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
                 MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
             }
-            catch (FormatException)
+            /*catch ()
             {
-                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
-            }
+                
+            }*/
             finally
             {
+                isEmployee = true;
                 btnMedewerkersShowAllEmployee_Click(sender, e);
             }
+            
         }
 
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
@@ -167,11 +174,13 @@ namespace EventManagementSystem
             {
                 superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
                 btnMedewerkersShowAllGuest_Click(sender, e);
+                isEmployee = false;
             }
             else // it's an Employee
             {
                 superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
                 btnMedewerkersShowAllEmployee_Click(sender, e);
+                isEmployee = true;
             }
         }
 
@@ -180,7 +189,10 @@ namespace EventManagementSystem
         {
         }
 
-        
+        private void btnPlaatsShowAllLocations_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -207,9 +219,16 @@ namespace EventManagementSystem
                     tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
                     tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
                     tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
+                    if (isEmployee)
+                    {
+                        string enumCast = row.Cells["Role"].Value.ToString();
+                        int enumID = superManager.getEnum(enumCast);
+                        tbMedewerkerRoleID.Text = enumID.ToString();
+                        cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
+                    }
+                    
 
-                    tbMedewerkerAccountID.Enabled = false;
-                    tbMedewerkersEventID.Enabled = false;
+                   
                 }
                 if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
@@ -226,6 +245,8 @@ namespace EventManagementSystem
             }
 
         }
+
+
 
 
 

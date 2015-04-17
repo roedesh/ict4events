@@ -16,19 +16,17 @@ namespace AccountLibrary
         */
         public enum AccountRole
         {
-            EventManager,
-            ReservationManager,
-            AccessManager,
-            EntryManager,
-            SocialMediaManager,
-            Admin,
-            Guest
+            EventManager = 0,
+            ReservationManager = 1,
+            AccessManager = 2,
+            EntryManager = 3,
+            SocialMediaManager = 4,
+            Admin = 5,
+            Guest = 6
         };
 
         private AccountRole role;
-       
         
-
         public AccountRole Role
         {
             get { return role; }
