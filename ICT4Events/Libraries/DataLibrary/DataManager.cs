@@ -244,11 +244,11 @@ namespace DataLibrary
         /// <param name="employee">List dictrionary of string-string</param>
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
-            string date = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", account[8]);
-            string query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}')"
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY'", account[8]);
+            string query = String.Format("INSERT INTO Account VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
                 , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
-                , date, account[9]);
+                , date, account[9], account[10]);
             XCTNonQuery(query);
             query = String.Format("INSERT INTO Employee VALUES({0},{1},{2})"
                 , employee[0], employee[1], employee[2]);
