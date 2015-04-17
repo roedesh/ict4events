@@ -33,37 +33,18 @@ VALUES (5, 1, 'boris', 'boris', 'boris hoenders', 'ergensstraat 1', 'stad', '123
 INSERT INTO Account
 VALUES (6, 1, 'anne', 'anne', 'anne baarssen', 'ergensstraat 27', 'stad', '1234AA', TO_DATE('1993/07/13','yyyy/mm/dd hh24:mi:ss'), 'anne@gmail.com', 061239797);
 
-INSERT INTO FileTable 
-VALUES (1, 1, 1, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'file titel', 'file path', 3, 0);
-INSERT INTO FileTable
-VALUES (2, 1, 1, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'file titel2', 'file path2', 1, 0);
-INSERT INTO FileTable
-VALUES (3, 1, 1, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'file titel3', 'file path3', 4, 0);
-INSERT INTO FileTable
-VALUES (4, 1, 1, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'file titel4', 'file path4', 2, 0);
-
-INSERT INTO CommentTable 
-VALUES (1,1, 1, NULL, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'comment titel1', 'bericht inhoud1', 3, 5);
-INSERT INTO CommentTable 
-VALUES (2,1, 1, 1, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'comment titel2', 'bericht inhoud2', 3, 5);
-INSERT INTO CommentTable 
-VALUES (3,2, 1, NULL, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'comment titel3', 'bericht inhoud3', 3, 5);
-INSERT INTO CommentTable 
-VALUES (4,3, 1, NULL, TO_TIMESTAMP('1993/07/13 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'comment titel4', 'bericht inhoud4', 3, 5);
-
-INSERT INTO LikeOrFlag
-VALUES (1, 2, NULL, 1, TO_TIMESTAMP('1993/07/14 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'LIKE');
-INSERT INTO LikeOrFlag
-VALUES (2, 2, NULL, 2, TO_TIMESTAMP('1993/07/14 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'FLAG');
-INSERT INTO LikeOrFlag
-VALUES (3, 2, NULL, 1, TO_TIMESTAMP('1993/07/14 12:12:12' , 'YYYY-MM-DD HH24:MI:SS'), 'LIKE');
-
 INSERT INTO Role
-VALUES (1, 'Event Manager', 'Event Manager beschrijving');
+VALUES (1, 'EventManager', 'Event Manager beschrijving');
 INSERT INTO Role
-VALUES (2, 'Catering', 'Drank boykie');
+VALUES (2, 'ReservationManager', 'reserveringen beheren');
 INSERT INTO Role
-VALUES (1, 'Interieur verzorger', 'Schoonmaken en netjes houden van eventterrein');
+VALUES (3, 'AccessManager', 'toegangscontrole');
+INSERT INTO Role
+VALUES (4, 'EntryManager', 'Event Manager beschrijving');
+INSERT INTO Role
+VALUES (5, 'SocialMediaManager', 'reserveringen beheren');
+INSERT INTO Role
+VALUES (6, 'Admin', 'toegangscontrole');
 
 INSERT INTO Employee
 VALUES (1, 1, 1);
@@ -73,18 +54,25 @@ INSERT INTO Employee
 VALUES (3, 5, 2);
 
 INSERT INTO RFID
-VALUES(2800b81df0);
+VALUES('2800b81df0');
 INSERT INTO RFID
-VALUES(4a003611eb);
+VALUES('4a003611eb');
 INSERT INTO RFID
-VALUES(7000826e43);
+VALUES('7000826e43');
 INSERT INTO RFID
-VALUES(5c005cb362);
+VALUES('5c005cb362');
 INSERT INTO RFID
-VALUES(5c005cda59);
+VALUES('5c005cda59');
+
+INSERT INTO Guest
+VALUES(1,2,'2800b81df0','Y');
+INSERT INTO Guest
+VALUES(2,3,'4a003611eb','Y');
+INSERT INTO Guest
+VALUES(3,4,'7000826e43','N');
 
 
-
+commit;
 
 
 
