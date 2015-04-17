@@ -8,10 +8,26 @@ namespace AccountLibrary
 {
     public class AccountManager
     {
-        public List<Account> Accounts { get; private set; }
+
+        private List<Account> accounts;
+        private List<Employee> employees;
+
+        public List<Employee> Employees
+        {
+            get { return employees; }
+            set { employees = value; }
+        }
+        public List<Account> Accounts
+        {
+            get { return accounts; }
+            set { accounts = value; }
+        }
+        
+        
         public AccountManager()
         {
             Accounts = new List<Account>();
+            Employees = new List<Employee>();
         }
 
         
@@ -27,6 +43,19 @@ namespace AccountLibrary
             }
             // ID not in use, add account to list and return true
             Accounts.Add(account);
+            return true;
+        }
+        public bool AddAccountE(Employee emp)
+        {
+            // Look for account with the same ID
+            Account exists = Accounts.Find(a => a.ID == emp.ID);
+            if (exists != null & emp.ID != 0) // If account has ID 0, it's a temporary account
+            {
+                // ID already in use, return false
+                return false;
+            }
+            // ID not in use, add account to list and return true
+            Employees.Add(emp);
             return true;
         }
 

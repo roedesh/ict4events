@@ -40,11 +40,13 @@
             this.btnMedewerkersShowAllEmployee = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpMedewerkers = new System.Windows.Forms.TabPage();
+            this.tbMedewerkerEmployeeID = new System.Windows.Forms.TextBox();
             this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
             this.cbMedewerkersRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -84,10 +86,6 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.tbMedewerkersRoleID = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.tbMedewerkerEmployeeID = new System.Windows.Forms.TextBox();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -219,7 +217,6 @@
             // tpMedewerkers
             // 
             this.tpMedewerkers.Controls.Add(this.tbMedewerkerEmployeeID);
-            this.tpMedewerkers.Controls.Add(this.tbMedewerkersRoleID);
             this.tpMedewerkers.Controls.Add(this.btnMedewerkersShowAllGuest);
             this.tpMedewerkers.Controls.Add(this.cbMedewerkersRole);
             this.tpMedewerkers.Controls.Add(this.label4);
@@ -227,7 +224,6 @@
             this.tpMedewerkers.Controls.Add(this.label8);
             this.tpMedewerkers.Controls.Add(this.label12);
             this.tpMedewerkers.Controls.Add(this.label11);
-            this.tpMedewerkers.Controls.Add(this.label6);
             this.tpMedewerkers.Controls.Add(this.label5);
             this.tpMedewerkers.Controls.Add(this.label13);
             this.tpMedewerkers.Controls.Add(this.label14);
@@ -259,6 +255,13 @@
             this.tpMedewerkers.TabIndex = 0;
             this.tpMedewerkers.Text = "Medewerkers";
             this.tpMedewerkers.UseVisualStyleBackColor = true;
+            // 
+            // tbMedewerkerEmployeeID
+            // 
+            this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(96, 284);
+            this.tbMedewerkerEmployeeID.Name = "tbMedewerkerEmployeeID";
+            this.tbMedewerkerEmployeeID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerEmployeeID.TabIndex = 62;
             // 
             // btnMedewerkersShowAllGuest
             // 
@@ -307,6 +310,16 @@
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 57;
             this.label8.Text = "Login naam:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 287);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.TabIndex = 55;
+            this.label12.Text = "Employee ID:";
             // 
             // label11
             // 
@@ -676,40 +689,6 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // tbMedewerkersRoleID
-            // 
-            this.tbMedewerkersRoleID.Location = new System.Drawing.Point(96, 284);
-            this.tbMedewerkersRoleID.Name = "tbMedewerkersRoleID";
-            this.tbMedewerkersRoleID.Size = new System.Drawing.Size(204, 20);
-            this.tbMedewerkersRoleID.TabIndex = 62;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 287);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 55;
-            this.label6.Text = "Role ID:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 261);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 13);
-            this.label12.TabIndex = 55;
-            this.label12.Text = "Employee ID:";
-            // 
-            // tbMedewerkerEmployeeID
-            // 
-            this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(96, 258);
-            this.tbMedewerkerEmployeeID.Name = "tbMedewerkerEmployeeID";
-            this.tbMedewerkerEmployeeID.Size = new System.Drawing.Size(204, 20);
-            this.tbMedewerkerEmployeeID.TabIndex = 62;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -790,8 +769,6 @@
         private System.Windows.Forms.Button btnMedewerkersShowAllGuest;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbMedewerkersEventID;
-        private System.Windows.Forms.TextBox tbMedewerkersRoleID;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbMedewerkerEmployeeID;
         private System.Windows.Forms.Label label12;
     }
