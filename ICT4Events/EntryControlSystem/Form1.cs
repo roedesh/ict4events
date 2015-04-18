@@ -54,6 +54,7 @@ namespace EntryControlSystem
             {
                 tbRFID.Text = "";
                 pbBetaalstatus.BackColor = Color.FromArgb(255, 255, 255);
+                lbInfo.Items.Add("Niemand gevonden");
             }
         }
         private void btnZoekPersoon_Click(object sender, EventArgs e)
