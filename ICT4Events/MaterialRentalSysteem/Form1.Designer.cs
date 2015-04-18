@@ -28,36 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label17 = new System.Windows.Forms.Label();
-            this.tbUitlPersID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.tbUitlAantal = new System.Windows.Forms.TextBox();
-            this.tbUitlprijs = new System.Windows.Forms.TextBox();
-            this.tbUitlType = new System.Windows.Forms.TextBox();
-            this.tbUitlNaam = new System.Windows.Forms.TextBox();
+            this.btnRentItem = new System.Windows.Forms.Button();
+            this.tbRentCount = new System.Windows.Forms.TextBox();
+            this.tbRentItemRFID = new System.Windows.Forms.TextBox();
+            this.tbRentItemID = new System.Windows.Forms.TextBox();
+            this.tbRentPersonName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnArtikelPasAan = new System.Windows.Forms.Button();
-            this.tbRmvAantal = new System.Windows.Forms.TextBox();
+            this.tbChangeCount = new System.Windows.Forms.TextBox();
             this.btnArtikelVerwijder = new System.Windows.Forms.Button();
-            this.tbRmvPrijs = new System.Windows.Forms.TextBox();
-            this.tbRmvType = new System.Windows.Forms.TextBox();
-            this.tbRmvNaam = new System.Windows.Forms.TextBox();
+            this.tbChangePrice = new System.Windows.Forms.TextBox();
+            this.tbChangeType = new System.Windows.Forms.TextBox();
+            this.tbChangeName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.tbNeemInPersID = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.tbNeemInAantal = new System.Windows.Forms.TextBox();
-            this.tbNeemInPrijs = new System.Windows.Forms.TextBox();
+            this.btnTakeRental = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -68,50 +59,36 @@
             this.tbAddName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tbNeemInType = new System.Windows.Forms.TextBox();
-            this.tbNeemInNaam = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dtpRentItemEndDate = new System.Windows.Forms.DateTimePicker();
+            this.btnItemRentSearchPerson = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnUnavaillableItems = new System.Windows.Forms.Button();
             this.btnAvaillableItems = new System.Windows.Forms.Button();
             this.btnClearLb = new System.Windows.Forms.Button();
             this.lbInfo = new System.Windows.Forms.ListBox();
             this.btnAllItems = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label16 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbSearchPerson = new System.Windows.Forms.TextBox();
+            this.btnSearchPerson = new System.Windows.Forms.Button();
+            this.btnSearchSelect = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 154);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 13);
-            this.label17.TabIndex = 68;
-            this.label17.Text = "Persoon ID:";
-            // 
-            // tbUitlPersID
-            // 
-            this.tbUitlPersID.Location = new System.Drawing.Point(4, 171);
-            this.tbUitlPersID.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUitlPersID.Name = "tbUitlPersID";
-            this.tbUitlPersID.Size = new System.Drawing.Size(157, 20);
-            this.tbUitlPersID.TabIndex = 66;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 115);
+            this.label7.Location = new System.Drawing.Point(128, 52);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 13);
@@ -124,79 +101,83 @@
             this.label8.Location = new System.Drawing.Point(4, 6);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 13);
+            this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 56;
-            this.label8.Text = "Vul hier de naam in:";
+            this.label8.Text = "Naam:";
             // 
-            // button6
+            // btnRentItem
             // 
-            this.button6.Location = new System.Drawing.Point(7, 193);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(261, 34);
-            this.button6.TabIndex = 59;
-            this.button6.Text = "Leen uit";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnRentItem.Location = new System.Drawing.Point(7, 130);
+            this.btnRentItem.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRentItem.Name = "btnRentItem";
+            this.btnRentItem.Size = new System.Drawing.Size(256, 51);
+            this.btnRentItem.TabIndex = 59;
+            this.btnRentItem.Text = "Leen uit";
+            this.btnRentItem.UseVisualStyleBackColor = true;
+            this.btnRentItem.Click += new System.EventHandler(this.btnRent_Click);
             // 
-            // tbUitlAantal
+            // tbRentCount
             // 
-            this.tbUitlAantal.Location = new System.Drawing.Point(4, 132);
-            this.tbUitlAantal.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUitlAantal.Name = "tbUitlAantal";
-            this.tbUitlAantal.Size = new System.Drawing.Size(254, 20);
-            this.tbUitlAantal.TabIndex = 63;
+            this.tbRentCount.Location = new System.Drawing.Point(131, 67);
+            this.tbRentCount.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRentCount.Name = "tbRentCount";
+            this.tbRentCount.Size = new System.Drawing.Size(123, 20);
+            this.tbRentCount.TabIndex = 63;
             // 
-            // tbUitlprijs
+            // tbRentItemRFID
             // 
-            this.tbUitlprijs.Location = new System.Drawing.Point(4, 58);
-            this.tbUitlprijs.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUitlprijs.Name = "tbUitlprijs";
-            this.tbUitlprijs.Size = new System.Drawing.Size(254, 20);
-            this.tbUitlprijs.TabIndex = 55;
+            this.tbRentItemRFID.Location = new System.Drawing.Point(4, 67);
+            this.tbRentItemRFID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRentItemRFID.Name = "tbRentItemRFID";
+            this.tbRentItemRFID.ReadOnly = true;
+            this.tbRentItemRFID.Size = new System.Drawing.Size(123, 20);
+            this.tbRentItemRFID.TabIndex = 55;
             // 
-            // tbUitlType
+            // tbRentItemID
             // 
-            this.tbUitlType.Location = new System.Drawing.Point(4, 95);
-            this.tbUitlType.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUitlType.Name = "tbUitlType";
-            this.tbUitlType.Size = new System.Drawing.Size(254, 20);
-            this.tbUitlType.TabIndex = 61;
+            this.tbRentItemID.Location = new System.Drawing.Point(131, 21);
+            this.tbRentItemID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRentItemID.Name = "tbRentItemID";
+            this.tbRentItemID.ReadOnly = true;
+            this.tbRentItemID.Size = new System.Drawing.Size(123, 20);
+            this.tbRentItemID.TabIndex = 61;
             // 
-            // tbUitlNaam
+            // tbRentPersonName
             // 
-            this.tbUitlNaam.Location = new System.Drawing.Point(4, 22);
-            this.tbUitlNaam.Margin = new System.Windows.Forms.Padding(2);
-            this.tbUitlNaam.Name = "tbUitlNaam";
-            this.tbUitlNaam.Size = new System.Drawing.Size(254, 20);
-            this.tbUitlNaam.TabIndex = 54;
+            this.tbRentPersonName.Location = new System.Drawing.Point(4, 22);
+            this.tbRentPersonName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbRentPersonName.Name = "tbRentPersonName";
+            this.tbRentPersonName.ReadOnly = true;
+            this.tbRentPersonName.Size = new System.Drawing.Size(123, 20);
+            this.tbRentPersonName.TabIndex = 54;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 42);
+            this.label9.Location = new System.Drawing.Point(2, 52);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 13);
+            this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 57;
-            this.label9.Text = "Vul hier de prijs in:";
+            this.label9.Text = "RFID:";
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.btnArtikelPasAan);
-            this.tabPage2.Controls.Add(this.tbRmvAantal);
+            this.tabPage2.Controls.Add(this.tbChangeCount);
             this.tabPage2.Controls.Add(this.btnArtikelVerwijder);
-            this.tabPage2.Controls.Add(this.tbRmvPrijs);
-            this.tabPage2.Controls.Add(this.tbRmvType);
-            this.tabPage2.Controls.Add(this.tbRmvNaam);
+            this.tabPage2.Controls.Add(this.tbChangePrice);
+            this.tabPage2.Controls.Add(this.tbChangeType);
+            this.tabPage2.Controls.Add(this.tbChangeName);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(270, 230);
+            this.tabPage2.Size = new System.Drawing.Size(275, 230);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Artikel aanpassen/verwijderen";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -230,14 +211,15 @@
             this.btnArtikelPasAan.TabIndex = 47;
             this.btnArtikelPasAan.Text = "Pas aan";
             this.btnArtikelPasAan.UseVisualStyleBackColor = true;
+            this.btnArtikelPasAan.Click += new System.EventHandler(this.btnArtikelPasAan_Click);
             // 
-            // tbRmvAantal
+            // tbChangeCount
             // 
-            this.tbRmvAantal.Location = new System.Drawing.Point(4, 132);
-            this.tbRmvAantal.Margin = new System.Windows.Forms.Padding(2);
-            this.tbRmvAantal.Name = "tbRmvAantal";
-            this.tbRmvAantal.Size = new System.Drawing.Size(254, 20);
-            this.tbRmvAantal.TabIndex = 51;
+            this.tbChangeCount.Location = new System.Drawing.Point(4, 132);
+            this.tbChangeCount.Margin = new System.Windows.Forms.Padding(2);
+            this.tbChangeCount.Name = "tbChangeCount";
+            this.tbChangeCount.Size = new System.Drawing.Size(254, 20);
+            this.tbChangeCount.TabIndex = 51;
             // 
             // btnArtikelVerwijder
             // 
@@ -248,30 +230,31 @@
             this.btnArtikelVerwijder.TabIndex = 48;
             this.btnArtikelVerwijder.Text = "Verwijder";
             this.btnArtikelVerwijder.UseVisualStyleBackColor = true;
+            this.btnArtikelVerwijder.Click += new System.EventHandler(this.btnArtikelVerwijder_Click);
             // 
-            // tbRmvPrijs
+            // tbChangePrice
             // 
-            this.tbRmvPrijs.Location = new System.Drawing.Point(4, 58);
-            this.tbRmvPrijs.Margin = new System.Windows.Forms.Padding(2);
-            this.tbRmvPrijs.Name = "tbRmvPrijs";
-            this.tbRmvPrijs.Size = new System.Drawing.Size(254, 20);
-            this.tbRmvPrijs.TabIndex = 43;
+            this.tbChangePrice.Location = new System.Drawing.Point(4, 58);
+            this.tbChangePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbChangePrice.Name = "tbChangePrice";
+            this.tbChangePrice.Size = new System.Drawing.Size(254, 20);
+            this.tbChangePrice.TabIndex = 43;
             // 
-            // tbRmvType
+            // tbChangeType
             // 
-            this.tbRmvType.Location = new System.Drawing.Point(4, 95);
-            this.tbRmvType.Margin = new System.Windows.Forms.Padding(2);
-            this.tbRmvType.Name = "tbRmvType";
-            this.tbRmvType.Size = new System.Drawing.Size(254, 20);
-            this.tbRmvType.TabIndex = 49;
+            this.tbChangeType.Location = new System.Drawing.Point(4, 95);
+            this.tbChangeType.Margin = new System.Windows.Forms.Padding(2);
+            this.tbChangeType.Name = "tbChangeType";
+            this.tbChangeType.Size = new System.Drawing.Size(254, 20);
+            this.tbChangeType.TabIndex = 49;
             // 
-            // tbRmvNaam
+            // tbChangeName
             // 
-            this.tbRmvNaam.Location = new System.Drawing.Point(4, 22);
-            this.tbRmvNaam.Margin = new System.Windows.Forms.Padding(2);
-            this.tbRmvNaam.Name = "tbRmvNaam";
-            this.tbRmvNaam.Size = new System.Drawing.Size(254, 20);
-            this.tbRmvNaam.TabIndex = 42;
+            this.tbChangeName.Location = new System.Drawing.Point(4, 22);
+            this.tbChangeName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbChangeName.Name = "tbChangeName";
+            this.tbChangeName.Size = new System.Drawing.Size(254, 20);
+            this.tbChangeName.TabIndex = 42;
             // 
             // label5
             // 
@@ -293,89 +276,26 @@
             this.label6.TabIndex = 50;
             this.label6.Text = "Vul hier het type in:";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(165, 154);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 34);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "Leg persoon vast";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 79);
+            this.label10.Location = new System.Drawing.Point(132, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 13);
+            this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 62;
-            this.label10.Text = "Vul hier het type in:";
+            this.label10.Text = "ItemID:";
             // 
-            // button4
+            // btnTakeRental
             // 
-            this.button4.Location = new System.Drawing.Point(165, 154);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(103, 34);
-            this.button4.TabIndex = 79;
-            this.button4.Text = "Leg persoon vast";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // tbNeemInPersID
-            // 
-            this.tbNeemInPersID.Location = new System.Drawing.Point(4, 171);
-            this.tbNeemInPersID.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNeemInPersID.Name = "tbNeemInPersID";
-            this.tbNeemInPersID.Size = new System.Drawing.Size(157, 20);
-            this.tbNeemInPersID.TabIndex = 78;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 115);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(106, 13);
-            this.label14.TabIndex = 77;
-            this.label14.Text = "Vul hier het aantal in:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 6);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 13);
-            this.label15.TabIndex = 71;
-            this.label15.Text = "Vul hier de naam in:";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(7, 193);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(261, 34);
-            this.button5.TabIndex = 73;
-            this.button5.Text = "Neem in";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // tbNeemInAantal
-            // 
-            this.tbNeemInAantal.Location = new System.Drawing.Point(4, 132);
-            this.tbNeemInAantal.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNeemInAantal.Name = "tbNeemInAantal";
-            this.tbNeemInAantal.Size = new System.Drawing.Size(254, 20);
-            this.tbNeemInAantal.TabIndex = 76;
-            // 
-            // tbNeemInPrijs
-            // 
-            this.tbNeemInPrijs.Location = new System.Drawing.Point(4, 58);
-            this.tbNeemInPrijs.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNeemInPrijs.Name = "tbNeemInPrijs";
-            this.tbNeemInPrijs.Size = new System.Drawing.Size(254, 20);
-            this.tbNeemInPrijs.TabIndex = 70;
+            this.btnTakeRental.Location = new System.Drawing.Point(4, 117);
+            this.btnTakeRental.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTakeRental.Name = "btnTakeRental";
+            this.btnTakeRental.Size = new System.Drawing.Size(267, 34);
+            this.btnTakeRental.TabIndex = 73;
+            this.btnTakeRental.Text = "Neem in";
+            this.btnTakeRental.UseVisualStyleBackColor = true;
+            this.btnTakeRental.Click += new System.EventHandler(this.btnTakeRental_Click);
             // 
             // tabPage1
             // 
@@ -392,7 +312,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(270, 230);
+            this.tabPage1.Size = new System.Drawing.Size(275, 230);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Artikel toevoegen";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -480,64 +400,54 @@
             this.label3.TabIndex = 50;
             this.label3.Text = "Vul hier het type in:";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 154);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 13);
-            this.label13.TabIndex = 80;
-            this.label13.Text = "Persoon ID:";
-            // 
-            // tbNeemInType
-            // 
-            this.tbNeemInType.Location = new System.Drawing.Point(4, 95);
-            this.tbNeemInType.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNeemInType.Name = "tbNeemInType";
-            this.tbNeemInType.Size = new System.Drawing.Size(254, 20);
-            this.tbNeemInType.TabIndex = 74;
-            // 
-            // tbNeemInNaam
-            // 
-            this.tbNeemInNaam.Location = new System.Drawing.Point(4, 22);
-            this.tbNeemInNaam.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNeemInNaam.Name = "tbNeemInNaam";
-            this.tbNeemInNaam.Size = new System.Drawing.Size(254, 20);
-            this.tbNeemInNaam.TabIndex = 69;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 79);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 13);
-            this.label18.TabIndex = 75;
-            this.label18.Text = "Vul hier het type in:";
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.tbUitlPersID);
+            this.tabPage3.Controls.Add(this.dtpRentItemEndDate);
+            this.tabPage3.Controls.Add(this.btnItemRentSearchPerson);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.tbUitlAantal);
-            this.tabPage3.Controls.Add(this.tbUitlprijs);
-            this.tabPage3.Controls.Add(this.tbUitlType);
-            this.tabPage3.Controls.Add(this.tbUitlNaam);
+            this.tabPage3.Controls.Add(this.btnRentItem);
+            this.tabPage3.Controls.Add(this.tbRentCount);
+            this.tabPage3.Controls.Add(this.tbRentItemRFID);
+            this.tabPage3.Controls.Add(this.tbRentItemID);
+            this.tabPage3.Controls.Add(this.tbRentPersonName);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(270, 230);
+            this.tabPage3.Size = new System.Drawing.Size(275, 230);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Leen uit";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(45, 89);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(110, 13);
+            this.label17.TabIndex = 68;
+            this.label17.Text = "Eind datum verhuring:";
+            // 
+            // dtpRentItemEndDate
+            // 
+            this.dtpRentItemEndDate.Location = new System.Drawing.Point(48, 105);
+            this.dtpRentItemEndDate.Name = "dtpRentItemEndDate";
+            this.dtpRentItemEndDate.Size = new System.Drawing.Size(174, 20);
+            this.dtpRentItemEndDate.TabIndex = 67;
+            // 
+            // btnItemRentSearchPerson
+            // 
+            this.btnItemRentSearchPerson.Location = new System.Drawing.Point(76, 186);
+            this.btnItemRentSearchPerson.Name = "btnItemRentSearchPerson";
+            this.btnItemRentSearchPerson.Size = new System.Drawing.Size(126, 39);
+            this.btnItemRentSearchPerson.TabIndex = 66;
+            this.btnItemRentSearchPerson.Text = "Zoek Persoon";
+            this.btnItemRentSearchPerson.UseVisualStyleBackColor = true;
+            this.btnItemRentSearchPerson.Click += new System.EventHandler(this.btnItemRentSearchPerson_Click);
             // 
             // groupBox1
             // 
@@ -546,7 +456,7 @@
             this.groupBox1.Controls.Add(this.btnClearLb);
             this.groupBox1.Controls.Add(this.lbInfo);
             this.groupBox1.Controls.Add(this.btnAllItems);
-            this.groupBox1.Location = new System.Drawing.Point(291, 8);
+            this.groupBox1.Location = new System.Drawing.Point(296, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -592,6 +502,7 @@
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(378, 238);
             this.lbInfo.TabIndex = 0;
+            this.lbInfo.SelectedIndexChanged += new System.EventHandler(this.lbInfo_SelectedIndexChanged);
             // 
             // btnAllItems
             // 
@@ -603,59 +514,89 @@
             this.btnAllItems.UseVisualStyleBackColor = true;
             this.btnAllItems.Click += new System.EventHandler(this.button2_Click);
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(9, 9);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(278, 256);
-            this.tabControl1.TabIndex = 12;
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Controls.Add(this.tabPage4);
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Location = new System.Drawing.Point(9, 9);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(283, 256);
+            this.tabControl.TabIndex = 12;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label13);
-            this.tabPage4.Controls.Add(this.button4);
-            this.tabPage4.Controls.Add(this.tbNeemInPersID);
-            this.tabPage4.Controls.Add(this.label14);
-            this.tabPage4.Controls.Add(this.label15);
-            this.tabPage4.Controls.Add(this.button5);
-            this.tabPage4.Controls.Add(this.tbNeemInAantal);
-            this.tabPage4.Controls.Add(this.tbNeemInPrijs);
-            this.tabPage4.Controls.Add(this.tbNeemInType);
-            this.tabPage4.Controls.Add(this.tbNeemInNaam);
-            this.tabPage4.Controls.Add(this.label16);
-            this.tabPage4.Controls.Add(this.label18);
+            this.tabPage4.Controls.Add(this.btnTakeRental);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Size = new System.Drawing.Size(270, 230);
+            this.tabPage4.Size = new System.Drawing.Size(275, 230);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Neem in";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label16
+            // tabPage5
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 42);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(92, 13);
-            this.label16.TabIndex = 72;
-            this.label16.Text = "Vul hier de prijs in:";
+            this.tabPage5.Controls.Add(this.btnSearchSelect);
+            this.tabPage5.Controls.Add(this.btnSearchPerson);
+            this.tabPage5.Controls.Add(this.label13);
+            this.tabPage5.Controls.Add(this.tbSearchPerson);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(275, 230);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Zoek persoon";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 13);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Persoon naam:";
+            // 
+            // tbSearchPerson
+            // 
+            this.tbSearchPerson.Location = new System.Drawing.Point(6, 51);
+            this.tbSearchPerson.Name = "tbSearchPerson";
+            this.tbSearchPerson.Size = new System.Drawing.Size(249, 20);
+            this.tbSearchPerson.TabIndex = 0;
+            // 
+            // btnSearchPerson
+            // 
+            this.btnSearchPerson.Location = new System.Drawing.Point(6, 91);
+            this.btnSearchPerson.Name = "btnSearchPerson";
+            this.btnSearchPerson.Size = new System.Drawing.Size(249, 47);
+            this.btnSearchPerson.TabIndex = 4;
+            this.btnSearchPerson.Text = "Zoek persoon";
+            this.btnSearchPerson.UseVisualStyleBackColor = true;
+            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
+            // 
+            // btnSearchSelect
+            // 
+            this.btnSearchSelect.Location = new System.Drawing.Point(6, 144);
+            this.btnSearchSelect.Name = "btnSearchSelect";
+            this.btnSearchSelect.Size = new System.Drawing.Size(249, 47);
+            this.btnSearchSelect.TabIndex = 5;
+            this.btnSearchSelect.Text = "Selecteer persoon";
+            this.btnSearchSelect.UseVisualStyleBackColor = true;
+            this.btnSearchSelect.Click += new System.EventHandler(this.btnSearchSelect_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 272);
+            this.ClientSize = new System.Drawing.Size(782, 277);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.Text = "Material Rental System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -667,45 +608,37 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox tbUitlPersID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox tbUitlAantal;
-        private System.Windows.Forms.TextBox tbUitlprijs;
-        private System.Windows.Forms.TextBox tbUitlType;
-        private System.Windows.Forms.TextBox tbUitlNaam;
+        private System.Windows.Forms.Button btnRentItem;
+        private System.Windows.Forms.TextBox tbRentCount;
+        private System.Windows.Forms.TextBox tbRentItemRFID;
+        private System.Windows.Forms.TextBox tbRentItemID;
+        private System.Windows.Forms.TextBox tbRentPersonName;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnArtikelPasAan;
-        private System.Windows.Forms.TextBox tbRmvAantal;
+        private System.Windows.Forms.TextBox tbChangeCount;
         private System.Windows.Forms.Button btnArtikelVerwijder;
-        private System.Windows.Forms.TextBox tbRmvPrijs;
-        private System.Windows.Forms.TextBox tbRmvType;
-        private System.Windows.Forms.TextBox tbRmvNaam;
+        private System.Windows.Forms.TextBox tbChangePrice;
+        private System.Windows.Forms.TextBox tbChangeType;
+        private System.Windows.Forms.TextBox tbChangeName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox tbNeemInPersID;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox tbNeemInAantal;
-        private System.Windows.Forms.TextBox tbNeemInPrijs;
+        private System.Windows.Forms.Button btnTakeRental;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
@@ -716,20 +649,23 @@
         private System.Windows.Forms.TextBox tbAddName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox tbNeemInType;
-        private System.Windows.Forms.TextBox tbNeemInNaam;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ListBox lbInfo;
         private System.Windows.Forms.Button btnUnavaillableItems;
         private System.Windows.Forms.Button btnAvaillableItems;
         private System.Windows.Forms.Button btnClearLb;
         private System.Windows.Forms.Button btnAllItems;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.Button btnItemRentSearchPerson;
+        private System.Windows.Forms.DateTimePicker dtpRentItemEndDate;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbSearchPerson;
+        private System.Windows.Forms.Button btnSearchSelect;
+        private System.Windows.Forms.Button btnSearchPerson;
     }
 }
 

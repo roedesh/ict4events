@@ -417,7 +417,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllRentedItems()
         {
-            string query = String.Format("SELECT a.FULLNAME, i.TYPEITEM, i.NAME FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID");
+            string query = String.Format("SELECT ir.ITEMRENTALID,a.FULLNAME, i.TYPEITEM, i.NAME, r.STARTDATE, r.ENDDATE FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID");
             result = XCTReader(query);
             return result;
         }
@@ -724,21 +724,38 @@ namespace DataLibrary
                 return result;
             }
         }
-        public void UpdateItem(List<string> item)
+        public void UpdateItem(List<string> newInfo, string itemID)
         {
-            string query = String.Format("UPDATE ITEM SET ITEMID = {0}, NAME = '{1}', TYPEITEM = '{2}', STOCK = '{3}', PRICE = '{4}')"
-                , item[0], item[1], item[2], item[3]
-                , item[4]);
+            string query = String.Format("UPDATE ITEM SET NAME = '{0}', TYPEITEM = '{1}', STOCK = {2}, PRICE = {3} WHERE ITEMID = {4}"
+                , newInfo[0], newInfo[1], newInfo[2]
+                , newInfo[3],itemID);
             XCTNonQuery(query);
         }
-        public void SetRental(List<string> rental)
+        public int SetRental(List<string> rental)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", rental[3]);
-            string query = String.Format("INSERT INTO RENTAL VALUES('{0}','{1}',{2},{3},'{4}')"
-                , rental[0], rental[1], dateStart, dateEnd
-                , rental[4]);
+            string query = "SELECT RentalID FROM Rental WHERE RentalID = (SELECT MAX(RentalID) FROM Rental)";
+            result = XCTReader(query);
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                string number = result[0]["RENTALID"];
+                ID = Convert.ToInt32(number) + 1;
+                Console.WriteLine(number);
+            }
+
+            Console.WriteLine(ID);
+
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy')", rental[1]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'dd/mm/yyyy')", rental[2]);
+            query = String.Format("INSERT INTO RENTAL VALUES({0},{1},{2},{3},{4})"
+                , ID, rental[0], dateStart, dateEnd
+                , rental[3]);
             XCTNonQuery(query);
+            return ID;
         }
         public List<Dictionary<string, string>> GetRental(string ID)
         {
@@ -762,12 +779,12 @@ namespace DataLibrary
         }
         public void DeleteItemRental(string ID)
         {
-            string query = String.Format("DELETE * FROM ITEMRENTAL WHERE ITEMRENTALID = {0}", ID);
+            string query = String.Format("DELETE FROM ITEMRENTAL WHERE ITEMRENTALID = {0}", ID);
             XCTNonQuery(query);
         }
         public void DeleteItem(string ID)
         {
-            string query = String.Format("DELETE * FROM ITEM WHERE ITEMID = {0}", ID);
+            string query = String.Format("DELETE FROM ITEM WHERE ITEMID = {0}", ID);
             XCTNonQuery(query);
         }
         public bool IsReserved(string PlaatsNR)
@@ -778,11 +795,21 @@ namespace DataLibrary
         }
         public void SetItemRental(List<string> irental)
         {
-            string query = "SELECT MAX(ITEMRENTALID) FROM ITEMRENTAL";
+            string query = "SELECT ITEMRENTALID FROM ITEMRENTAL WHERE ITEMRENTALID = (SELECT MAX(ITEMRENTALID) FROM ITEMRENTAL)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            query = String.Format("INSERT INTO CATEGORY VALUES({0},'{1}','{2}')"
-                , ID, irental[1], irental[2]);
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                string number = result[0]["ITEMRENTALID"];
+                ID = Convert.ToInt32(number) + 1;
+                Console.WriteLine("ITEMRENTALID " + number);
+            }
+            query = String.Format("INSERT INTO ITEMRENTAL VALUES({0},{1},{2})"
+                , ID, irental[0], irental[1]);
             XCTNonQuery(query);
         }
 

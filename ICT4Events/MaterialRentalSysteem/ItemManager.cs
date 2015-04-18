@@ -35,7 +35,7 @@ namespace MaterialRentalSysteem
             AvaillableItems.Clear();
             foreach (Item item in Items)
             {
-                if (item.Stock > 0 && item.IsReserved == false)
+                if (item.Stock > 0 )
                 {
                     AvaillableItems.Add(item);
                 }
@@ -55,6 +55,15 @@ namespace MaterialRentalSysteem
             // ID not in use, add account to list and return true
             RentedItems.Add(item);
             return true;
+        }
+        public bool RemoveItem(Item item)
+        {
+            Item exists = RentedItems.Find(a => a.ID == item.ID);
+            if (exists != null & item.ID != 0) // If item has ID 0, it's a temporary item
+            {
+                Items.Remove(item);            }
+            // ID does not exist
+            return false;
         }
     }
 }

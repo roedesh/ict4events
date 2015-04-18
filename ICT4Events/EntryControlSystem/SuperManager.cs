@@ -169,15 +169,5 @@ namespace EntryControlSystem
             return persons;
         }
 
-        public void Test()
-        {
-            List<Dictionary<string, string>> list = dataManager.GetGuestAccount(1);
-            foreach (Dictionary<string, string> d in list)
-            {
-                string fullName = d["FULLNAME"];
-                Console.WriteLine(fullName);
-            }
-        }
-
     }
 }

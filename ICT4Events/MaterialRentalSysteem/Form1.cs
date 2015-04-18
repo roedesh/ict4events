@@ -22,6 +22,8 @@ namespace MaterialRentalSysteem
         {
             InitializeComponent();
             supermanager = new SuperManager();
+            UpdateLb(supermanager.GetAvaillableItems());
+            lbInfo.SelectedIndex = 0;
         }
 
         private void btnArtikelVoegToe_Click(object sender, EventArgs e)
@@ -51,8 +53,8 @@ namespace MaterialRentalSysteem
             Iteminfo.Add(tbAddStock.Text);
             Iteminfo.Add(tbAddPrice.Text);
             supermanager.AddItem(Iteminfo);
-            string message = tbAddName.Text + " added.";
-            lbInfo.Items.Add(message);
+            UpdateLb(supermanager.GetAllItems());
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -89,8 +91,12 @@ namespace MaterialRentalSysteem
         }
         void rfid_Tag(object sender, TagEventArgs e)
         {
-            string RFIDtag = e.Tag;
-            tbAddStock.Text = RFIDtag;
+            //e.Tag
+            foreach(Guest guest in supermanager.SearchPersonRFID(e.Tag))
+            {
+                tbRentPersonName.Text = guest.Name;
+                tbRentItemRFID.Text = guest.RFID;
+            }
         }
         void rfid_TagLost(object sender, TagEventArgs e)
         {
@@ -221,10 +227,187 @@ namespace MaterialRentalSysteem
         private void btnUnavaillableItems_Click(object sender, EventArgs e)
         {
             lbInfo.Items.Clear();
-            foreach(Item item in supermanager.GetAllRentedItems())
+            foreach (string s in supermanager.GetAllRentedItems())
             {
-                lbInfo.Items.Add(item);
+                lbInfo.Items.Add(s);
             }
         }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedIndex == 0)
+            {
+                UpdateLb(supermanager.GetAvaillableItems());
+                lbInfo.SelectedIndex = 0;
+            }
+            else if(tabControl.SelectedIndex == 1)
+            {
+                lbInfo.Items.Clear();
+                foreach (string s in supermanager.GetAllRentedItems())
+                {
+                    lbInfo.Items.Add(s);
+                }
+                lbInfo.SelectedIndex = 0;
+            }
+            else if (tabControl.SelectedIndex == 2)
+            {
+                UpdateLb(supermanager.GetAllItems());
+            }
+            else if (tabControl.SelectedIndex == 3)
+            {
+                UpdateLb(supermanager.GetAllItems());
+                lbInfo.SelectedIndex = 0;
+                Item item = lbInfo.SelectedItem as Item;
+                tbChangeName.Text = item.Name.ToString();
+                tbChangePrice.Text = item.Price.ToString();
+                tbChangeType.Text = item.Type.ToString();
+                tbChangeCount.Text = item.Stock.ToString();
+            }
+            else if (tabControl.SelectedIndex == 4)
+            {
+                lbInfo.Items.Clear();
+                foreach (Guest guest in supermanager.GetAllGuests())
+                {
+                    lbInfo.Items.Add(guest);
+                }
+                try
+                {
+                    lbInfo.SelectedIndex = 0;
+                }
+                catch
+                {
+                    lbInfo.Items.Add("Niemand Aanwezig");
+                }
+            }
+        }
+
+        private void lbInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Item item = lbInfo.SelectedItem as Item;
+            if(tabControl.SelectedIndex == 0)
+            {
+                tbRentItemID.Text = item.ID.ToString();
+            }
+            else if(tabControl.SelectedIndex == 1)
+            {
+
+            }
+            else if (tabControl.SelectedIndex == 2)
+            {
+                tbAddName.Text = item.Name;
+                tbAddPrice.Text = item.Price.ToString();
+                tbAddStock.Text = item.Stock.ToString();
+                tbAddType.Text = item.Type;
+            }
+            else if(tabControl.SelectedIndex == 3)
+            {
+                tbChangeName.Text = item.Name;
+                tbChangePrice.Text = item.Price.ToString();
+                tbChangeType.Text = item.Type;
+                tbChangeCount.Text = item.Stock.ToString();
+            }
+            else if(tabControl.SelectedIndex == 4)
+            {
+            }
+        }
+
+        private void btnArtikelPasAan_Click(object sender, EventArgs e)
+        {
+            int index = lbInfo.SelectedIndex;
+            try
+            {
+                Item item = lbInfo.SelectedItem as Item;
+                List<string> Iteminfo = new List<string>();
+                string id = item.ID.ToString();
+                string name = tbChangeName.Text;
+                string type = tbChangeType.Text;
+                string stock = tbChangeCount.Text;
+                string price = tbChangePrice.Text;
+                Iteminfo.Add(name);
+                Iteminfo.Add(type);
+                Iteminfo.Add(stock);
+                Iteminfo.Add(price);
+                supermanager.ChangeItem(Iteminfo, id);
+                UpdateLb(supermanager.GetAllItems());
+            }
+            catch
+            {
+                MessageBox.Show("Selecteer een item, aub.");
+            }
+            lbInfo.SelectedIndex = index;
+        }
+
+        private void btnArtikelVerwijder_Click(object sender, EventArgs e)
+        {
+            int index = lbInfo.SelectedIndex;
+            supermanager.DeleteItem(lbInfo.SelectedItem as Item);
+            UpdateLb(supermanager.GetAllItems());
+            lbInfo.SelectedIndex = index;
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+            Item item = lbInfo.SelectedItem as Item;
+            string endDate = dtpRentItemEndDate.Value.ToShortDateString();
+            string amount = tbRentCount.Text;
+            foreach(Guest guest in supermanager.SearchPersonRFID(tbRentItemRFID.Text))
+            {
+                if(item.Stock < Convert.ToInt32(amount))
+                {
+                    MessageBox.Show("Niet voldoende in voorraad");
+                    return;
+                }
+                supermanager.RentItem(item, guest,endDate,amount);
+                UpdateLb(supermanager.GetAvaillableItems());
+                lbInfo.SelectedIndex = 0;
+            }
+        }
+
+        private void btnTakeRental_Click(object sender, EventArgs e)
+        {
+            string info = lbInfo.SelectedItem as string;
+            string ID = info.Substring(0, 1);
+            supermanager.TakeRental(ID);
+            lbInfo.Items.Clear();
+            foreach (string s in supermanager.GetAllRentedItems())
+            {
+                lbInfo.Items.Add(s);
+            }
+            lbInfo.SelectedIndex = 0;
+        }
+
+        private void btnItemRentSearchPerson_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 4;
+        }
+
+        private void btnSearchPerson_Click(object sender, EventArgs e)
+        {
+            string name = tbSearchPerson.Text;
+            bool succes = false;
+            foreach (Guest guest in supermanager.SearchPersonName(name))
+            {
+                lbInfo.Items.Clear();
+                lbInfo.Items.Add(guest);
+                lbInfo.SelectedIndex = 0;
+                succes = true;
+            }
+            if (!succes)
+            {
+                lbInfo.Items.Clear();
+                lbInfo.Items.Add("Niemand gevonden");
+            }
+
+        }
+
+        private void btnSearchSelect_Click(object sender, EventArgs e)
+        {
+            Guest guest = lbInfo.SelectedItem as Guest;
+            tbRentPersonName.Text = guest.Name;
+            tbRentItemRFID.Text = guest.RFID;
+            tabControl.SelectedIndex = 0;
+        }
+
+
     }
 }
