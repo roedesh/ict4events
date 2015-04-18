@@ -398,6 +398,7 @@ namespace DataLibrary
                 , location[0], location[1], location[2], location[3]);
             XCTNonQuery(query);
         }
+
         /// <summary>
         /// Get an item from the database using an ID.
         /// </summary>
@@ -847,7 +848,7 @@ namespace DataLibrary
         /// <returns>List dictionary of string-string</returns>
         public List<Dictionary<string, string>> GetAllLocations()
         {
-            string query = "SELECT * FROM LOCATION";
+            string query = "SELECT * FROM LocationType";
             result = XCTReader(query);
             return result;
         }

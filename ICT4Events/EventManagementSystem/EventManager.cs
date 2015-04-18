@@ -70,9 +70,5 @@ namespace EventManagementSystem
             return false; 
         }
 
-        public List<Event> ShowEvents()
-        {
-            return evnt;
-        }
     }
 }

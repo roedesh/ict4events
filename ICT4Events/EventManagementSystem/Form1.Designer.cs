@@ -32,8 +32,8 @@
             this.btnPlaatsShowAllLocations = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbPlaatsLocationID = new System.Windows.Forms.TextBox();
+            this.tbPlaatsPrice = new System.Windows.Forms.TextBox();
             this.btnPlaatsEdit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -76,6 +76,8 @@
             this.tbEventBeschrijving = new System.Windows.Forms.TextBox();
             this.tbEventPrijs = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.tbEventEindDatum = new System.Windows.Forms.TextBox();
+            this.tbEventBeginDatum = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.tbEventLocatie = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -87,8 +89,13 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.tbEventEindDatum = new System.Windows.Forms.TextBox();
-            this.tbEventBeginDatum = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tbPlaatsName = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.tbPlaatsDescription = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -101,22 +108,26 @@
             // 
             this.tpPlaats.Controls.Add(this.btnPlaatsShowAllLocations);
             this.tpPlaats.Controls.Add(this.label2);
+            this.tpPlaats.Controls.Add(this.label26);
+            this.tpPlaats.Controls.Add(this.label25);
             this.tpPlaats.Controls.Add(this.label3);
-            this.tpPlaats.Controls.Add(this.textBox2);
-            this.tpPlaats.Controls.Add(this.textBox3);
+            this.tpPlaats.Controls.Add(this.tbPlaatsLocationID);
+            this.tpPlaats.Controls.Add(this.tbPlaatsDescription);
+            this.tpPlaats.Controls.Add(this.tbPlaatsName);
+            this.tpPlaats.Controls.Add(this.tbPlaatsPrice);
             this.tpPlaats.Controls.Add(this.btnPlaatsEdit);
             this.tpPlaats.Location = new System.Drawing.Point(4, 22);
             this.tpPlaats.Margin = new System.Windows.Forms.Padding(2);
             this.tpPlaats.Name = "tpPlaats";
             this.tpPlaats.Padding = new System.Windows.Forms.Padding(2);
-            this.tpPlaats.Size = new System.Drawing.Size(430, 364);
+            this.tpPlaats.Size = new System.Drawing.Size(430, 414);
             this.tpPlaats.TabIndex = 3;
             this.tpPlaats.Text = "Plaats";
             this.tpPlaats.UseVisualStyleBackColor = true;
             // 
             // btnPlaatsShowAllLocations
             // 
-            this.btnPlaatsShowAllLocations.Location = new System.Drawing.Point(278, 147);
+            this.btnPlaatsShowAllLocations.Location = new System.Drawing.Point(278, 232);
             this.btnPlaatsShowAllLocations.Name = "btnPlaatsShowAllLocations";
             this.btnPlaatsShowAllLocations.Size = new System.Drawing.Size(86, 40);
             this.btnPlaatsShowAllLocations.TabIndex = 31;
@@ -137,32 +148,32 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 86);
+            this.label3.Location = new System.Drawing.Point(17, 171);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 30;
             this.label3.Text = "Vul hier de prijs in:";
             // 
-            // textBox2
+            // tbPlaatsLocationID
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 59);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(251, 20);
-            this.textBox2.TabIndex = 1;
+            this.tbPlaatsLocationID.Location = new System.Drawing.Point(113, 59);
+            this.tbPlaatsLocationID.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsLocationID.Name = "tbPlaatsLocationID";
+            this.tbPlaatsLocationID.Size = new System.Drawing.Size(251, 20);
+            this.tbPlaatsLocationID.TabIndex = 1;
             // 
-            // textBox3
+            // tbPlaatsPrice
             // 
-            this.textBox3.Location = new System.Drawing.Point(113, 83);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(251, 20);
-            this.textBox3.TabIndex = 2;
+            this.tbPlaatsPrice.Location = new System.Drawing.Point(113, 168);
+            this.tbPlaatsPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsPrice.Name = "tbPlaatsPrice";
+            this.tbPlaatsPrice.Size = new System.Drawing.Size(251, 20);
+            this.tbPlaatsPrice.TabIndex = 2;
             // 
             // btnPlaatsEdit
             // 
-            this.btnPlaatsEdit.Location = new System.Drawing.Point(278, 107);
+            this.btnPlaatsEdit.Location = new System.Drawing.Point(278, 192);
             this.btnPlaatsEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlaatsEdit.Name = "btnPlaatsEdit";
             this.btnPlaatsEdit.Size = new System.Drawing.Size(86, 34);
@@ -178,7 +189,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(722, 385);
+            this.groupBox1.Size = new System.Drawing.Size(722, 435);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
@@ -190,13 +201,13 @@
             this.dataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(714, 368);
+            this.dataGridView.Size = new System.Drawing.Size(714, 418);
             this.dataGridView.TabIndex = 5;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
             // btnMedewerkersAdd
             // 
-            this.btnMedewerkersAdd.Location = new System.Drawing.Point(311, 244);
+            this.btnMedewerkersAdd.Location = new System.Drawing.Point(313, 275);
             this.btnMedewerkersAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnMedewerkersAdd.Name = "btnMedewerkersAdd";
             this.btnMedewerkersAdd.Size = new System.Drawing.Size(109, 40);
@@ -207,7 +218,7 @@
             // 
             // btnMedewerkersShowAllEmployee
             // 
-            this.btnMedewerkersShowAllEmployee.Location = new System.Drawing.Point(311, 169);
+            this.btnMedewerkersShowAllEmployee.Location = new System.Drawing.Point(313, 200);
             this.btnMedewerkersShowAllEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnMedewerkersShowAllEmployee.Name = "btnMedewerkersShowAllEmployee";
             this.btnMedewerkersShowAllEmployee.Size = new System.Drawing.Size(110, 34);
@@ -225,11 +236,12 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(438, 390);
+            this.tabControl.Size = new System.Drawing.Size(438, 440);
             this.tabControl.TabIndex = 20;
             // 
             // tpMedewerkers
             // 
+            this.tpMedewerkers.Controls.Add(this.label24);
             this.tpMedewerkers.Controls.Add(this.tbMedewerkerRoleID);
             this.tpMedewerkers.Controls.Add(this.tbMedewerkerEmployeeID);
             this.tpMedewerkers.Controls.Add(this.btnMedewerkersShowAllGuest);
@@ -267,7 +279,7 @@
             this.tpMedewerkers.Margin = new System.Windows.Forms.Padding(2);
             this.tpMedewerkers.Name = "tpMedewerkers";
             this.tpMedewerkers.Padding = new System.Windows.Forms.Padding(2);
-            this.tpMedewerkers.Size = new System.Drawing.Size(430, 364);
+            this.tpMedewerkers.Size = new System.Drawing.Size(430, 414);
             this.tpMedewerkers.TabIndex = 0;
             this.tpMedewerkers.Text = "Medewerkers";
             this.tpMedewerkers.UseVisualStyleBackColor = true;
@@ -288,7 +300,7 @@
             // 
             // btnMedewerkersShowAllGuest
             // 
-            this.btnMedewerkersShowAllGuest.Location = new System.Drawing.Point(312, 132);
+            this.btnMedewerkersShowAllGuest.Location = new System.Drawing.Point(314, 163);
             this.btnMedewerkersShowAllGuest.Name = "btnMedewerkersShowAllGuest";
             this.btnMedewerkersShowAllGuest.Size = new System.Drawing.Size(109, 32);
             this.btnMedewerkersShowAllGuest.TabIndex = 61;
@@ -534,7 +546,7 @@
             // 
             // btnMedewerkersDelete
             // 
-            this.btnMedewerkersDelete.Location = new System.Drawing.Point(312, 288);
+            this.btnMedewerkersDelete.Location = new System.Drawing.Point(314, 319);
             this.btnMedewerkersDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnMedewerkersDelete.Name = "btnMedewerkersDelete";
             this.btnMedewerkersDelete.Size = new System.Drawing.Size(109, 33);
@@ -545,7 +557,7 @@
             // 
             // btnMedewerkersEdit
             // 
-            this.btnMedewerkersEdit.Location = new System.Drawing.Point(311, 207);
+            this.btnMedewerkersEdit.Location = new System.Drawing.Point(313, 238);
             this.btnMedewerkersEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnMedewerkersEdit.Name = "btnMedewerkersEdit";
             this.btnMedewerkersEdit.Size = new System.Drawing.Size(109, 33);
@@ -556,6 +568,8 @@
             // 
             // tpEvents
             // 
+            this.tpEvents.Controls.Add(this.label21);
+            this.tpEvents.Controls.Add(this.label20);
             this.tpEvents.Controls.Add(this.tbEventBeschrijving);
             this.tpEvents.Controls.Add(this.tbEventPrijs);
             this.tpEvents.Controls.Add(this.label23);
@@ -576,7 +590,7 @@
             this.tpEvents.Margin = new System.Windows.Forms.Padding(2);
             this.tpEvents.Name = "tpEvents";
             this.tpEvents.Padding = new System.Windows.Forms.Padding(2);
-            this.tpEvents.Size = new System.Drawing.Size(430, 364);
+            this.tpEvents.Size = new System.Drawing.Size(430, 414);
             this.tpEvents.TabIndex = 1;
             this.tpEvents.Text = "Events";
             this.tpEvents.UseVisualStyleBackColor = true;
@@ -604,6 +618,20 @@
             this.label23.Size = new System.Drawing.Size(67, 13);
             this.label23.TabIndex = 33;
             this.label23.Text = "Beschrijving:";
+            // 
+            // tbEventEindDatum
+            // 
+            this.tbEventEindDatum.Location = new System.Drawing.Point(81, 88);
+            this.tbEventEindDatum.Name = "tbEventEindDatum";
+            this.tbEventEindDatum.Size = new System.Drawing.Size(193, 20);
+            this.tbEventEindDatum.TabIndex = 4;
+            // 
+            // tbEventBeginDatum
+            // 
+            this.tbEventBeginDatum.Location = new System.Drawing.Point(81, 63);
+            this.tbEventBeginDatum.Name = "tbEventBeginDatum";
+            this.tbEventBeginDatum.Size = new System.Drawing.Size(193, 20);
+            this.tbEventBeginDatum.TabIndex = 3;
             // 
             // label22
             // 
@@ -666,7 +694,7 @@
             // 
             // btnEventsDelete
             // 
-            this.btnEventsDelete.Location = new System.Drawing.Point(292, 209);
+            this.btnEventsDelete.Location = new System.Drawing.Point(309, 208);
             this.btnEventsDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventsDelete.Name = "btnEventsDelete";
             this.btnEventsDelete.Size = new System.Drawing.Size(116, 33);
@@ -677,7 +705,7 @@
             // 
             // btnEventsEdit
             // 
-            this.btnEventsEdit.Location = new System.Drawing.Point(292, 135);
+            this.btnEventsEdit.Location = new System.Drawing.Point(309, 134);
             this.btnEventsEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventsEdit.Name = "btnEventsEdit";
             this.btnEventsEdit.Size = new System.Drawing.Size(116, 33);
@@ -688,7 +716,7 @@
             // 
             // btnEventsAdd
             // 
-            this.btnEventsAdd.Location = new System.Drawing.Point(293, 172);
+            this.btnEventsAdd.Location = new System.Drawing.Point(310, 171);
             this.btnEventsAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventsAdd.Name = "btnEventsAdd";
             this.btnEventsAdd.Size = new System.Drawing.Size(116, 33);
@@ -699,7 +727,7 @@
             // 
             // btnEventsShow
             // 
-            this.btnEventsShow.Location = new System.Drawing.Point(292, 98);
+            this.btnEventsShow.Location = new System.Drawing.Point(309, 97);
             this.btnEventsShow.Margin = new System.Windows.Forms.Padding(2);
             this.btnEventsShow.Name = "btnEventsShow";
             this.btnEventsShow.Size = new System.Drawing.Size(117, 34);
@@ -708,25 +736,78 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // tbEventEindDatum
+            // label20
             // 
-            this.tbEventEindDatum.Location = new System.Drawing.Point(81, 88);
-            this.tbEventEindDatum.Name = "tbEventEindDatum";
-            this.tbEventEindDatum.Size = new System.Drawing.Size(193, 20);
-            this.tbEventEindDatum.TabIndex = 4;
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label20.Location = new System.Drawing.Point(205, 40);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "DD MM JJJJ";
             // 
-            // tbEventBeginDatum
+            // label21
             // 
-            this.tbEventBeginDatum.Location = new System.Drawing.Point(81, 63);
-            this.tbEventBeginDatum.Name = "tbEventBeginDatum";
-            this.tbEventBeginDatum.Size = new System.Drawing.Size(193, 20);
-            this.tbEventBeginDatum.TabIndex = 3;
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label21.Location = new System.Drawing.Point(205, 66);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(67, 13);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "DD MM JJJJ";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Location = new System.Drawing.Point(230, 185);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 13);
+            this.label24.TabIndex = 63;
+            this.label24.Text = "DD MM JJJJ";
+            // 
+            // tbPlaatsName
+            // 
+            this.tbPlaatsName.Location = new System.Drawing.Point(113, 83);
+            this.tbPlaatsName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsName.Name = "tbPlaatsName";
+            this.tbPlaatsName.Size = new System.Drawing.Size(251, 20);
+            this.tbPlaatsName.TabIndex = 2;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(17, 86);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 30;
+            this.label25.Text = "Naam:";
+            // 
+            // tbPlaatsDescription
+            // 
+            this.tbPlaatsDescription.Location = new System.Drawing.Point(113, 106);
+            this.tbPlaatsDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsDescription.Multiline = true;
+            this.tbPlaatsDescription.Name = "tbPlaatsDescription";
+            this.tbPlaatsDescription.Size = new System.Drawing.Size(251, 58);
+            this.tbPlaatsDescription.TabIndex = 2;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(17, 109);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 13);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "Beschrijving:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 411);
+            this.ClientSize = new System.Drawing.Size(1084, 461);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
@@ -749,8 +830,8 @@
         private System.Windows.Forms.TabPage tpPlaats;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbPlaatsLocationID;
+        private System.Windows.Forms.TextBox tbPlaatsPrice;
         private System.Windows.Forms.Button btnPlaatsEdit;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -807,6 +888,13 @@
         private System.Windows.Forms.Button btnPlaatsShowAllLocations;
         private System.Windows.Forms.TextBox tbEventEindDatum;
         private System.Windows.Forms.TextBox tbEventBeginDatum;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox tbPlaatsDescription;
+        private System.Windows.Forms.TextBox tbPlaatsName;
     }
 }
 

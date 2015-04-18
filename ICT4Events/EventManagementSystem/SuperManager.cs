@@ -13,57 +13,16 @@ namespace EventManagementSystem
         private EventManager eventManager;
         private AccountManager accountManager;
         private DataManager dataManager;
+        private LocationManager locationManager;
 
         public SuperManager()
         {
             eventManager = new EventManager();
             accountManager = new AccountManager();
             dataManager = new DataManager();
+            locationManager = new LocationManager();
         }
 
-        public bool AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
-        {
-            foreach (Event e in eventManager.Evnt)
-            {
-                if (e.Id == id)
-                {
-                    throw new MyException("Event id is in gebruik");
-                }
-            }
-
-            if (Convert.ToDateTime(startdate) > Convert.ToDateTime(enddate))
-            {
-                throw new MyException("De startdatum mag niet na de einddatum zijn");
-            }
-            List<string> list = new List<string>();
-            list.Add(Convert.ToString(id));
-            list.Add(location);
-            list.Add(startdate);
-            list.Add(enddate);
-            list.Add(description);
-            list.Add(Convert.ToString(admissionFee));
-            dataManager.SetEvent(list);
-            return true;
-        }
-
-        public void EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
-        {
-            List<string> list = new List<string>();
-            list.Add(Convert.ToString(id));
-            list.Add(location);
-            list.Add(startdate);
-            list.Add(enddate);
-            list.Add(description);
-            list.Add(Convert.ToString(admissionFee));
-            dataManager.UpdateEvent(list);
-            eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
-        }
-
-        public void DeleteEvent(string id)
-        {
-            dataManager.DeleteEvent(id);
-            eventManager.RemoveEvent(Convert.ToInt32(id));
-        }
 
         public List<Event> ShowEvents()
         {
@@ -73,7 +32,7 @@ namespace EventManagementSystem
                 eventManager.AddEvent(Convert.ToInt32(d["EVENTID"]),d["LOCATION"], Convert.ToString(d["STARTDATE"]),
                    Convert.ToString(d["ENDDATE"]), d["DESCRIPTION"], Convert.ToDecimal(d["ADMISSIONFEE"]));
             }
-            return eventManager.ShowEvents();
+            return eventManager.Evnt;
 
         }
 
@@ -117,6 +76,30 @@ namespace EventManagementSystem
             return accountManager.Employees;
         }
 
+        public List<Location> ShowLocations()
+        {
+            locationManager.Location.Clear();
+            List<Dictionary<string, string>> list = dataManager.GetAllLocations();
+            foreach (Dictionary<string, string> d in list)
+            {
+                locationManager.AddLocation(Convert.ToInt32(d["LOCATIONTYPEID"]),
+                    d["NAME"], d["DESCRIPTION"], Convert.ToInt32(d["PRICE"]));
+            }
+            return locationManager.Location;
+        }
+
+        public void EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
+        {
+            List<string> list = new List<string>();
+            list.Add(Convert.ToString(id));
+            list.Add(location);
+            list.Add(startdate);
+            list.Add(enddate);
+            list.Add(description);
+            list.Add(Convert.ToString(admissionFee));
+            dataManager.UpdateEvent(list);
+            eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
+        }
         public void EditGuest(int id, int eventId, string username, string password, string fullname,
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber)
@@ -139,10 +122,14 @@ namespace EventManagementSystem
 
         }
 
-        public void EditEmployee(int id, int eventId, string username, string password, string fullname,
+        public bool EditEmployee(int id, int eventId, string username, string password, string fullname,
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
+            if (roleID == 7)
+            {
+                throw new MyException("Medewerker kan geen gast rol hebben");
+            }
             //create account list
             List<string> ac = new List<string>();
             ac.Add(Convert.ToString(id));
@@ -164,6 +151,19 @@ namespace EventManagementSystem
             //send items to datamanager
             dataManager.UpdateAccount(ac);
             dataManager.UpdateEmployee(acEmpl);
+            return true;
+        }
+
+        public bool EditLocation(int id, string name, string description, int price)
+        {
+            //create account list
+            List<string> lo = new List<string>();
+            lo.Add(Convert.ToString(id));
+            lo.Add(name);
+            lo.Add(description);
+            lo.Add(Convert.ToString(price));
+            dataManager.UpdateLocation(lo);
+            return true;
         }
 
         public bool AddEmployee(int id, int eventId, string username, string password, string fullname,
@@ -184,6 +184,10 @@ namespace EventManagementSystem
                 {
                     throw new MyException("Username is in gebruik");
                 }
+            }
+            if (roleID == 7)
+            {
+                throw new MyException("Medewerker kan geen gast rol hebben");
             }
             
             //create account list
@@ -207,6 +211,30 @@ namespace EventManagementSystem
             //send items to datamanager
             dataManager.SetEmployeeAccount(ac, acEmpl);
 
+            return true;
+        }
+
+        public bool AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
+        {
+            foreach (Event e in eventManager.Evnt)
+            {
+                if (e.Id == id)
+                {
+                    throw new MyException("Event id is in gebruik");
+                }
+            }
+            if (Convert.ToDateTime(startdate) > Convert.ToDateTime(enddate))
+            {
+                throw new MyException("De startdatum mag niet na de einddatum zijn");
+            }
+            List<string> list = new List<string>();
+            list.Add(Convert.ToString(id));
+            list.Add(location);
+            list.Add(startdate);
+            list.Add(enddate);
+            list.Add(description);
+            list.Add(Convert.ToString(admissionFee));
+            dataManager.SetEvent(list);
             return true;
         }
 
@@ -237,10 +265,22 @@ namespace EventManagementSystem
             throw new MyException("Geen medewerker gevonden met account id: " + accountID);
         }
 
-        public List<string> ShowLocations()
+        public bool DeleteEvent(string id)
         {
-            return null;
+            foreach (Event e in eventManager.Evnt)
+            {
+                if (e.Id == Convert.ToInt32(id))
+                {
+                    dataManager.DeleteEvent(id);
+                    eventManager.RemoveEvent(Convert.ToInt32(id));
+                    return true;
+                }
+            }
+            throw new MyException("Event id bestaat niet");
+
         }
+
+
 
         public int getEnum(string s)
         {
