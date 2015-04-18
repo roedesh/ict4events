@@ -196,15 +196,26 @@ namespace MaterialRentalSysteem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach(Item item in supermanager.GetAllItems())
-            {
-                lbInfo.Items.Add(item);
-            }
+            UpdateLb(supermanager.GetAllItems());
         }
 
         private void btnClearLb_Click(object sender, EventArgs e)
         {
             lbInfo.Items.Clear();
+        }
+
+        private void UpdateLb(List<Item> items)
+        {
+            lbInfo.Items.Clear();
+            foreach(Item item in items)
+            {
+                lbInfo.Items.Add(item);
+            }
+        }
+
+        private void btnAvaillableItems_Click(object sender, EventArgs e)
+        {
+            UpdateLb(supermanager.GetAvaillableItems());
         }
     }
 }

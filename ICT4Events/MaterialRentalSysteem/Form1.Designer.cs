@@ -74,14 +74,14 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnUnavaillableItems = new System.Windows.Forms.Button();
+            this.btnAvaillableItems = new System.Windows.Forms.Button();
+            this.btnClearLb = new System.Windows.Forms.Button();
             this.lbInfo = new System.Windows.Forms.ListBox();
+            this.btnAllItems = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnAllItems = new System.Windows.Forms.Button();
-            this.btnClearLb = new System.Windows.Forms.Button();
-            this.btnAvaillableItems = new System.Windows.Forms.Button();
-            this.btnUnavaillableItems = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -555,6 +555,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
             // 
+            // btnUnavaillableItems
+            // 
+            this.btnUnavaillableItems.Location = new System.Drawing.Point(389, 124);
+            this.btnUnavaillableItems.Name = "btnUnavaillableItems";
+            this.btnUnavaillableItems.Size = new System.Drawing.Size(75, 47);
+            this.btnUnavaillableItems.TabIndex = 16;
+            this.btnUnavaillableItems.Text = "Uitgeleende Artikelen";
+            this.btnUnavaillableItems.UseVisualStyleBackColor = true;
+            // 
+            // btnAvaillableItems
+            // 
+            this.btnAvaillableItems.Location = new System.Drawing.Point(389, 71);
+            this.btnAvaillableItems.Name = "btnAvaillableItems";
+            this.btnAvaillableItems.Size = new System.Drawing.Size(75, 47);
+            this.btnAvaillableItems.TabIndex = 15;
+            this.btnAvaillableItems.Text = "Beschikbare Artikelen";
+            this.btnAvaillableItems.UseVisualStyleBackColor = true;
+            this.btnAvaillableItems.Click += new System.EventHandler(this.btnAvaillableItems_Click);
+            // 
+            // btnClearLb
+            // 
+            this.btnClearLb.Location = new System.Drawing.Point(389, 197);
+            this.btnClearLb.Name = "btnClearLb";
+            this.btnClearLb.Size = new System.Drawing.Size(75, 60);
+            this.btnClearLb.TabIndex = 14;
+            this.btnClearLb.Text = "Wis alle gegevens";
+            this.btnClearLb.UseVisualStyleBackColor = true;
+            this.btnClearLb.Click += new System.EventHandler(this.btnClearLb_Click);
+            // 
             // lbInfo
             // 
             this.lbInfo.FormattingEnabled = true;
@@ -562,6 +591,16 @@
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(378, 238);
             this.lbInfo.TabIndex = 0;
+            // 
+            // btnAllItems
+            // 
+            this.btnAllItems.Location = new System.Drawing.Point(389, 18);
+            this.btnAllItems.Name = "btnAllItems";
+            this.btnAllItems.Size = new System.Drawing.Size(75, 47);
+            this.btnAllItems.TabIndex = 13;
+            this.btnAllItems.Text = "Alle Artikelen";
+            this.btnAllItems.UseVisualStyleBackColor = true;
+            this.btnAllItems.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabControl1
             // 
@@ -608,44 +647,6 @@
             this.label16.Size = new System.Drawing.Size(92, 13);
             this.label16.TabIndex = 72;
             this.label16.Text = "Vul hier de prijs in:";
-            // 
-            // btnAllItems
-            // 
-            this.btnAllItems.Location = new System.Drawing.Point(389, 18);
-            this.btnAllItems.Name = "btnAllItems";
-            this.btnAllItems.Size = new System.Drawing.Size(75, 47);
-            this.btnAllItems.TabIndex = 13;
-            this.btnAllItems.Text = "Alle Artikelen";
-            this.btnAllItems.UseVisualStyleBackColor = true;
-            this.btnAllItems.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnClearLb
-            // 
-            this.btnClearLb.Location = new System.Drawing.Point(389, 197);
-            this.btnClearLb.Name = "btnClearLb";
-            this.btnClearLb.Size = new System.Drawing.Size(75, 60);
-            this.btnClearLb.TabIndex = 14;
-            this.btnClearLb.Text = "Wis alle gegevens";
-            this.btnClearLb.UseVisualStyleBackColor = true;
-            this.btnClearLb.Click += new System.EventHandler(this.btnClearLb_Click);
-            // 
-            // btnAvaillableItems
-            // 
-            this.btnAvaillableItems.Location = new System.Drawing.Point(389, 71);
-            this.btnAvaillableItems.Name = "btnAvaillableItems";
-            this.btnAvaillableItems.Size = new System.Drawing.Size(75, 47);
-            this.btnAvaillableItems.TabIndex = 15;
-            this.btnAvaillableItems.Text = "Beschikbare Artikelen";
-            this.btnAvaillableItems.UseVisualStyleBackColor = true;
-            // 
-            // btnUnavaillableItems
-            // 
-            this.btnUnavaillableItems.Location = new System.Drawing.Point(389, 124);
-            this.btnUnavaillableItems.Name = "btnUnavaillableItems";
-            this.btnUnavaillableItems.Size = new System.Drawing.Size(75, 47);
-            this.btnUnavaillableItems.TabIndex = 16;
-            this.btnUnavaillableItems.Text = "Uitgeleende Artikelen";
-            this.btnUnavaillableItems.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

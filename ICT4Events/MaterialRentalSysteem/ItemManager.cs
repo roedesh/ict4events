@@ -9,9 +9,11 @@ namespace MaterialRentalSysteem
     class ItemManager
     {
         public List<Item> Items { get; set; }
+        private List<Item> AvaillableItems;
         public ItemManager()
         {
             Items = new List<Item>();
+            AvaillableItems = new List<Item>();
         }
         public bool AddItem(Item item)
         {
@@ -25,6 +27,19 @@ namespace MaterialRentalSysteem
             // ID not in use, add account to list and return true
             Items.Add(item);
             return true;
+        }
+
+        public List<Item> GetAvaillableItems()
+        {
+            AvaillableItems.Clear();
+            foreach(Item item in Items)
+            {
+                if(item.Stock > 0)
+                {
+                    AvaillableItems.Add(item);
+                }
+            }
+            return AvaillableItems;
         }
     }
 }
