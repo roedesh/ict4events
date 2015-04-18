@@ -44,7 +44,6 @@ namespace EventManagementSystem
             set;
         }
 
-
         public Event(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
             Id = id;

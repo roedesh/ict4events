@@ -36,14 +36,23 @@ namespace EventManagementSystem
         {
             try
             {
-                superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
-                    tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
-                    Convert.ToDecimal(tbEventPrijs.Text));
-                MessageBox.Show("Event " + tbEventEventID.Text + " toegevoegd");
+                DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt toevoegen?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result1 == DialogResult.OK)
+                {
+                    superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
+                        tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
+                        Convert.ToDecimal(tbEventPrijs.Text));
+                    MessageBox.Show("Event " + tbEventEventID.Text + " toegevoegd");
+                }
             }
             catch (FormatException)
             {
-                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+                MessageBox.Show("Geen geldige invoer");
+            }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
             }
             finally
             {
@@ -55,8 +64,13 @@ namespace EventManagementSystem
         {
             try
             {
-                superManager.DeleteEvent(tbEventEventID.Text);
-                MessageBox.Show("Event " + tbEventEventID.Text + " verwijderd");
+                DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt verwijderen?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result1 == DialogResult.OK)
+                {
+                    superManager.DeleteEvent(tbEventEventID.Text);
+                    MessageBox.Show("Event " + tbEventEventID.Text + " verwijderd");
+                }
             }
             catch
             {
@@ -73,14 +87,23 @@ namespace EventManagementSystem
         {
             try
             {
-                superManager.EditEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
-                    tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
-                    Convert.ToDecimal(tbEventPrijs.Text));
-                MessageBox.Show("Event " + tbEventEventID.Text + " aangepast");
+                DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt bewerken?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result1 == DialogResult.OK)
+                {
+                    superManager.EditEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
+                        tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
+                        Convert.ToDecimal(tbEventPrijs.Text));
+                    MessageBox.Show("Event " + tbEventEventID.Text + " aangepast");
+                }
             }
-            catch
+            catch (FormatException)
             {
-
+                MessageBox.Show("Geen geldige invoer");
+            }
+            catch (MyException mex)
+            {
+                MessageBox.Show(mex.Message);
             }
             finally
             {
@@ -116,30 +139,50 @@ namespace EventManagementSystem
         
         private void btnMedewerkersEdit_Click(object sender, EventArgs e)
         {
-           
-            //check if it is a Guest
-            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            try
             {
-                superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
-                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
-                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
-                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
-                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
-                MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
-                isEmployee = false;
-                btnMedewerkersShowAllGuest_Click(sender, e);
-            }
-            else // it's an Employee
-            {
-                    superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                //check if it is a Guest
+                if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+                {
+                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt bewerken?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                    if (result1 == DialogResult.OK)
+                    {
+                        superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                            Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                            tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                            tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                            tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
+                        MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
+                        isEmployee = false;
+                        btnMedewerkersShowAllGuest_Click(sender, e);
+                    }
+                }
+                else // it's an Employee
+                {
+                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                    if (result1 == DialogResult.OK)
+                    {
+                        superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                     Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
                     tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
                     tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
-                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex);
-                    MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
-                    isEmployee = true;
-                    btnMedewerkersShowAllEmployee_Click(sender, e);
+                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex + 1);
+                        MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
+                        isEmployee = true;
+                        btnMedewerkersShowAllEmployee_Click(sender, e);
+                    }
+                }
+            }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer");
             }
         }
 
@@ -147,18 +190,27 @@ namespace EventManagementSystem
         {
             try
             {
-                superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
-                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
-                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
-                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
-                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
-                    Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex + 1);
-                MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
+                DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt toevoegen?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                if (result1 == DialogResult.OK)
+                {
+                    superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                        Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                        tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                        tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                        tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text),
+                        Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex + 1);
+                    MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
+                }
             }
-            /*catch ()
+            catch (MyException mex)
             {
-                
-            }*/
+                MessageBox.Show(mex.Message);
+            }
+            catch(FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer");
+            }
             finally
             {
                 isEmployee = true;
@@ -169,29 +221,73 @@ namespace EventManagementSystem
 
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
-            //check if it is a Guest
-            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            try
             {
-                superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
-                btnMedewerkersShowAllGuest_Click(sender, e);
-                isEmployee = false;
+                //check if it is a Guest
+                if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+                {
+                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt verwijderen?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                    if (result1 == DialogResult.OK)
+                    {
+                        superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                        btnMedewerkersShowAllGuest_Click(sender, e);
+                        isEmployee = false;
+                    }
+
+                }
+                else // it's an Employee
+                {
+                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt verwijderen?",
+		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+                    if (result1 == DialogResult.OK)
+                    {
+                        superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                        btnMedewerkersShowAllEmployee_Click(sender, e);
+                        isEmployee = true;
+                    }
+                }
             }
-            else // it's an Employee
+            catch (MyException mex)
             {
-                superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
-                btnMedewerkersShowAllEmployee_Click(sender, e);
-                isEmployee = true;
+                MessageBox.Show(mex.Message);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer, voer een account id in om een account te verwijderen");
             }
         }
 
-        //nog doen
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze plaats wilt aanpassen?",
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (result1 == DialogResult.OK)
+                {
+                    superManager.EditLocation(Convert.ToInt32(tbPlaatsLocationID.Text), tbPlaatsName.Text,
+                        tbPlaatsDescription.Text, Convert.ToInt32(tbPlaatsPrice.Text));
+                    MessageBox.Show("Plaats " + tbPlaatsName.Text + " aangepast");
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer");
+            }
+            finally
+            {
+                btnPlaatsShowAllLocations_Click(sender, e);
+            }
         }
 
         private void btnPlaatsShowAllLocations_Click(object sender, EventArgs e)
         {
-
+            dataGridView.DataSource = null;
+            dataGridView.Refresh();
+            List<Location> showAllLocations = new List<Location>();
+            showAllLocations = superManager.ShowLocations();
+            dataGridView.DataSource = showAllLocations;
         }
 
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -226,11 +322,8 @@ namespace EventManagementSystem
                         tbMedewerkerRoleID.Text = enumID.ToString();
                         cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
                     }
-                    
-
-                   
                 }
-                if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
+                else if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
                 {
                     tbEventEventID.Text = row.Cells["ID"].Value.ToString();
                     tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
@@ -239,11 +332,23 @@ namespace EventManagementSystem
                     tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
                     tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
                 }
+                else
+                {
+                    tbPlaatsLocationID.Text = row.Cells["ID"].Value.ToString();
+                    tbPlaatsName.Text = row.Cells["NAME"].Value.ToString();
+                    tbPlaatsDescription.Text = row.Cells["DESCRIPTION"].Value.ToString();
+                    tbPlaatsPrice.Text = row.Cells["PRICE"].Value.ToString(); 
+                }
                 
 
 
             }
 
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
 

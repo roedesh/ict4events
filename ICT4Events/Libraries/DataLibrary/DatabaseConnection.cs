@@ -11,6 +11,7 @@ namespace DataLibrary
 {
     public class DatabaseConnection
     {
+        //FIELDS
         private OracleConnection con;
 
         public OracleConnection Con
@@ -19,11 +20,13 @@ namespace DataLibrary
             set { con = value; }
         }
 
-
+        //CONSTRUCTOR
         public DatabaseConnection()
         {
-            //
         }
+        /// <summary>
+        /// Connect with the database.
+        /// </summary>
         public void Connect()
         {
             con = new OracleConnection();
@@ -31,7 +34,9 @@ namespace DataLibrary
             con.Open();
             Console.WriteLine("Connected to Oracle" + con.ServerVersion);
         }
-
+        /// <summary>
+        /// Close the database connection.
+        /// </summary>
         public void Close()
         {
             con.Close();

@@ -10,6 +10,12 @@ namespace EventManagementSystem
     {
         private List<Event> evnt;
 
+        public List<Event> Evnt
+        {
+            get { return evnt; }
+            set { evnt = value; }
+        }
+
         public EventManager()
         {
             evnt = new List<Event>();
@@ -30,7 +36,6 @@ namespace EventManagementSystem
             return true;
         }
 
-        
         public bool RemoveEvent(int id)
         {
             foreach (Event e in evnt)
@@ -64,9 +69,5 @@ namespace EventManagementSystem
             return false; 
         }
 
-        public List<Event> ShowEvents()
-        {
-            return evnt;
-        }
     }
 }
