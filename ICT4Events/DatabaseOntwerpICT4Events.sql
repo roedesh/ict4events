@@ -149,8 +149,7 @@ CREATE TABLE Item
 Name			varchar2(255 char)		NOT NULL,
 TypeItem		varchar2(255 char)		NOT NULL,
 Stock			int						NOT NULL,
-Price			int						CHECK(Price>0),
-IsReserved		char		CHECK(IsReserved = 'Y' OR IsReserved = 'N')
+Price			int						CHECK(Price>0)
 );
 
 CREATE TABLE Rental
