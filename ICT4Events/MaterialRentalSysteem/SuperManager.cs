@@ -47,10 +47,25 @@ namespace MaterialRentalSysteem
             {
                 item = new Item(Convert.ToInt32(d["ITEMID"]),
                                 d["NAME"], d["TYPEITEM"], Convert.ToInt32(d["STOCK"]),
-                                Convert.ToDecimal(d["PRICE"]));
+                                Convert.ToDecimal(d["PRICE"]),d["ISRESERVED"]);
                 itemManager.AddItem(item);
 
             }
+        }
+        public List<Item> GetAllRentedItems()
+        {
+            List<Dictionary<string, string>> list = dataManager.GetAllRentedItems();
+            Console.WriteLine(list);
+            Item item;
+            foreach (Dictionary<string, string> d in list)
+            {
+                item = new Item(Convert.ToInt32(d["ITEMID"]),
+                                d["NAME"], d["TYPEITEM"], Convert.ToInt32(d["STOCK"]),
+                                Convert.ToDecimal(d["PRICE"]), d["ISRESERVED"]);
+                itemManager.AddRentedItem(item);
+
+            }
+            return itemManager.RentedItems;
         }
     }
 }

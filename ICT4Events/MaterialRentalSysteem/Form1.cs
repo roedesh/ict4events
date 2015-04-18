@@ -217,5 +217,14 @@ namespace MaterialRentalSysteem
         {
             UpdateLb(supermanager.GetAvaillableItems());
         }
+
+        private void btnUnavaillableItems_Click(object sender, EventArgs e)
+        {
+            lbInfo.Items.Clear();
+            foreach(Item item in supermanager.GetAllRentedItems())
+            {
+                lbInfo.Items.Add(item);
+            }
+        }
     }
 }

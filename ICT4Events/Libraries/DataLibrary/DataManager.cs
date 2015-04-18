@@ -415,6 +415,13 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+        public List<Dictionary<string, string>> GetAllRentedItems()
+        {
+            string query = String.Format("SELECT a.FULLNAME, i.TYPEITEM, i.NAME FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID");
+            result = XCTReader(query);
+            return result;
+        }
+        
         /// <summary>
         /// Set an item in the database using a list of strings.
         /// </summary>

@@ -563,6 +563,7 @@
             this.btnUnavaillableItems.TabIndex = 16;
             this.btnUnavaillableItems.Text = "Uitgeleende Artikelen";
             this.btnUnavaillableItems.UseVisualStyleBackColor = true;
+            this.btnUnavaillableItems.Click += new System.EventHandler(this.btnUnavaillableItems_Click);
             // 
             // btnAvaillableItems
             // 
