@@ -13,8 +13,17 @@ namespace MaterialRentalSysteem
         public string Type { get ;set; }
         public int Stock { get; set; }
         public decimal Price { get; set; }
-        public Item(int id, string name, string type, int stock,decimal price)
+        public bool IsReserved { get; set; }
+        public Item(int id, string name, string type, int stock,decimal price, string isReserved)
         {
+            if(isReserved == "Y")
+            {
+                this.IsReserved = true;
+            }
+            else
+            {
+                this.IsReserved = false;
+            }
             this.ID = id;
             this.Name = name;
             this.Type = type;

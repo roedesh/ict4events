@@ -21,8 +21,20 @@ namespace EventManagementSystem
             dataManager = new DataManager();
         }
 
-        public void AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
+        public bool AddEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
+            foreach (Event e in eventManager.Evnt)
+            {
+                if (e.Id == id)
+                {
+                    throw new MyException("Event id is in gebruik");
+                }
+            }
+
+            if (Convert.ToDateTime(startdate) > Convert.ToDateTime(enddate))
+            {
+                throw new MyException("De startdatum mag niet na de einddatum zijn");
+            }
             List<string> list = new List<string>();
             list.Add(Convert.ToString(id));
             list.Add(location);
@@ -31,6 +43,7 @@ namespace EventManagementSystem
             list.Add(description);
             list.Add(Convert.ToString(admissionFee));
             dataManager.SetEvent(list);
+            return true;
         }
 
         public void EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
@@ -85,6 +98,7 @@ namespace EventManagementSystem
 
         public List<Employee> ShowEmployeeAccounts() 
         {
+            
             accountManager.Employees.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllEmployees();
             foreach (Dictionary<string, string> d in list)
@@ -152,10 +166,26 @@ namespace EventManagementSystem
             dataManager.UpdateEmployee(acEmpl);
         }
 
-        public void AddEmployee(int id, int eventId, string username, string password, string fullname,
+        public bool AddEmployee(int id, int eventId, string username, string password, string fullname,
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
+            foreach (Employee e in accountManager.Employees.Concat(accountManager.Accounts))
+            {
+                if (e.ID == id)
+                {
+                    throw new MyException("Account id is in gebruik");
+                }
+                //if (e.employeeID == employeeID)
+                //{
+                //  throw new MyException("Employee id is in gebruik");
+                //}
+                if (e.Username == username)
+                {
+                    throw new MyException("Username is in gebruik");
+                }
+            }
+            
             //create account list
             List<string> ac = new List<string>();
             ac.Add(Convert.ToString(id));
@@ -176,17 +206,35 @@ namespace EventManagementSystem
             acEmpl.Add(Convert.ToString(roleID));
             //send items to datamanager
             dataManager.SetEmployeeAccount(ac, acEmpl);
+
+            return true;
         }
 
-        public void DeleteAccountGuest(int accountID)
+        public bool DeleteAccountGuest(int accountID)
         {
-            dataManager.DeleteGuest(Convert.ToString(accountID));
-
+            foreach (Account a in accountManager.Accounts)
+            {
+                if (a.ID == accountID)
+                {
+                    dataManager.DeleteGuest(Convert.ToString(accountID));
+                    return true;
+                }
+            }
+            throw new MyException("Geen gast gevonden met account id: " + accountID);
         }
 
-        public void DeleteAccountEmployee(int accountID)
+        public bool DeleteAccountEmployee(int accountID)
         {
-            dataManager.DeleteEmployee(Convert.ToString(accountID));
+            
+            foreach (Account a in accountManager.Accounts)
+            {
+                if (a.ID == accountID)
+                {
+                    dataManager.DeleteEmployee(Convert.ToString(accountID));
+                    return true;
+                }
+            }
+            throw new MyException("Geen medewerker gevonden met account id: " + accountID);
         }
 
         public List<string> ShowLocations()

@@ -43,7 +43,11 @@ namespace EventManagementSystem
             }
             catch (FormatException)
             {
-                MessageBox.Show("Niet de juiste invoer: EventID en prijs moeten uit nummers bestaan");
+                MessageBox.Show("Geen geldige invoer");
+            }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
             }
             finally
             {
@@ -116,21 +120,22 @@ namespace EventManagementSystem
         
         private void btnMedewerkersEdit_Click(object sender, EventArgs e)
         {
-           
-            //check if it is a Guest
-            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            try
             {
-                superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
-                    Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
-                    tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
-                    tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
-                    tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
-                MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
-                isEmployee = false;
-                btnMedewerkersShowAllGuest_Click(sender, e);
-            }
-            else // it's an Employee
-            {
+                //check if it is a Guest
+                if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+                {
+                    superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
+                        Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
+                        tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
+                        tbMedewerkerCity.Text, tbMedewerkerPostalcode.Text, tbMedewerkerDateOfBirth.Text,
+                        tbMedewerkerEmail.Text, Convert.ToInt32(tbMedewerkerPhonenumber.Text));
+                    MessageBox.Show("Persoon " + tbMedewerkerName.Text + " aangepast");
+                    isEmployee = false;
+                    btnMedewerkersShowAllGuest_Click(sender, e);
+                }
+                else // it's an Employee
+                {
                     superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                     Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
@@ -140,6 +145,15 @@ namespace EventManagementSystem
                     MessageBox.Show("Medewerker " + tbMedewerkerName.Text + " aangepast");
                     isEmployee = true;
                     btnMedewerkersShowAllEmployee_Click(sender, e);
+                }
+            }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer");
             }
         }
 
@@ -155,10 +169,14 @@ namespace EventManagementSystem
                     Convert.ToInt32(tbMedewerkerEmployeeID.Text), cbMedewerkersRole.SelectedIndex + 1);
                 MessageBox.Show("Medewerker " + tbEventEventID.Text + " toegevoegd");
             }
-            /*catch ()
+            catch (MyException mex)
             {
-                
-            }*/
+                MessageBox.Show(mex.Message);
+            }
+            catch(FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer");
+            }
             finally
             {
                 isEmployee = true;
@@ -169,18 +187,31 @@ namespace EventManagementSystem
 
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
         {
-            //check if it is a Guest
-            if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+            try
             {
-                superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
-                btnMedewerkersShowAllGuest_Click(sender, e);
-                isEmployee = false;
+                //check if it is a Guest
+                if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
+                {
+
+                    superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                    btnMedewerkersShowAllGuest_Click(sender, e);
+                    isEmployee = false;
+
+                }
+                else // it's an Employee
+                {
+                    superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
+                    btnMedewerkersShowAllEmployee_Click(sender, e);
+                    isEmployee = true;
+                }
             }
-            else // it's an Employee
+            catch (MyException mex)
             {
-                superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
-                btnMedewerkersShowAllEmployee_Click(sender, e);
-                isEmployee = true;
+                MessageBox.Show(mex.Message);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Geen geldige invoer, voer een account id in om een gast te verwijderen");
             }
         }
 
