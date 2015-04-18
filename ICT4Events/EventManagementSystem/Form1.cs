@@ -38,7 +38,7 @@ namespace EventManagementSystem
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt toevoegen?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Yes)
+                if (result1 == DialogResult.OK)
                 {
                     superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
                         tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
@@ -66,7 +66,7 @@ namespace EventManagementSystem
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt verwijderen?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Yes)
+                if (result1 == DialogResult.OK)
                 {
                     superManager.DeleteEvent(tbEventEventID.Text);
                     MessageBox.Show("Event " + tbEventEventID.Text + " verwijderd");
@@ -89,7 +89,7 @@ namespace EventManagementSystem
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt bewerken?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Yes)
+                if (result1 == DialogResult.OK)
                 {
                     superManager.EditEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
                         tbEventBeginDatum.Text, tbEventEindDatum.Text, tbEventBeschrijving.Text,
@@ -146,7 +146,7 @@ namespace EventManagementSystem
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt bewerken?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                    if (result1 == DialogResult.Yes)
+                    if (result1 == DialogResult.OK)
                     {
                         superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
                             Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
@@ -162,7 +162,7 @@ namespace EventManagementSystem
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                    if (result1 == DialogResult.Yes)
+                    if (result1 == DialogResult.OK)
                     {
                         superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                     Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
@@ -192,7 +192,7 @@ namespace EventManagementSystem
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt toevoegen?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Yes)
+                if (result1 == DialogResult.OK)
                 {
                     superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                         Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
@@ -228,7 +228,7 @@ namespace EventManagementSystem
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt verwijderen?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                    if (result1 == DialogResult.Yes)
+                    if (result1 == DialogResult.OK)
                     {
                         superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
                         btnMedewerkersShowAllGuest_Click(sender, e);
@@ -240,7 +240,7 @@ namespace EventManagementSystem
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt verwijderen?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-                    if (result1 == DialogResult.Yes)
+                    if (result1 == DialogResult.OK)
                     {
                         superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
                         btnMedewerkersShowAllEmployee_Click(sender, e);
@@ -254,18 +254,17 @@ namespace EventManagementSystem
             }
             catch (FormatException)
             {
-                MessageBox.Show("Geen geldige invoer, voer een account id in om een gast te verwijderen");
+                MessageBox.Show("Geen geldige invoer, voer een account id in om een account te verwijderen");
             }
         }
 
-        //nog doen
         private void btnPlaatsEdit_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze plaats wilt aanpassen?",
         "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                if (result1 == DialogResult.Yes)
+                if (result1 == DialogResult.OK)
                 {
                     superManager.EditLocation(Convert.ToInt32(tbPlaatsLocationID.Text), tbPlaatsName.Text,
                         tbPlaatsDescription.Text, Convert.ToInt32(tbPlaatsPrice.Text));
@@ -335,7 +334,7 @@ namespace EventManagementSystem
                 }
                 else
                 {
-                    tbPlaatsLocationID.Text = row.Cells["LOCATIONTYPEID"].Value.ToString();
+                    tbPlaatsLocationID.Text = row.Cells["ID"].Value.ToString();
                     tbPlaatsName.Text = row.Cells["NAME"].Value.ToString();
                     tbPlaatsDescription.Text = row.Cells["DESCRIPTION"].Value.ToString();
                     tbPlaatsPrice.Text = row.Cells["PRICE"].Value.ToString(); 
@@ -345,6 +344,11 @@ namespace EventManagementSystem
 
             }
 
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
 

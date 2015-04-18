@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AccountLibrary;
 
-namespace EventManagementSystem
+namespace ReservationSystem
 {
     public partial class ExtraPersons : Form
     {

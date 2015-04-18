@@ -1,4 +1,4 @@
-﻿namespace EventManagementSystem
+﻿namespace ReservationSystem
 {
     partial class ExtraPersons
     {

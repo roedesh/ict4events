@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLibrary;
 
-namespace EventManagementSystem
+namespace ReservationSystem
 {
     public partial class LoginForm : Form
     {

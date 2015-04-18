@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AccountLibrary;
 using DataLibrary;
 
-namespace EventManagementSystem
+namespace ReservationSystem
 {
     public class SuperManager
     {
