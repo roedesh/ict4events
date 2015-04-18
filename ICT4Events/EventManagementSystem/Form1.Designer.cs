@@ -31,8 +31,12 @@
             this.tpPlaats = new System.Windows.Forms.TabPage();
             this.btnPlaatsShowAllLocations = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tbPlaatsLocationID = new System.Windows.Forms.TextBox();
+            this.tbPlaatsDescription = new System.Windows.Forms.TextBox();
+            this.tbPlaatsName = new System.Windows.Forms.TextBox();
             this.tbPlaatsPrice = new System.Windows.Forms.TextBox();
             this.btnPlaatsEdit = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -41,6 +45,7 @@
             this.btnMedewerkersShowAllEmployee = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpMedewerkers = new System.Windows.Forms.TabPage();
+            this.label24 = new System.Windows.Forms.Label();
             this.tbMedewerkerRoleID = new System.Windows.Forms.TextBox();
             this.tbMedewerkerEmployeeID = new System.Windows.Forms.TextBox();
             this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
@@ -73,6 +78,8 @@
             this.btnMedewerkersDelete = new System.Windows.Forms.Button();
             this.btnMedewerkersEdit = new System.Windows.Forms.Button();
             this.tpEvents = new System.Windows.Forms.TabPage();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tbEventBeschrijving = new System.Windows.Forms.TextBox();
             this.tbEventPrijs = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -89,13 +96,6 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.tbPlaatsName = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.tbPlaatsDescription = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -141,9 +141,29 @@
             this.label2.Location = new System.Drawing.Point(17, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 29;
-            this.label2.Text = "Vul plaats ID in:";
+            this.label2.Text = "Plaats ID:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(17, 109);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 13);
+            this.label26.TabIndex = 30;
+            this.label26.Text = "Beschrijving:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(17, 86);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 30;
+            this.label25.Text = "Naam:";
             // 
             // label3
             // 
@@ -151,9 +171,9 @@
             this.label3.Location = new System.Drawing.Point(17, 171);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "Vul hier de prijs in:";
+            this.label3.Text = "Prijs:";
             // 
             // tbPlaatsLocationID
             // 
@@ -162,6 +182,23 @@
             this.tbPlaatsLocationID.Name = "tbPlaatsLocationID";
             this.tbPlaatsLocationID.Size = new System.Drawing.Size(251, 20);
             this.tbPlaatsLocationID.TabIndex = 1;
+            // 
+            // tbPlaatsDescription
+            // 
+            this.tbPlaatsDescription.Location = new System.Drawing.Point(113, 106);
+            this.tbPlaatsDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsDescription.Multiline = true;
+            this.tbPlaatsDescription.Name = "tbPlaatsDescription";
+            this.tbPlaatsDescription.Size = new System.Drawing.Size(251, 58);
+            this.tbPlaatsDescription.TabIndex = 2;
+            // 
+            // tbPlaatsName
+            // 
+            this.tbPlaatsName.Location = new System.Drawing.Point(113, 83);
+            this.tbPlaatsName.Margin = new System.Windows.Forms.Padding(2);
+            this.tbPlaatsName.Name = "tbPlaatsName";
+            this.tbPlaatsName.Size = new System.Drawing.Size(251, 20);
+            this.tbPlaatsName.TabIndex = 2;
             // 
             // tbPlaatsPrice
             // 
@@ -283,6 +320,16 @@
             this.tpMedewerkers.TabIndex = 0;
             this.tpMedewerkers.Text = "Medewerkers";
             this.tpMedewerkers.UseVisualStyleBackColor = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Location = new System.Drawing.Point(230, 185);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 13);
+            this.label24.TabIndex = 63;
+            this.label24.Text = "DD MM JJJJ";
             // 
             // tbMedewerkerRoleID
             // 
@@ -595,6 +642,26 @@
             this.tpEvents.Text = "Events";
             this.tpEvents.UseVisualStyleBackColor = true;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label21.Location = new System.Drawing.Point(205, 66);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(67, 13);
+            this.label21.TabIndex = 34;
+            this.label21.Text = "DD MM JJJJ";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label20.Location = new System.Drawing.Point(205, 40);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "DD MM JJJJ";
+            // 
             // tbEventBeschrijving
             // 
             this.tbEventBeschrijving.Location = new System.Drawing.Point(81, 115);
@@ -736,73 +803,6 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label20.Location = new System.Drawing.Point(205, 40);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 34;
-            this.label20.Text = "DD MM JJJJ";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label21.Location = new System.Drawing.Point(205, 66);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(67, 13);
-            this.label21.TabIndex = 34;
-            this.label21.Text = "DD MM JJJJ";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label24.Location = new System.Drawing.Point(230, 185);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 13);
-            this.label24.TabIndex = 63;
-            this.label24.Text = "DD MM JJJJ";
-            // 
-            // tbPlaatsName
-            // 
-            this.tbPlaatsName.Location = new System.Drawing.Point(113, 83);
-            this.tbPlaatsName.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPlaatsName.Name = "tbPlaatsName";
-            this.tbPlaatsName.Size = new System.Drawing.Size(251, 20);
-            this.tbPlaatsName.TabIndex = 2;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(17, 86);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(38, 13);
-            this.label25.TabIndex = 30;
-            this.label25.Text = "Naam:";
-            // 
-            // tbPlaatsDescription
-            // 
-            this.tbPlaatsDescription.Location = new System.Drawing.Point(113, 106);
-            this.tbPlaatsDescription.Margin = new System.Windows.Forms.Padding(2);
-            this.tbPlaatsDescription.Multiline = true;
-            this.tbPlaatsDescription.Name = "tbPlaatsDescription";
-            this.tbPlaatsDescription.Size = new System.Drawing.Size(251, 58);
-            this.tbPlaatsDescription.TabIndex = 2;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(17, 109);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(67, 13);
-            this.label26.TabIndex = 30;
-            this.label26.Text = "Beschrijving:";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,6 +812,7 @@
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.Text = "Event Management System";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.tpPlaats.ResumeLayout(false);
             this.tpPlaats.PerformLayout();
             this.groupBox1.ResumeLayout(false);

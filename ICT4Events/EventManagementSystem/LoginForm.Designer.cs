@@ -85,7 +85,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(259, 41);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Reserveringssysteem";
+            this.label2.Text = "Event Beheersysteem";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginForm
@@ -100,7 +100,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btLogin);
             this.Name = "LoginForm";
-            this.Text = "Reserveringssysteem";
+            this.Text = "Event Beheersysteem";
             this.ResumeLayout(false);
             this.PerformLayout();
 

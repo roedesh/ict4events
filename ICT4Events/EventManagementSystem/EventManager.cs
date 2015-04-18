@@ -36,7 +36,6 @@ namespace EventManagementSystem
             return true;
         }
 
-        
         public bool RemoveEvent(int id)
         {
             foreach (Event e in evnt)

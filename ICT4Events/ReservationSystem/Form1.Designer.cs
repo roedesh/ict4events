@@ -1,4 +1,4 @@
-﻿namespace ReservationSystem
+﻿namespace EventManagementSystem
 {
     partial class Form1
     {

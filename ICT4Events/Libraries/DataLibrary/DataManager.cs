@@ -394,7 +394,7 @@ namespace DataLibrary
         /// <param name="location">list-string location</param>
         public void UpdateLocation(List<string> location)
         {
-            string query = String.Format("UPDATE LocationType LOCATIONTYPEID = {0}, NAME = '{1}', DESCRIPTION = '{2}', PRICE = '{3}'"
+            string query = String.Format("UPDATE LocationType SET LOCATIONTYPEID = {0}, NAME = '{1}', DESCRIPTION = '{2}', PRICE = {3} WHERE LOCATIONTYPEID = {0}"
                 , location[0], location[1], location[2], location[3]);
             XCTNonQuery(query);
         }
@@ -861,6 +861,18 @@ namespace DataLibrary
         public List<Dictionary<string, string>> Login(string username, string password)
         {
             string query = String.Format("SELECT * FROM Account WHERE USERNAME = '{0}' AND PASSWORD = '{1}'", username, password);
+            result = XCTReader(query);
+            return result;
+        }
+        /// <summary>
+        /// Check if username and login are correct and match the database values.
+        /// </summary>
+        /// <param name="username">string username</param>
+        /// <param name="password">string password</param>
+        /// <returns>List dictionary of string-string</returns>
+        public List<Dictionary<string, string>> LoginEmp(string username, string password)
+        {
+            string query = String.Format("SELECT * FROM Account WHERE USERNAME = '{0}' AND PASSWORD = '{1}' AND AccountID NOT IN(SELECT AccountID FROM Guest)", username, password);
             result = XCTReader(query);
             return result;
         }

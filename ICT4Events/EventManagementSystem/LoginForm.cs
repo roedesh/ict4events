@@ -19,16 +19,16 @@ namespace EventManagementSystem
             InitializeComponent();
         }
 
-        
+
 
         private void btLogin_Click(object sender, EventArgs e)
         {
             if (txtUsername.Text != "" & txtPassword.Text != "")
             {
-                List<Dictionary<string, string>> account = dManager.Login(txtUsername.Text, txtPassword.Text);
+                List<Dictionary<string, string>> account = dManager.LoginEmp(txtUsername.Text, txtPassword.Text);
                 if (account.Count == 0)
                 {
-                    MessageBox.Show("Accountgegevens kloppen niet!");
+                    MessageBox.Show("Accountgegevens kloppen niet of u heeft niet de juiste rechten!");
                 }
                 else
                 {
