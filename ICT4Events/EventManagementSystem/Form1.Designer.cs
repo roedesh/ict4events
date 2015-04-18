@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.tpPlaats = new System.Windows.Forms.TabPage();
+            this.btnPlaatsShowAllLocations = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -40,11 +41,13 @@
             this.btnMedewerkersShowAllEmployee = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tpMedewerkers = new System.Windows.Forms.TabPage();
+            this.tbMedewerkerRoleID = new System.Windows.Forms.TextBox();
             this.tbMedewerkerEmployeeID = new System.Windows.Forms.TextBox();
             this.btnMedewerkersShowAllGuest = new System.Windows.Forms.Button();
             this.cbMedewerkersRole = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -73,8 +76,6 @@
             this.tbEventBeschrijving = new System.Windows.Forms.TextBox();
             this.tbEventPrijs = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.tbEventEindDatum = new System.Windows.Forms.TextBox();
-            this.tbEventBeginDatum = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.tbEventLocatie = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -86,9 +87,8 @@
             this.btnEventsEdit = new System.Windows.Forms.Button();
             this.btnEventsAdd = new System.Windows.Forms.Button();
             this.btnEventsShow = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbMedewerkerRoleID = new System.Windows.Forms.TextBox();
-            this.btnPlaatsShowAllLocations = new System.Windows.Forms.Button();
+            this.tbEventEindDatum = new System.Windows.Forms.TextBox();
+            this.tbEventBeginDatum = new System.Windows.Forms.TextBox();
             this.tpPlaats.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -113,6 +113,16 @@
             this.tpPlaats.TabIndex = 3;
             this.tpPlaats.Text = "Plaats";
             this.tpPlaats.UseVisualStyleBackColor = true;
+            // 
+            // btnPlaatsShowAllLocations
+            // 
+            this.btnPlaatsShowAllLocations.Location = new System.Drawing.Point(278, 147);
+            this.btnPlaatsShowAllLocations.Name = "btnPlaatsShowAllLocations";
+            this.btnPlaatsShowAllLocations.Size = new System.Drawing.Size(86, 40);
+            this.btnPlaatsShowAllLocations.TabIndex = 31;
+            this.btnPlaatsShowAllLocations.Text = "Toon alle plaatsen";
+            this.btnPlaatsShowAllLocations.UseVisualStyleBackColor = true;
+            this.btnPlaatsShowAllLocations.Click += new System.EventHandler(this.btnPlaatsShowAllLocations_Click);
             // 
             // label2
             // 
@@ -262,6 +272,13 @@
             this.tpMedewerkers.Text = "Medewerkers";
             this.tpMedewerkers.UseVisualStyleBackColor = true;
             // 
+            // tbMedewerkerRoleID
+            // 
+            this.tbMedewerkerRoleID.Location = new System.Drawing.Point(96, 258);
+            this.tbMedewerkerRoleID.Name = "tbMedewerkerRoleID";
+            this.tbMedewerkerRoleID.Size = new System.Drawing.Size(204, 20);
+            this.tbMedewerkerRoleID.TabIndex = 62;
+            // 
             // tbMedewerkerEmployeeID
             // 
             this.tbMedewerkerEmployeeID.Location = new System.Drawing.Point(97, 284);
@@ -306,6 +323,16 @@
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 58;
             this.label7.Text = "Wachtwoord:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 261);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 55;
+            this.label6.Text = "Role ID:";
             // 
             // label8
             // 
@@ -578,20 +605,6 @@
             this.label23.TabIndex = 33;
             this.label23.Text = "Beschrijving:";
             // 
-            // tbEventEindDatum
-            // 
-            this.tbEventEindDatum.Location = new System.Drawing.Point(81, 88);
-            this.tbEventEindDatum.Name = "tbEventEindDatum";
-            this.tbEventEindDatum.Size = new System.Drawing.Size(193, 20);
-            this.tbEventEindDatum.TabIndex = 4;
-            // 
-            // tbEventBeginDatum
-            // 
-            this.tbEventBeginDatum.Location = new System.Drawing.Point(81, 63);
-            this.tbEventBeginDatum.Name = "tbEventBeginDatum";
-            this.tbEventBeginDatum.Size = new System.Drawing.Size(193, 20);
-            this.tbEventBeginDatum.TabIndex = 3;
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -695,32 +708,19 @@
             this.btnEventsShow.UseVisualStyleBackColor = true;
             this.btnEventsShow.Click += new System.EventHandler(this.btnEventsShow_Click);
             // 
-            // label6
+            // tbEventEindDatum
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 261);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 55;
-            this.label6.Text = "Role ID:";
+            this.tbEventEindDatum.Location = new System.Drawing.Point(81, 88);
+            this.tbEventEindDatum.Name = "tbEventEindDatum";
+            this.tbEventEindDatum.Size = new System.Drawing.Size(193, 20);
+            this.tbEventEindDatum.TabIndex = 4;
             // 
-            // tbMedewerkerRoleID
+            // tbEventBeginDatum
             // 
-            this.tbMedewerkerRoleID.Location = new System.Drawing.Point(96, 258);
-            this.tbMedewerkerRoleID.Name = "tbMedewerkerRoleID";
-            this.tbMedewerkerRoleID.Size = new System.Drawing.Size(204, 20);
-            this.tbMedewerkerRoleID.TabIndex = 62;
-            // 
-            // btnPlaatsShowAllLocations
-            // 
-            this.btnPlaatsShowAllLocations.Location = new System.Drawing.Point(278, 147);
-            this.btnPlaatsShowAllLocations.Name = "btnPlaatsShowAllLocations";
-            this.btnPlaatsShowAllLocations.Size = new System.Drawing.Size(86, 40);
-            this.btnPlaatsShowAllLocations.TabIndex = 31;
-            this.btnPlaatsShowAllLocations.Text = "Toon alle plaatsen";
-            this.btnPlaatsShowAllLocations.UseVisualStyleBackColor = true;
-            this.btnPlaatsShowAllLocations.Click += new System.EventHandler(this.btnPlaatsShowAllLocations_Click);
+            this.tbEventBeginDatum.Location = new System.Drawing.Point(81, 63);
+            this.tbEventBeginDatum.Name = "tbEventBeginDatum";
+            this.tbEventBeginDatum.Size = new System.Drawing.Size(193, 20);
+            this.tbEventBeginDatum.TabIndex = 3;
             // 
             // Form1
             // 
@@ -764,8 +764,6 @@
         private System.Windows.Forms.TextBox tbEventBeschrijving;
         private System.Windows.Forms.TextBox tbEventPrijs;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox tbEventEindDatum;
-        private System.Windows.Forms.TextBox tbEventBeginDatum;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tbEventLocatie;
         private System.Windows.Forms.Label label35;
@@ -807,6 +805,8 @@
         private System.Windows.Forms.TextBox tbMedewerkerRoleID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPlaatsShowAllLocations;
+        private System.Windows.Forms.TextBox tbEventEindDatum;
+        private System.Windows.Forms.TextBox tbEventBeginDatum;
     }
 }
 

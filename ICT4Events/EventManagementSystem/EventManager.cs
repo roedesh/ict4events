@@ -10,6 +10,12 @@ namespace EventManagementSystem
     {
         private List<Event> evnt;
 
+        public List<Event> Evnt
+        {
+            get { return evnt; }
+            set { evnt = value; }
+        }
+
         public EventManager()
         {
             evnt = new List<Event>();

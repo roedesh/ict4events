@@ -24,16 +24,17 @@ namespace DataLibrary
         /// <param name="query">string query</param>
         public void XCTNonQuery(string query)
         {
-            connect = new DatabaseConnection();
-            connect.Connect();
-            OracleCommand cmd = new OracleCommand(query, connect.Con);
+            
             try
             {
+                connect = new DatabaseConnection();
+                connect.Connect();
+                OracleCommand cmd = new OracleCommand(query, connect.Con);
                 cmd.ExecuteNonQuery();
             }
             catch (OracleException ex)
             {
-                Console.WriteLine("Exception Source: " + ex);
+                Console.WriteLine("Exception: " + ex);
             }
             finally
             {
@@ -48,12 +49,13 @@ namespace DataLibrary
         public List<Dictionary<string, string>> XCTReader(string query)
         {
             result = new List<Dictionary<string, string>>();
-            connect = new DatabaseConnection();
-            connect.Connect();
-            OracleCommand cmd = new OracleCommand(query, connect.Con);
-            OracleDataReader reader = cmd.ExecuteReader();
+            
             try
-            {
+            {  
+                connect = new DatabaseConnection();
+                connect.Connect();
+                OracleCommand cmd = new OracleCommand(query, connect.Con);
+                OracleDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     Dictionary<string, string> fields = new Dictionary<string, string>();
@@ -68,8 +70,7 @@ namespace DataLibrary
             }
             catch (OracleException ex)
             {
-            
-                Console.WriteLine("Exception Source: " + ex);
+                Console.WriteLine("Exception: " + ex);
             }
             finally
             {
