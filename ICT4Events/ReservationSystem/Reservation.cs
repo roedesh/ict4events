@@ -13,28 +13,13 @@ namespace ReservationSystem
         public int LocationID { get; private set; }
         public int TotalAmount { get; private set; }
         public string PaymentStatus { get; private set; }
-        public List<Account> Accounts { get; private set; }
 
-        public Reservation(int reservationID, int locationID, int totalAmount, string paymentStatus, List<Account> accounts)
+        public Reservation(int reservationID, int locationID, int totalAmount, string paymentStatus)
         {
             ReservationID = reservationID;
             LocationID = locationID;
             TotalAmount = totalAmount;
             PaymentStatus = paymentStatus;
-            Accounts = accounts;
-        }
-
-        public bool AddAccount(Account account){
-            Account exists = Accounts.Find(a => a.ID == account.ID);
-            if (exists != null)
-                return false;
-            Accounts.Add(account);
-            return true;
-        }
-
-        public bool RemoveAccount(Account account)
-        {
-            return Accounts.Remove(account);
         }
     }
 }

@@ -22,15 +22,14 @@ namespace ReservationSystem
                 s.mainBooker = mainBooker;
             if (tempAccountManager != null)
                 s.tempAccountManager = tempAccountManager;
-            RefreshList();
-            
+            RefreshList();   
         }
 
         private void btAddPerson_Click(object sender, EventArgs e)
         {
             if (IsFilledIn())
             {
-                if (IsDigitsOnly(txtEventID.Text) & IsDigitsOnly(txtPhone.Text))
+                if (CheckData())
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),
@@ -48,10 +47,6 @@ namespace ReservationSystem
                     RefreshList();
                     EmptyTextboxes();
                 }
-                else
-                {
-                    MessageBox.Show("Ingevulde EventID en/of telefoonnummer is geen getal");
-                } 
             }
             else
             {
@@ -63,7 +58,7 @@ namespace ReservationSystem
         {
             if (IsFilledIn())
             {
-                if (IsDigitsOnly(txtEventID.Text) & IsDigitsOnly(txtPhone.Text))
+                if (CheckData())
                 {
                     Guest newAccount = new Guest(
                         Convert.ToInt32(txtEventID.Text),
@@ -82,10 +77,6 @@ namespace ReservationSystem
                     RefreshList();
                     EmptyTextboxes();
                 }
-                else
-                {
-                    MessageBox.Show("Ingevulde EventID en/of telefoonnummer is geen getal");
-                } 
             }
             else
             {
@@ -93,6 +84,9 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Refresh persons list
+        /// </summary>
         public void RefreshList()
         {
             lstPersons.Items.Clear();
@@ -106,6 +100,11 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Check if string contains only digits
+        /// </summary>
+        /// <param name="str">The string to check</param>
+        /// <returns>true or false</returns>
         bool IsDigitsOnly(string str)
         {
             foreach (char c in str)
@@ -116,6 +115,10 @@ namespace ReservationSystem
             return true;
         }
 
+        /// <summary>
+        /// Check if all textboxes are filled in
+        /// </summary>
+        /// <returns>true or false</returns>
         bool IsFilledIn()
         {
             foreach (Control tb in gboxAdd.Controls)
@@ -132,6 +135,57 @@ namespace ReservationSystem
             return true;
         }
 
+        /// <summary>
+        /// Validate all entered data
+        /// </summary>
+        /// <returns>true or false</returns>
+        bool CheckData()
+        {
+            if (!txtPhone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Telefoonnummer mag alleen cijfers bevatten!");
+                return false;
+            }
+            if (txtPhone.Text.Length < 10)
+            {
+                MessageBox.Show("Telefoonnummer heeft minimaal 10 cijfers!");
+                return false;
+            }
+            if (!txtEventID.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Event ID mag alleen cijfers bevatten!");
+                return false;
+            }
+            if (!txtCity.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Woonplaats mag alleen letters bevatten!");
+                return false;
+            }
+            if (txtName.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Naam mag geen getallen bevatten!");
+                return false;
+            }
+            if (!txtPostalCode.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Postcode moet getallen bevatten!");
+                return false;
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(txtEmail.Text);
+                return addr.Address == txtEmail.Text;
+            }
+            catch
+            {
+                MessageBox.Show("Ongeldig emailadres!");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Empty all textboxes
+        /// </summary>
         public void EmptyTextboxes()
         {
             foreach (Control tb in gboxAdd.Controls)

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AccountLibrary;
 using DataLibrary;
+using System.ComponentModel;
 
 namespace ReservationSystem
 {
@@ -143,22 +144,20 @@ namespace ReservationSystem
         /// <param name="field">Name of the field</param>
         /// <param name="value">Value of the field</param>
         /// <returns>List of Reservation objects</returns>
-        public List<Reservation> GetReservations(string field, string value){
+        public BindingList<Reservation> GetReservations(string field, string value){
             List<Dictionary<string, string>> list = dManager.GetReservationByField(field, value);
             if (list.Count == 0)
             {
                 return null;
             }
-            List<Account> dummyList = new List<Account>();
-            List<Reservation> reservations = new List<Reservation>();
+            BindingList<Reservation> reservations = new BindingList<Reservation>();
             foreach (Dictionary<string, string> d in list)
             {
                 Reservation r = new Reservation(
                     Convert.ToInt32(d["RESERVATIONID"]),
                     Convert.ToInt32(d["LOCATIONID"]),
                     Convert.ToInt32(d["TOTALAMOUNT"]),
-                    d["PAYMENTSTATUS"],
-                    dummyList
+                    d["PAYMENTSTATUS"]
                 );
                 reservations.Add(r);
             }
