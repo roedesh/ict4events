@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AccountLibrary;
-using DataLibrary;
+using AccountLibrary; // From the Account library
+using DataLibrary; // From the data library
 using Phidgets; //Needed for the RFID class and the PhidgetException class
 using Phidgets.Events; //Needed for the phidget event handling classes
 
@@ -16,7 +16,7 @@ namespace EntryControlSystem
 {
     public partial class Form1 : Form
     {
-        private RFID rfid; //Declare an RFID object
+        private RFID rfid;
         private SuperManager supermanager;
         private List<Guest> Guests;
         public Form1()
@@ -25,7 +25,11 @@ namespace EntryControlSystem
             supermanager = new SuperManager();
             Guests = new List<Guest>();
         }
-
+        /// <summary>
+        /// Show all the present guests.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnToonAanwezigen_Click(object sender, EventArgs e)
         {
             try
@@ -35,9 +39,12 @@ namespace EntryControlSystem
             }
             catch
             {
-                lbInfo.Items.Add("error");
+                MessageBox.Show("Error");
             }
         }
+        /// <summary>
+        /// Update the listbox with all the present guests.
+        /// </summary>
         private void UpdateLb()
         {
             // put list with guests into listbox
@@ -54,9 +61,14 @@ namespace EntryControlSystem
             {
                 tbRFID.Text = "";
                 pbBetaalstatus.BackColor = Color.FromArgb(255, 255, 255);
-                lbInfo.Items.Add("Niemand gevonden");
+                MessageBox.Show("Niemand gevonden");
             }
         }
+        /// <summary>
+        /// Search a person via name or id.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnZoekPersoon_Click(object sender, EventArgs e)
         {
             try
@@ -66,7 +78,8 @@ namespace EntryControlSystem
             }
             catch
             {
-                lbInfo.Items.Add("Niemand gevonden");
+                lbInfo.Items.Clear();
+                MessageBox.Show("Geen gasten gevonden");
             }
         }
 
@@ -103,16 +116,16 @@ namespace EntryControlSystem
 
         }
 
-        //detach event handler...clear all the fields, display the attached status, and disable the checkboxes.
         void rfid_Detach(object sender, DetachEventArgs e)
         {
             RFID detached = (RFID)sender;
 
         }
-
-
-
-        //Tag event handler...we'll display the tag code in the field on the GUI
+        /// <summary>
+        /// Update the gui when a tag is found.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void rfid_Tag(object sender, TagEventArgs e)
         {
             string RFIDtag = e.Tag;
@@ -120,10 +133,9 @@ namespace EntryControlSystem
             UpdateLb();
         }
 
-        //Tag lost event handler...here we simply want to clear our tag field in the GUI
         void rfid_TagLost(object sender, TagEventArgs e)
         {
-            //  eventuele codes
+            //  Add code here for when the tag is no longer within the scanners reach.
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -225,6 +237,11 @@ namespace EntryControlSystem
         }
         #endregion
 
+        /// <summary>
+        /// Update a guest depending on his initial presence status.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPersoonToelaten_Click(object sender, EventArgs e)
         {
             if(lbInfo.SelectedItem != null)
@@ -243,15 +260,18 @@ namespace EntryControlSystem
                     supermanager.UpdatePresence(guestID, accountID, RFID, "Y");
                 }
                 lbInfo.Items.Clear();
-                string message = guest.Name.ToString() + " checked in/out.";
-                lbInfo.Items.Add(message);
+                
             }
         }
-
+        /// <summary>
+        /// Update the gui whenever something in the listbox is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // check if selected has paid
             Guest guest = lbInfo.SelectedItem as Guest;
+            // check if selected has paid
             string RFIDtag = guest.RFID;
             tbRFID.Text = guest.RFID;
             bool hasPaid = supermanager.CheckPayment(RFIDtag);
@@ -263,6 +283,10 @@ namespace EntryControlSystem
             {
                 pbBetaalstatus.BackColor = Color.FromArgb(255, 0, 0);
             }
+        }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

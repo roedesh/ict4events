@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AccountLibrary;
-using DataLibrary;
+using AccountLibrary; // From the account library
+using DataLibrary; // From the data library
 using Phidgets; //Needed for the RFID class and the PhidgetException class
 using Phidgets.Events; //Needed for the phidget event handling classes
 
@@ -16,19 +16,29 @@ namespace MaterialRentalSysteem
 {
     public partial class Form1 : Form
     {
-        private RFID rfid; //Declare an RFID object
+        private RFID rfid;
         private SuperManager supermanager;
         public Form1()
         {
             InitializeComponent();
             supermanager = new SuperManager();
             UpdateLb(supermanager.GetAvaillableItems());
-            lbInfo.SelectedIndex = 0;
+            try{lbInfo.SelectedIndex = 0;}
+            catch { }
         }
-
+        /// <summary>
+        /// Add an item and check for illegal data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnArtikelVoegToe_Click(object sender, EventArgs e)
         {
             List<string> Iteminfo = new List<string>();
+            if (tbAddName.Text == "" || tbAddType.Text == "" || tbAddStock.Text == "" || tbAddPrice.Text == "")
+            {
+                MessageBox.Show("Vul alle velden in aub");
+                return;
+            }
             try
             {
                 Convert.ToDecimal(tbAddPrice.Text);
@@ -47,7 +57,6 @@ namespace MaterialRentalSysteem
                 MessageBox.Show("Voer een geldig aantal in, aub.");
                 return;
             }
-
             Iteminfo.Add(tbAddName.Text);
             Iteminfo.Add(tbAddType.Text);
             Iteminfo.Add(tbAddStock.Text);
@@ -56,7 +65,6 @@ namespace MaterialRentalSysteem
             UpdateLb(supermanager.GetAllItems());
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             rfid = new RFID();
@@ -89,6 +97,11 @@ namespace MaterialRentalSysteem
             RFID detached = (RFID)sender;
 
         }
+        /// <summary>
+        /// Whenever an rfid is found update the gui.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void rfid_Tag(object sender, TagEventArgs e)
         {
             //e.Tag
@@ -100,9 +113,8 @@ namespace MaterialRentalSysteem
         }
         void rfid_TagLost(object sender, TagEventArgs e)
         {
-            //  eventuele codes
+            // Add code here for when a tag is no longen in the scanner range.
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             rfid.Attach -= new AttachEventHandler(rfid_Attach);
@@ -199,17 +211,6 @@ namespace MaterialRentalSysteem
             Application.Exit();
         }
         #endregion
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            UpdateLb(supermanager.GetAllItems());
-        }
-
-        private void btnClearLb_Click(object sender, EventArgs e)
-        {
-            lbInfo.Items.Clear();
-        }
-
         private void UpdateLb(List<Item> items)
         {
             lbInfo.Items.Clear();
@@ -227,60 +228,79 @@ namespace MaterialRentalSysteem
         private void btnUnavaillableItems_Click(object sender, EventArgs e)
         {
             lbInfo.Items.Clear();
-            foreach (string s in supermanager.GetAllRentedItems())
+            foreach (Rental r in supermanager.GetAllRentedItems())
             {
-                lbInfo.Items.Add(s);
+                lbInfo.Items.Add(r);
             }
         }
-
+        /// <summary>
+        /// Whenever the tab is changed this changes the info in the gui.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl.SelectedIndex == 0)
+            try
             {
-                UpdateLb(supermanager.GetAvaillableItems());
-                lbInfo.SelectedIndex = 0;
-            }
-            else if(tabControl.SelectedIndex == 1)
-            {
-                lbInfo.Items.Clear();
-                foreach (string s in supermanager.GetAllRentedItems())
+                if (tabControl.SelectedIndex == 0)
                 {
-                    lbInfo.Items.Add(s);
-                }
-                lbInfo.SelectedIndex = 0;
-            }
-            else if (tabControl.SelectedIndex == 2)
-            {
-                UpdateLb(supermanager.GetAllItems());
-            }
-            else if (tabControl.SelectedIndex == 3)
-            {
-                UpdateLb(supermanager.GetAllItems());
-                lbInfo.SelectedIndex = 0;
-                Item item = lbInfo.SelectedItem as Item;
-                tbChangeName.Text = item.Name.ToString();
-                tbChangePrice.Text = item.Price.ToString();
-                tbChangeType.Text = item.Type.ToString();
-                tbChangeCount.Text = item.Stock.ToString();
-            }
-            else if (tabControl.SelectedIndex == 4)
-            {
-                lbInfo.Items.Clear();
-                foreach (Guest guest in supermanager.GetAllGuests())
-                {
-                    lbInfo.Items.Add(guest);
-                }
-                try
-                {
+                    UpdateLb(supermanager.GetAvaillableItems());
                     lbInfo.SelectedIndex = 0;
                 }
-                catch
+                else if (tabControl.SelectedIndex == 1)
                 {
-                    lbInfo.Items.Add("Niemand Aanwezig");
+                    lbInfo.Items.Clear();
+                    foreach (Rental r in supermanager.GetAllRentedItems())
+                    {
+                        lbInfo.Items.Add(r);
+                    }
+                    try
+                    {
+                        lbInfo.SelectedIndex = 0;
+                    }
+                    catch
+                    {
+                        return;
+                    }
+                }
+                else if (tabControl.SelectedIndex == 2)
+                {
+                    UpdateLb(supermanager.GetAllItems());
+                }
+                else if (tabControl.SelectedIndex == 3)
+                {
+                    UpdateLb(supermanager.GetAllItems());
+                    lbInfo.SelectedIndex = 0;
+                    Item item = lbInfo.SelectedItem as Item;
+                    tbChangeName.Text = item.Name.ToString();
+                    tbChangePrice.Text = item.Price.ToString();
+                    tbChangeType.Text = item.Type.ToString();
+                    tbChangeCount.Text = item.Stock.ToString();
+                }
+                else if (tabControl.SelectedIndex == 4)
+                {
+                    lbInfo.Items.Clear();
+                    foreach (Guest guest in supermanager.GetAllGuests())
+                    {
+                        lbInfo.Items.Add(guest);
+                    }
+                    try
+                    {
+                        lbInfo.SelectedIndex = 0;
+                    }
+                    catch
+                    {
+                        lbInfo.Items.Add("Niemand Aanwezig");
+                    }
                 }
             }
+            catch { }
         }
-
+        /// <summary>
+        /// Whenever an object in the listbox is selected this updates the gui.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             Item item = lbInfo.SelectedItem as Item;
@@ -329,6 +349,7 @@ namespace MaterialRentalSysteem
                 Iteminfo.Add(price);
                 supermanager.ChangeItem(Iteminfo, id);
                 UpdateLb(supermanager.GetAllItems());
+                MessageBox.Show("Artikel Veranderd");
             }
             catch
             {
@@ -339,10 +360,26 @@ namespace MaterialRentalSysteem
 
         private void btnArtikelVerwijder_Click(object sender, EventArgs e)
         {
-            int index = lbInfo.SelectedIndex;
-            supermanager.DeleteItem(lbInfo.SelectedItem as Item);
-            UpdateLb(supermanager.GetAllItems());
-            lbInfo.SelectedIndex = index;
+            DialogResult dialogResult = MessageBox.Show("Weet u zeker dat u dit item volledig wilt verwijderen?", "item verwijderen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    int index = lbInfo.SelectedIndex;
+                    supermanager.DeleteItem(lbInfo.SelectedItem as Item);
+                    UpdateLb(supermanager.GetAllItems());
+                    lbInfo.SelectedIndex = index;
+                }
+                catch
+                {
+                    return;
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
         }
 
         private void btnRent_Click(object sender, EventArgs e)
@@ -350,30 +387,80 @@ namespace MaterialRentalSysteem
             Item item = lbInfo.SelectedItem as Item;
             string endDate = dtpRentItemEndDate.Value.ToShortDateString();
             string amount = tbRentCount.Text;
-            foreach(Guest guest in supermanager.SearchPersonRFID(tbRentItemRFID.Text))
+            try
             {
-                if(item.Stock < Convert.ToInt32(amount))
+                Convert.ToInt32(amount);
+            }
+            catch
+            {
+                MessageBox.Show("Voer een geldig aantal in");
+                return;
+            }
+            bool succes = false;
+            try
+            {
+                foreach (Guest guest in supermanager.SearchPersonRFID(tbRentItemRFID.Text))
                 {
-                    MessageBox.Show("Niet voldoende in voorraad");
-                    return;
+                    if (item.Stock < Convert.ToInt32(amount))
+                    {
+                        MessageBox.Show("Niet voldoende in voorraad");
+                        return;
+                    }
+                    supermanager.RentItem(item, guest, endDate, amount);
+                    UpdateLb(supermanager.GetAvaillableItems());
+                    lbInfo.SelectedIndex = 0;
+                    succes = true;
                 }
-                supermanager.RentItem(item, guest,endDate,amount);
-                UpdateLb(supermanager.GetAvaillableItems());
-                lbInfo.SelectedIndex = 0;
+            }
+            catch
+            {
+                MessageBox.Show("Selecteer een item");
+                return;
+            }
+            if (succes)
+            {
+                MessageBox.Show("Item uitgeleend!");
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een gast");
             }
         }
 
         private void btnTakeRental_Click(object sender, EventArgs e)
         {
-            string info = lbInfo.SelectedItem as string;
-            string ID = info.Substring(0, 1);
-            supermanager.TakeRental(ID);
-            lbInfo.Items.Clear();
-            foreach (string s in supermanager.GetAllRentedItems())
+            try
             {
-                lbInfo.Items.Add(s);
+                Rental rental = lbInfo.SelectedItem as Rental;
+                supermanager.TakeRental(rental.ID.ToString());
+                Item item = supermanager.GetItem(rental.ItemID.ToString());
+                int newStock = item.Stock + rental.Amount;
+                List<string> info = new List<string>();
+                info.Add(item.Name);
+                info.Add(item.Type);
+                info.Add(newStock.ToString());
+                info.Add(item.Price.ToString());
+                supermanager.ChangeItem(info, item.ID.ToString());
+                lbInfo.Items.Clear();
+                foreach (Rental r in supermanager.GetAllRentedItems())
+                {
+                    lbInfo.Items.Add(r);
+                }
             }
-            lbInfo.SelectedIndex = 0;
+            catch
+            {
+                MessageBox.Show("Kies een lening");
+            }
+            try
+            {
+                lbInfo.SelectedIndex = 0;
+            }
+            catch
+            {
+                return;
+            }
+
+            
         }
 
         private void btnItemRentSearchPerson_Click(object sender, EventArgs e)
@@ -406,6 +493,11 @@ namespace MaterialRentalSysteem
             tbRentPersonName.Text = guest.Name;
             tbRentItemRFID.Text = guest.RFID;
             tabControl.SelectedIndex = 0;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
 

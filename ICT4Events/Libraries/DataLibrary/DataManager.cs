@@ -419,7 +419,7 @@ namespace DataLibrary
         }
         public List<Dictionary<string, string>> GetAllRentedItems()
         {
-            string query = String.Format("SELECT ir.ITEMRENTALID,a.FULLNAME, i.TYPEITEM, i.NAME, r.STARTDATE, r.ENDDATE FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID");
+            string query = String.Format("SELECT ir.ITEMRENTALID,a.FULLNAME, i.TYPEITEM, i.NAME, r.STARTDATE, r.ENDDATE, r.TOTALAMOUNT,i.ITEMID FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID");
             result = XCTReader(query);
             return result;
         }
@@ -889,6 +889,18 @@ namespace DataLibrary
         public List<Dictionary<string, string>> Login(string username, string password)
         {
             string query = String.Format("SELECT * FROM Account WHERE USERNAME = '{0}' AND PASSWORD = '{1}'", username, password);
+            result = XCTReader(query);
+            return result;
+        }
+        /// <summary>
+        /// Check if username and login are correct and match the database values.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public List<Dictionary<string, string>> EmployeeLogin(string username, string password)
+        {
+            string query = String.Format("SELECT a.* FROM Account a, Employee e WHERE a.ACCOUNTID = e.ACCOUNTID AND  USERNAME = '{0}' AND PASSWORD = '{1}'", username, password);
             result = XCTReader(query);
             return result;
         }

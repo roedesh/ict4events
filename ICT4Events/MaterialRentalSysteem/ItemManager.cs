@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MaterialRentalSysteem
 {
+    /// <summary>
+    /// The ItemManager manages all the items.
+    /// </summary>
     class ItemManager
     {
         public List<Item> Items { get; set; }
@@ -29,7 +32,6 @@ namespace MaterialRentalSysteem
             Items.Add(item);
             return true;
         }
-
         public List<Item> GetAvaillableItems()
         {
             AvaillableItems.Clear();
@@ -42,7 +44,6 @@ namespace MaterialRentalSysteem
             }
             return AvaillableItems;
         }
-
         public bool AddRentedItem(Item item)
         {
             // Look for item with the same ID

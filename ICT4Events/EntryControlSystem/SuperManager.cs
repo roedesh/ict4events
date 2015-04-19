@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AccountLibrary;
-using DataLibrary;
+using AccountLibrary;//From the Account library
+using DataLibrary;//From the Data library
 
 namespace EntryControlSystem
 {
@@ -20,6 +20,10 @@ namespace EntryControlSystem
             accountManager = new AccountManager();
             dataManager = new DataManager();
         }
+        /// <summary>
+        /// Get a list off all guest that are present.
+        /// </summary>
+        /// <returns></returns>
         public List<Guest> ShowAllPresent()
         {
             List<Guest> presentPersons = new List<Guest>();
@@ -41,6 +45,11 @@ namespace EntryControlSystem
             }
             return presentPersons;
         }
+        /// <summary>
+        /// Call the appropriate method depending on wether idName is an int or a string. Then return the received list.
+        /// </summary>
+        /// <param name="idName"></param>
+        /// <returns></returns>
         public List<Guest> ShowSearchedPerson(string idName)
         {
             int id = -1;
@@ -62,6 +71,11 @@ namespace EntryControlSystem
                 return SearchPersonName(idName);
             }
         }
+        /// <summary>
+        /// Give a list of all guests with a certain id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<Guest> SearchPersonID(int id)
         {
             List<Guest> persons = new List<Guest>();
@@ -83,6 +97,11 @@ namespace EntryControlSystem
             }
             return persons;
         }
+        /// <summary>
+        /// Give a list of all guests with a certain name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public List<Guest> SearchPersonName(string name)
         {
             List<Guest> persons = new List<Guest>();
@@ -104,7 +123,14 @@ namespace EntryControlSystem
             }
             return persons;
         }
-
+        /// <summary>
+        /// Set a Guest to be either present or absent depending on his initial status
+        /// </summary>
+        /// <param name="GuestID"></param>
+        /// <param name="AccountID"></param>
+        /// <param name="RFID"></param>
+        /// <param name="Presence"></param>
+        /// <returns></returns>
         public bool UpdatePresence(string GuestID,string AccountID, string RFID, string Presence)
         {
             try
@@ -117,7 +143,11 @@ namespace EntryControlSystem
                 return false;
             }
         }
-        
+        /// <summary>
+        /// Check if somebody has paid his reservation
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
         public bool CheckPayment(string RFID)
         {
             string username = "";
@@ -146,7 +176,11 @@ namespace EntryControlSystem
                 return false;
             }
         }
-
+        /// <summary>
+        /// Search a person by RFID
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
         public List<Guest> SearchPersonRFID(string RFID)
         {
             List<Guest> persons = new List<Guest>();

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MaterialRentalSysteem
 {
+    /// <summary>
+    /// An item is an object that stores all the information about a certain item that can be rented.
+    /// </summary>
     class Item
     {
         public int ID { get; set; }

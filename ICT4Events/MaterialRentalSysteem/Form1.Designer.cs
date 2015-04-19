@@ -64,18 +64,14 @@
             this.dtpRentItemEndDate = new System.Windows.Forms.DateTimePicker();
             this.btnItemRentSearchPerson = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnUnavaillableItems = new System.Windows.Forms.Button();
-            this.btnAvaillableItems = new System.Windows.Forms.Button();
-            this.btnClearLb = new System.Windows.Forms.Button();
             this.lbInfo = new System.Windows.Forms.ListBox();
-            this.btnAllItems = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSearchSelect = new System.Windows.Forms.Button();
+            this.btnSearchPerson = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tbSearchPerson = new System.Windows.Forms.TextBox();
-            this.btnSearchPerson = new System.Windows.Forms.Button();
-            this.btnSearchSelect = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -451,49 +447,15 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnUnavaillableItems);
-            this.groupBox1.Controls.Add(this.btnAvaillableItems);
-            this.groupBox1.Controls.Add(this.btnClearLb);
             this.groupBox1.Controls.Add(this.lbInfo);
-            this.groupBox1.Controls.Add(this.btnAllItems);
             this.groupBox1.Location = new System.Drawing.Point(296, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(476, 257);
+            this.groupBox1.Size = new System.Drawing.Size(392, 257);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
-            // 
-            // btnUnavaillableItems
-            // 
-            this.btnUnavaillableItems.Location = new System.Drawing.Point(389, 124);
-            this.btnUnavaillableItems.Name = "btnUnavaillableItems";
-            this.btnUnavaillableItems.Size = new System.Drawing.Size(75, 47);
-            this.btnUnavaillableItems.TabIndex = 16;
-            this.btnUnavaillableItems.Text = "Uitgeleende Artikelen";
-            this.btnUnavaillableItems.UseVisualStyleBackColor = true;
-            this.btnUnavaillableItems.Click += new System.EventHandler(this.btnUnavaillableItems_Click);
-            // 
-            // btnAvaillableItems
-            // 
-            this.btnAvaillableItems.Location = new System.Drawing.Point(389, 71);
-            this.btnAvaillableItems.Name = "btnAvaillableItems";
-            this.btnAvaillableItems.Size = new System.Drawing.Size(75, 47);
-            this.btnAvaillableItems.TabIndex = 15;
-            this.btnAvaillableItems.Text = "Beschikbare Artikelen";
-            this.btnAvaillableItems.UseVisualStyleBackColor = true;
-            this.btnAvaillableItems.Click += new System.EventHandler(this.btnAvaillableItems_Click);
-            // 
-            // btnClearLb
-            // 
-            this.btnClearLb.Location = new System.Drawing.Point(389, 197);
-            this.btnClearLb.Name = "btnClearLb";
-            this.btnClearLb.Size = new System.Drawing.Size(75, 60);
-            this.btnClearLb.TabIndex = 14;
-            this.btnClearLb.Text = "Wis alle gegevens";
-            this.btnClearLb.UseVisualStyleBackColor = true;
-            this.btnClearLb.Click += new System.EventHandler(this.btnClearLb_Click);
             // 
             // lbInfo
             // 
@@ -503,16 +465,6 @@
             this.lbInfo.Size = new System.Drawing.Size(378, 238);
             this.lbInfo.TabIndex = 0;
             this.lbInfo.SelectedIndexChanged += new System.EventHandler(this.lbInfo_SelectedIndexChanged);
-            // 
-            // btnAllItems
-            // 
-            this.btnAllItems.Location = new System.Drawing.Point(389, 18);
-            this.btnAllItems.Name = "btnAllItems";
-            this.btnAllItems.Size = new System.Drawing.Size(75, 47);
-            this.btnAllItems.TabIndex = 13;
-            this.btnAllItems.Text = "Alle Artikelen";
-            this.btnAllItems.UseVisualStyleBackColor = true;
-            this.btnAllItems.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabControl
             // 
@@ -554,6 +506,26 @@
             this.tabPage5.Text = "Zoek persoon";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // btnSearchSelect
+            // 
+            this.btnSearchSelect.Location = new System.Drawing.Point(6, 144);
+            this.btnSearchSelect.Name = "btnSearchSelect";
+            this.btnSearchSelect.Size = new System.Drawing.Size(249, 47);
+            this.btnSearchSelect.TabIndex = 5;
+            this.btnSearchSelect.Text = "Selecteer persoon";
+            this.btnSearchSelect.UseVisualStyleBackColor = true;
+            this.btnSearchSelect.Click += new System.EventHandler(this.btnSearchSelect_Click);
+            // 
+            // btnSearchPerson
+            // 
+            this.btnSearchPerson.Location = new System.Drawing.Point(6, 91);
+            this.btnSearchPerson.Name = "btnSearchPerson";
+            this.btnSearchPerson.Size = new System.Drawing.Size(249, 47);
+            this.btnSearchPerson.TabIndex = 4;
+            this.btnSearchPerson.Text = "Zoek persoon";
+            this.btnSearchPerson.UseVisualStyleBackColor = true;
+            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -570,36 +542,17 @@
             this.tbSearchPerson.Size = new System.Drawing.Size(249, 20);
             this.tbSearchPerson.TabIndex = 0;
             // 
-            // btnSearchPerson
-            // 
-            this.btnSearchPerson.Location = new System.Drawing.Point(6, 91);
-            this.btnSearchPerson.Name = "btnSearchPerson";
-            this.btnSearchPerson.Size = new System.Drawing.Size(249, 47);
-            this.btnSearchPerson.TabIndex = 4;
-            this.btnSearchPerson.Text = "Zoek persoon";
-            this.btnSearchPerson.UseVisualStyleBackColor = true;
-            this.btnSearchPerson.Click += new System.EventHandler(this.btnSearchPerson_Click);
-            // 
-            // btnSearchSelect
-            // 
-            this.btnSearchSelect.Location = new System.Drawing.Point(6, 144);
-            this.btnSearchSelect.Name = "btnSearchSelect";
-            this.btnSearchSelect.Size = new System.Drawing.Size(249, 47);
-            this.btnSearchSelect.TabIndex = 5;
-            this.btnSearchSelect.Text = "Selecteer persoon";
-            this.btnSearchSelect.UseVisualStyleBackColor = true;
-            this.btnSearchSelect.Click += new System.EventHandler(this.btnSearchSelect_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 277);
+            this.ClientSize = new System.Drawing.Size(694, 277);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.Text = "Material Rental System";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -654,10 +607,6 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ListBox lbInfo;
-        private System.Windows.Forms.Button btnUnavaillableItems;
-        private System.Windows.Forms.Button btnAvaillableItems;
-        private System.Windows.Forms.Button btnClearLb;
-        private System.Windows.Forms.Button btnAllItems;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button btnItemRentSearchPerson;
         private System.Windows.Forms.DateTimePicker dtpRentItemEndDate;

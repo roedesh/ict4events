@@ -8,35 +8,59 @@ using DataLibrary;
 
 namespace MaterialRentalSysteem
 {
+    /// <summary>
+    /// The SuperManager does all the logics and manages the different managers.
+    /// </summary>
     class SuperManager
     {
         AccountManager accountManager;
         DataManager dataManager;
         ItemManager itemManager;
+        RentalManager rentalManager;
         public SuperManager()
         {
             accountManager = new AccountManager();
             dataManager = new DataManager();
             itemManager = new ItemManager();
+            rentalManager = new RentalManager();
         }
+        /// <summary>
+        /// Add an item to the database.
+        /// </summary>
+        /// <param name="info"></param>
         public void AddItem(List<string> info)
         {
             dataManager.SetItem(info);
         }
+        /// <summary>
+        /// Get all the items that are in the database.
+        /// </summary>
+        /// <returns></returns>
         public List<Item> GetAllItems()
         {
             RefreshItems();
             return itemManager.Items;
         }
+        /// <summary>
+        /// Return a list with all the items currently in the ItemManager
+        /// </summary>
+        /// <returns></returns>
         public List<Item> Update()
         {
             return itemManager.Items;
         }
+        /// <summary>
+        /// Get all the items that are in stock from the database
+        /// </summary>
+        /// <returns></returns>
         public List<Item> GetAvaillableItems()
         {
             RefreshItems();
             return itemManager.GetAvaillableItems();
         }
+        /// <summary>
+        /// Get all the items from the database and refresh the list held in the ItemManager.
+        /// </summary>
         public void RefreshItems()
         {
             itemManager.Items.Clear();
@@ -52,36 +76,73 @@ namespace MaterialRentalSysteem
 
             }
         }
-        public List<string> GetAllRentedItems()
+        /// <summary>
+        /// Get all the items that are rented out currently from the database.
+        /// </summary>
+        /// <returns></returns>
+        public List<Rental> GetAllRentedItems()
         {
+            rentalManager.RentedItems.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllRentedItems();
             Console.WriteLine(list);
-            List<string> rentedItems = new List<string>();
+            Rental rental;
             foreach (Dictionary<string, string> d in list)
             {
-                string info = "";
-                string startDate = d["STARTDATE"];
-                string endDate = d["ENDDATE"];
-                startDate = startDate.Substring(0, 10);
-                endDate = endDate.Substring(0, 10);
-                info += d["ITEMRENTALID"] + ": " + d["FULLNAME"] + ": " + d["TYPEITEM"] + ", " + d["NAME"] + "Period: " + startDate + " - " + endDate;
-                rentedItems.Add(info);
+                rental = new Rental(Convert.ToInt32(d["ITEMRENTALID"]),
+                    d["FULLNAME"], d["TYPEITEM"], d["NAME"], Convert.ToDateTime(d["STARTDATE"]),
+                    Convert.ToDateTime(d["ENDDATE"]),Convert.ToInt32(d["TOTALAMOUNT"]),Convert.ToInt32(d["ITEMID"]));
+                rentalManager.AddRental(rental);
             }
-            return rentedItems;
+            return rentalManager.RentedItems;
         }
+        /// <summary>
+        /// Remove an item from the database.
+        /// </summary>
+        /// <param name="item"></param>
         public void RemoveItem(Item item)
         {
             dataManager.DeleteItem(item.ID.ToString());
         }
+        /// <summary>
+        /// Get a specific item from the database.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Item GetItem(string id)
+        {
+            List<Dictionary<string, string>> list = dataManager.GetItem(id);
+            Console.WriteLine(list);
+            Item item;
+            foreach (Dictionary<string, string> d in list)
+            {
+                item = new Item(Convert.ToInt32(d["ITEMID"]), d["NAME"], d["TYPEITEM"], Convert.ToInt32(d["STOCK"]), Convert.ToDecimal(d["PRICE"]));
+                return item;
+            }
+            return null;
+        }
+        /// <summary>
+        /// Update an item in the database.
+        /// </summary>
+        /// <param name="newInfo"></param>
+        /// <param name="id"></param>
         public void ChangeItem(List<string> newInfo,string id)
         {
             dataManager.UpdateItem(newInfo,id);
         }
+        /// <summary>
+        /// Delete an item from the database.
+        /// </summary>
+        /// <param name="item"></param>
         public void DeleteItem(Item item)
         {
             string id = item.ID.ToString();
             dataManager.DeleteItem(id);
         }
+        /// <summary>
+        /// Search a person by RFID.
+        /// </summary>
+        /// <param name="RFID"></param>
+        /// <returns></returns>
         public List<Guest> SearchPersonRFID(string RFID)
         {
             List<Guest> persons = new List<Guest>();
@@ -103,6 +164,13 @@ namespace MaterialRentalSysteem
             }
             return persons;
         }
+        /// <summary>
+        /// Add a new rental, then connect it to a guest. Finally remove the rented item from the stock.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="guest"></param>
+        /// <param name="EndDate"></param>
+        /// <param name="amount"></param>
         public void RentItem(Item item, Guest guest,string EndDate, string amount)
         {
             //gather initial needed data in correct form
@@ -131,19 +199,27 @@ namespace MaterialRentalSysteem
             itemRentalInfo.Add(rentalID);
             dataManager.SetItemRental(itemRentalInfo);
 
-            //Remove 1 from the stock
+            //Remove amount from the stock
             int stock = item.Stock;
-            stock--;
+            stock -= Convert.ToInt32(amount);
             itemInfo.Add(item.Name);
             itemInfo.Add(item.Type);
             itemInfo.Add(stock.ToString());
             itemInfo.Add(item.Price.ToString());
             dataManager.UpdateItem(itemInfo, itemID);
         }
+        /// <summary>
+        /// Disconnect a person from a rental. The rental itself stays in the database as a record.
+        /// </summary>
+        /// <param name="ID"></param>
         public void TakeRental(string ID)
         {
              dataManager.DeleteItemRental(ID);
         }
+        /// <summary>
+        /// Get a list of all the guests that are currently present.
+        /// </summary>
+        /// <returns></returns>
         public List<Guest> GetAllGuests()
         {
             List<Guest> presentPersons = new List<Guest>();
@@ -165,6 +241,11 @@ namespace MaterialRentalSysteem
             }
             return presentPersons;
         }
+        /// <summary>
+        /// Search a person by a name.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public List<Guest> SearchPersonName(string name)
         {
             List<Guest> persons = new List<Guest>();

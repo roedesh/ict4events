@@ -1,4 +1,4 @@
-﻿namespace EventManagementSystem
+﻿namespace MaterialRentalSysteem
 {
     partial class LoginForm
     {
@@ -52,6 +52,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(126, 20);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Text = "pieter";
             // 
             // lbUsername
             // 
@@ -78,6 +79,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(125, 20);
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.Text = "pieter";
             // 
             // label2
             // 
@@ -86,7 +88,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(259, 41);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Event Beheersysteem";
+            this.label2.Text = "Verhuur Systeem";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginForm
@@ -101,7 +103,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btLogin);
             this.Name = "LoginForm";
-            this.Text = "Event Beheersysteem";
+            this.Text = "LoginForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
