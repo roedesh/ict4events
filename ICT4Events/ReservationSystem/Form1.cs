@@ -190,6 +190,7 @@ namespace ReservationSystem
             }
             else
             {
+                dgReservations.DataSource = null;
                 MessageBox.Show("Geen reserveringen gevonden!");
             }
         }
