@@ -15,9 +15,11 @@ namespace EventManagementSystem
     {
         SuperManager superManager = new SuperManager();
         bool isEmployee;
+        Form f;
         public Form1()
         {
             InitializeComponent();
+            f = null;
             cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Employee.AccountRole));
         }
 
@@ -349,6 +351,17 @@ namespace EventManagementSystem
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnShowMap_Click(object sender, EventArgs e)
+        {
+            if (f == null)
+            {
+                f = new MapForm();
+                f.WindowState = FormWindowState.Normal;
+                f.Show();
+                f = null;
+            }
         }
 
 
