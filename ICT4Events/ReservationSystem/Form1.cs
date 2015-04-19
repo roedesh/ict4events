@@ -39,18 +39,25 @@ namespace ReservationSystem
 
         private void btCheckPlace_Click(object sender, EventArgs e)
         {
-            if (s.CheckPlace(txtCheckPlace.Text))
-            {
-                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
-                lbPlaceStatus.ForeColor = Color.Green;
-                isValidPlace = true;
+            if (txtCheckPlace.Text.All(char.IsDigit)){
+                if (s.CheckPlace(txtCheckPlace.Text))
+                {
+                    lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is nog beschikbaar!", txtCheckPlace.Text);
+                    lbPlaceStatus.ForeColor = Color.Green;
+                    isValidPlace = true;
+                }
+                else
+                {
+                    lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                    lbPlaceStatus.ForeColor = Color.Red;
+                    isValidPlace = false;
+                }
             }
             else
             {
-                lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
-                lbPlaceStatus.ForeColor = Color.Red;
-                isValidPlace = false;
+                MessageBox.Show("Plaatsnummer mag geen letters bevatten!");
             }
+            
         }
 
         private void btReset_Click(object sender, EventArgs e)
@@ -160,26 +167,23 @@ namespace ReservationSystem
 
         private void btCancelReservation_Click(object sender, EventArgs e)
         {
-            if (!IsDigitsOnly(txtReservationIDDelete.Text))
+            DialogResult result = MessageBox.Show("Weet u zeker dat u deze reservering(en) wil annuleren?", "Reservering annuleren", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("ReserveringsID moet een nummer zijn!");
-            }
-            else
-            {
-                if (s.DeleteReservation(txtReservationIDDelete.Text))
+                foreach (DataGridViewRow item in this.dgReservations.SelectedRows)
                 {
-                    MessageBox.Show("Verwijderen is gelukt");
-                }
-                else
-                {
-                    MessageBox.Show("Verwijderen is mislukt!");
+                    string ID = item.Cells["RESERVATIONID"].Value.ToString();
+                    dgReservations.Rows.Remove(item);
+                    s.DeleteReservation(ID);
                 }
             }
+            
+
         }
 
         private void btSearchReservation_Click(object sender, EventArgs e)
         {
-            List<Reservation> reservations = s.GetReservations(Convert.ToString(cbField.SelectedItem), txtFieldValue.Text);
+            BindingList<Reservation> reservations = s.GetReservations(Convert.ToString(cbField.SelectedItem), txtFieldValue.Text);
             if (reservations != null)
             {
                 dgReservations.DataSource = reservations;

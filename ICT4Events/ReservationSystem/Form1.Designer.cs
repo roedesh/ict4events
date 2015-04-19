@@ -38,11 +38,7 @@
             this.btSearchReservation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btCancelReservation = new System.Windows.Forms.Button();
-            this.txtReservationIDDelete = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btReset = new System.Windows.Forms.Button();
@@ -73,7 +69,7 @@
             this.dgReservations.Margin = new System.Windows.Forms.Padding(2);
             this.dgReservations.Name = "dgReservations";
             this.dgReservations.RowTemplate.Height = 24;
-            this.dgReservations.Size = new System.Drawing.Size(608, 313);
+            this.dgReservations.Size = new System.Drawing.Size(608, 286);
             this.dgReservations.TabIndex = 0;
             // 
             // groupBox3
@@ -163,14 +159,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(616, 335);
+            this.groupBox1.Size = new System.Drawing.Size(616, 307);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gevonden gegevens";
             // 
             // btCancelReservation
             // 
-            this.btCancelReservation.Location = new System.Drawing.Point(4, 119);
+            this.btCancelReservation.Location = new System.Drawing.Point(135, 69);
             this.btCancelReservation.Margin = new System.Windows.Forms.Padding(2);
             this.btCancelReservation.Name = "btCancelReservation";
             this.btCancelReservation.Size = new System.Drawing.Size(67, 33);
@@ -179,67 +175,25 @@
             this.btCancelReservation.UseVisualStyleBackColor = true;
             this.btCancelReservation.Click += new System.EventHandler(this.btCancelReservation_Click);
             // 
-            // txtReservationIDDelete
-            // 
-            this.txtReservationIDDelete.Location = new System.Drawing.Point(3, 95);
-            this.txtReservationIDDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.txtReservationIDDelete.Name = "txtReservationIDDelete";
-            this.txtReservationIDDelete.Size = new System.Drawing.Size(219, 20);
-            this.txtReservationIDDelete.TabIndex = 3;
-            // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 32);
+            this.label10.Location = new System.Drawing.Point(4, 21);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(168, 13);
+            this.label10.Size = new System.Drawing.Size(217, 29);
             this.label10.TabIndex = 12;
-            this.label10.Text = "Vul hier het reserveringsnummer in";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 46);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(158, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Als dit niet bekend is bij de klant";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 59);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(190, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Zoek het dan op in met de zoekfunctie";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(5, 79);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(109, 13);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Reserveringsnummer:";
+            this.label10.Text = "Selecteer rechts de reserveringen die u wilt verwijderen. Druk vervolgens op Annu" +
+    "leren.";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.txtReservationIDDelete);
             this.groupBox4.Controls.Add(this.btCancelReservation);
             this.groupBox4.Location = new System.Drawing.Point(238, 187);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox4.Size = new System.Drawing.Size(227, 158);
+            this.groupBox4.Size = new System.Drawing.Size(227, 130);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Reservering annuleren";
@@ -406,7 +360,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 355);
+            this.ClientSize = new System.Drawing.Size(1093, 321);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -419,7 +373,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -438,11 +391,7 @@
         private System.Windows.Forms.Button btSearchReservation;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btCancelReservation;
-        private System.Windows.Forms.TextBox txtReservationIDDelete;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btReset;
