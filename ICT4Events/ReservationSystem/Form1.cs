@@ -48,7 +48,7 @@ namespace ReservationSystem
                 }
                 else
                 {
-                    lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is al bezet!", txtCheckPlace.Text);
+                    lbPlaceStatus.Text = String.Format("Plaatsnummer {0} is niet beschikbaar!", txtCheckPlace.Text);
                     lbPlaceStatus.ForeColor = Color.Red;
                     isValidPlace = false;
                 }
