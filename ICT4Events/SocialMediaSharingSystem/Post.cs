@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace SocialMediaSharingSystem
 {
+
+    ///  Abstract class used for deriving file and comment.
     public abstract class Post
     {
         private int postID;
-        private int uploaderID;
+        private int accountID;
+
         private string title;
         private int amountOfLikes;
         private int amountOfFlags;
@@ -23,10 +26,10 @@ namespace SocialMediaSharingSystem
             set { postID = value; }
         }
 
-        public int UploaderID
+        public int AccountID
         {
-            get { return uploaderID;}
-            set { uploaderID = value; }
+            get { return accountID;}
+            set { accountID = value; }
         }
 
         public string Title
@@ -58,14 +61,12 @@ namespace SocialMediaSharingSystem
             get { return date; }
             set { date = value; }
         }
-
-
         #endregion
 
         public Post(int postID, int uploaderID, DateTime date, string title, int amountOfLikes, int amountOfFlags)
         {
             this.postID = postID;
-            this.uploaderID = uploaderID;
+            this.accountID = uploaderID;
             this.date = date;
             this.title = title;
             this.amountOfLikes = amountOfLikes;
@@ -79,7 +80,7 @@ namespace SocialMediaSharingSystem
 
         public override string ToString()
         {
-            return Title + " - " + UploaderID + ": " + Convert.ToString(AmountOfLikes) + "likes, " + Convert.ToString(AmountOfFlags) + " flags";
+            return Title + " - " + AccountID + ": " + Convert.ToString(AmountOfLikes) + "likes, " + Convert.ToString(AmountOfFlags) + " flags";
         }
     }
 }

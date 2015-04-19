@@ -105,7 +105,7 @@
             this.Controls.Add(this.btn_Upload2);
             this.Controls.Add(this.lbl_Title);
             this.Name = "UploadForm";
-            this.Text = "Upload een bestand.";
+            this.Text = "Selecteer een bestand";
             this.ResumeLayout(false);
             this.PerformLayout();
 

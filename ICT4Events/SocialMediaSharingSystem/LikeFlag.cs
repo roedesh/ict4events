@@ -12,7 +12,8 @@ namespace SocialMediaSharingSystem
     {
         private int likeFlagID;
         private int accountID;
-        private int postID;
+        private int commentID;
+        private int fileID;
         private Type type;
         private DateTime placeTime;
 
@@ -29,10 +30,16 @@ namespace SocialMediaSharingSystem
             set { accountID = value; }
         }
 
-        public int PostID
+        public int CommentID
         {
-            get { return postID; }
-            set { postID = value; }
+            get { return commentID; }
+            set { commentID = value; }
+        }
+
+        public int FileID
+        {
+            get { return fileID; }
+            set { fileID = value; }
         }
 
         public Type Type
@@ -48,11 +55,21 @@ namespace SocialMediaSharingSystem
         }
         #endregion
 
-        public LikeFlag(int likeFlagID, int accountID, int postID, Type type, DateTime placeTime)
+        // Constructor for a likeflag on a comment.
+        public LikeFlag(int likeFlagID, int accountID, int commentID, Type type, DateTime placeTime, bool isComment)
         {
             this.likeFlagID = likeFlagID;
             this.accountID = accountID;
-            this.postID = postID;
+            this.commentID = commentID;
+            this.type = type;
+            this.placeTime = placeTime;
+        }
+        // Constructor for a likeflag on a file.
+        public LikeFlag(int likeFlagID, int accountID, int fileID, Type type, DateTime placeTime)
+        {
+            this.likeFlagID = likeFlagID;
+            this.accountID = accountID;
+            this.fileID = fileID;
             this.type = type;
             this.placeTime = placeTime;
         }

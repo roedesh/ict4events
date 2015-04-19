@@ -68,7 +68,7 @@
             this.Controls.Add(this.btn_Create);
             this.Controls.Add(this.lbl_Name);
             this.Name = "CategoryForm";
-            this.Text = "Vul een naam in.";
+            this.Text = "Vul categorienaam in";
             this.ResumeLayout(false);
             this.PerformLayout();
 
