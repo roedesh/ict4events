@@ -26,6 +26,7 @@ namespace EventManagementSystem
 
         public List<Event> ShowEvents()
         {
+            eventManager.Evnt.Clear();
             List<Dictionary<string, string>> list = dataManager.GetAllEvents();
             foreach (Dictionary<string, string> d in list)
             {
@@ -88,37 +89,54 @@ namespace EventManagementSystem
             return locationManager.Location;
         }
 
-        public void EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
+        public bool EditEvent(int id, string location, string startdate, string enddate, string description, decimal admissionFee)
         {
-            List<string> list = new List<string>();
-            list.Add(Convert.ToString(id));
-            list.Add(location);
-            list.Add(startdate);
-            list.Add(enddate);
-            list.Add(description);
-            list.Add(Convert.ToString(admissionFee));
-            dataManager.UpdateEvent(list);
-            eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
+            foreach (Event e in eventManager.Evnt)
+            {
+                if (e.Id == id)
+                {
+                    List<string> list = new List<string>();
+                    list.Add(Convert.ToString(id));
+                    list.Add(location);
+                    list.Add(startdate);
+                    list.Add(enddate);
+                    list.Add(description);
+                    list.Add(Convert.ToString(admissionFee));
+                    dataManager.UpdateEvent(list);
+                    eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
+                    return true;
+                }
+            }
+            throw new MyException("Event id bestaat niet");
+            
         }
-        public void EditGuest(int id, int eventId, string username, string password, string fullname,
+        public bool EditGuest(int id, int eventId, string username, string password, string fullname,
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber)
         {
-            //create account list
-            List<string> ac = new List<string>();
-            ac.Add(Convert.ToString(id));
-            ac.Add(Convert.ToString(eventId));
-            ac.Add(username);
-            ac.Add(password);
-            ac.Add(fullname);
-            ac.Add(address);
-            ac.Add(city);
-            ac.Add(postalcode);
-            ac.Add(dateOfBirth);
-            ac.Add(email);
-            ac.Add(Convert.ToString(phonenumber));
-            //send items to datamanager
-            dataManager.UpdateAccount(ac);
+            foreach (Account a in accountManager.Accounts)
+            {
+                if(a.ID == id)
+                {
+                    List<string> ac = new List<string>();
+                    ac.Add(Convert.ToString(id));
+                    ac.Add(Convert.ToString(eventId));
+                    ac.Add(username);
+                    ac.Add(password);
+                    ac.Add(fullname);
+                    ac.Add(address);
+                    ac.Add(city);
+                    ac.Add(postalcode);
+                    ac.Add(dateOfBirth);
+                    ac.Add(email);
+                    ac.Add(Convert.ToString(phonenumber));
+                    //send items to datamanager
+                    dataManager.UpdateAccount(ac);
+                    return true;
+                }
+            }
+            throw new MyException("geen gast gevonden met de ingevoerde account id");
+            
 
         }
 
@@ -130,40 +148,54 @@ namespace EventManagementSystem
             {
                 throw new MyException("Medewerker kan geen gast rol hebben");
             }
-            //create account list
-            List<string> ac = new List<string>();
-            ac.Add(Convert.ToString(id));
-            ac.Add(Convert.ToString(eventId));
-            ac.Add(username);
-            ac.Add(password);
-            ac.Add(fullname);
-            ac.Add(address);
-            ac.Add(city);
-            ac.Add(postalcode);
-            ac.Add(dateOfBirth);
-            ac.Add(email);
-            ac.Add(Convert.ToString(phonenumber));
+            foreach (Employee e in accountManager.Employees)
+            {
+                if (e.ID == id)
+                {
+                    //create account list
+                    List<string> ac = new List<string>();
+                    ac.Add(Convert.ToString(id));
+                    ac.Add(Convert.ToString(eventId));
+                    ac.Add(username);
+                    ac.Add(password);
+                    ac.Add(fullname);
+                    ac.Add(address);
+                    ac.Add(city);
+                    ac.Add(postalcode);
+                    ac.Add(dateOfBirth);
+                    ac.Add(email);
+                    ac.Add(Convert.ToString(phonenumber));
 
-            List<string> acEmpl = new List<string>();
-            acEmpl.Add(Convert.ToString(id));
-            acEmpl.Add(Convert.ToString(employeeID));
-            acEmpl.Add(Convert.ToString(roleID));
-            //send items to datamanager
-            dataManager.UpdateAccount(ac);
-            dataManager.UpdateEmployee(acEmpl);
-            return true;
+                    List<string> acEmpl = new List<string>();
+                    acEmpl.Add(Convert.ToString(id));
+                    acEmpl.Add(Convert.ToString(employeeID));
+                    acEmpl.Add(Convert.ToString(roleID));
+                    //send items to datamanager
+                    dataManager.UpdateAccount(ac);
+                    dataManager.UpdateEmployee(acEmpl);
+                    return true;
+                }
+            }
+            throw new MyException("geen medewerker gevonden met de ingevoerde account id");
         }
 
         public bool EditLocation(int id, string name, string description, int price)
         {
-            //create account list
-            List<string> lo = new List<string>();
-            lo.Add(Convert.ToString(id));
-            lo.Add(name);
-            lo.Add(description);
-            lo.Add(Convert.ToString(price));
-            dataManager.UpdateLocation(lo);
-            return true;
+            foreach (Location l in locationManager.Location)
+            {
+                if (l.Id == id)
+                {
+                    //create account list
+                    List<string> lo = new List<string>();
+                    lo.Add(Convert.ToString(id));
+                    lo.Add(name);
+                    lo.Add(description);
+                    lo.Add(Convert.ToString(price));
+                    dataManager.UpdateLocation(lo);
+                    return true;
+                }
+            }
+            throw new MyException("geen locatie gevonden met de ingevoerde locatie id");
         }
 
         public bool AddEmployee(int id, int eventId, string username, string password, string fullname,
@@ -254,7 +286,7 @@ namespace EventManagementSystem
         public bool DeleteAccountEmployee(int accountID)
         {
             
-            foreach (Account a in accountManager.Accounts)
+            foreach (Employee a in accountManager.Employees)
             {
                 if (a.ID == accountID)
                 {

@@ -21,6 +21,10 @@ namespace EventManagementSystem
             InitializeComponent();
             f = null;
             cbMedewerkersRole.DataSource = Enum.GetValues(typeof(AccountLibrary.Employee.AccountRole));
+            superManager.ShowEmployeeAccounts();
+            superManager.ShowEvents();
+            superManager.ShowGuestAccounts();
+            superManager.ShowLocations();
         }
 
 
@@ -162,7 +166,7 @@ namespace EventManagementSystem
                 }
                 else // it's an Employee
                 {
-                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt?",
+                    DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt bewerken?",
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
