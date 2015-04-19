@@ -336,6 +336,16 @@ namespace MaterialRentalSysteem
             int index = lbInfo.SelectedIndex;
             try
             {
+                Convert.ToInt32(tbChangeCount.Text);
+                Convert.ToDecimal(tbAddPrice.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Voer geldige data in aub");
+                return;
+            }
+            try
+            {
                 Item item = lbInfo.SelectedItem as Item;
                 List<string> Iteminfo = new List<string>();
                 string id = item.ID.ToString();
