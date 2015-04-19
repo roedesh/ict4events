@@ -103,7 +103,7 @@ namespace EventManagementSystem
                     list.Add(description);
                     list.Add(Convert.ToString(admissionFee));
                     dataManager.UpdateEvent(list);
-                    eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
+                    
                     return true;
                 }
             }

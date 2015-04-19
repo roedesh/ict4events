@@ -281,6 +281,10 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Geen geldige invoer");
             }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
+            }
             finally
             {
                 btnPlaatsShowAllLocations_Click(sender, e);

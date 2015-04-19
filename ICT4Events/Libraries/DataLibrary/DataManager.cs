@@ -371,7 +371,7 @@ namespace DataLibrary
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
             string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
-            string query = String.Format("UPDATE Event SET EVENTID = {0}, LOCATION = '{1}', STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = '{4}', ADMISSIONFEE = '{5}';"
+            string query = String.Format("UPDATE Event SET LOCATION = '{1}', STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = '{4}', ADMISSIONFEE = '{5}' WHERE EventID = {0}"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd, eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
         }
