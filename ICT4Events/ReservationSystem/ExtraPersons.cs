@@ -22,8 +22,7 @@ namespace ReservationSystem
                 s.mainBooker = mainBooker;
             if (tempAccountManager != null)
                 s.tempAccountManager = tempAccountManager;
-            RefreshList();
-            
+            RefreshList();   
         }
 
         private void btAddPerson_Click(object sender, EventArgs e)
@@ -85,6 +84,9 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Refresh persons list
+        /// </summary>
         public void RefreshList()
         {
             lstPersons.Items.Clear();
@@ -98,6 +100,11 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Check if string contains only digits
+        /// </summary>
+        /// <param name="str">The string to check</param>
+        /// <returns>true or false</returns>
         bool IsDigitsOnly(string str)
         {
             foreach (char c in str)
@@ -108,6 +115,10 @@ namespace ReservationSystem
             return true;
         }
 
+        /// <summary>
+        /// Check if all textboxes are filled in
+        /// </summary>
+        /// <returns>true or false</returns>
         bool IsFilledIn()
         {
             foreach (Control tb in gboxAdd.Controls)
@@ -124,6 +135,10 @@ namespace ReservationSystem
             return true;
         }
 
+        /// <summary>
+        /// Validate all entered data
+        /// </summary>
+        /// <returns>true or false</returns>
         bool CheckData()
         {
             if (!txtPhone.Text.All(char.IsDigit))
@@ -168,6 +183,9 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Empty all textboxes
+        /// </summary>
         public void EmptyTextboxes()
         {
             foreach (Control tb in gboxAdd.Controls)

@@ -89,7 +89,7 @@ namespace ReservationSystem
                     List<int> guestsToAdd = new List<int>();
                     foreach (Account a in s.tempAccountManager.Accounts)
                     {
-                        if (a.ID == 0)
+                        if (a.ID == 0) // Is temporary account
                         {
                             List<string> accountParams = new List<string>() ;
                             accountParams.Add(Convert.ToString(a.EventID));
@@ -110,7 +110,7 @@ namespace ReservationSystem
                             }
                             guestsToAdd.Add(ID);
                         }
-                        else
+                        else // is existing account
                         {
                             guestsToAdd.Add(a.ID);
                         }
@@ -138,6 +138,7 @@ namespace ReservationSystem
                     reservationParams.Add("NOT PAID");
                     int reservationID = s.SetReservation(reservationParams);
 
+                    // Create records in GuestReservation table
                     foreach (int a in guestsToAdd)
                     {
                         s.SetGuestReservation(a, reservationID);
@@ -155,6 +156,11 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Method to check if a string contains only digits
+        /// </summary>
+        /// <param name="str">The string to check</param>
+        /// <returns></returns>
         bool IsDigitsOnly(string str)
         {
             foreach (char c in str)
@@ -195,6 +201,12 @@ namespace ReservationSystem
             }
         }
 
+        /// <summary>
+        /// Event to close the application when this form is closed,
+        /// needed because this is not the startup form
+        /// </summary>
+        /// <param name="sender">This form</param>
+        /// <param name="e">Event paramaters</param>
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
