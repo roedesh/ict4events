@@ -236,6 +236,7 @@
             // 
             // btPlaceReservation
             // 
+            this.btPlaceReservation.Enabled = false;
             this.btPlaceReservation.Location = new System.Drawing.Point(102, 266);
             this.btPlaceReservation.Margin = new System.Windows.Forms.Padding(2);
             this.btPlaceReservation.Name = "btPlaceReservation";

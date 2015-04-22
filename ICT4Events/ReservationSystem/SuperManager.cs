@@ -173,5 +173,15 @@ namespace ReservationSystem
         {
             return dManager.DeleteReservation(ID);
         }
+
+        public bool GetEvent(string ID)
+        {
+            List<Dictionary<string,string>> e = dManager.GetEvent(ID);
+            if (e.Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
