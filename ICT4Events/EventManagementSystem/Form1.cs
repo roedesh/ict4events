@@ -170,6 +170,10 @@ namespace EventManagementSystem
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
+                        if (tbMedewerkerEmployeeID.Text == "")
+                        {
+                            throw new MyException("Employee ID niet ingevuld");
+                        }
                         superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                     Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
@@ -380,6 +384,8 @@ namespace EventManagementSystem
                 f = null;
             }
         }
+
+
 
 
 

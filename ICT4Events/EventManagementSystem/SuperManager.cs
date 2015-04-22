@@ -144,6 +144,7 @@ namespace EventManagementSystem
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
+            
             if (roleID == 7)
             {
                 throw new MyException("Medewerker kan geen gast rol hebben");
