@@ -20,21 +20,22 @@ namespace SocialMediaSharingSystem
             this.destination = destination;
         }
 
+        /// <summary>
+        /// Create a directory based on user input.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Create_Click(object sender, EventArgs e)
         {
-            if (tb_Name.Text != "")
+            if (tb_Name.Text.Trim().Length != 0)
             {
-                Console.WriteLine(destination + @"\" + tb_Name.Text);
-
-                Directory.CreateDirectory(@"C:/users/Jeroen/Desktop/" + destination + @"\" + tb_Name.Text);
+                Directory.CreateDirectory(frm_SocialMedia.BASEPATH + destination + @"\" + tb_Name.Text);
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Vul een geldige naam in: ");
             }
-
         }
-
     }
 }

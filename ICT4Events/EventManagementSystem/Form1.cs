@@ -281,6 +281,10 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Geen geldige invoer");
             }
+            catch(MyException mex)
+            {
+                MessageBox.Show(mex.Message);
+            }
             finally
             {
                 btnPlaatsShowAllLocations_Click(sender, e);
@@ -299,55 +303,64 @@ namespace EventManagementSystem
         private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            DataGridViewCell cell = null;
-            foreach (DataGridViewCell selectedCell in dataGridView.SelectedCells)
+            try
             {
-                cell = selectedCell;
-                break;
-            }
-            if (cell != null)
-            {
-                DataGridViewRow row = cell.OwningRow;
-                if (tabControl.SelectedTab == tabControl.TabPages["tpMedewerkers"])
+
+
+                DataGridViewCell cell = null;
+                foreach (DataGridViewCell selectedCell in dataGridView.SelectedCells)
                 {
-                    tbMedewerkerUsername.Text = row.Cells["Username"].Value.ToString();
-                    tbMedewerkerPassword.Text = row.Cells["Password"].Value.ToString();
-                    tbMedewerkerName.Text = row.Cells["Name"].Value.ToString();
-                    tbMedewerkerAddress.Text = row.Cells["Address"].Value.ToString();
-                    tbMedewerkerCity.Text = row.Cells["City"].Value.ToString();
-                    tbMedewerkerPostalcode.Text = row.Cells["PostalCode"].Value.ToString();
-                    tbMedewerkerDateOfBirth.Text = row.Cells["DateOfBirth"].Value.ToString();
-                    tbMedewerkerEmail.Text = row.Cells["Email"].Value.ToString();
-                    tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
-                    tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
-                    tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
-                    if (isEmployee)
+                    cell = selectedCell;
+                    break;
+                }
+                if (cell != null)
+                {
+                    DataGridViewRow row = cell.OwningRow;
+                    if (tabControl.SelectedTab == tabControl.TabPages["tpMedewerkers"])
                     {
-                        string enumCast = row.Cells["Role"].Value.ToString();
-                        int enumID = superManager.getEnum(enumCast);
-                        tbMedewerkerRoleID.Text = enumID.ToString();
-                        cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
+                        tbMedewerkerUsername.Text = row.Cells["Username"].Value.ToString();
+                        tbMedewerkerPassword.Text = row.Cells["Password"].Value.ToString();
+                        tbMedewerkerName.Text = row.Cells["Name"].Value.ToString();
+                        tbMedewerkerAddress.Text = row.Cells["Address"].Value.ToString();
+                        tbMedewerkerCity.Text = row.Cells["City"].Value.ToString();
+                        tbMedewerkerPostalcode.Text = row.Cells["PostalCode"].Value.ToString();
+                        tbMedewerkerDateOfBirth.Text = row.Cells["DateOfBirth"].Value.ToString();
+                        tbMedewerkerEmail.Text = row.Cells["Email"].Value.ToString();
+                        tbMedewerkerPhonenumber.Text = row.Cells["Phone"].Value.ToString();
+                        tbMedewerkersEventID.Text = row.Cells["EventID"].Value.ToString();
+                        tbMedewerkerAccountID.Text = row.Cells["ID"].Value.ToString();
+                        if (isEmployee)
+                        {
+                            string enumCast = row.Cells["Role"].Value.ToString();
+                            int enumID = superManager.getEnum(enumCast);
+                            tbMedewerkerRoleID.Text = enumID.ToString();
+                            cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
+                        }
                     }
-                }
-                else if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
-                {
-                    tbEventEventID.Text = row.Cells["ID"].Value.ToString();
-                    tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
-                    tbEventBeginDatum.Text = row.Cells["StartDate"].Value.ToString();
-                    tbEventEindDatum.Text = row.Cells["EndDate"].Value.ToString();
-                    tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
-                    tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
-                }
-                else
-                {
-                    tbPlaatsLocationID.Text = row.Cells["ID"].Value.ToString();
-                    tbPlaatsName.Text = row.Cells["NAME"].Value.ToString();
-                    tbPlaatsDescription.Text = row.Cells["DESCRIPTION"].Value.ToString();
-                    tbPlaatsPrice.Text = row.Cells["PRICE"].Value.ToString(); 
-                }
-                
+                    else if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
+                    {
+                        tbEventEventID.Text = row.Cells["ID"].Value.ToString();
+                        tbEventLocatie.Text = row.Cells["Location"].Value.ToString();
+                        tbEventBeginDatum.Text = row.Cells["StartDate"].Value.ToString();
+                        tbEventEindDatum.Text = row.Cells["EndDate"].Value.ToString();
+                        tbEventBeschrijving.Text = row.Cells["Description"].Value.ToString();
+                        tbEventPrijs.Text = row.Cells["AdmissionFee"].Value.ToString();
+                    }
+                    else
+                    {
+                        tbPlaatsLocationID.Text = row.Cells["ID"].Value.ToString();
+                        tbPlaatsName.Text = row.Cells["NAME"].Value.ToString();
+                        tbPlaatsDescription.Text = row.Cells["DESCRIPTION"].Value.ToString();
+                        tbPlaatsPrice.Text = row.Cells["PRICE"].Value.ToString();
+                    }
 
 
+
+                }
+            }
+            catch(ArgumentException)
+            {
+                MessageBox.Show("U bent niet in de juiste tab");
             }
 
         }

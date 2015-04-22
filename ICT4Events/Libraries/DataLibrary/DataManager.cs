@@ -316,9 +316,9 @@ namespace DataLibrary
         /// <param name="ID">string ID</param>
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM Account WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
-            query = String.Format("DELETE FROM Guest WHERE A.AccountID = {0}", ID);
+            query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -371,7 +371,7 @@ namespace DataLibrary
         {
             string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
             string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
-            string query = String.Format("UPDATE Event SET EVENTID = {0}, LOCATION = '{1}', STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = '{4}', ADMISSIONFEE = '{5}';"
+            string query = String.Format("UPDATE Event SET LOCATION = '{1}', STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = '{4}', ADMISSIONFEE = '{5}' WHERE EventID = {0}"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd, eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
         }
@@ -558,27 +558,47 @@ namespace DataLibrary
         /// Set a file in the database using a list of strings.
         /// </summary>
         /// <param name="file">list-string file</param>
+
         public void SetFile(List<string> file)
         {
-            string query = "SELECT MAX(FILEID) FROM FILETABLE";
+            string query = "SELECT FileID FROM FileTable WHERE FileID = (SELECT MAX(FileID) FROM FileTable)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            query = String.Format("INSERT INTO FILETABLE VALUES({0},{1},'{2}','{3}','{4}','{5}','{6}','{7}')"
-                , ID, file[1], file[2], file[3]
-                , file[4], file[5], file[6], file[7]);
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                ID = Convert.ToInt32(result[0]["FILEID"]) + 1;
+            }
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy hh24:mi:ss')", file[2]);
+            query = String.Format("INSERT INTO FILETABLE VALUES({0},{1},{2},'{3}','{4}',{5},{6})"
+                , ID, file[1], dateStart
+                , file[3], file[4], file[5], file[6]);
+            Console.WriteLine(query);
             XCTNonQuery(query);
         }
         /// <summary>
         /// Set a comment in the database using a list of strings
         /// </summary>
         /// <param name="comment">list-string comment</param>
+
         public void SetComment(List<string> comment)
         {
-            string query = "SELECT MAX(COMMENTID) FROM COMMENT";
+            string query = "SELECT CommentID FROM CommentTable where CommentID = (SELECT MAX(CommentID) FROM CommentTable)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", comment[4]);
-            query = String.Format("INSERT INTO COMMENTTABLE VALUES({0},'{1}','{2}','{3}',{4},'{5}','{6}','{7}','{8}')"
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                ID = Convert.ToInt32(result[0]["COMMENTID"]) + 1;
+            }
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy hh24:mi:ss')", comment[4]);
+            query = String.Format("INSERT INTO COMMENTTABLE VALUES({0},{1},{2},{3},{4},'{5}','{6}',{7},{8})"
                 , ID, comment[1], comment[2], comment[3]
                 , dateStart, comment[5], comment[6], comment[7]
                 , comment[8]);
@@ -588,16 +608,30 @@ namespace DataLibrary
         /// Set a like/flag in the database using a list of strings.
         /// </summary>
         /// <param name="likeorflag">list-string likeorflag</param>
+
+
         public void SetLikeOrFlag(List<string> likeorflag)
         {
-            string query = "SELECT MAX(LIKEFLAGID) FROM LIKEORFLAG";
+            string query = "SELECT LIKEFLAGID FROM LIKEORFLAG where LIKEFLAGID = (SELECT MAX(LIKEFLAGID) FROM LIKEORFLAG)";
             result = XCTReader(query);
-            int ID = Convert.ToInt32(result) + 1;
-            query = String.Format("INSERT INTO LIKEORFLAG VALUES({0},'{1}','{2}','{3}','{4}','{5}')"
+            int ID;
+            if (result.Count == 0)
+            {
+                ID = 1;
+            }
+            else
+            {
+                ID = Convert.ToInt32(result[0]["LIKEFLAGID"]) + 1;
+            }
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy hh24:mi:ss')", likeorflag[4]);
+            string type = likeorflag[5].ToUpper();
+
+            query = String.Format("INSERT INTO LIKEORFLAG VALUES({0}, {1}, {2}, {3}, {4}, '{5}')"
                 , ID, likeorflag[1], likeorflag[2], likeorflag[3]
-                , likeorflag[4], likeorflag[5]);
+                , dateStart, type);
             XCTNonQuery(query);
         }
+
         /// <summary>
         /// Get a file from the database using an ID.
         /// </summary>
@@ -614,9 +648,9 @@ namespace DataLibrary
         /// </summary>
         /// <param name="ID">string ID</param>
         /// <returns>List dictrionary of string-string</returns>
-        public List<Dictionary<string, string>> GetComment(string ID)
+        public List<Dictionary<string, string>> GetComment(string fileID)
         {
-            string query = String.Format("SELECT * FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
+            string query = String.Format("SELECT * FROM COMMENTTABLE WHERE FILEID = {0}", fileID);
             result = XCTReader(query);
             return result;
         }
@@ -637,21 +671,22 @@ namespace DataLibrary
         /// <param name="file">list-string file</param>
         public void UpdateFile(List<string> file)
         {
-            string query = String.Format("UPDATE FILETABLE SET FILEID = {0}, ACCOUNTID = {1}, CATEGORYID = '{2}', DATETIMEFILE = '{3}', TITEL = '{4}', FILEPATH = '{5}', NUMBEROFLIKES = '{6}', NUMBEROFFLAGS = '{7}'"
-                , file[0], file[1], file[2], file[3]
-                , file[4], file[5], file[6], file[7]);
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy hh24:mi:ss')", file[2]);
+            string query = String.Format("UPDATE FILETABLE SET FILEID = {0}, ACCOUNTID = {1}, DATETIMEFILE = {2}, TITEL = '{3}', FILEPATH = '{4}', NUMBEROFLIKES = {5}, NUMBEROFFLAGS = {6} WHERE FILEID = {0}"
+                , file[0], file[1], dateStart, file[3]
+                , file[4], file[5], file[6]);
             XCTNonQuery(query);
         }
         /// <summary>
         /// Update a comment using a list of strings.
         /// </summary>
         /// <param name="file">list-string file</param>
-        public void UpdateComment(List<string> file)
+        public void UpdateComment(List<string> comment)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'yyyy/mm/dd hh24:mi:ss')", file[4]);
-            string query = String.Format("UPDATE COMMENTTABLE SET COMMENTID = {0}, FILEID = {1}, ACCOUNTID = {2}, COMMENTRECU = '{3}', DATETIMECOMMENT = {4}, TITEL = '{5}', MESSAGE = '{6}', NUMBEROFLIKES = '{7}', NUMBEROFFLAGS = '{8}'"
-                , file[0], file[1], file[2], file[3]
-                , dateStart, file[5], file[6], file[7]);
+            string dateStart = String.Format("TO_DATE('{0}', 'dd/mm/yyyy hh24:mi:ss')", comment[4]);
+            string query = String.Format("UPDATE COMMENTTABLE SET COMMENTID = {0}, FILEID = {1}, ACCOUNTID = {2}, COMMENTRECU = {3}, DATETIMECOMMENT = {4}, TITEL = '{5}', MESSAGE = '{6}', NUMBEROFLIKES = '{7}', NUMBEROFFLAGS = '{8}' WHERE COMMENTID = {0}"
+                , comment[0], comment[1], comment[2], comment[3]
+                , dateStart, comment[5], comment[6], comment[7], comment[8]);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -680,7 +715,7 @@ namespace DataLibrary
         /// <param name="ID">string ID</param>
         public void DeleteFlagLike(string ID)
         {
-            string query = String.Format("DELETE * FROM LIKEORFLAG WHERE LIKEFLAGID = {0}", ID);
+            string query = String.Format("DELETE FROM LIKEORFLAG WHERE LIKEFLAGID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -861,7 +896,7 @@ namespace DataLibrary
         /// <returns>List dictionary of string-string</returns>
         public List<Dictionary<string, string>> GetFileByFilePath(string filepath)
         {
-            string query = String.Format("SELECT * FROM FileTable a, WHERE a.FILEPATH = '{0}'", filepath);
+            string query = String.Format("SELECT * FROM FileTable WHERE FILEPATH = '{0}'", filepath);
             result = XCTReader(query);
             return result;
         }
@@ -922,5 +957,86 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+        
+        
+       
+        
+
+        /// <summary>
+        /// Delete a file from the database using an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        public void DeleteFile(int ID)
+        {
+            string query = String.Format("DELETE FROM LIKEORFLAG WHERE FILEID = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM FILETABLE WHERE FILEID = {0}", ID);
+            XCTNonQuery(query);
+        }
+        /// <summary>
+        /// Delete a comment from the database using an ID.
+        /// </summary>
+        /// <param name="ID">int ID</param>
+        public void DeleteComment(int ID)
+        {
+            string query = String.Format("DELETE FROM LIKEORFLAG WHERE COMMENTID = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTRECU = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
+            XCTNonQuery(query);
+        }
+        /// <summary>
+        /// Get all the swear words from the database.
+        /// </summary>
+        /// <returns>List dictionary of string-string</returns>
+
+        public List<Dictionary<string, string>> GetAllSwearWords()
+        {
+            string query = String.Format("SELECT * FROM SWEARWORD");
+            result = XCTReader(query);
+            return result;
+        }
+
+        
+        /// <summary>
+        /// Get an account name from the database using an ID.
+        /// </summary>
+        /// <param name="id">int ID</param>
+        /// <returns>List dictionary of string-string</returns>
+
+
+        public List<Dictionary<string, string>> GetAccountName(int id)
+        {
+            string query = String.Format("SELECT FULLNAME FROM Account WHERE ACCOUNTID = {0}", id);
+            result = XCTReader(query);
+            return result;
+        }
+        /// <summary>
+        /// Get a like/flag from a file using an ID and an accountID
+        /// </summary>
+        /// <param name="targetID">int fileID</param>
+        /// <param name="accountID">int accountID</param>
+        /// <returns>List dictionary of string-string</returns>
+        public List<Dictionary<string, string>> GetFileLikeFlag(int targetID, int accountID)
+        {
+            string query = String.Format("SELECT * FROM LIKEORFLAG WHERE ACCOUNTID = '{0}' AND FILEID = '{1}'", accountID, targetID);
+            result = XCTReader(query);
+            return result;
+        }
+        /// <summary>
+        /// Get a like/flag from a comment using an ID and an accountID
+        /// </summary>
+        /// <param name="targetID">int commentID</param>
+        /// <param name="accountID">int accountID</param>
+        /// <returns>List dictionary of string-string</returns>
+        public List<Dictionary<string, string>> GetCommentLikeFlag(int targetID, int accountID)
+        {
+            string query = String.Format("SELECT * FROM LIKEORFLAG WHERE ACCOUNTID = '{0}' AND COMMENTID = '{1}'", accountID, targetID);
+            result = XCTReader(query);
+            return result;
+        }
+
     }
 }
+

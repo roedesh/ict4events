@@ -16,7 +16,8 @@ namespace SocialMediaSharingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_SocialMedia());
+            //Application.Run(new frm_SocialMedia());
+            Application.Run(new LoginForm());
         }
     }
 }

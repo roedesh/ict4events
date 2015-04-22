@@ -103,7 +103,7 @@ namespace EventManagementSystem
                     list.Add(description);
                     list.Add(Convert.ToString(admissionFee));
                     dataManager.UpdateEvent(list);
-                    eventManager.EditEvent(id, location, startdate, enddate, description, admissionFee);
+                    
                     return true;
                 }
             }
@@ -202,7 +202,7 @@ namespace EventManagementSystem
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
-            foreach (Employee e in accountManager.Employees.Concat(accountManager.Accounts))
+            foreach (Employee e in accountManager.Employees)
             {
                 if (e.ID == id)
                 {
