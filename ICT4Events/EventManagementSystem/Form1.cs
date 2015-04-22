@@ -129,6 +129,8 @@ namespace EventManagementSystem
             cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
             isEmployee = false;
+            tbMedewerkerEmployeeID.Enabled = false;
+            tbMedewerkerRoleID.Enabled = false;
         }
 
         private void btnMedewerkersShowAllEmployee_Click(object sender, EventArgs e)
@@ -140,6 +142,8 @@ namespace EventManagementSystem
             dataGridView.DataSource = showAllEmployeeAccounts;
             cbMedewerkersRole.Enabled = true;
             isEmployee = true;
+            tbMedewerkerEmployeeID.Enabled = true;
+            tbMedewerkerRoleID.Enabled = true;
         }
 
         
