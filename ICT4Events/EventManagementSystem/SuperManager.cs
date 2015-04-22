@@ -70,7 +70,8 @@ namespace EventManagementSystem
                     d["CITY"], d["POSTALCODE"],
                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                     d["EMAIL"], d["PHONENUMBER"],
-                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]));
+                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]),
+                    Convert.ToInt32(d["EMPLOYEEID"]));
 
                 accountManager.AddAccountE((Employee)a);
             }
@@ -144,6 +145,7 @@ namespace EventManagementSystem
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
+            
             if (roleID == 7)
             {
                 throw new MyException("Medewerker kan geen gast rol hebben");

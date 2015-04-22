@@ -129,6 +129,8 @@ namespace EventManagementSystem
             cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact("Guest");
             cbMedewerkersRole.Enabled = false;
             isEmployee = false;
+            tbMedewerkerEmployeeID.Enabled = false;
+            tbMedewerkerRoleID.Enabled = false;
         }
 
         private void btnMedewerkersShowAllEmployee_Click(object sender, EventArgs e)
@@ -140,6 +142,8 @@ namespace EventManagementSystem
             dataGridView.DataSource = showAllEmployeeAccounts;
             cbMedewerkersRole.Enabled = true;
             isEmployee = true;
+            tbMedewerkerEmployeeID.Enabled = true;
+            tbMedewerkerRoleID.Enabled = true;
         }
 
         
@@ -170,6 +174,10 @@ namespace EventManagementSystem
 		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
+                        if (tbMedewerkerEmployeeID.Text == "")
+                        {
+                            throw new MyException("Employee ID niet ingevuld");
+                        }
                         superManager.EditEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
                     Convert.ToInt32(tbMedewerkersEventID.Text), tbMedewerkerUsername.Text,
                     tbMedewerkerPassword.Text, tbMedewerkerName.Text, tbMedewerkerAddress.Text,
@@ -335,6 +343,7 @@ namespace EventManagementSystem
                             int enumID = superManager.getEnum(enumCast);
                             tbMedewerkerRoleID.Text = enumID.ToString();
                             cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
+                            tbMedewerkerEmployeeID.Text = row.Cells["EMPLOYEEID"].Value.ToString();
                         }
                     }
                     else if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
@@ -380,6 +389,8 @@ namespace EventManagementSystem
                 f = null;
             }
         }
+
+
 
 
 

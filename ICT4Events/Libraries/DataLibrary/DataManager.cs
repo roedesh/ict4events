@@ -245,7 +245,7 @@ namespace DataLibrary
         /// <param name="employee">List dictrionary of string-string</param>
         public void SetEmployeeAccount(List<string> account, List<string> employee)
         {
-            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24:MI:SS')", account[8]);
             string query = String.Format("INSERT INTO ACCOUNT VALUES({0},{1},'{2}','{3}','{4}','{5}','{6}','{7}',{8},'{9}','{10}')"
                 , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
@@ -303,8 +303,8 @@ namespace DataLibrary
         /// <param name="eventinfo">List-string eventinfo</param>
         public void SetEvent(List<string> eventinfo)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
+            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24:MI:SS')", eventinfo[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24-MI-SS')", eventinfo[3]);
             string query = String.Format("INSERT INTO Event VALUES ('{0}','{1}',{2},{3},'{4}','{5}')"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd
                 , eventinfo[4], eventinfo[5]);
@@ -372,8 +372,8 @@ namespace DataLibrary
         /// <param name="eventinfo">list-string eventinfo</param>
         public void UpdateEvent(List<string> eventinfo)
         {
-            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[2]);
-            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", eventinfo[3]);
+            string dateStart = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24:MI:SS')", eventinfo[2]);
+            string dateEnd = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24:MI:SS')", eventinfo[3]);
             string query = String.Format("UPDATE Event SET LOCATION = '{1}', STARTDATE = {2}, ENDDATE = {3}, DESCRIPTION = '{4}', ADMISSIONFEE = '{5}' WHERE EventID = {0}"
                 , eventinfo[0], eventinfo[1], dateStart, dateEnd, eventinfo[4], eventinfo[5]);
             XCTNonQuery(query);
@@ -384,7 +384,7 @@ namespace DataLibrary
         /// <param name="account">list-string account</param>
         public void UpdateAccount(List<string> account)
         {
-            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY')", account[8]);
+            string date = String.Format("TO_DATE('{0}', 'DD-MM-YYYY HH24:MI:SS')", account[8]);
             string query = String.Format("UPDATE  Account SET EVENTID = {1}, USERNAME = '{2}', PASSWORD = '{3}', FULLNAME = '{4}', ADRESS = '{5}', CITY = '{6}', POSTALCODE = '{7}', DATEOFBIRTH = {8}, EMAIL = '{9}', PHONENUMBER = '{10}' WHERE AccountID = {0}"
                 , account[0], account[1], account[2], account[3]
                 , account[4], account[5], account[6], account[7]
