@@ -74,14 +74,8 @@ namespace ReservationSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (isValidPlace == false)
-            {
-                MessageBox.Show("Ongeldig plaatsnummer!");
-            }
-            else if (dtpStartDate.Value.Date == dtpEndDate.Value.Date){
-                MessageBox.Show("Start en einddatum mag niet hetzelfde zijn!");
-            }
-            else
+            
+            if(IsValidData())
             {
                 DialogResult result = MessageBox.Show("Weet u zeker dat alle gegevens kloppen?", "Reservering plaatsen", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Yes)
@@ -168,6 +162,33 @@ namespace ReservationSystem
                 if (c < '0' || c > '9')
                     return false;
             }
+            return true;
+        }
+
+        /// <summary>
+        /// Checks if all requirements to place a reservation are met
+        /// This means that isValidPlace == true, the two dates are not equal and amount of persons > 0
+        /// </summary>
+        /// <returns>true or false</returns>
+        bool IsValidData()
+        {
+            btPlaceReservation.Enabled = false;
+            if (isValidPlace == false)
+            {
+                MessageBox.Show("Ongeldig plaatsnummer!");
+                return false;
+            }
+            if (dtpStartDate.Value.Date == dtpEndDate.Value.Date)
+            {
+                MessageBox.Show("Start en einddatum mag niet hetzelfde zijn!");
+                return false;
+            }
+            if (Convert.ToInt32(lbAmountPersonsValue.Text) <= 0)
+            {
+                MessageBox.Show("Er moet minimaal één persoon aan de reservering gekoppeld zijn!");
+                return false;
+            }
+            btPlaceReservation.Enabled = true;
             return true;
         }
 

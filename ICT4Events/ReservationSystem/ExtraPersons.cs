@@ -14,6 +14,7 @@ namespace ReservationSystem
     public partial class ExtraPersons : Form
     {
         public SuperManager s = new SuperManager();
+        bool isValidEventID = false;
 
         public ExtraPersons(Account mainBooker, AccountManager tempAccountManager)
         {
@@ -127,7 +128,6 @@ namespace ReservationSystem
                 {
                     if (tb.Text == "" || tb.Text == null)
                     {
-                        MessageBox.Show("Niet alle gegevens zijn ingevuld!");
                         return false;
                     }
                 }
@@ -156,7 +156,7 @@ namespace ReservationSystem
                 MessageBox.Show("Event ID mag alleen cijfers bevatten!");
                 return false;
             }
-            if (!txtCity.Text.Any(char.IsDigit))
+            if (txtCity.Text.Any(char.IsDigit))
             {
                 MessageBox.Show("Woonplaats mag alleen letters bevatten!");
                 return false;
@@ -171,6 +171,12 @@ namespace ReservationSystem
                 MessageBox.Show("Postcode moet getallen bevatten!");
                 return false;
             }
+
+            if (!s.GetEvent(txtEventID.Text)){
+                MessageBox.Show("Ongeldige event ID!");
+                return false;
+            }
+
             try
             {
                 var addr = new System.Net.Mail.MailAddress(txtEmail.Text);
@@ -307,6 +313,21 @@ namespace ReservationSystem
         private void lblCity_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btCheckEventID_Click(object sender, EventArgs e)
+        {
+            if (!txtEventID.Text.All(char.IsDigit)){
+                MessageBox.Show("Event ID mag alleen cijfers bevatten!");
+            }
+            else {
+                if (s.GetEvent(txtEventID.Text)){
+                    MessageBox.Show("Dit evenement bestaat!");
+                }
+                else {
+                    MessageBox.Show("Ongeldige event ID!");
+                }
+            }
         }
     }
 }

@@ -267,5 +267,40 @@ namespace MaterialRentalSysteem
             }
             return persons;
         }
+        public List<Rental> SortBy(int index)
+        {
+            RentalComparer.SortByName SortByName = new RentalComparer.SortByName();
+            RentalComparer.SortByType SortByType = new RentalComparer.SortByType();
+            
+            if(index == 0)
+            {
+                // sort rental by name
+                rentalManager.RentedItems.Sort(SortByName);
+                return rentalManager.RentedItems;
+            }
+            else if(index == 1)
+            {
+                //sort rental by type
+                rentalManager.RentedItems.Sort(SortByType);
+                return rentalManager.RentedItems;
+            }
+            return rentalManager.RentedItems;
+        }
+        public List<Rental> GetAllRentalsByRFID(string RFID)
+        {
+            
+            rentalManager.RentedItems.Clear();
+            List<Dictionary<string, string>> list = dataManager.GetRentedItemsByRFID(RFID);
+            Console.WriteLine(list);
+            Rental rental;
+            foreach (Dictionary<string, string> d in list)
+            {
+                rental = new Rental(Convert.ToInt32(d["ITEMRENTALID"]),
+                    d["FULLNAME"], d["TYPEITEM"], d["NAME"], Convert.ToDateTime(d["STARTDATE"]),
+                    Convert.ToDateTime(d["ENDDATE"]),Convert.ToInt32(d["TOTALAMOUNT"]),Convert.ToInt32(d["ITEMID"]));
+                rentalManager.AddRental(rental);
+            }
+            return rentalManager.RentedItems;
+        }
     }
 }

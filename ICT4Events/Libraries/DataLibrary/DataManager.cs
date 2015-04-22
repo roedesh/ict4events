@@ -426,6 +426,12 @@ namespace DataLibrary
             result = XCTReader(query);
             return result;
         }
+        public List<Dictionary<string, string>> GetRentedItemsByRFID(string RFID)
+        {
+            string query = String.Format("SELECT ir.ITEMRENTALID,a.FULLNAME, i.TYPEITEM, i.NAME, r.STARTDATE, r.ENDDATE, r.TOTALAMOUNT,i.ITEMID FROM ITEM i , ITEMRENTAL ir, RENTAL r, GUEST g, ACCOUNT a WHERE i.ITEMID = ir.ITEMID AND ir.RENTALID = r.RENTALID AND r.GUESTID = g.GUESTID AND g.ACCOUNTID = a.ACCOUNTID AND g.RFID = '{0}'",RFID);
+            result = XCTReader(query);
+            return result;
+        }
         
         /// <summary>
         /// Set an item in the database using a list of strings.

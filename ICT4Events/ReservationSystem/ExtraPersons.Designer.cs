@@ -66,6 +66,7 @@
             this.lblAccountEntry = new System.Windows.Forms.Label();
             this.txtAccountEntry = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btCheckEventID = new System.Windows.Forms.Button();
             this.gboxPersons.SuspendLayout();
             this.gboxAdd.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -139,6 +140,7 @@
             // 
             // gboxAdd
             // 
+            this.gboxAdd.Controls.Add(this.btCheckEventID);
             this.gboxAdd.Controls.Add(this.txtPassword);
             this.gboxAdd.Controls.Add(this.lblPassWord);
             this.gboxAdd.Controls.Add(this.txtUsername);
@@ -205,7 +207,7 @@
             // 
             this.txtEventID.Location = new System.Drawing.Point(5, 72);
             this.txtEventID.Name = "txtEventID";
-            this.txtEventID.Size = new System.Drawing.Size(219, 20);
+            this.txtEventID.Size = new System.Drawing.Size(137, 20);
             this.txtEventID.TabIndex = 16;
             // 
             // lblEventID
@@ -437,6 +439,16 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Accounts worden pas aangemaakt na het plaatsen van de reservering";
             // 
+            // btCheckEventID
+            // 
+            this.btCheckEventID.Location = new System.Drawing.Point(148, 70);
+            this.btCheckEventID.Name = "btCheckEventID";
+            this.btCheckEventID.Size = new System.Drawing.Size(76, 23);
+            this.btCheckEventID.TabIndex = 22;
+            this.btCheckEventID.Text = "Controleer";
+            this.btCheckEventID.UseVisualStyleBackColor = true;
+            this.btCheckEventID.Click += new System.EventHandler(this.btCheckEventID_Click);
+            // 
             // ExtraPersons
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,6 +513,7 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.TextBox txtEventID;
         private System.Windows.Forms.Label lblEventID;
+        private System.Windows.Forms.Button btCheckEventID;
 
 
     }
