@@ -23,7 +23,7 @@ namespace SocialMediaSharingSystem
 
         public List<Comment> Comments
         {
-            get {return postManager.Comments;}
+            get { return postManager.Comments; }
         }
 
         public Account CurrentAccount
@@ -40,10 +40,10 @@ namespace SocialMediaSharingSystem
 
         public List<string> SwearWords
         {
-            get {return swearWords;}
-            set {swearWords = value;}
+            get { return swearWords; }
+            set { swearWords = value; }
         }
-        
+
 
         public SuperManager()
         {
@@ -137,7 +137,7 @@ namespace SocialMediaSharingSystem
         /// <param name="commentIndex"></param>
         /// <param name="date"></param>
         /// <param name="isLike"></param>
-        public void LikeFlagPost(int postID, int accountID, int  commentIndex, DateTime date, bool isLike)
+        public void LikeFlagPost(int postID, int accountID, int commentIndex, DateTime date, bool isLike)
         {
             // Send a file-like to the database:
             if (commentIndex == -1 && isLike)
@@ -303,18 +303,26 @@ namespace SocialMediaSharingSystem
         /// <param name="filePath"></param>
         public void DeleteFile(int fileID, string filePath)
         {
-            try
+            
+
+            using (var inputFile = new FileStream(Path.GetFileName(filePath), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
             {
-            // Delete file from the shared folder:
-            System.IO.File.Delete(filePath);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("Exception: " + ex);
+                System.IO.File.Delete(filePath);
             }
 
+
+            //try
+            //{
+            //    // Delete file from the shared folder:
+            //    System.IO.File.Delete(filePath);
+            //}
+            //catch (IOException ex)
+            //{
+            //    Console.WriteLine("Exception: " + ex);
+            //}
+
             // Delete file from the database:
-            foreach(Comment c in postManager.Comments)
+            foreach (Comment c in postManager.Comments)
             {
                 dataManager.DeleteComment(c.PostID);
             }
@@ -406,8 +414,42 @@ namespace SocialMediaSharingSystem
 
             dataManager.SetFile(list);
 
-            // Copy file to the shared folder from the source path:
-            Stream stream  = new System.IO.File.Copy(sourcePath, fp, true);
+            using (var inputFile = new FileStream(Path.GetFileName(fp), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+            {
+                System.IO.File.Copy(sourcePath, fp, true);
+            }
+
+            //try
+            //{
+
+            //}
+            //catch (IOException ex)
+            //{
+            //    Console.WriteLine("Exception:" + ex);
+            //}
+
+
+        }
+
+        public static bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+            try
+            {
+                file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                {
+                    stream.Close();
+                }
+            }
+            return false;
         }
 
         /// <summary>

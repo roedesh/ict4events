@@ -14,10 +14,10 @@ namespace SocialMediaSharingSystem
 {
     public partial class frm_SocialMedia : Form
     {
-        // Basepath to the root of the shared folder (for testing purposes it points at the local desktop + \test).
-        public static string BASEPATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
+        //Basepath to the root of the shared folder (for testing purposes it points at the local desktop + \test).
+        //public static string BASEPATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
 
-        //public const string BASEPATH = @"\\PTS23-APPSERVER\";
+        public const string BASEPATH = @"\\PTS23-APPSERVER\";
 
         SuperManager superManager = new SuperManager();
 
@@ -167,7 +167,10 @@ namespace SocialMediaSharingSystem
             if (imageExtensions.Any(currentFile.FilePath.Contains))
             {
                 lbl_Preview.Text = "Voorbeeld: ";
-                pb_Preview.Image = Image.FromFile(currentFile.FilePath);
+    
+                    pb_Preview.Image =  Image.FromFile(currentFile.FilePath);
+
+
             }
             else
             {
@@ -198,7 +201,10 @@ namespace SocialMediaSharingSystem
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                System.IO.File.Copy(currentFile.FilePath, saveFileDialog.FileName, true);
+                using (var inputFile = new FileStream(Path.GetFileName(currentFile.FilePath), FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite))
+                {
+                    System.IO.File.Copy(currentFile.FilePath, saveFileDialog.FileName, true);
+                }
             }
         }
 
