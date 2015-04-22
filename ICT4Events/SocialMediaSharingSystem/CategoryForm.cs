@@ -14,6 +14,7 @@ namespace SocialMediaSharingSystem
     public partial class CategoryForm : Form
     {
         private string destination;
+        private char[] chars = { '.', '\\', '/', ':', '*', '?', '"', '<', '>', '|' };
         public CategoryForm(string destination)
         {
             InitializeComponent();
@@ -27,14 +28,14 @@ namespace SocialMediaSharingSystem
         /// <param name="e"></param>
         private void btn_Create_Click(object sender, EventArgs e)
         {
-            if (tb_Name.Text.Trim().Length != 0)
+            if (tb_Name.Text.Trim().Length != 0 && tb_Name.Text.IndexOfAny(chars) == -1)
             {
                 Directory.CreateDirectory(frm_SocialMedia.BASEPATH + destination + @"\" + tb_Name.Text);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Vul een geldige naam in: ");
+                MessageBox.Show("Vul een geldige naam in. (Zonder tekens)");
             }
         }
     }

@@ -75,6 +75,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(107, 103);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(125, 20);
             this.txtPassword.TabIndex = 4;
             // 
@@ -99,6 +100,7 @@
             this.Controls.Add(this.lbUsername);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LoginForm";
             this.Text = "Media-sharingsysteem";
             this.ResumeLayout(false);

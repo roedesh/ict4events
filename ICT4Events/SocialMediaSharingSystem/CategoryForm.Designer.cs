@@ -67,6 +67,7 @@
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.btn_Create);
             this.Controls.Add(this.lbl_Name);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CategoryForm";
             this.Text = "Vul categorienaam in";
             this.ResumeLayout(false);

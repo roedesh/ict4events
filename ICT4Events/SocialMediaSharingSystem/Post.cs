@@ -72,7 +72,7 @@ namespace SocialMediaSharingSystem
             this.amountOfLikes = amountOfLikes;
             this.amountOfFlags = amountOfFlags;
 
-            if (this.amountOfFlags > 8)
+            if (this.amountOfFlags > 1)
             {
                 this.isHidden = true;
             }

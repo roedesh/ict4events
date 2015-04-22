@@ -19,6 +19,7 @@ namespace SocialMediaSharingSystem
 
         private Account currentAccount;
         private bool isEmployee;
+        private List<string> swearWords = new List<string>();
 
         public List<Comment> Comments
         {
@@ -37,9 +38,17 @@ namespace SocialMediaSharingSystem
             set { isEmployee = value; }
         }
 
+        public List<string> SwearWords
+        {
+            get {return swearWords;}
+            set {swearWords = value;}
+        }
+        
+
         public SuperManager()
         {
-            // Default constructor
+            // Get all the blocked words from the database:
+            GetSwearWords();
         }
 
         /// <summary>
@@ -293,8 +302,16 @@ namespace SocialMediaSharingSystem
         /// <param name="filePath"></param>
         public void DeleteFile(int fileID, string filePath)
         {
+            try
+            {
             // Delete file from the shared folder:
             System.IO.File.Delete(filePath);
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Exception: " + ex);
+            }
+
             // Delete file from the database:
             foreach(Comment c in postManager.Comments)
             {
@@ -449,6 +466,25 @@ namespace SocialMediaSharingSystem
                 postManager.Comments.Add(c);
             }
             return postManager.Comments;
+        }
+
+        /// <summary>
+        /// Get all the blocked words from the database and store them in SwearWords list.
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetSwearWords()
+        {
+            SwearWords.Clear();
+            List<Dictionary<string, string>> list = dataManager.GetAllSwearWords();
+
+            string s = null;
+            foreach (Dictionary<string, string> d in list)
+            {
+                s = d["WORD"];
+                SwearWords.Add(s);
+            }
+
+            return SwearWords;
         }
     }
 }

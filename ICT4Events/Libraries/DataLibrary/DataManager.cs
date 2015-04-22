@@ -557,11 +557,11 @@ namespace DataLibrary
             string query = String.Format("UPDATE GUEST SET GUESTID = {0}, ACCOUNTID = {1},RFID = '{2}',ISPRESENT = '{3}' WHERE GUESTID = {0}", GuestID, AccountID,RFID,isPresent);
             XCTNonQuery(query);
         }
+
         /// <summary>
         /// Set a file in the database using a list of strings.
         /// </summary>
         /// <param name="file">list-string file</param>
-
         public void SetFile(List<string> file)
         {
             string query = "SELECT FileID FROM FileTable WHERE FileID = (SELECT MAX(FileID) FROM FileTable)";
@@ -582,11 +582,11 @@ namespace DataLibrary
             Console.WriteLine(query);
             XCTNonQuery(query);
         }
+
         /// <summary>
         /// Set a comment in the database using a list of strings
         /// </summary>
         /// <param name="comment">list-string comment</param>
-
         public void SetComment(List<string> comment)
         {
             string query = "SELECT CommentID FROM CommentTable where CommentID = (SELECT MAX(CommentID) FROM CommentTable)";
@@ -607,12 +607,11 @@ namespace DataLibrary
                 , comment[8]);
             XCTNonQuery(query);
         }
+
         /// <summary>
         /// Set a like/flag in the database using a list of strings.
         /// </summary>
         /// <param name="likeorflag">list-string likeorflag</param>
-
-
         public void SetLikeOrFlag(List<string> likeorflag)
         {
             string query = "SELECT LIKEFLAGID FROM LIKEORFLAG where LIKEFLAGID = (SELECT MAX(LIKEFLAGID) FROM LIKEORFLAG)";
@@ -696,20 +695,24 @@ namespace DataLibrary
         /// Delete a file from the datase using an ID.
         /// </summary>
         /// <param name="ID">string ID</param>
-        public void DeleteFile(string ID)
+        public void DeleteFile(int ID)
         {
-            string query = String.Format("DELETE * FROM FILETABLE WHERE FILEID = {0}", ID);
+            string query = String.Format("DELETE FROM LIKEORFLAG WHERE FILEID = {0}", ID);
             XCTNonQuery(query);
-            query = String.Format("DELETE * FROM COMMENTTABLE WHERE FILEID = {0}", ID);
+            query = String.Format("DELETE FROM FILETABLE WHERE FILEID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
         /// Delete a comment from the database using an ID.
         /// </summary>
         /// <param name="ID">string ID</param>
-        public void DeleteComment(string ID)
+        public void DeleteComment(int ID)
         {
-            string query = String.Format("DELETE * FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
+            string query = String.Format("DELETE FROM LIKEORFLAG WHERE COMMENTID = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTRECU = {0}", ID);
+            XCTNonQuery(query);
+            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -961,54 +964,22 @@ namespace DataLibrary
             return result;
         }
         
-        
-       
-        
-
-        /// <summary>
-        /// Delete a file from the database using an ID.
-        /// </summary>
-        /// <param name="ID">int ID</param>
-        public void DeleteFile(int ID)
-        {
-            string query = String.Format("DELETE FROM LIKEORFLAG WHERE FILEID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE FROM FILETABLE WHERE FILEID = {0}", ID);
-            XCTNonQuery(query);
-        }
-        /// <summary>
-        /// Delete a comment from the database using an ID.
-        /// </summary>
-        /// <param name="ID">int ID</param>
-        public void DeleteComment(int ID)
-        {
-            string query = String.Format("DELETE FROM LIKEORFLAG WHERE COMMENTID = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTRECU = {0}", ID);
-            XCTNonQuery(query);
-            query = String.Format("DELETE FROM COMMENTTABLE WHERE COMMENTID = {0}", ID);
-            XCTNonQuery(query);
-        }
         /// <summary>
         /// Get all the swear words from the database.
         /// </summary>
         /// <returns>List dictionary of string-string</returns>
-
         public List<Dictionary<string, string>> GetAllSwearWords()
         {
             string query = String.Format("SELECT * FROM SWEARWORD");
             result = XCTReader(query);
             return result;
         }
-
-        
+     
         /// <summary>
         /// Get an account name from the database using an ID.
         /// </summary>
         /// <param name="id">int ID</param>
         /// <returns>List dictionary of string-string</returns>
-
-
         public List<Dictionary<string, string>> GetAccountName(int id)
         {
             string query = String.Format("SELECT FULLNAME FROM Account WHERE ACCOUNTID = {0}", id);

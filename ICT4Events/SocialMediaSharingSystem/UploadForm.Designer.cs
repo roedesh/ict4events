@@ -76,6 +76,7 @@
             // 
             this.tb_FilePath.Location = new System.Drawing.Point(12, 64);
             this.tb_FilePath.Name = "tb_FilePath";
+            this.tb_FilePath.ReadOnly = true;
             this.tb_FilePath.Size = new System.Drawing.Size(179, 20);
             this.tb_FilePath.TabIndex = 4;
             // 
@@ -89,10 +90,6 @@
             this.btn_Browse.UseVisualStyleBackColor = true;
             this.btn_Browse.Click += new System.EventHandler(this.btn_Browse_Click);
             // 
-            // openFileDialog
-            // 
-            this.openFileDialog.FileName = "openFileDialog1";
-            // 
             // UploadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,6 +101,7 @@
             this.Controls.Add(this.tb_Title);
             this.Controls.Add(this.btn_Upload2);
             this.Controls.Add(this.lbl_Title);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UploadForm";
             this.Text = "Selecteer een bestand";
             this.ResumeLayout(false);

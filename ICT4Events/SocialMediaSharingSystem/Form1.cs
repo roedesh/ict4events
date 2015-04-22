@@ -25,14 +25,14 @@ namespace SocialMediaSharingSystem
         public frm_SocialMedia(List<Dictionary<string, string>> account)
         {
             InitializeComponent();
-            
+
             // Create the root directory if it does not exist.
-            if (!Directory.Exists(BASEPATH + "Test"))
+            if (!Directory.Exists(BASEPATH + "Media"))
             {
-                Directory.CreateDirectory(BASEPATH + "Test");
+                Directory.CreateDirectory(BASEPATH + "Media");
             }
 
-            ListDirectory(tv_Directories, BASEPATH + "Test");
+            ListDirectory(tv_Directories, BASEPATH + "Media");
 
             superManager.SetLoginAccount(account);
             lbl_CurrentAccount.Text = String.Format("Ingelogd als: {0} ({1})", superManager.CurrentAccount.Name, superManager.IsEmployee ? "medewerker" : "gast");
@@ -87,8 +87,7 @@ namespace SocialMediaSharingSystem
 
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
-            RefreshForm();
-
+            ListDirectory(tv_Directories, BASEPATH + "Media");
         }
 
         /// <summary>
@@ -107,17 +106,10 @@ namespace SocialMediaSharingSystem
             }
         }
 
-        public void RefreshForm()
-        {
-            ListDirectory(tv_Directories, BASEPATH + "Test");
-            PopulateCommentList();
-        }
-
-
         public void PopulateCommentList()
         {
             lb_Comments.Items.Clear();
-            foreach (Comment c in superManager.GetFileComments(currentFile.PostID))
+            foreach (Comment c in superManager.Comments)
             {
                 lb_Comments.Items.Add("Naam: " + superManager.GetAccountName(c.AccountID) + c.ToString());
             }
@@ -204,7 +196,7 @@ namespace SocialMediaSharingSystem
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                System.IO.File.Copy(currentFile.FilePath, saveFileDialog.FileName);
+                System.IO.File.Copy(currentFile.FilePath, saveFileDialog.FileName, true);
             }
         }
 
@@ -373,7 +365,7 @@ namespace SocialMediaSharingSystem
         }
         private void frm_SocialMedia_Activated(object sender, EventArgs e)
         {
-            ListDirectory(tv_Directories, BASEPATH + "Test");
+            ListDirectory(tv_Directories, BASEPATH + "Media");
         }
 
         private void btn_Sort_Click(object sender, EventArgs e)
@@ -399,19 +391,30 @@ namespace SocialMediaSharingSystem
             gb_Comments.Enabled = false;
             gb_NewComment.Enabled = false;
 
-            pb_Preview.Image.Dispose();
+            if (pb_Preview.Image != null)
+            {
+                pb_Preview.Image.Dispose();
+            }
             pb_Preview.Image = null;
 
             MessageBox.Show(String.Format("Bestand ({0}) is verwijderd.", currentFile.Title));
             superManager.DeleteFile(currentFile.PostID, currentFile.FilePath);
 
-            ListDirectory(tv_Directories, BASEPATH + "Test"); 
+            ListDirectory(tv_Directories, BASEPATH + "Media"); 
         }
 
         private void btn_RemoveComment_Click(object sender, EventArgs e)
         {
-            superManager.DeleteComment(currentComment.PostID);
-            PopulateCommentList();
+            if (lb_Comments.SelectedIndex < 0)
+            {
+                MessageBox.Show("Selecteer eerst een reactie.");
+            }
+            else
+            {
+                superManager.DeleteComment(currentComment.PostID);
+                PopulateCommentList();
+            }
+
         }
     }
 }
