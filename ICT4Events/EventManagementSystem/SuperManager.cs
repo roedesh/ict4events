@@ -70,7 +70,8 @@ namespace EventManagementSystem
                     d["CITY"], d["POSTALCODE"],
                     Convert.ToDateTime(d["DATEOFBIRTH"]),
                     d["EMAIL"], d["PHONENUMBER"],
-                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]));
+                    (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLENAME"]),
+                    Convert.ToInt32(d["EMPLOYEEID"]));
 
                 accountManager.AddAccountE((Employee)a);
             }

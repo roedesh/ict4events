@@ -32,12 +32,21 @@ namespace AccountLibrary
             get { return role; }
             set { role = value; }
         }
+        private int employeeID;
+
+        public int EmployeeID
+        {
+            get { return employeeID; }
+            set { employeeID = value; }
+        }
+        
         
         public Employee(int id, int eventId, string username, string password, string name, string address, string city, string postalCode,
-                       DateTime dateOfBirth, string email, string phone, AccountRole role)
+                       DateTime dateOfBirth, string email, string phone, AccountRole role, int employeeid)
             : base(id, eventId, username, password, name, address, city, postalCode, dateOfBirth, email, phone)
         {
             Role = role;
+            EmployeeID = employeeid;
         }
 
         public Employee(int eventId, string username, string password, string name, string address, string city, string postalCode,

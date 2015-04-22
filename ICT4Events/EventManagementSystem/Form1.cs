@@ -339,6 +339,7 @@ namespace EventManagementSystem
                             int enumID = superManager.getEnum(enumCast);
                             tbMedewerkerRoleID.Text = enumID.ToString();
                             cbMedewerkersRole.SelectedIndex = cbMedewerkersRole.FindStringExact(row.Cells["Role"].Value.ToString());
+                            tbMedewerkerEmployeeID.Text = row.Cells["EMPLOYEEID"].Value.ToString();
                         }
                     }
                     else if (tabControl.SelectedTab == tabControl.TabPages["tpEvents"])
