@@ -510,6 +510,65 @@ namespace MaterialRentalSysteem
             Application.Exit();
         }
 
+        private void btnSortName_Click(object sender, EventArgs e)
+        {
+            
+            lbInfo.Items.Clear();
+            foreach (Rental r in supermanager.SortBy(0))
+            {
+                lbInfo.Items.Add(r);
+            }
+            try
+            {
+                lbInfo.SelectedIndex = 0;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void btnSortType_Click(object sender, EventArgs e)
+        {
+            lbInfo.Items.Clear();
+            foreach (Rental r in supermanager.SortBy(1))
+            {
+                lbInfo.Items.Add(r);
+            }
+            try
+            {
+                lbInfo.SelectedIndex = 0;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void btnTakeRentSearchPerson_Click(object sender, EventArgs e)
+        {
+            tabControl.SelectedIndex = 4;
+        }
+
+        private void btnSearchSelectTakeRent_Click(object sender, EventArgs e)
+        {
+            Guest guest = lbInfo.SelectedItem as Guest;
+            tabControl.SelectedIndex = 1;
+            lbInfo.Items.Clear();
+            foreach(Rental rental in supermanager.GetAllRentalsByRFID(guest.RFID))
+            {
+                lbInfo.Items.Add(rental);
+            }
+            try
+            {
+                lbInfo.SelectedIndex = 0;
+            }
+            catch
+            {
+                return;
+            }
+        }
+
 
     }
 }

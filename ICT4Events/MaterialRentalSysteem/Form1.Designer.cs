@@ -67,17 +67,23 @@
             this.lbInfo = new System.Windows.Forms.ListBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSortType = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnSearchSelect = new System.Windows.Forms.Button();
+            this.btnSearchSelectItemRent = new System.Windows.Forms.Button();
             this.btnSearchPerson = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tbSearchPerson = new System.Windows.Forms.TextBox();
+            this.btnSortName = new System.Windows.Forms.Button();
+            this.btnTakeRentSearchPerson = new System.Windows.Forms.Button();
+            this.btnSearchSelectTakeRent = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -483,6 +489,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnTakeRentSearchPerson);
+            this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.btnTakeRental);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
@@ -493,9 +501,31 @@
             this.tabPage4.Text = "Neem in";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnSortName);
+            this.groupBox2.Controls.Add(this.btnSortType);
+            this.groupBox2.Location = new System.Drawing.Point(5, 156);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(265, 68);
+            this.groupBox2.TabIndex = 76;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Sorteren";
+            // 
+            // btnSortType
+            // 
+            this.btnSortType.Location = new System.Drawing.Point(143, 19);
+            this.btnSortType.Name = "btnSortType";
+            this.btnSortType.Size = new System.Drawing.Size(116, 34);
+            this.btnSortType.TabIndex = 75;
+            this.btnSortType.Text = "Op type";
+            this.btnSortType.UseVisualStyleBackColor = true;
+            this.btnSortType.Click += new System.EventHandler(this.btnSortType_Click);
+            // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.btnSearchSelect);
+            this.tabPage5.Controls.Add(this.btnSearchSelectTakeRent);
+            this.tabPage5.Controls.Add(this.btnSearchSelectItemRent);
             this.tabPage5.Controls.Add(this.btnSearchPerson);
             this.tabPage5.Controls.Add(this.label13);
             this.tabPage5.Controls.Add(this.tbSearchPerson);
@@ -506,21 +536,21 @@
             this.tabPage5.Text = "Zoek persoon";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // btnSearchSelect
+            // btnSearchSelectItemRent
             // 
-            this.btnSearchSelect.Location = new System.Drawing.Point(6, 144);
-            this.btnSearchSelect.Name = "btnSearchSelect";
-            this.btnSearchSelect.Size = new System.Drawing.Size(249, 47);
-            this.btnSearchSelect.TabIndex = 5;
-            this.btnSearchSelect.Text = "Selecteer persoon";
-            this.btnSearchSelect.UseVisualStyleBackColor = true;
-            this.btnSearchSelect.Click += new System.EventHandler(this.btnSearchSelect_Click);
+            this.btnSearchSelectItemRent.Location = new System.Drawing.Point(6, 144);
+            this.btnSearchSelectItemRent.Name = "btnSearchSelectItemRent";
+            this.btnSearchSelectItemRent.Size = new System.Drawing.Size(123, 47);
+            this.btnSearchSelectItemRent.TabIndex = 5;
+            this.btnSearchSelectItemRent.Text = "Naar Innemen";
+            this.btnSearchSelectItemRent.UseVisualStyleBackColor = true;
+            this.btnSearchSelectItemRent.Click += new System.EventHandler(this.btnSearchSelect_Click);
             // 
             // btnSearchPerson
             // 
-            this.btnSearchPerson.Location = new System.Drawing.Point(6, 91);
+            this.btnSearchPerson.Location = new System.Drawing.Point(154, 37);
             this.btnSearchPerson.Name = "btnSearchPerson";
-            this.btnSearchPerson.Size = new System.Drawing.Size(249, 47);
+            this.btnSearchPerson.Size = new System.Drawing.Size(96, 47);
             this.btnSearchPerson.TabIndex = 4;
             this.btnSearchPerson.Text = "Zoek persoon";
             this.btnSearchPerson.UseVisualStyleBackColor = true;
@@ -539,8 +569,38 @@
             // 
             this.tbSearchPerson.Location = new System.Drawing.Point(6, 51);
             this.tbSearchPerson.Name = "tbSearchPerson";
-            this.tbSearchPerson.Size = new System.Drawing.Size(249, 20);
+            this.tbSearchPerson.Size = new System.Drawing.Size(142, 20);
             this.tbSearchPerson.TabIndex = 0;
+            // 
+            // btnSortName
+            // 
+            this.btnSortName.Location = new System.Drawing.Point(6, 19);
+            this.btnSortName.Name = "btnSortName";
+            this.btnSortName.Size = new System.Drawing.Size(116, 34);
+            this.btnSortName.TabIndex = 76;
+            this.btnSortName.Text = "Op naam";
+            this.btnSortName.UseVisualStyleBackColor = true;
+            this.btnSortName.Click += new System.EventHandler(this.btnSortName_Click);
+            // 
+            // btnTakeRentSearchPerson
+            // 
+            this.btnTakeRentSearchPerson.Location = new System.Drawing.Point(67, 30);
+            this.btnTakeRentSearchPerson.Name = "btnTakeRentSearchPerson";
+            this.btnTakeRentSearchPerson.Size = new System.Drawing.Size(149, 37);
+            this.btnTakeRentSearchPerson.TabIndex = 77;
+            this.btnTakeRentSearchPerson.Text = "Zoek Persoon";
+            this.btnTakeRentSearchPerson.UseVisualStyleBackColor = true;
+            this.btnTakeRentSearchPerson.Click += new System.EventHandler(this.btnTakeRentSearchPerson_Click);
+            // 
+            // btnSearchSelectTakeRent
+            // 
+            this.btnSearchSelectTakeRent.Location = new System.Drawing.Point(135, 144);
+            this.btnSearchSelectTakeRent.Name = "btnSearchSelectTakeRent";
+            this.btnSearchSelectTakeRent.Size = new System.Drawing.Size(123, 47);
+            this.btnSearchSelectTakeRent.TabIndex = 6;
+            this.btnSearchSelectTakeRent.Text = "Naar Uitnemen";
+            this.btnSearchSelectTakeRent.UseVisualStyleBackColor = true;
+            this.btnSearchSelectTakeRent.Click += new System.EventHandler(this.btnSearchSelectTakeRent_Click);
             // 
             // Form1
             // 
@@ -563,6 +623,7 @@
             this.groupBox1.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
@@ -613,8 +674,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbSearchPerson;
-        private System.Windows.Forms.Button btnSearchSelect;
+        private System.Windows.Forms.Button btnSearchSelectItemRent;
         private System.Windows.Forms.Button btnSearchPerson;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnSortType;
+        private System.Windows.Forms.Button btnSortName;
+        private System.Windows.Forms.Button btnTakeRentSearchPerson;
+        private System.Windows.Forms.Button btnSearchSelectTakeRent;
     }
 }
 
