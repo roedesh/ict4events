@@ -202,7 +202,7 @@ namespace EventManagementSystem
             string address, string city, string postalcode, string dateOfBirth, string email,
             int phonenumber, int employeeID, int roleID)
         {
-            foreach (Employee e in accountManager.Employees.Concat(accountManager.Accounts))
+            foreach (Employee e in accountManager.Employees)
             {
                 if (e.ID == id)
                 {

@@ -262,6 +262,10 @@ namespace EntryControlSystem
                 lbInfo.Items.Clear();
                 
             }
+            else
+            {
+                MessageBox.Show("Selecteer een gast.");
+            }
         }
         /// <summary>
         /// Update the gui whenever something in the listbox is selected.
