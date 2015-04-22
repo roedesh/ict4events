@@ -316,9 +316,12 @@ namespace DataLibrary
         /// <param name="ID">string ID</param>
         public void DeleteGuest(string ID)
         {
-            string query = String.Format("DELETE FROM Account WHERE AccountID = {0}", ID);
+            string query = String.Format("DELETE FROM GuestReservation WHERE GuestID = (SELECT GuestID FROM Account WHERE AccountID = {0})", ID);
             XCTNonQuery(query);
             query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
+            XCTNonQuery(query);
+
+            query = String.Format("DELETE FROM Account WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
@@ -329,7 +332,7 @@ namespace DataLibrary
         {
             string query = String.Format("DELETE FROM Employee WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
-            query = String.Format("DELETE FROM Guest WHERE AccountID = {0}", ID);
+            query = String.Format("DELETE FROM Account WHERE AccountID = {0}", ID);
             XCTNonQuery(query);
         }
         /// <summary>
