@@ -43,7 +43,7 @@ namespace EventManagementSystem
             try
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt toevoegen?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result1 == DialogResult.OK)
                 {
                     superManager.AddEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
@@ -56,7 +56,7 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Geen geldige invoer");
             }
-            catch(MyException mex)
+            catch (MyException mex)
             {
                 MessageBox.Show(mex.Message);
             }
@@ -65,13 +65,13 @@ namespace EventManagementSystem
                 btnEventsShow_Click(sender, e);
             }
         }
-        
+
         private void btnEventsDelete_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt verwijderen?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result1 == DialogResult.OK)
                 {
                     superManager.DeleteEvent(tbEventEventID.Text);
@@ -80,7 +80,7 @@ namespace EventManagementSystem
             }
             catch
             {
-            
+
             }
             finally
             {
@@ -94,7 +94,7 @@ namespace EventManagementSystem
             try
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u dit event wilt bewerken?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result1 == DialogResult.OK)
                 {
                     superManager.EditEvent(Convert.ToInt32(tbEventEventID.Text), tbEventLocatie.Text,
@@ -146,7 +146,7 @@ namespace EventManagementSystem
             tbMedewerkerRoleID.Enabled = true;
         }
 
-        
+
         private void btnMedewerkersEdit_Click(object sender, EventArgs e)
         {
             try
@@ -155,7 +155,7 @@ namespace EventManagementSystem
                 if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt bewerken?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
                         superManager.EditGuest(Convert.ToInt32(tbMedewerkerAccountID.Text),
@@ -171,7 +171,7 @@ namespace EventManagementSystem
                 else // it's an Employee
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt bewerken?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
                         if (tbMedewerkerEmployeeID.Text == "")
@@ -190,7 +190,7 @@ namespace EventManagementSystem
                     }
                 }
             }
-            catch(MyException mex)
+            catch (MyException mex)
             {
                 MessageBox.Show(mex.Message);
             }
@@ -205,7 +205,7 @@ namespace EventManagementSystem
             try
             {
                 DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt toevoegen?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                 if (result1 == DialogResult.OK)
                 {
                     superManager.AddEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text),
@@ -221,7 +221,7 @@ namespace EventManagementSystem
             {
                 MessageBox.Show(mex.Message);
             }
-            catch(FormatException)
+            catch (FormatException)
             {
                 MessageBox.Show("Geen geldige invoer");
             }
@@ -230,7 +230,7 @@ namespace EventManagementSystem
                 isEmployee = true;
                 btnMedewerkersShowAllEmployee_Click(sender, e);
             }
-            
+
         }
 
         private void btnMedewerkersDelete_Click(object sender, EventArgs e)
@@ -241,7 +241,7 @@ namespace EventManagementSystem
                 if (cbMedewerkersRole.SelectedItem.ToString() == "Guest")
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze gast wilt verwijderen?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
                         superManager.DeleteAccountGuest(Convert.ToInt32(tbMedewerkerAccountID.Text));
@@ -253,7 +253,7 @@ namespace EventManagementSystem
                 else // it's an Employee
                 {
                     DialogResult result1 = MessageBox.Show("Weet u zeker dat u deze medewerker wilt verwijderen?",
-		"Critical Warning",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+        "Critical Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (result1 == DialogResult.OK)
                     {
                         superManager.DeleteAccountEmployee(Convert.ToInt32(tbMedewerkerAccountID.Text));
@@ -289,7 +289,7 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Geen geldige invoer");
             }
-            catch(MyException mex)
+            catch (MyException mex)
             {
                 MessageBox.Show(mex.Message);
             }
@@ -367,7 +367,7 @@ namespace EventManagementSystem
 
                 }
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 MessageBox.Show("U bent niet in de juiste tab");
             }

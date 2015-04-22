@@ -17,6 +17,8 @@ namespace SocialMediaSharingSystem
         // Basepath to the root of the shared folder (for testing purposes it points at the local desktop + \test).
         public static string BASEPATH = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
 
+        //public const string BASEPATH = @"\\PTS23-APPSERVER\";
+
         SuperManager superManager = new SuperManager();
 
         private File currentFile;
@@ -109,7 +111,7 @@ namespace SocialMediaSharingSystem
         public void PopulateCommentList()
         {
             lb_Comments.Items.Clear();
-            foreach (Comment c in superManager.Comments)
+            foreach (Comment c in superManager.GetFileComments(currentFile.PostID))
             {
                 lb_Comments.Items.Add("Naam: " + superManager.GetAccountName(c.AccountID) + c.ToString());
             }
@@ -382,7 +384,12 @@ namespace SocialMediaSharingSystem
                     superManager.Comments.Sort((x, y) => -x.AmountOfLikes.CompareTo(y.AmountOfLikes));
                     break;
             }
-            PopulateCommentList();
+
+            lb_Comments.Items.Clear();
+            foreach (Comment c in superManager.Comments)
+            {
+                lb_Comments.Items.Add("Naam: " + superManager.GetAccountName(c.AccountID) + c.ToString());
+            }
         }
 
         private void btn_RemoveFile_Click(object sender, EventArgs e)
@@ -398,6 +405,7 @@ namespace SocialMediaSharingSystem
             pb_Preview.Image = null;
 
             MessageBox.Show(String.Format("Bestand ({0}) is verwijderd.", currentFile.Title));
+            Console.WriteLine(currentFile.FilePath);
             superManager.DeleteFile(currentFile.PostID, currentFile.FilePath);
 
             ListDirectory(tv_Directories, BASEPATH + "Media"); 

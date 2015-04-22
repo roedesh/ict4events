@@ -98,7 +98,8 @@ namespace SocialMediaSharingSystem
                         d["CITY"], d["POSTALCODE"],
                         Convert.ToDateTime(d["DATEOFBIRTH"]),
                         d["EMAIL"], d["PHONENUMBER"],
-                        (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLEID"]));
+                        (AccountLibrary.Employee.AccountRole)Enum.Parse(typeof(AccountLibrary.Employee.AccountRole), d["ROLEID"]),
+                        Convert.ToInt32(d["EMPLOYEEID"]));
                 }
             }
             // Get the guest account:
@@ -147,7 +148,7 @@ namespace SocialMediaSharingSystem
                 list.Add(Convert.ToString(accountID));
                 list.Add("null");
                 list.Add(Convert.ToString(postID));
-                list.Add(date.ToString());
+                list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
                 list.Add(Convert.ToString(Type.Like));
 
                 dataManager.SetLikeOrFlag(list);
@@ -166,7 +167,7 @@ namespace SocialMediaSharingSystem
                 list.Add(Convert.ToString(accountID));
                 list.Add("null");
                 list.Add(Convert.ToString(postID));
-                list.Add(date.ToString());
+                list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
                 list.Add(Convert.ToString(Type.Flag));
 
                 dataManager.SetLikeOrFlag(list);
@@ -185,7 +186,7 @@ namespace SocialMediaSharingSystem
                 list.Add(Convert.ToString(accountID));
                 list.Add(Convert.ToString(postID));
                 list.Add("null");
-                list.Add(date.ToString());
+                list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
                 list.Add(Convert.ToString(Type.Like));
 
                 dataManager.SetLikeOrFlag(list);
@@ -204,7 +205,7 @@ namespace SocialMediaSharingSystem
                 list.Add(Convert.ToString(accountID));
                 list.Add(Convert.ToString(postID));
                 list.Add("null");
-                list.Add(date.ToString());
+                list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
                 list.Add(Convert.ToString(Type.Flag));
 
                 dataManager.SetLikeOrFlag(list);
@@ -397,7 +398,7 @@ namespace SocialMediaSharingSystem
 
             list.Add(Convert.ToString(fileID));
             list.Add(Convert.ToString(accountID));
-            list.Add(date.ToString());
+            list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
             list.Add(title);
             list.Add(fp);
             list.Add("0"); // Amount of likes
@@ -406,7 +407,7 @@ namespace SocialMediaSharingSystem
             dataManager.SetFile(list);
 
             // Copy file to the shared folder from the source path:
-            System.IO.File.Copy(sourcePath, fp, true);
+            Stream stream  = new System.IO.File.Copy(sourcePath, fp, true);
         }
 
         /// <summary>
@@ -427,7 +428,7 @@ namespace SocialMediaSharingSystem
             list.Add(Convert.ToString(fileID));
             list.Add(Convert.ToString(accountID));
             list.Add(parentID == 0 ? "null" : Convert.ToString(parentID));
-            list.Add(Convert.ToString(date));
+            list.Add(date.ToString("dd/MM/yyyy/HH:mm/ss"));
             list.Add(title);
             list.Add(message);
             list.Add("0");
