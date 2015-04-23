@@ -149,7 +149,7 @@ CREATE TABLE Item
 Name			varchar2(255 char)		NOT NULL,
 TypeItem		varchar2(255 char)		NOT NULL,
 Stock			int						NOT NULL,
-Price			int						CHECK(Price>0)
+Price			number(38,2)						CHECK(Price>0)
 );
 
 CREATE TABLE Rental
